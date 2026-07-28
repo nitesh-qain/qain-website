@@ -1,0 +1,522 @@
+<title>QAINfinity &mdash; Engineering & QA Partner</title>
+<style>
+  :root {
+    --bg: #f7f7fb;
+    --surface: #ffffff;
+    --surface-2: #eef0f7;
+    --text: #14151d;
+    --text-dim: #565c6d;
+    --border: rgba(20,21,29,0.09);
+    --accent-1: #4338ca;
+    --accent-2: #7c3aed;
+    --accent-3: #0891b2;
+    --good: #0d9488;
+    --glow-a: rgba(79,70,229,0.16);
+    --glow-b: rgba(139,92,246,0.12);
+    --shadow: 0 1px 2px rgba(20,21,29,0.06);
+    --logo-ink: #20255c;
+    --logo-line: #3f7373;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0a0b12;
+      --surface: #12141f;
+      --surface-2: #181b28;
+      --text: #f2f3f8;
+      --text-dim: #9ba1b4;
+      --border: rgba(255,255,255,0.08);
+      --accent-1: #4f46e5;
+      --accent-2: #8b5cf6;
+      --accent-3: #22d3ee;
+      --good: #34d399;
+      --glow-a: rgba(79,70,229,0.35);
+      --glow-b: rgba(139,92,246,0.22);
+      --shadow: 0 1px 2px rgba(0,0,0,0.4);
+      --logo-ink: #eef0fb;
+      --logo-line: #5fd0d0;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0a0b12; --surface: #12141f; --surface-2: #181b28;
+    --text: #f2f3f8; --text-dim: #9ba1b4; --border: rgba(255,255,255,0.08);
+    --accent-1: #4f46e5; --accent-2: #8b5cf6; --accent-3: #22d3ee; --good: #34d399;
+    --glow-a: rgba(79,70,229,0.35); --glow-b: rgba(139,92,246,0.22);
+    --shadow: 0 1px 2px rgba(0,0,0,0.4);
+    --logo-ink: #eef0fb; --logo-line: #5fd0d0;
+  }
+  :root[data-theme="light"] {
+    --bg: #f7f7fb; --surface: #ffffff; --surface-2: #eef0f7;
+    --text: #14151d; --text-dim: #565c6d; --border: rgba(20,21,29,0.09);
+    --accent-1: #4338ca; --accent-2: #7c3aed; --accent-3: #0891b2; --good: #0d9488;
+    --glow-a: rgba(79,70,229,0.16); --glow-b: rgba(139,92,246,0.12);
+    --shadow: 0 1px 2px rgba(20,21,29,0.06);
+    --logo-ink: #20255c; --logo-line: #3f7373;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+  .mono {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    font-size: 12px;
+  }
+  h1, h2, h3 { font-weight: 800; letter-spacing: -0.03em; text-wrap: balance; margin: 0; }
+  p { color: var(--text-dim); line-height: 1.6; margin: 0; }
+  a { color: inherit; text-decoration: none; }
+  .grad-text {
+    background: linear-gradient(95deg, var(--accent-1), var(--accent-2) 55%, var(--accent-3));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* nav */
+  nav {
+    position: sticky; top: 0; z-index: 20;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 13px 32px; max-width: 1120px; margin: 0 auto;
+  }
+  .brand { display: flex; align-items: center; gap: 10px; }
+  .logo-svg { display: block; flex-shrink: 0; }
+  .logo-svg .box { fill: none; stroke: var(--logo-line); stroke-width: 7; }
+  .logo-svg .wordmark { fill: var(--logo-ink); font-weight: 800; }
+  .logo-svg .tail { stroke: var(--logo-ink); stroke-width: 6; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .logo-svg .finity { fill: var(--logo-ink); font-weight: 800; letter-spacing: 0.14em; }
+  .nav-links { display: flex; gap: 30px; font-size: 14.5px; color: var(--text-dim); }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta { display: flex; align-items: center; gap: 18px; }
+  .btn-grad {
+    padding: 10px 20px; border-radius: 999px; font-size: 14.5px; font-weight: 700;
+    background: linear-gradient(95deg, var(--accent-1), var(--accent-2));
+    color: #fff; display: inline-block; box-shadow: var(--shadow);
+  }
+  .btn-outline {
+    padding: 10px 20px; border-radius: 999px; font-size: 14.5px; font-weight: 700;
+    border: 1px solid var(--border); color: var(--text); display: inline-block;
+  }
+
+  /* hero */
+  .hero {
+    position: relative;
+    padding: 110px 0 90px;
+    text-align: center;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: ""; position: absolute; inset: -20% -10% auto -10%; height: 700px;
+    background: radial-gradient(circle at 50% 20%, var(--glow-a), var(--glow-b) 40%, transparent 70%);
+    z-index: -1;
+  }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 7px 16px; border-radius: 999px; border: 1px solid var(--border);
+    background: var(--surface); color: var(--text-dim); margin-bottom: 28px;
+  }
+  .eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent-3); }
+  .hero h1 { font-size: 64px; line-height: 1.04; max-width: 780px; margin: 0 auto; }
+  .hero p.lede {
+    max-width: 620px; margin: 26px auto 0; font-size: 18px; color: var(--text-dim);
+  }
+  .hero-ctas { display: flex; gap: 14px; justify-content: center; margin-top: 36px; }
+  .btn-grad.lg, .btn-outline.lg { padding: 14px 26px; font-size: 15.5px; }
+
+  /* metrics strip */
+  .metrics {
+    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    background: var(--surface);
+  }
+  .metrics-row {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    max-width: 1120px; margin: 0 auto;
+  }
+  .metric { padding: 34px 28px; text-align: center; border-right: 1px solid var(--border); }
+  .metric:last-child { border-right: none; }
+  .metric .num {
+    font-size: 32px; font-weight: 800; letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+  }
+  .metric .label { font-size: 13px; color: var(--text-dim); margin-top: 6px; }
+
+  section { padding: 100px 0; }
+  .section-head { max-width: 620px; margin-bottom: 56px; }
+  .section-head.center { max-width: 640px; margin-left: auto; margin-right: auto; text-align: center; }
+  .section-head .mono { color: var(--accent-2); margin-bottom: 14px; display: block; }
+  .section-head h2 { font-size: 38px; margin-bottom: 16px; }
+  .section-head p { font-size: 16.5px; }
+
+  /* product spotlight */
+  .spotlight {
+    background: var(--bg);
+  }
+  .spotlight-card {
+    position: relative; border-radius: 24px; overflow: hidden;
+    background: linear-gradient(160deg, #0d0e18, #171226 60%, #0d0e18);
+    border: 1px solid rgba(139,92,246,0.25);
+    padding: 64px 56px;
+    display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center;
+  }
+  .spotlight-card::before {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(circle at 85% 20%, rgba(139,92,246,0.35), transparent 55%);
+    pointer-events: none;
+  }
+  .spotlight-card h3 { color: #f5f5fb; font-size: 30px; margin-bottom: 16px; }
+  .spotlight-card p { color: #b9bcd4; font-size: 15.5px; }
+  .spotlight-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 22px; }
+  .spotlight-logo .mark { width: 24px; height: 24px; border-radius: 6px; background: linear-gradient(135deg,#f97316,#ec4899,#a855f7); }
+  .spotlight-logo span { font-weight: 800; font-size: 18px; color: #f5f5fb; }
+  .spotlight-panel {
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px; padding: 26px;
+  }
+  .spotlight-panel .row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 14px; }
+  .spotlight-panel .row:last-child { border-bottom: none; }
+  .spotlight-panel .row span:first-child { color: #8a8ea6; }
+  .spotlight-panel .row span:last-child { color: #f5f5fb; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .spotlight-cta { margin-top: 28px; display: inline-flex; align-items: center; gap: 8px; color: #f5f5fb; font-weight: 700; font-size: 14.5px; border-bottom: 1px solid rgba(245,245,251,0.3); padding-bottom: 3px; }
+
+  /* services grid */
+  .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .service-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 18px;
+    padding: 32px; display: flex; flex-direction: column; gap: 14px;
+  }
+  .service-card .tag {
+    color: var(--accent-2); font-weight: 700;
+  }
+  .service-card h3 { font-size: 21px; }
+  .service-card p { font-size: 15px; }
+
+  /* proof / testimonials */
+  .proof-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .proof-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 30px;
+    display: flex; flex-direction: column; gap: 18px;
+  }
+  .proof-card p.quote { color: var(--text); font-size: 15.5px; line-height: 1.65; }
+  .proof-card p.quote::before { content: "\201C"; color: var(--accent-2); }
+  .proof-card p.quote::after { content: "\201D"; color: var(--accent-2); }
+  .who { display: flex; align-items: center; gap: 12px; }
+  .avatar {
+    width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 700; color: #fff;
+    background: linear-gradient(135deg, var(--accent-1), var(--accent-3));
+    flex-shrink: 0;
+  }
+  .who .name { font-size: 14.5px; font-weight: 700; color: var(--text); }
+  .who .role { font-size: 13px; color: var(--text-dim); }
+
+  /* faq */
+  .faq-list { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+  details { background: var(--surface); padding: 22px 26px; }
+  summary { cursor: pointer; font-weight: 700; font-size: 15.5px; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; font-size: 20px; color: var(--text-dim); font-weight: 400; }
+  details[open] summary::after { content: "\2013"; }
+  details p { margin-top: 14px; font-size: 14.5px; max-width: 640px; }
+
+  footer { padding: 60px 0 50px; }
+  .foot-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; border-top: 1px solid var(--border); padding-top: 28px; }
+  .foot-links { display: flex; gap: 24px; font-size: 13.5px; color: var(--text-dim); }
+  .foot-links a:hover { color: var(--text); }
+
+  .whatsapp-fab {
+    position: fixed; right: 26px; bottom: 26px; z-index: 30;
+    width: 56px; height: 56px; border-radius: 50%;
+    background: #25D366; display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    transition: transform 0.15s ease;
+  }
+  .whatsapp-fab:hover { transform: scale(1.07); }
+
+  @media (max-width: 860px) {
+    .nav-links { display: none; }
+    .hero h1 { font-size: 40px; }
+    .metrics-row { grid-template-columns: repeat(2, 1fr); }
+    .metric:nth-child(2) { border-right: none; }
+    .spotlight-card { grid-template-columns: 1fr; padding: 40px 26px; }
+    .services-grid, .proof-grid { grid-template-columns: 1fr; }
+    section { padding: 70px 0; }
+    .wrap { padding: 0 20px; }
+  }
+</style>
+
+<nav>
+  <div class="nav-row">
+    <div class="brand">
+      <svg class="logo-svg" width="58" height="66" viewBox="0 0 200 230" aria-label="QAINfinity">
+        <rect class="box" x="14" y="10" width="160" height="160" rx="24"/>
+        <text class="wordmark" x="94" y="112" text-anchor="middle" font-size="52" font-family="inherit">QAIN</text>
+        <path class="tail" d="M 138 146 L 156 172 L 190 118"/>
+        <text class="finity" x="94" y="205" text-anchor="middle" font-size="27" font-family="inherit">FINITY</text>
+      </svg>
+    </div>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#case-studies">Case Studies</a>
+      <a href="#loopsy">Loopsy</a>
+      <a href="#blog">Blog</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <div class="nav-cta">
+      <a class="btn-grad" href="#contact">Contact / Book a Consult</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow mono"><span class="dot"></span>Pure-Play Quality Engineering & QA Talent Partner</div>
+    <h1>Ship faster.<br><span class="grad-text">Break less.</span></h1>
+    <p class="lede">QAINfinity is a dedicated quality engineering partner &mdash; manual & automation testing, AI-driven test automation (we build Loopsy, our own autonomous QA platform), and specialized QA staffing on flexible, risk-reducing terms.</p>
+    <div class="hero-ctas">
+      <a class="btn-grad lg" href="#contact">Book a QA Consult</a>
+      <a class="btn-outline lg" href="#case-studies">See Case Studies</a>
+    </div>
+  </div>
+</section>
+
+<div class="metrics">
+  <div class="metrics-row">
+    <div class="metric"><div class="num">6+</div><div class="label">Years in quality engineering</div></div>
+    <div class="metric" style="font-size:15px;"><div class="num" style="font-size:22px;">Web &middot; Mobile &middot; API</div><div class="label">Full-stack testing coverage</div></div>
+    <div class="metric"><div class="num">100%</div><div class="label">Contract-to-hire conversion rate</div></div>
+    <div class="metric"><div class="num">98%</div><div class="label">Client satisfaction</div></div>
+  </div>
+</div>
+
+<section class="spotlight" id="loopsy">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="mono">Our Product</span>
+      <h2>We don't just staff QA. We build it.</h2>
+      <p>Most staffing and QA vendors sell you people. We also ship our own software &mdash; proof our engineering standards hold up in production, not just on a resume.</p>
+    </div>
+    <div class="spotlight-card">
+      <div>
+        <div class="spotlight-logo"><span class="mark"></span><span>Loopsy</span></div>
+        <h3>Autonomous AI QA agents, built in-house.</h3>
+        <p>Loopsy is our own agentic AI platform that generates, executes, and self-heals test suites &mdash; no scripts to maintain. It's the same testing bar every QAINfinity engagement is held to.</p>
+        <a class="spotlight-cta" href="https://www.loopsy.in" target="_blank" rel="noopener">Explore Loopsy &rarr;</a>
+      </div>
+      <div class="spotlight-panel">
+        <div class="row"><span>Built by</span><span>QAINfinity QA engineering</span></div>
+        <div class="row"><span>Automation effort</span><span>Up to 80% faster to build & maintain</span></div>
+        <div class="row"><span>Coverage</span><span>Web, mobile & API</span></div>
+        <div class="row"><span>Status</span><span style="color:var(--good)">Early access open</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="mono">What We Do</span>
+      <h2>Four ways to strengthen QA, without adding hiring risk.</h2>
+      <p>Pick a lane, or combine them &mdash; most clients start with one and expand once trust is established.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="tag mono">Test Execution</span>
+        <h3>Manual & Automation Testing</h3>
+        <p>Functional, regression, and exploratory testing paired with automation frameworks (Selenium, Playwright, Appium) built into your release cycle.</p>
+      </div>
+      <div class="service-card">
+        <span class="tag mono">Autonomous QA</span>
+        <h3>AI-Powered Test Automation</h3>
+        <p>Agentic, self-healing test automation across web, mobile, and API &mdash; powered by Loopsy, so scripts stop breaking every time the UI changes.</p>
+      </div>
+      <div class="service-card">
+        <span class="tag mono">Hiring Without the Risk</span>
+        <h3>Specialized QA Staffing & Contract-to-Hire</h3>
+        <p>Pre-vetted QA engineers and SDETs on a 30/60/90-day trial before you commit to payroll. No agency guesswork, no six-week ramp before you know if it's a fit.</p>
+      </div>
+      <div class="service-card">
+        <span class="tag mono">Release Confidence</span>
+        <h3>Performance & Security Testing</h3>
+        <p>Load testing, security-focused QA, and non-functional testing that catch what functional test passes miss, before your users do.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="case-studies">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="mono">Case Studies</span>
+      <h2>Real QA engagements, real outcomes.</h2>
+      <p>Three engagements, three different quality problems &mdash; hiring risk, release speed, and test coverage.</p>
+    </div>
+    <div class="proof-grid">
+      <div class="proof-card">
+        <span class="tag mono" style="color:var(--accent-2);">Contract-to-Hire &middot; Real-Money Gaming</span>
+        <h3 style="font-size:19px;">Building a QA team with zero hiring risk</h3>
+        <p style="font-size:14.5px;"><strong style="color:var(--text);">Challenge:</strong> Scale a QA function fast, without the risk of a bad permanent hire.<br><strong style="color:var(--text);">Approach:</strong> Contract-to-Hire &mdash; QAINfinity placed and continuously trained QA engineers on the client's floor.<br><strong style="color:var(--text);">Result:</strong> 11 QA engineers placed; all 11 converted to the client's payroll.</p>
+        <a href="case-studies/real-money-gaming.html" style="font-size:13.5px; font-weight:700; color:var(--accent-2); margin-top:4px;">Read full case study &rarr;</a>
+      </div>
+      <div class="proof-card">
+        <span class="tag mono" style="color:var(--accent-2);">Staff Augmentation &middot; MPL</span>
+        <h3 style="font-size:19px;">Standing up a release team from scratch</h3>
+        <p style="font-size:14.5px;"><strong style="color:var(--text);">Challenge:</strong> Find reliable, senior QA/release engineers fast, without agency guesswork.<br><strong style="color:var(--text);">Approach:</strong> Pre-vetted staff augmentation matched to the client's release process.<br><strong style="color:var(--text);">Result:</strong> 70% of the client's release team is now sourced from QAINfinity.</p>
+        <a href="case-studies/mpl.html" style="font-size:13.5px; font-weight:700; color:var(--accent-2); margin-top:4px;">Read full case study &rarr;</a>
+      </div>
+      <div class="proof-card">
+        <span class="tag mono" style="color:var(--accent-2);">Test Automation</span>
+        <h3 style="font-size:19px;">Cutting release cycles from hours to minutes</h3>
+        <p style="font-size:14.5px;"><strong style="color:var(--text);">Challenge:</strong> Manual regression testing was consuming hours on every release.<br><strong style="color:var(--text);">Approach:</strong> Introduced a targeted automation framework and smarter test strategy.<br><strong style="color:var(--text);">Result:</strong> Testing cycles cut from hours to minutes, with improved coverage.</p>
+        <a href="case-studies/automation.html" style="font-size:13.5px; font-weight:700; color:var(--accent-2); margin-top:4px;">Read full case study &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="proof" style="background:var(--surface-2);">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="mono">What Clients Say</span>
+      <h2>Direct from the people who signed off on the results.</h2>
+    </div>
+    <div class="proof-grid">
+      <div class="proof-card">
+        <p class="quote">While setting up a fresh release team, it was challenging to find engineers who are reliable, honest, and hardworking. QAINfinity provided the right candidates &mdash; today, 70% of my team is from QAINfinity.</p>
+        <div class="who"><div class="avatar">PB</div><div><div class="name">Pankaj Bhatt</div><div class="role">Engineering Manager, MPL</div></div></div>
+      </div>
+      <div class="proof-card">
+        <p class="quote">We were impressed with the automation and release solutions QAINfinity provided. It reduced our testing and release cycles and delivered outstanding results.</p>
+        <div class="who"><div class="avatar">VG</div><div><div class="name">Vinod Guneja</div><div class="role">Director of Engineering, Angara E-commerce</div></div></div>
+      </div>
+      <div class="proof-card">
+        <p class="quote">QAINfinity delivered exceptional managed testing and automation services &mdash; handling everything from planning to execution, ensuring high-quality releases on time.</p>
+        <div class="who"><div class="avatar">MB</div><div><div class="name">Mukul Bhaisora</div><div class="role">Founder & Director, QualityLabs</div></div></div>
+      </div>
+      <div class="proof-card">
+        <p class="quote">The staff augmentation model let us scale efficiently without compromising on expertise. Highly recommended for reliable QA support.</p>
+        <div class="who"><div class="avatar">NA</div><div><div class="name">Nishank Agarwal</div><div class="role">Co-Founder, Creatiosoft</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="section-head center">
+      <span class="mono">Frequently Asked</span>
+      <h2>What clients ask before signing on.</h2>
+    </div>
+    <div class="faq-list">
+      <details open>
+        <summary>How fast can a QA engineer actually start?</summary>
+        <p>Most staff-augmentation placements start within 5&ndash;10 business days of a signed SOW &mdash; candidates are pre-vetted before you ever see a profile, not sourced after you ask.</p>
+      </details>
+      <details>
+        <summary>How is Contract-to-Hire different from a staffing agency?</summary>
+        <p>You work with the engineer for 30&ndash;90 days on your payroll terms before any permanent commitment. If it's not a fit, you walk away with no severance cost or agency fee sunk.</p>
+      </details>
+      <details>
+        <summary>Do you sign NDAs and handle IP protection?</summary>
+        <p>Yes &mdash; mutual NDAs and IP assignment are standard in every engagement, before any code or test asset is shared.</p>
+      </details>
+      <details>
+        <summary>Can your team overlap with our working hours?</summary>
+        <p>Our engineers work in overlapping blocks with US, UK, and APAC time zones &mdash; scheduling is agreed before the engagement starts, not improvised after.</p>
+      </details>
+      <details>
+        <summary>Do you use your own tools, like Loopsy, on client engagements?</summary>
+        <p>Where it fits the stack, yes. Clients get the option to pilot Loopsy's autonomous QA agents alongside traditional automation &mdash; no obligation to adopt it.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section id="blog" style="background:var(--surface-2);">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="mono">From the Blog</span>
+      <h2>Notes from QA engagements in the field.</h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="tag mono">11/24/2025 &middot; 2 min read</span>
+        <h3 style="font-size:18px;">How Contract-to-Hire Helped a Real Money Gaming Company Build a High-Performance QA Team</h3>
+        <p>A leading real-money gaming company used our Contract-to-Hire model to build a high-performing QA team &mdash; all 11 placed engineers were later converted to the client's payroll.</p>
+      </div>
+      <div class="service-card">
+        <span class="tag mono">11/24/2025 &middot; 1 min read</span>
+        <h3 style="font-size:18px;">Contract-to-Hire: Reducing Risk in Technical Staffing</h3>
+        <p>How assessing a candidate's technical skills and cultural fit in a real-world setting significantly reduces risk before you commit to permanent staffing.</p>
+      </div>
+      <div class="service-card">
+        <span class="tag mono">5/8/2024 &middot; 4 min read</span>
+        <h3 style="font-size:18px;">Accelerating QA: Reducing Testing Cycles from Hours to Minutes with Automation</h3>
+        <p>How smart testing strategies and automation cut cycle times, reduce manual effort, and improve overall product quality.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="section-head center">
+      <span class="mono">Contact</span>
+      <h2>Ready to strengthen your QA, without the hiring risk?</h2>
+      <p>Tell us what you're testing and where it's breaking. We reply within one business day.</p>
+    </div>
+    <div class="proof-grid" style="align-items:start;">
+      <div class="proof-card" style="gap:14px;">
+        <h3 style="font-size:17px;">Send a message</h3>
+        <input type="text" placeholder="Your Name" style="padding:12px 14px;border-radius:10px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);font-size:14px;">
+        <input type="email" placeholder="Email Address*" style="padding:12px 14px;border-radius:10px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);font-size:14px;">
+        <textarea placeholder="Message*" rows="4" style="padding:12px 14px;border-radius:10px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);font-size:14px;font-family:inherit;resize:vertical;"></textarea>
+        <a class="btn-grad" href="#contact" style="text-align:center;">Submit</a>
+      </div>
+      <div class="proof-card" style="gap:16px;">
+        <h3 style="font-size:17px;">Contact details</h3>
+        <div class="who"><div class="avatar" style="border-radius:8px;">@</div><div><div class="role" style="font-size:12px;">EMAIL</div><div class="name">info@qainfinity.com</div></div></div>
+        <div class="who"><div class="avatar" style="border-radius:8px;">&#9742;</div><div><div class="role" style="font-size:12px;">PHONE</div><div class="name">+91-9540752593</div></div></div>
+        <div class="who"><div class="avatar" style="border-radius:8px;">in</div><div><div class="role" style="font-size:12px;">LINKEDIN</div><a class="name" href="https://www.linkedin.com/company/qain-finity/" target="_blank" rel="noopener" style="display:block;">/company/qain-finity</a></div></div>
+        <p style="font-size:13.5px;margin-top:4px;">We reply to every inquiry within one business day.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-row">
+      <div class="brand">
+        <svg class="logo-svg" width="30" height="34" viewBox="0 0 200 230" aria-label="QAINfinity">
+          <rect class="box" x="14" y="10" width="160" height="160" rx="24"/>
+          <text class="wordmark" x="94" y="112" text-anchor="middle" font-size="52" font-family="inherit">QAIN</text>
+          <path class="tail" d="M 138 146 L 156 172 L 190 118"/>
+          <text class="finity" x="94" y="205" text-anchor="middle" font-size="27" font-family="inherit">FINITY</text>
+        </svg>
+      </div>
+      <div class="foot-links">
+        <a href="#services">Services</a>
+        <a href="#case-studies">Case Studies</a>
+        <a href="https://www.loopsy.in" target="_blank" rel="noopener">Loopsy</a>
+        <a href="#blog">Blog</a>
+        <a href="https://www.linkedin.com/company/qain-finity/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="#contact">info@qainfinity.com</a>
+        <a href="#contact">+91-9540752593</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a class="whatsapp-fab" href="https://wa.me/919540752593" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.2h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.02c-.24.68-1.4 1.32-1.93 1.4-.5.08-1.12.11-1.8-.11-.42-.13-.96-.31-1.65-.6-2.9-1.25-4.8-4.17-4.94-4.37-.15-.2-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.27-.29.58-.36.78-.36.2 0 .39 0 .56.01.18.01.42-.07.66.5.24.58.82 2 .89 2.15.07.15.12.32.02.52-.1.2-.15.32-.3.49-.15.17-.31.38-.44.51-.15.15-.3.31-.13.61.17.29.76 1.25 1.63 2.02 1.12 1 2.06 1.31 2.36 1.46.29.15.46.12.63-.08.17-.2.72-.84.92-1.13.19-.29.39-.24.65-.14.27.1 1.68.79 1.97.94.29.15.48.22.55.34.07.13.07.73-.17 1.4Z"/></svg>
+</a>
