@@ -1,4 +1,4 @@
-<title>Case Study: Building MPL's Release Team — QAINfinity</title>
+<title>Case Study: Building MPL's Release Team &mdash; QAINfinity</title>
 <style>
   :root {
     --bg: #f7f7fb; --surface: #ffffff; --surface-2: #eef0f7;
@@ -65,6 +65,9 @@
     padding: 9px 18px; border-radius: 999px; font-size: 14px; font-weight: 700;
     border: 1px solid var(--border); color: var(--text-dim); display: inline-flex; align-items: center; gap: 6px;
   }
+  .brand { display: flex; align-items: center; }
+  .nav-links { display: flex; gap: 26px; font-size: 14px; color: var(--text-dim); }
+  .nav-links a:hover { color: var(--text); }
 
   .hero { position: relative; padding: 70px 0 40px; overflow: hidden; }
   .hero::before {
@@ -109,6 +112,9 @@
   footer { padding: 30px 0 50px; border-top: 1px solid var(--border); }
   .foot-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-size: 13px; color: var(--text-dim); }
 
+  @media (max-width: 780px) {
+    .nav-links { display: none; }
+  }
   @media (max-width: 700px) {
     .hero h1 { font-size: 30px; }
     .wrap { padding: 0 20px; }
@@ -117,7 +123,7 @@
 
 <nav>
   <div class="nav-row">
-    <a class="brand" href="#" onclick="history.back(); return false;">
+    <a class="brand" href="../index.html">
       <svg class="logo-svg" width="52" height="60" viewBox="0 0 200 230" aria-label="QAINfinity">
         <rect class="box" x="14" y="10" width="160" height="160" rx="24"/>
         <text class="wordmark" x="94" y="112" text-anchor="middle" font-size="52" font-family="inherit">QAIN</text>
@@ -125,7 +131,14 @@
         <text class="finity" x="94" y="205" text-anchor="middle" font-size="27" font-family="inherit">FINITY</text>
       </svg>
     </a>
-    <a class="btn-outline" href="#" onclick="history.back(); return false;">&larr; Back to site</a>
+    <div class="nav-links">
+      <a href="../index.html#services">Services</a>
+      <a href="../index.html#case-studies">Case Studies</a>
+      <a href="../index.html#loopsy">Loopsy</a>
+      <a href="../index.html#blog">Blog</a>
+      <a href="../index.html#faq">FAQ</a>
+    </div>
+    <a class="btn-grad" href="../index.html#contact">Contact / Book a Consult</a>
   </div>
 </nav>
 
@@ -166,7 +179,7 @@
     <div class="closing">
       <h2>Need a release team you can actually trust?</h2>
       <p>Tell us what you're testing and where it's breaking. We reply within one business day.</p>
-      <a class="btn-grad" href="#" onclick="history.back(); return false;">Back to Book a Consult</a>
+      <a class="btn-grad" href="../index.html#contact">Book a Consult</a>
     </div>
   </div>
 </section>

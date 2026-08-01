@@ -227,6 +227,17 @@
   details[open] summary::after { content: "\2013"; }
   details p { margin-top: 14px; font-size: 14.5px; max-width: 640px; }
 
+  /* blog */
+  .blog-list { display: flex; flex-direction: column; }
+  .blog-row {
+    display: grid; grid-template-columns: 160px 1fr; gap: 28px;
+    padding: 28px 0; border-top: 1px solid var(--border);
+  }
+  .blog-row:first-child { border-top: none; padding-top: 0; }
+  .blog-row .blog-date { color: var(--text-dim); padding-top: 3px; }
+  .blog-row h3 { font-size: 19px; margin-bottom: 8px; }
+  .blog-row p { font-size: 15px; max-width: 620px; }
+
   footer { padding: 60px 0 50px; }
   .foot-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; border-top: 1px solid var(--border); padding-top: 28px; }
   .foot-links { display: flex; gap: 24px; font-size: 13.5px; color: var(--text-dim); }
@@ -248,6 +259,7 @@
     .metric:nth-child(2) { border-right: none; }
     .spotlight-card { grid-template-columns: 1fr; padding: 40px 26px; }
     .services-grid, .proof-grid { grid-template-columns: 1fr; }
+    .blog-row { grid-template-columns: 1fr; gap: 6px; }
     section { padding: 70px 0; }
     .wrap { padding: 0 20px; }
   }
@@ -255,14 +267,14 @@
 
 <nav>
   <div class="nav-row">
-    <div class="brand">
+    <a class="brand" href="index.html">
       <svg class="logo-svg" width="58" height="66" viewBox="0 0 200 230" aria-label="QAINfinity">
         <rect class="box" x="14" y="10" width="160" height="160" rx="24"/>
         <text class="wordmark" x="94" y="112" text-anchor="middle" font-size="52" font-family="inherit">QAIN</text>
         <path class="tail" d="M 138 146 L 156 172 L 190 118"/>
         <text class="finity" x="94" y="205" text-anchor="middle" font-size="27" font-family="inherit">FINITY</text>
       </svg>
-    </div>
+    </a>
     <div class="nav-links">
       <a href="#services">Services</a>
       <a href="#case-studies">Case Studies</a>
@@ -301,8 +313,8 @@
   <div class="wrap">
     <div class="section-head">
       <span class="mono">Our Product</span>
-      <h2>We don't just staff QA. We build it.</h2>
-      <p>Most staffing and QA vendors sell you people. We also ship our own software &mdash; proof our engineering standards hold up in production, not just on a resume.</p>
+      <h2>Meet Loopsy, our AI QA platform.</h2>
+      <p>Loopsy is QAINfinity's own autonomous AI QA platform &mdash; built in-house to generate, execute, and self-heal test suites across web, mobile, and API. It's the clearest proof of the engineering standard every QAINfinity engagement is held to.</p>
     </div>
     <div class="spotlight-card">
       <div>
@@ -447,21 +459,27 @@
       <span class="mono">From the Blog</span>
       <h2>Notes from QA engagements in the field.</h2>
     </div>
-    <div class="services-grid">
-      <div class="service-card">
-        <span class="tag mono">11/24/2025 &middot; 2 min read</span>
-        <h3 style="font-size:18px;">How Contract-to-Hire Helped a Real Money Gaming Company Build a High-Performance QA Team</h3>
-        <p>A leading real-money gaming company used our Contract-to-Hire model to build a high-performing QA team &mdash; all 11 placed engineers were later converted to the client's payroll.</p>
+    <div class="blog-list">
+      <div class="blog-row">
+        <span class="mono blog-date">11/24/2025<br>2 min read</span>
+        <div>
+          <h3>How Contract-to-Hire Helped a Real Money Gaming Company Build a High-Performance QA Team</h3>
+          <p>A leading real-money gaming company used our Contract-to-Hire model to build a high-performing QA team &mdash; all 11 placed engineers were later converted to the client's payroll.</p>
+        </div>
       </div>
-      <div class="service-card">
-        <span class="tag mono">11/24/2025 &middot; 1 min read</span>
-        <h3 style="font-size:18px;">Contract-to-Hire: Reducing Risk in Technical Staffing</h3>
-        <p>How assessing a candidate's technical skills and cultural fit in a real-world setting significantly reduces risk before you commit to permanent staffing.</p>
+      <div class="blog-row">
+        <span class="mono blog-date">11/24/2025<br>1 min read</span>
+        <div>
+          <h3>Contract-to-Hire: Reducing Risk in Technical Staffing</h3>
+          <p>How assessing a candidate's technical skills and cultural fit in a real-world setting significantly reduces risk before you commit to permanent staffing.</p>
+        </div>
       </div>
-      <div class="service-card">
-        <span class="tag mono">5/8/2024 &middot; 4 min read</span>
-        <h3 style="font-size:18px;">Accelerating QA: Reducing Testing Cycles from Hours to Minutes with Automation</h3>
-        <p>How smart testing strategies and automation cut cycle times, reduce manual effort, and improve overall product quality.</p>
+      <div class="blog-row">
+        <span class="mono blog-date">5/8/2024<br>4 min read</span>
+        <div>
+          <h3>Accelerating QA: Reducing Testing Cycles from Hours to Minutes with Automation</h3>
+          <p>How smart testing strategies and automation cut cycle times, reduce manual effort, and improve overall product quality.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -496,14 +514,14 @@
 <footer>
   <div class="wrap">
     <div class="foot-row">
-      <div class="brand">
+      <a class="brand" href="index.html">
         <svg class="logo-svg" width="30" height="34" viewBox="0 0 200 230" aria-label="QAINfinity">
           <rect class="box" x="14" y="10" width="160" height="160" rx="24"/>
           <text class="wordmark" x="94" y="112" text-anchor="middle" font-size="52" font-family="inherit">QAIN</text>
           <path class="tail" d="M 138 146 L 156 172 L 190 118"/>
           <text class="finity" x="94" y="205" text-anchor="middle" font-size="27" font-family="inherit">FINITY</text>
         </svg>
-      </div>
+      </a>
       <div class="foot-links">
         <a href="#services">Services</a>
         <a href="#case-studies">Case Studies</a>
