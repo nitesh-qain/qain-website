@@ -1,4 +1,4 @@
-<title>Case Study: Cutting Release Cycles with Automation &mdash; QAINfinity</title>
+<title>Case Study: Angara's Regression Cycle, 8 Hours to 30 Minutes &mdash; QAINfinity</title>
 <style>
   :root {
     --bg: #f7f7fb; --surface: #ffffff; --surface-2: #eef0f7;
@@ -69,7 +69,10 @@
   .nav-links { display: flex; gap: 26px; font-size: 14px; color: var(--text-dim); }
   .nav-links a:hover { color: var(--text); }
 
-  .hero { position: relative; padding: 70px 0 40px; overflow: hidden; }
+  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13.5px; font-weight: 700; color: var(--text-dim); margin-bottom: 22px; }
+  .back-link:hover { color: var(--text); }
+
+  .hero { position: relative; padding: 40px 0 40px; overflow: hidden; }
   .hero::before {
     content: ""; position: absolute; inset: -20% -10% auto -10%; height: 420px;
     background: radial-gradient(circle at 50% 20%, var(--glow-a), var(--glow-b) 40%, transparent 70%);
@@ -77,7 +80,7 @@
   }
   .case-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
   .case-tags span { font-size: 12.5px; padding: 5px 12px; border-radius: 999px; border: 1px solid var(--border); color: var(--text-dim); }
-  .hero h1 { font-size: 40px; }
+  .hero h1 { font-size: 36px; }
   .hero p.lede { max-width: 640px; margin-top: 16px; font-size: 17px; }
 
   section { padding: 44px 0; }
@@ -93,6 +96,19 @@
   .story-block { padding: 28px 0; border-top: 1px solid var(--border); }
   .story-block:first-child { border-top: none; padding-top: 0; }
   .story-block p { font-size: 15.5px; margin-top: 4px; }
+  .story-block ul { margin: 12px 0 0; padding-left: 20px; }
+  .story-block li { font-size: 15.5px; color: var(--text-dim); line-height: 1.6; margin-top: 8px; }
+  .story-block li strong { color: var(--text); }
+  .quote-block {
+    margin-top: 20px; padding: 20px 24px; border-left: 3px solid var(--accent-2);
+    background: var(--surface-2); border-radius: 0 12px 12px 0; font-style: italic; color: var(--text);
+  }
+
+  .data-table { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 14.5px; }
+  .data-table th, .data-table td { text-align: left; padding: 11px 14px; border-bottom: 1px solid var(--border); }
+  .data-table th { color: var(--text-dim); font-weight: 700; font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .data-table td { color: var(--text); font-weight: 600; }
+  .data-table caption { text-align: left; font-size: 13px; color: var(--text-dim); margin-top: 10px; caption-side: bottom; }
 
   .closing {
     text-align: center; border-radius: 24px; padding: 50px 36px;
@@ -110,8 +126,9 @@
     .nav-links { display: none; }
   }
   @media (max-width: 700px) {
-    .hero h1 { font-size: 30px; }
+    .hero h1 { font-size: 27px; }
     .wrap { padding: 0 20px; }
+    .data-table { font-size: 13px; }
   }
 </style>
 
@@ -137,31 +154,64 @@
 
 <section class="hero">
   <div class="wrap">
-    <div class="case-tags"><span>Automation</span><span>Regression Testing</span><span>Release Velocity</span></div>
+    <a class="back-link" href="../index.html#insights" onclick="event.preventDefault(); if (window.history.length > 1) { window.history.back(); } else { window.location.href = '../index.html#insights'; }">&larr; Back to Case Studies</a>
+    <div class="case-tags"><span>E-commerce / D2C</span><span>Web + Mobile Automation</span><span>CI Integration</span></div>
     <span class="mono" style="color:var(--accent-2); display:block; margin-bottom:14px;">Case Study</span>
-    <h1>Cutting release cycles from hours to minutes</h1>
-    <p class="lede">Manual regression testing was consuming hours on every release, slowing down ship velocity without adding proportional confidence.</p>
+    <h1>How QAINfinity Cut Angara's Regression Cycle from 8 Hours to 30 Minutes</h1>
+    <p class="lede">Angara &mdash; a leading e-commerce brand in fine gemstone jewelry &mdash; had a full working day of manual regression standing between every release and its customers. Here's how targeted automation turned that into a coffee break.</p>
   </div>
 </section>
 
 <section>
   <div class="wrap">
     <div class="result-card">
-      <span class="big">Hours &rarr; Minutes</span><span class="small">regression cycle time per release, with improved coverage</span>
+      <span class="big">8 hrs &rarr; 30 min</span><span class="small">web regression cycle time &mdash; as fast as ~3 minutes running in parallel</span>
     </div>
 
     <div class="story">
       <div class="story-block">
+        <h2>Client Snapshot</h2>
+        <p>Angara is a global e-commerce platform for fine gemstone jewelry, pairing traditional craftsmanship with a deeply personalized buying experience &mdash; every piece can be customized to order. That personalization makes the product catalog and checkout flows unusually complex, and it raises the stakes on every release: a regression in a product-configuration or checkout path lands directly on revenue.</p>
+        <p style="margin-top:12px;"><strong style="color:var(--text);">Stack:</strong> Selenium &middot; Appium &middot; Sikuli &middot; OpenCV &middot; Jenkins &middot; Allure</p>
+      </div>
+      <div class="story-block">
         <h2>The Challenge</h2>
-        <p>Every release required hours of manual regression testing, creating a bottleneck between "code complete" and "shipped." The manual effort didn't scale as the test surface grew &mdash; each new feature meant more manual checks, more time, and more room for a tired reviewer to miss something.</p>
+        <p>Angara's release quality rested almost entirely on manual regression testing, and it had become the bottleneck in their pipeline:</p>
+        <ul>
+          <li><strong>8 hours &mdash; a full working day &mdash; per regression pass.</strong> Every release demanded a complete manual sweep of critical web and mobile journeys, a full day of QA effort before anyone could ship with confidence.</li>
+          <li><strong>Undocumented, hard-to-scale coverage.</strong> Test cases weren't formally documented, creating knowledge gaps, inconsistent execution, and no clean base to automate against.</li>
+          <li><strong>Manual effort crowding out real testing.</strong> QA capacity was consumed by repetitive execution, leaving little room for the exploratory and complex-scenario testing where defects actually hide.</li>
+        </ul>
+        <p style="margin-top:12px;">On a platform where visual correctness &mdash; the right stone, setting, and price rendering exactly right &mdash; is the product, slow regression meant slower releases and higher risk on every change.</p>
       </div>
       <div class="story-block">
         <h2>The Approach</h2>
-        <p>QAINfinity introduced a targeted automation framework alongside a smarter test strategy: rather than automating everything indiscriminately, high-risk paths were prioritized first &mdash; the flows where a regression would actually hurt. Automation was layered in incrementally, validated against the existing manual process before it replaced it.</p>
+        <ul>
+          <li><strong>Documented, stakeholder-aligned test cases.</strong> We worked with Angara's QA, development, and product teams to document test scenarios in a structured format &mdash; objectives, preconditions, steps, expected outcomes, and acceptance criteria &mdash; closing knowledge gaps and creating a foundation solid enough to automate against.</li>
+          <li><strong>Automated sanity and regression suites for web and mobile.</strong> We automated the critical functionalities and revenue-facing user journeys across both platforms &mdash; Selenium for web, Appium for mobile &mdash; targeting the high-risk paths that mattered most to experience and conversion.</li>
+          <li><strong>Vision-based visual verification (Sikuli + OpenCV).</strong> Because Angara's correctness is fundamentally visual, we validated the UI the way a customer sees it, not just at the DOM or API layer. Sikuli drove image-based interaction; OpenCV compared rendered UI against expected visual states &mdash; catching rendering and layout defects that conventional locator-based automation routinely misses.</li>
+          <li><strong>CI-integrated and parallel-ready by design.</strong> The suites were wired into Jenkins, with Allure reporting giving the team clear, shareable visibility on every build. We also engineered the suites to run in parallel, and gave Angara the option to scale execution out across more compute whenever they wanted even faster cycles &mdash; all within the same CI flow.</li>
+        </ul>
       </div>
       <div class="story-block">
-        <h2>The Result</h2>
-        <p>Testing cycles dropped from hours to minutes per release, with improved coverage compared to the prior manual process. The team could ship more often without trading away confidence in what shipped.</p>
+        <h2>The Results</h2>
+        <p>Run sequentially, the automation replaced a full 8-hour day of manual regression with a coffee break:</p>
+        <table class="data-table">
+          <tr><th>Regression cycle</th><th>Before (manual)</th><th>After &mdash; sequential</th><th>After &mdash; parallel (optional)</th></tr>
+          <tr><td>Web</td><td>8 hours (full working day)</td><td>~30 minutes</td><td>~3 minutes</td></tr>
+          <tr><td>Mobile</td><td>8 hours (full working day)</td><td>~2 hours (single device)</td><td>~3&ndash;7 minutes</td></tr>
+        </table>
+        <p style="margin-top:14px; font-size:13.5px;">Parallel execution scales with the compute a team chooses to invest &mdash; Angara can dial cycle time down further whenever they want, without changing the suites.</p>
+        <ul style="margin-top:20px;">
+          <li><strong>Faster releases, lower risk.</strong> A full web regression pass now fits inside 30 minutes instead of an 8-hour day &mdash; changes ship faster, with more confidence, and near-instantly once run in parallel.</li>
+          <li><strong>QA freed for high-value work.</strong> Automating repetitive checks let Angara's testers focus on exploratory and complex-scenario testing.</li>
+          <li><strong>Consistent, repeatable execution.</strong> Automated runs removed the human variability of manual regression, improving reliability build over build.</li>
+        </ul>
+        <div class="quote-block">From an 8-hour working day to 30 minutes &mdash; and as little as 3 minutes in parallel. QAINfinity turned regression from a release bottleneck into a routine, automated safety net wired straight into Angara's CI.</div>
+      </div>
+      <div class="story-block">
+        <h2>Why It Worked</h2>
+        <p>QAINfinity didn't just automate what already existed &mdash; we documented it, verified it the way customers actually experience the product (visually), and built it to scale with the team's ambitions through CI and parallel execution. The result is regression that keeps pace with the business instead of holding it back.</p>
       </div>
     </div>
 

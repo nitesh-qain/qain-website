@@ -1,4 +1,4 @@
-<title>Case Study: Building MPL's Release Team &mdash; QAINfinity</title>
+<title>Contract-to-Hire: Reducing Risk in Technical Staffing &mdash; QAINfinity</title>
 <style>
   :root {
     --bg: #f7f7fb; --surface: #ffffff; --surface-2: #eef0f7;
@@ -69,7 +69,10 @@
   .nav-links { display: flex; gap: 26px; font-size: 14px; color: var(--text-dim); }
   .nav-links a:hover { color: var(--text); }
 
-  .hero { position: relative; padding: 70px 0 40px; overflow: hidden; }
+  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13.5px; font-weight: 700; color: var(--text-dim); margin-bottom: 22px; }
+  .back-link:hover { color: var(--text); }
+
+  .hero { position: relative; padding: 40px 0 40px; overflow: hidden; }
   .hero::before {
     content: ""; position: absolute; inset: -20% -10% auto -10%; height: 420px;
     background: radial-gradient(circle at 50% 20%, var(--glow-a), var(--glow-b) 40%, transparent 70%);
@@ -77,8 +80,8 @@
   }
   .case-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
   .case-tags span { font-size: 12.5px; padding: 5px 12px; border-radius: 999px; border: 1px solid var(--border); color: var(--text-dim); }
-  .hero h1 { font-size: 40px; }
-  .hero p.lede { max-width: 640px; margin-top: 16px; font-size: 17px; }
+  .hero h1 { font-size: 38px; }
+  .hero p.lede { max-width: 640px; margin-top: 16px; font-size: 17px; font-style: italic; }
 
   section { padding: 44px 0; }
   .result-card {
@@ -93,12 +96,11 @@
   .story-block { padding: 28px 0; border-top: 1px solid var(--border); }
   .story-block:first-child { border-top: none; padding-top: 0; }
   .story-block p { font-size: 15.5px; margin-top: 4px; }
-  .quote-block {
-    margin-top: 20px; padding: 20px 24px; border-left: 3px solid var(--accent-2);
-    background: var(--surface-2); border-radius: 0 12px 12px 0;
-  }
-  .quote-block p { font-style: italic; color: var(--text); }
-  .quote-who { margin-top: 10px; font-size: 13.5px; font-style: normal; color: var(--text-dim); font-weight: 700; }
+  .story-block ul { margin: 12px 0 0; padding-left: 20px; }
+  .story-block li { font-size: 15.5px; color: var(--text-dim); line-height: 1.6; margin-top: 8px; }
+  .story-block li strong { color: var(--text); }
+
+  .inline-link { color: var(--accent-2); font-weight: 700; }
 
   .closing {
     text-align: center; border-radius: 24px; padding: 50px 36px;
@@ -116,7 +118,7 @@
     .nav-links { display: none; }
   }
   @media (max-width: 700px) {
-    .hero h1 { font-size: 30px; }
+    .hero h1 { font-size: 28px; }
     .wrap { padding: 0 20px; }
   }
 </style>
@@ -143,41 +145,48 @@
 
 <section class="hero">
   <div class="wrap">
-    <div class="case-tags"><span>MPL</span><span>Staff Augmentation</span><span>Release Engineering</span></div>
-    <span class="mono" style="color:var(--accent-2); display:block; margin-bottom:14px;">Case Study</span>
-    <h1>Standing up a release team from scratch</h1>
-    <p class="lede">MPL needed to build a reliable release team fast, and struggled to find engineers who were consistently reliable, honest, and hardworking through traditional hiring channels.</p>
+    <a class="back-link" href="../index.html#insights" onclick="event.preventDefault(); if (window.history.length > 1) { window.history.back(); } else { window.location.href = '../index.html#insights'; }">&larr; Back to Case Studies</a>
+    <div class="case-tags"><span>Hiring Strategy</span><span>QA Staffing</span></div>
+    <span class="mono" style="color:var(--accent-2); display:block; margin-bottom:14px;">Blog</span>
+    <h1>Contract-to-Hire: Reducing Risk in Technical Staffing</h1>
+    <p class="lede">Stop paying the high price of bad technical hires. QAINfinity's Contract-to-Hire model lets you assess a candidate's technical skill and cultural fit in a real-world setting &mdash; significantly reducing your risk before you ever commit to a permanent hire.</p>
   </div>
 </section>
 
 <section>
   <div class="wrap">
     <div class="result-card">
-      <span class="big">70%</span><span class="small">of MPL's release team is now sourced from QAINfinity</span>
+      <span class="big">~30%</span><span class="small">of a bad hire's first-year salary &mdash; the estimated cost of getting it wrong, per industry analysis</span>
     </div>
 
     <div class="story">
       <div class="story-block">
-        <h2>The Challenge</h2>
-        <p>MPL was setting up a fresh release team and hit a wall common to fast-scaling engineering orgs: finding engineers who are consistently reliable, honest, intelligent, and hardworking is hard to filter for through resumes and interviews alone. Generic hiring pipelines were producing inconsistent results.</p>
+        <p>Hiring is expensive, and getting it wrong is more expensive still. Industry analysis puts the cost of a single bad hire at roughly 30% of that employee's first-year salary &mdash; a steep price for a poor fit or insufficient skills. And it's not a rare misstep: a reported 74% of companies admit to making at least one wrong hire. By any measure, traditional recruitment carries real, quantifiable risk.</p>
       </div>
       <div class="story-block">
-        <h2>The Approach</h2>
-        <p>QAINfinity supplied pre-vetted QA and release engineers matched specifically to MPL's release process and working style, rather than generic candidates sourced after the request came in. Engineers were evaluated against the actual demands of the release cycle, not just a generic QA skill checklist.</p>
+        <h2>The High Cost of a Missed Fit</h2>
+        <p>In specialized fields, the right hire is about far more than passing a technical screen. Cultural fit, communication style, and long-term commitment matter just as much to whether a team actually succeeds. A candidate who looks flawless on paper can still disrupt workflow or never quite integrate &mdash; and the bill arrives later as costly turnover, re-hiring, and slipped project timelines. This is exactly where a smarter approach to vetting pays for itself.</p>
       </div>
       <div class="story-block">
-        <h2>The Result</h2>
-        <p>Trust compounded engagement over engagement. QAINfinity-sourced engineers now make up 70% of MPL's release team &mdash; a level of reliance that reflects how deep the relationship has gone, one placement at a time.</p>
-        <div class="quote-block">
-          <p>"While setting up a fresh release team, it was challenging to find engineers who are reliable, honest, intelligent, and hardworking. QAINfinity provided the right candidates, and today, 70% of my team is from QAINfinity."</p>
-          <div class="quote-who">Pankaj Bhatt, Engineering Manager, MPL</div>
-        </div>
+        <h2>De-Risking Your Next Hire with QAINfinity</h2>
+        <p>QAINfinity's Contract-to-Hire model is a practical, low-risk alternative to direct hiring &mdash; built for the mission-critical roles you can least afford to get wrong. We draw on years of domain strength to pre-vet candidates for genuine, deep technical expertise, then hand control back to you through a simple process:</p>
+        <ul>
+          <li><strong>Select</strong> &mdash; choose a pre-vetted candidate from the QAInfinity talent pool.</li>
+          <li><strong>Trial</strong> &mdash; we place the candidate on our payroll for an agreed contract period, so there's no permanent commitment on day one.</li>
+          <li><strong>Assess</strong> &mdash; you evaluate their performance, technical capability, and cultural fit on real work, in your live environment.</li>
+        </ul>
+        <p style="margin-top:12px;">You transfer the engineer to your own payroll only once you are completely satisfied with their performance. During the trial, the risk of the "unknown hire" sits with us &mdash; not with you.</p>
+      </div>
+      <div class="story-block">
+        <h2>Commit Only When You're Certain</h2>
+        <p>By using Contract-to-Hire, you sidestep the financial and operational damage of a mis-hire &mdash; the direct and hidden costs of sourcing, onboarding, and training a replacement &mdash; keeping your focus on product delivery instead of re-running recruitment.</p>
+        <p style="margin-top:12px;">See the model in action: <a class="inline-link" href="real-money-gaming.html">how an 11-engineer QA team hit a 100% conversion rate &rarr;</a></p>
       </div>
     </div>
 
     <div class="closing">
-      <h2>Need a release team you can actually trust?</h2>
-      <p>Tell us what you're testing and where it's breaking. We reply within one business day.</p>
+      <h2>Ready to make your next hire a sure thing?</h2>
+      <p>Connect with QAInfinity today to explore our ready-to-deploy, pre-vetted QA talent pool.</p>
       <a class="btn-grad" href="../index.html#contact">Book a Consult</a>
     </div>
   </div>

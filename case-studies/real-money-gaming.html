@@ -69,7 +69,10 @@
   .nav-links { display: flex; gap: 26px; font-size: 14px; color: var(--text-dim); }
   .nav-links a:hover { color: var(--text); }
 
-  .hero { position: relative; padding: 70px 0 40px; overflow: hidden; }
+  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13.5px; font-weight: 700; color: var(--text-dim); margin-bottom: 22px; }
+  .back-link:hover { color: var(--text); }
+
+  .hero { position: relative; padding: 40px 0 40px; overflow: hidden; }
   .hero::before {
     content: ""; position: absolute; inset: -20% -10% auto -10%; height: 420px;
     background: radial-gradient(circle at 50% 20%, var(--glow-a), var(--glow-b) 40%, transparent 70%);
@@ -77,7 +80,7 @@
   }
   .case-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
   .case-tags span { font-size: 12.5px; padding: 5px 12px; border-radius: 999px; border: 1px solid var(--border); color: var(--text-dim); }
-  .hero h1 { font-size: 40px; }
+  .hero h1 { font-size: 38px; }
   .hero p.lede { max-width: 640px; margin-top: 16px; font-size: 17px; }
 
   section { padding: 44px 0; }
@@ -93,10 +96,21 @@
   .story-block { padding: 28px 0; border-top: 1px solid var(--border); }
   .story-block:first-child { border-top: none; padding-top: 0; }
   .story-block p { font-size: 15.5px; margin-top: 4px; }
+  .story-block ul { margin: 12px 0 0; padding-left: 20px; }
+  .story-block li { font-size: 15.5px; color: var(--text-dim); line-height: 1.6; margin-top: 8px; }
+  .story-block li strong { color: var(--text); }
   .quote-block {
     margin-top: 20px; padding: 20px 24px; border-left: 3px solid var(--accent-2);
     background: var(--surface-2); border-radius: 0 12px 12px 0; font-style: italic; color: var(--text);
   }
+
+  .data-table { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 14.5px; }
+  .data-table th, .data-table td { text-align: left; padding: 11px 14px; border-bottom: 1px solid var(--border); }
+  .data-table th { color: var(--text-dim); font-weight: 700; font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .data-table td { color: var(--text); font-weight: 600; }
+  .data-table td:last-child { color: var(--accent-2); font-weight: 800; }
+
+  .inline-link { color: var(--accent-2); font-weight: 700; }
 
   .closing {
     text-align: center; border-radius: 24px; padding: 50px 36px;
@@ -114,8 +128,9 @@
     .nav-links { display: none; }
   }
   @media (max-width: 700px) {
-    .hero h1 { font-size: 30px; }
+    .hero h1 { font-size: 28px; }
     .wrap { padding: 0 20px; }
+    .data-table { font-size: 13px; }
   }
 </style>
 
@@ -141,32 +156,65 @@
 
 <section class="hero">
   <div class="wrap">
+    <a class="back-link" href="../index.html#insights" onclick="event.preventDefault(); if (window.history.length > 1) { window.history.back(); } else { window.location.href = '../index.html#insights'; }">&larr; Back to Case Studies</a>
     <div class="case-tags"><span>Real-Money Gaming</span><span>Contract-to-Hire</span><span>QA Staffing</span></div>
     <span class="mono" style="color:var(--accent-2); display:block; margin-bottom:14px;">Case Study</span>
-    <h1>Building a QA team with zero hiring risk</h1>
-    <p class="lede">A leading real-money gaming company needed to scale its QA function fast, without absorbing the risk of a bad permanent hire in a high-stakes, compliance-sensitive product.</p>
+    <h1>How Contract-to-Hire Built a High-Performance QA Team &mdash; 11 Placed, 11 Converted</h1>
+    <p class="lede">A leading real-money gaming platform needed to scale its QA capability fast, without taking on the financial and operational risk of committing to permanent hires before it was sure of them.</p>
   </div>
 </section>
 
 <section>
   <div class="wrap">
     <div class="result-card">
-      <span class="big">11 / 11</span><span class="small">QA engineers placed and converted to the client's payroll &mdash; a 100% conversion rate</span>
+      <span class="big">11 / 11</span><span class="small">QA engineers placed and converted to full-time payroll &mdash; 100% conversion, zero backfill</span>
     </div>
 
     <div class="story">
       <div class="story-block">
-        <h2>The Challenge</h2>
-        <p>Real-money gaming products carry real compliance and reliability stakes &mdash; a QA gap isn't just a bug, it's a regulatory and financial risk. The client needed to scale QA headcount quickly, but standard permanent hiring was too slow, and too risky to get right on the first try. A bad hire in this environment is expensive to discover and expensive to undo.</p>
+        <h2>The Context</h2>
+        <p>Hiring for a high-velocity domain like real-money gaming is hard. Releases ship fast, and a quality issue in production can hit revenue immediately. In that environment, a wrong hire isn't just a cost &mdash; it's delay, instability, and disruption a rapidly scaling company can't absorb. This platform needed to scale its QA capability quickly, without taking on the financial and operational risk of committing to permanent hires before it was sure of them.</p>
       </div>
       <div class="story-block">
-        <h2>The Approach</h2>
-        <p>QAINfinity placed QA engineers under a Contract-to-Hire model: engineers worked on the client's floor, under the client's own processes and tooling, for a defined evaluation period. Rather than a one-time interview loop, performance was assessed continuously &mdash; with ongoing training and feedback built into the engagement from day one, so both sides had a real, working relationship to evaluate before any permanent offer was made.</p>
+        <h2>The Challenge: Speed vs. Certainty</h2>
+        <p>The client needed a strong, reliable QA team, but was reluctant to commit to full-time hires until it was confident on three fronts:</p>
+        <ul>
+          <li><strong>Technical depth</strong> &mdash; the ability to handle complex, gaming-specific testing scenarios.</li>
+          <li><strong>Ownership and work discipline</strong> &mdash; dependability in a high-stakes, fast-moving environment.</li>
+          <li><strong>Cultural fit</strong> &mdash; seamless integration with an existing fast-paced engineering culture.</li>
+        </ul>
+        <p style="margin-top:12px;">Traditional hiring felt slow and risky. Interviews reward how well someone presents, not how they actually perform on a real release. The client wanted a model built on demonstrable performance, not first impressions.</p>
       </div>
       <div class="story-block">
-        <h2>The Result</h2>
-        <p>11 QA engineers were placed. All 11 were retained and converted to the client's payroll &mdash; a 100% conversion rate, with zero severance or re-hiring cost along the way. The client got a fully staffed, proven QA team without ever having to gamble on a resume.</p>
-        <div class="quote-block">"Contract-to-Hire let us evaluate real, on-the-job performance before committing &mdash; not just a resume and an interview."</div>
+        <h2>QAINfinity's Structured Contract-to-Hire Solution</h2>
+        <p>QAINfinity stepped in with its structured <a class="inline-link" href="contract-to-hire.html">Contract-to-Hire model</a> to de-risk the client's staffing. The premise was simple: let the client assess real fit and performance in a live-project environment before any long-term commitment.</p>
+        <p style="margin-top:12px;">From QAINfinity's vetted talent pool, the client shortlisted and onboarded <strong style="color:var(--text);">11 QA professionals</strong>. To ensure success and alignment through the contract period, QAINfinity layered in two forms of active support rather than simply placing engineers and stepping back:</p>
+        <ul>
+          <li><strong>Continuous feedback and alignment.</strong> We ran regular, detailed feedback loops with the client's leadership &mdash; continuously surfacing performance gaps, technical expectations, and process alignment specific to real-money gaming QA flows, so nothing drifted.</li>
+          <li><strong>Real-time upskilling and training.</strong> Acting on that feedback, we delivered ongoing, targeted training to every engineer &mdash; on product functionality, release-process discipline, technical practices, and efficient defect reporting &mdash; keeping the whole team improving and integrating in real time.</li>
+        </ul>
+      </div>
+      <div class="story-block">
+        <h2>The Outcome: Performance-Driven Commitment</h2>
+        <p>Focusing on performance over prediction produced a clean result: all 11 engineers exceeded expectations during the contract period and were converted to the client's full-time payroll.</p>
+        <table class="data-table">
+          <tr><th>Metric</th><th>Result</th></tr>
+          <tr><td>QA engineers placed</td><td>11</td></tr>
+          <tr><td>Converted to full-time</td><td>11 (100%)</td></tr>
+          <tr><td>Backfilling / re-hiring costs</td><td>None</td></tr>
+          <tr><td>Hiring risk carried by client</td><td>Zero</td></tr>
+        </table>
+        <ul>
+          <li><strong>Zero hiring risk.</strong> The client committed only after seeing each engineer perform on real work.</li>
+          <li><strong>Faster scaling with predictable performance.</strong> The team came up to speed on live releases, not in a probation vacuum.</li>
+          <li><strong>No backfill or re-hire costs.</strong> Every seat placed was a seat that stuck.</li>
+        </ul>
+        <div class="quote-block">11 placed. 11 converted. Zero backfill. Seeing real-world performance &mdash; not interview impressions &mdash; proved to be the safest path to a permanent commitment.</div>
+      </div>
+      <div class="story-block">
+        <h2>Why It Matters</h2>
+        <p>An incorrect hire can cost an organization up to 30% of that employee's first-year salary (a widely cited industry benchmark). QAINfinity's Contract-to-Hire model removes that gamble: companies commit only after seeing a candidate's capabilities in action &mdash; making hiring safer, faster, and more reliable, and turning a risky permanent bet into an evidence-based decision.</p>
+        <p style="margin-top:12px;"><a class="inline-link" href="contract-to-hire.html">Learn more about QAINfinity's Contract-to-Hire model &rarr;</a></p>
       </div>
     </div>
 
