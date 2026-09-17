@@ -7,16 +7,13 @@ Read `seo/PLAN.md` top to bottom. Take the first unchecked `[AUTO]` or `[PR]` ta
 
 ## 2. If it's an `[AUTO]` site/technical task
 1. Make the change directly in the working tree on `main`.
-2. Start the local preview: `preview_start {name: "qain-website"}` (serves the repo at `http://localhost:4173`).
-3. Verify, using the browser tools — not assumptions:
-   - Load `index.html` and every page under `case-studies/` (and any new pages added). Check `read_console_messages` for JS errors.
-   - Click through primary nav links, footer links, and all internal `<a href>` targets — confirm none 404 (`read_network_requests` / status check).
-   - Exercise key interactive elements relevant to the change (buttons, the contact form fields, FAQ section, calendar link) via `read_page` + `computer`.
-   - Check mobile viewport with `resize_window {preset: "mobile"}` and re-check for layout breakage or console errors.
-   - If the change touches head/meta/schema, sanity-check the JSON-LD is valid (no malformed JSON) and title/description tags render.
-4. **If verification fails:** fix the issue and re-run step 3. Allow up to 2 fix-retry cycles. If still failing, revert the change (`git checkout -- <files>` or equivalent), leave the PLAN.md task unchecked, and write the failure reason in today's report. Do not push.
-5. **If verification passes:** `git add` the specific files, commit (message describing the change, ending with the required `Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>` line), and push directly to `main`. Vercel auto-deploys.
-6. Check off the task in `PLAN.md` with the date and short commit SHA, and add a line to the Change Log section.
+2. This routine runs in a headless cloud sandbox (Bash/Read/Write/Edit/Glob/Grep only — no GUI browser tool). Verify with a real headless browser via Bash, not just HTTP status codes:
+   - `npx --yes playwright install --with-deps chromium` once per run (or reuse if cached), then run a small throwaway Node/Playwright script (write it to a temp file, don't commit it) that: starts `python3 -m http.server 4173` in the repo root in the background, then for every page (`index.html`, everything under `case-studies/`, and any new pages added) opens it in headless Chromium and checks (a) the page loads with HTTP 200 and no uncaught console errors/exceptions, (b) every internal `<a href>` on the page resolves to an existing local file (no dead links), (c) key interactive elements for the change (nav links, contact form fields, FAQ toggles, CTA buttons, calendar link) are present and clickable without throwing, (d) the page renders at a mobile viewport (375x812) without obvious overflow/console errors.
+   - If the change touches head/meta/schema, also validate the JSON-LD blocks parse as JSON (`python3 -m json.tool`) and that title/meta description tags are present and non-empty.
+   - If Playwright cannot be installed in the sandbox (no network access to npm, etc.), fall back to: `python3 -m http.server` + `curl -o /dev/null -s -w "%{http_code}"` against every page and every internal link found via `grep -oE 'href="[^"]+"'`, plus the JSON validity checks above. Note in the day's report that only HTTP/static checks ran, not a real browser pass, so the user should double-check visually that morning.
+3. **If verification fails:** fix the issue and re-run step 2. Allow up to 2 fix-retry cycles. If still failing, revert the change (`git checkout -- <files>` or equivalent), leave the PLAN.md task unchecked, and write the failure reason in today's report. Do not push.
+4. **If verification passes:** `git add` the specific files, commit (message describing the change, ending with the required `Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>` line), and push directly to `main`. Vercel auto-deploys.
+5. Check off the task in `PLAN.md` with the date and short commit SHA, and add a line to the Change Log section.
 
 ## 3. If it's a `[PR]` content/blog task
 1. Research first: use web search for (a) what competing QA-outsourcing vendors targeting UK/AU/APAC buyers are publishing, and (b) any recent, relevant QA/AI-testing news worth referencing for timeliness. Keep it grounded — don't fabricate stats, sources, or client names.
