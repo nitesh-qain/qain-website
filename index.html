@@ -1,3 +1,13 @@
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BCRF8NCENT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-BCRF8NCENT');
+</script>
+
 <title>QAINfinity &mdash; Engineering & QA Partner</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&display=swap">
 <style>
@@ -496,10 +506,16 @@
     <div class="proof-grid" style="align-items:start;">
       <div class="proof-card" style="gap:14px;">
         <h3 style="font-size:17px;">Send a message</h3>
-        <input type="text" placeholder="Your Name" style="padding:12px 14px;border-radius:10px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);font-size:14px;">
-        <input type="email" placeholder="Email Address*" style="padding:12px 14px;border-radius:10px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);font-size:14px;">
-        <textarea placeholder="Message*" rows="4" style="padding:12px 14px;border-radius:10px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);font-size:14px;font-family:inherit;resize:vertical;"></textarea>
-        <a class="btn-grad" href="#contact" style="text-align:center;">Submit</a>
+        <form id="contact-form" style="display:flex;flex-direction:column;gap:14px;">
+          <input type="text" name="name" placeholder="Your Name*" required style="padding:12px 14px;border-radius:10px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);font-size:14px;">
+          <input type="text" name="company" placeholder="Company" style="padding:12px 14px;border-radius:10px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);font-size:14px;">
+          <input type="email" name="email" placeholder="Work Email*" required style="padding:12px 14px;border-radius:10px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);font-size:14px;">
+          <input type="tel" name="phone" placeholder="Phone Number" style="padding:12px 14px;border-radius:10px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);font-size:14px;">
+          <textarea name="message" placeholder="Message*" rows="4" required style="padding:12px 14px;border-radius:10px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);font-size:14px;font-family:inherit;resize:vertical;"></textarea>
+          <input type="hidden" name="source" id="contact-source" value="Direct">
+          <button type="submit" class="btn-grad" style="text-align:center;border:none;cursor:pointer;font:inherit;">Submit</button>
+          <p id="contact-status" style="font-size:13px;min-height:18px;margin:0;"></p>
+        </form>
       </div>
       <div class="proof-card" style="gap:16px;">
         <h3 style="font-size:17px;">Contact details</h3>
@@ -540,3 +556,62 @@
 <a class="whatsapp-fab" href="https://wa.me/919540752593" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
   <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.2h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.02c-.24.68-1.4 1.32-1.93 1.4-.5.08-1.12.11-1.8-.11-.42-.13-.96-.31-1.65-.6-2.9-1.25-4.8-4.17-4.94-4.37-.15-.2-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.27-.29.58-.36.78-.36.2 0 .39 0 .56.01.18.01.42-.07.66.5.24.58.82 2 .89 2.15.07.15.12.32.02.52-.1.2-.15.32-.3.49-.15.17-.31.38-.44.51-.15.15-.3.31-.13.61.17.29.76 1.25 1.63 2.02 1.12 1 2.06 1.31 2.36 1.46.29.15.46.12.63-.08.17-.2.72-.84.92-1.13.19-.29.39-.24.65-.14.27.1 1.68.79 1.97.94.29.15.48.22.55.34.07.13.07.73-.17 1.4Z"/></svg>
 </a>
+
+<script>
+(function () {
+  var CONTACT_ENDPOINT_URL = "https://script.google.com/macros/s/AKfycbxYEaPXiPbx_rlPuM1159VK92HhiYRBqxLBupZ1g6mfRna2lRpGe3W2uCHjd3yusAlkMw/exec";
+
+  var sourceField = document.getElementById('contact-source');
+
+  document.querySelectorAll('a[href="#contact"], a[href$="index.html#contact"]').forEach(function (link) {
+    link.addEventListener('click', function () {
+      var label = link.textContent.trim();
+      try { sessionStorage.setItem('qain_contact_source', label); } catch (e) {}
+      if (sourceField) sourceField.value = label;
+    });
+  });
+
+  if (sourceField) {
+    try {
+      var stored = sessionStorage.getItem('qain_contact_source');
+      if (stored) {
+        sourceField.value = stored;
+        sessionStorage.removeItem('qain_contact_source');
+      }
+    } catch (e) {}
+  }
+
+  var form = document.getElementById('contact-form');
+  if (form) {
+    form.addEventListener('submit', function (evt) {
+      evt.preventDefault();
+      var status = document.getElementById('contact-status');
+      var submitBtn = form.querySelector('button[type="submit"]');
+      var formData = new URLSearchParams(new FormData(form));
+
+      submitBtn.disabled = true;
+      status.textContent = 'Sending…';
+      status.style.color = 'var(--text-dim)';
+
+      fetch(CONTACT_ENDPOINT_URL, { method: 'POST', body: formData })
+        .then(function (res) { return res.json(); })
+        .then(function (data) {
+          if (data && data.result === 'success') {
+            status.textContent = "Thanks! We'll reply within one business day.";
+            status.style.color = 'var(--good)';
+            form.reset();
+          } else {
+            throw new Error('Unexpected response');
+          }
+        })
+        .catch(function () {
+          status.textContent = 'Something went wrong. Please email info@qainfinity.com directly.';
+          status.style.color = '#dc2626';
+        })
+        .finally(function () {
+          submitBtn.disabled = false;
+        });
+    });
+  }
+})();
+</script>
