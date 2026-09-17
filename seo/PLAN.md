@@ -30,9 +30,9 @@
 
 ## Phase 3 — Research (no site changes, findings feed Phase 4)
 
-- [ ] `[AUTO]` Competitor content scan: what are other QA-outsourcing vendors (targeting UK/AU/APAC buyers, not India/US directories) publishing? Identify content gaps. Findings appended below.
-- [ ] `[AUTO]` Tech/QA news scan: recent developments in AI-driven testing, QA outsourcing trends — identify timely blog angles. Findings appended below.
-- [ ] `[AUTO]` Keyword shortlist for target geos (UK/EU/AU/APAC QA outsourcing intent), append to Content Backlog below.
+- [x] `[AUTO]` Competitor content scan: what are other QA-outsourcing vendors (targeting UK/AU/APAC buyers, not India/US directories) publishing? Identify content gaps. — done 2026-09-17, see Content Backlog below.
+- [x] `[AUTO]` Tech/QA news scan: recent developments in AI-driven testing, QA outsourcing trends — identify timely blog angles. — done 2026-09-17, see Content Backlog below.
+- [ ] `[AUTO]` Keyword shortlist for target geos (UK/EU/AU/APAC QA outsourcing intent), append to Content Backlog below. *(next research day — go deeper on search-volume/intent per keyword rather than topic gaps)*
 
 ## Phase 4 — Content / blog (each post = its own day, always `[PR]`)
 
@@ -41,7 +41,8 @@
 - [ ] `[PR]` Blog: "How AI QA Agents Cut Regression Testing Time by 90% — Lessons from the Angara Case Study"
 - [ ] `[PR]` Blog: "A Buyer's Guide to QA Outsourcing Time Zones: Working Across UK/AU/APAC Hours"
 - [ ] `[PR]` Blog: "Performance Testing Checklist Before Your Next Product Launch"
-- [ ] *(more topics to be appended after the Phase 3 research day)*
+- [ ] `[PR]` Blog: "Agentic QA in 2026: What Autonomous Test Agents Actually Change for Your Release Cycle" (ties directly to Loopsy; timely trend per 2026-09-17 research)
+- [ ] `[PR]` Blog: "QA Outsourcing Isn't One Thing: Managed Team vs. Staff Augmentation vs. Contract-to-Hire — Which Fits Your Stage" (fills a content gap identified 2026-09-17 — competitors don't write this comparison)
 
 ## Phase 5 — Off-page authority (mostly `[NEEDS-YOU]`)
 
@@ -53,8 +54,22 @@
 
 ## Content Backlog (research findings land here)
 
-*(populated by Phase 3 research days)*
+**Research pass — 2026-09-17:**
+
+*Competitor landscape:* Most QA-outsourcing content ranking today (TestDevLab, Testriq, DeviQA, GrooveTechnology, remote.qa, Botgauge, Testlio, QASource, TestingXperts) is either (a) "Top N QA outsourcing companies" comparison listicles — directory-bait, not trust-building — or (b) generic "why outsource QA" explainers not written for a specific buyer geography. Testlio/QASource/TestingXperts blogs skew toward broad methodology content aimed at a US/global audience; none found were writing specifically for UK/AU/APAC buyers on time-zone overlap, data-residency concerns outside the US, or "which QA model fits your company stage" (managed team vs. staff augmentation vs. contract-to-hire vs. self-serve AI tool) — that comparison-of-models angle is a real content gap we can own, especially paired with our actual contract-to-hire case study.
+
+*Tech/QA news:* Agentic QA is the dominant 2026 trend across the space (Tricentis, Katalon, CloudQA, Autify, TestQuality, LuxeQuality all publishing on it). Key citable stat: Gartner projects 40% of enterprise applications will feature task-specific AI agents by end of 2026, up from under 5% in 2025; teams embedding GenAI into QA report ~40% higher test coverage and up to 10x productivity gains. This is a strong, timely hook to connect directly to Loopsy (our in-house AI QA platform) rather than talking about agentic QA in the abstract like most competitor posts do.
+
+*AEO angle:* Competitor content is written as long SEO listicles, not as concise, directly-quotable answers. Structuring our posts with clear Q&A headers and tight definitive answers (matching the JSON-LD `FAQPage`/`Article` schema going in during Phase 1) gives us a real shot at being the source AI answer engines (ChatGPT, Perplexity, Google AI Overviews) cite for "what is contract-to-hire QA staffing" / "what is agentic QA" style queries, where competitors currently aren't optimized for extraction.
+
+*New topics added to Phase 4 backlog as a result (see above):* the agentic QA + Loopsy piece, and the "which QA outsourcing model fits your stage" comparison piece.
+
+Sources: [TestDevLab — Best QA Outsourcing Companies for Startups 2026](https://www.testdevlab.com/blog/best-qa-outsourcing-companies-startups) · [Botgauge — QA Outsourcing: A 2026 Guide](https://www.botgauge.com/blog/qa-outsourcing) · [remote.qa — Best QA Outsourcing Companies for Startups 2026](https://remote.qa/blog/best-qa-outsourcing-companies-startups-2026/) · [Tricentis — QA trends for 2026: AI, agents, and the future of testing](https://www.tricentis.com/blog/qa-trends-ai-agentic-testing) · [Katalon — What Is Agentic QA? The Complete Guide for 2026](https://katalon.com/resources-center/blog/what-is-agentic-qa-the-complete-guide-for-2026) · [TestQuality — The Shift to Agentic QA](https://testquality.com/the-shift-to-agentic-qa-beyond-automated-testing-to-autonomous-ai-generation-in-2026/) · [Testlio — QA Outsourcing: Why Startups Should Be Outsourcing](https://testlio.com/blog/startup-outsourcing-qa/) · [QASource Blog — QA Outsourcing](https://www.qasource.com/blog/topic/qa-outsourcing)
 
 ## Change Log
+
+- 2026-09-17 — Initial PLAN.md, RUNBOOK.md, and report scaffolding created — commit `c58f6fb`
+- 2026-09-17 — RUNBOOK verification steps adapted for headless cloud sandbox — commit `e862944`
+- 2026-09-17 — Phase 3 research pass #1 (competitor scan + tech news) completed manually ahead of automation go-live; findings above, 2 new Phase 4 topics added
 
 *(each shipped/opened item gets one line here: date — task — commit SHA or PR link)*
