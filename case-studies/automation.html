@@ -1,4 +1,5 @@
 <title>Case Study: Angara's Regression Cycle, 8 Hours to 30 Minutes &mdash; QAINfinity</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&display=swap">
 <style>
   :root {
     --bg: #f7f7fb; --surface: #ffffff; --surface-2: #eef0f7;
@@ -6,7 +7,7 @@
     --accent-1: #4338ca; --accent-2: #7c3aed; --accent-3: #0891b2; --good: #0d9488;
     --glow-a: rgba(79,70,229,0.16); --glow-b: rgba(139,92,246,0.12);
     --shadow: 0 1px 2px rgba(20,21,29,0.06);
-    --logo-ink: #20255c; --logo-line: #3f7373;
+    --logo-ink: #20255c; --logo-line: #3f7373; --term-accent: #0E7A4B;
   }
   @media (prefers-color-scheme: dark) {
     :root {
@@ -15,7 +16,7 @@
       --accent-1: #4f46e5; --accent-2: #8b5cf6; --accent-3: #22d3ee; --good: #34d399;
       --glow-a: rgba(79,70,229,0.35); --glow-b: rgba(139,92,246,0.22);
       --shadow: 0 1px 2px rgba(0,0,0,0.4);
-      --logo-ink: #eef0fb; --logo-line: #5fd0d0;
+      --logo-ink: #eef0fb; --logo-line: #5fd0d0; --term-accent: #35E28A;
     }
   }
   :root[data-theme="dark"] {
@@ -24,7 +25,7 @@
     --accent-1: #4f46e5; --accent-2: #8b5cf6; --accent-3: #22d3ee; --good: #34d399;
     --glow-a: rgba(79,70,229,0.35); --glow-b: rgba(139,92,246,0.22);
     --shadow: 0 1px 2px rgba(0,0,0,0.4);
-    --logo-ink: #eef0fb; --logo-line: #5fd0d0;
+    --logo-ink: #eef0fb; --logo-line: #5fd0d0; --term-accent: #35E28A;
   }
   :root[data-theme="light"] {
     --bg: #f7f7fb; --surface: #ffffff; --surface-2: #eef0f7;
@@ -32,7 +33,7 @@
     --accent-1: #4338ca; --accent-2: #7c3aed; --accent-3: #0891b2; --good: #0d9488;
     --glow-a: rgba(79,70,229,0.16); --glow-b: rgba(139,92,246,0.12);
     --shadow: 0 1px 2px rgba(20,21,29,0.06);
-    --logo-ink: #20255c; --logo-line: #3f7373;
+    --logo-ink: #20255c; --logo-line: #3f7373; --term-accent: #0E7A4B;
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }
@@ -52,10 +53,9 @@
     border-bottom: 1px solid var(--border);
   }
   .nav-row { display: flex; align-items: center; justify-content: space-between; padding: 13px 32px; max-width: 900px; margin: 0 auto; }
-  .logo-svg .box { fill: none; stroke: var(--logo-line); stroke-width: 7; }
-  .logo-svg .wordmark { fill: var(--logo-ink); font-weight: 800; }
-  .logo-svg .tail { stroke: var(--logo-ink); stroke-width: 6; fill: none; stroke-linecap: round; stroke-linejoin: round; }
-  .logo-svg .finity { fill: var(--logo-ink); font-weight: 800; letter-spacing: 0.14em; }
+  .brand-icon { display: block; flex-shrink: 0; }
+  .brand-word { font-family: 'JetBrains Mono', ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-weight: 700; font-size: 18px; letter-spacing: -0.01em; color: var(--logo-ink); }
+  .brand-word .accent { color: var(--term-accent); }
   .btn-grad {
     padding: 10px 20px; border-radius: 999px; font-size: 14.5px; font-weight: 700;
     background: linear-gradient(95deg, var(--accent-1), var(--accent-2));
@@ -65,7 +65,7 @@
     padding: 9px 18px; border-radius: 999px; font-size: 14px; font-weight: 700;
     border: 1px solid var(--border); color: var(--text-dim); display: inline-flex; align-items: center; gap: 6px;
   }
-  .brand { display: flex; align-items: center; }
+  .brand { display: flex; align-items: center; gap: 9px; }
   .nav-links { display: flex; gap: 26px; font-size: 14px; color: var(--text-dim); }
   .nav-links a:hover { color: var(--text); }
 
@@ -134,13 +134,14 @@
 
 <nav>
   <div class="nav-row">
-    <a class="brand" href="../index.html">
-      <svg class="logo-svg" width="52" height="60" viewBox="0 0 200 230" aria-label="QAINfinity">
-        <rect class="box" x="14" y="10" width="160" height="160" rx="24"/>
-        <text class="wordmark" x="94" y="112" text-anchor="middle" font-size="52" font-family="inherit">QAIN</text>
-        <path class="tail" d="M 138 146 L 156 172 L 190 118"/>
-        <text class="finity" x="94" y="205" text-anchor="middle" font-size="27" font-family="inherit">FINITY</text>
+    <a class="brand" href="../index.html" aria-label="QAINfinity">
+      <svg class="brand-icon" width="36" height="36" viewBox="0 0 120 120" aria-hidden="true">
+        <rect x="4" y="4" width="112" height="112" rx="26" fill="#14171A" stroke="#35E28A" stroke-width="4"/>
+        <text x="14" y="76" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-weight="700" font-size="46" fill="#6B7280">$</text>
+        <polyline points="52,34 78,60 52,86" fill="none" stroke="#35E28A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="90" y="46" width="13" height="28" rx="3" fill="#35E28A"/>
       </svg>
+      <span class="brand-word">qain<span class="accent">finity</span></span>
     </a>
     <div class="nav-links">
       <a href="../index.html#services">Services</a>
