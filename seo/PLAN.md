@@ -14,7 +14,7 @@
 ## Phase 1 — Technical SEO foundation
 
 - [x] `[AUTO]` Fix document structure on all 5 pages: add `<!DOCTYPE html>`, `<html lang="en">`, `<head>`, `<body>` wrapper (currently missing sitewide), `<meta charset="utf-8">`, `<meta name="viewport">`. Verify no visual regression on desktop + mobile. — done 2026-09-17, commit `30037ac`
-- [ ] `[AUTO]` Add unique `<meta name="description">` and canonical `<link>` tag per page (5 pages).
+- [x] `[AUTO]` Add unique `<meta name="description">` and canonical `<link>` tag per page (5 pages). — done 2026-09-18, commit `5cc07d2`
 - [ ] `[AUTO]` Add Open Graph + Twitter Card tags per page (title, description, image, url) so links preview correctly on LinkedIn/Slack/X.
 - [ ] `[AUTO]` Add JSON-LD structured data: `Organization` sitewide, `FAQPage` on the homepage FAQ section, `Article` on each case study.
 - [ ] `[AUTO]` Add JSON-LD `Review`/testimonial markup for the homepage testimonials section.
@@ -72,5 +72,6 @@ Sources: [TestDevLab — Best QA Outsourcing Companies for Startups 2026](https:
 - 2026-09-17 — RUNBOOK verification steps adapted for headless cloud sandbox — commit `e862944`
 - 2026-09-17 — Phase 3 research pass #1 (competitor scan + tech news) completed manually ahead of automation go-live; findings above, 2 new Phase 4 topics added
 - 2026-09-17 — Phase 1: fixed document structure (DOCTYPE/html/head/body/meta charset/viewport) on all 5 pages — commit `30037ac`
+- 2026-09-18 — Phase 1: added unique `<meta name="description">` and `<link rel="canonical">` to all 5 pages — commit `5cc07d2`
 
 *(each shipped/opened item gets one line here: date — task — commit SHA or PR link)*
