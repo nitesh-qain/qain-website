@@ -4,6 +4,8 @@
 
 **How this file works:** the 1 AM daily automation reads this file top to bottom and works the first unchecked `[ ]` task(s) it finds, in order, unless marked `[NEEDS-YOU]` (those are skipped — they require an account/login only the site owner has, and are just flagged in the daily report as reminders). When a task ships it's checked off with the date and commit/PR link. New tasks discovered during research days get appended to the bottom of the relevant phase. Re-prioritize anytime by editing this file directly — the automation always re-reads it fresh each run.
 
+**Canonical domain:** production is `https://www.qainfinity.com` (the apex `qainfinity.com` 308-redirects to `www`). Always use the `www` host in canonical, `og:url`, `og:image`, sitemap.xml, and JSON-LD URLs.
+
 **Task tags:**
 - `[AUTO]` — automation makes the change, verifies the site still works (preview server + browser checks), and if verification passes, pushes straight to `main` (auto-deploys via Vercel). If verification fails, it fixes and retries; if still failing, it reverts and leaves the task unchecked with a note in the day's report — nothing broken ships.
 - `[PR]` — automation drafts content on a branch and opens a GitHub PR. Never merges it. Goes live only after you review and merge.
