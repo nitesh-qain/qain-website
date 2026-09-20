@@ -272,6 +272,8 @@
   footer { padding: 60px 0 50px; }
   .foot-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; border-top: 1px solid var(--border); padding-top: 28px; }
   .foot-row .brand-word { font-size: 15px; }
+  .foot-brand { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .foot-tagline { font-size: 13.5px; color: var(--text-dim); padding-left: 16px; border-left: 1px solid var(--border); }
   .foot-links { display: flex; gap: 24px; font-size: 13.5px; color: var(--text-dim); }
   .foot-links a:hover { color: var(--text); }
 
@@ -553,6 +555,7 @@
 <footer>
   <div class="wrap">
     <div class="foot-row">
+      <div class="foot-brand">
       <a class="brand" href="index.html" aria-label="QAINfinity">
         <svg class="brand-icon" width="26" height="26" viewBox="0 0 120 120" aria-hidden="true">
           <rect x="4" y="4" width="112" height="112" rx="26" fill="#14171A" stroke="#35E28A" stroke-width="4"/>
@@ -562,6 +565,8 @@
         </svg>
         <span class="brand-word">qain<span class="accent">finity</span></span>
       </a>
+      <span class="foot-tagline">Quality, without limits.</span>
+      </div>
       <div class="foot-links">
         <a href="#services">Services</a>
         <a href="#insights">Insights</a>
