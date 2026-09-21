@@ -19,7 +19,7 @@
 - [x] `[AUTO]` Add unique `<meta name="description">` and canonical `<link>` tag per page (5 pages). — done 2026-09-18, commit `5cc07d2`
 - [x] `[AUTO]` Add Open Graph + Twitter Card tags per page (title, description, image, url) so links preview correctly on LinkedIn/Slack/X. — done 2026-09-19, commit `b9bdd4e`
 - [x] `[AUTO]` Add JSON-LD structured data: `Organization` sitewide, `FAQPage` on the homepage FAQ section, `Article` on each case study. — done 2026-09-20, commit `44e2471`
-- [ ] `[AUTO]` Add JSON-LD `Review`/testimonial markup for the homepage testimonials section.
+- [x] `[AUTO]` Add JSON-LD `Review`/testimonial markup for the homepage testimonials section. — done 2026-09-21, commit `8b5ffb2`
 - [ ] `[AUTO]` Create `robots.txt` and `sitemap.xml`, verify all 5 URLs resolve with no broken internal links or 404s sitewide.
 - [ ] `[NEEDS-YOU]` Verify site ownership in Google Search Console and submit `sitemap.xml` (needs your Google login).
 - [ ] `[AUTO]` Basic Core Web Vitals pass — check the animated gradient/glow CSS isn't hurting LCP/CLS on mobile.
@@ -77,5 +77,6 @@ Sources: [TestDevLab — Best QA Outsourcing Companies for Startups 2026](https:
 - 2026-09-18 — Phase 1: added unique `<meta name="description">` and `<link rel="canonical">` to all 5 pages — commit `5cc07d2`
 - 2026-09-19 — Phase 1: added Open Graph + Twitter Card meta tags to all 5 pages, plus a new shared branded OG image at `assets/og/default.png` (1200x630, rendered from the site's existing brand colors/logo/wordmark, no fabricated content) — commit `b9bdd4e`
 - 2026-09-20 — Phase 1: added JSON-LD structured data — `Organization` on all 5 pages, `FAQPage` on the homepage FAQ section (5 Q&A pairs, text matched verbatim to visible content), `Article` on each of the 3 case study pages (headline/description from existing meta tags, dates from the homepage blog-date labels, author/publisher set to the QAInfinity organization since no individual byline exists on these pages) — commit `44e2471`
+- 2026-09-21 — Phase 1: added JSON-LD `Review` markup for the 4 homepage testimonials (`reviewBody` matched verbatim to visible quotes, `author`/`worksFor` from the visible name/role/company; no `reviewRating` included since no star rating is displayed on the page) — commit `8b5ffb2`
 
 *(each shipped/opened item gets one line here: date — task — commit SHA or PR link)*
