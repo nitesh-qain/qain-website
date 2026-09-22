@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BCRF8NCENT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-BCRF8NCENT');
+</script>
+
+<title>Release Readiness Assessment &mdash; QAINfinity</title>
+<meta name="description" content="A free 2-minute self-assessment across test coverage, automation health, performance, security, and QA capacity &mdash; see where your real release risk is.">
+<link rel="canonical" href="https://www.qainfinity.com/release-readiness/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="QAINfinity">
+<meta property="og:title" content="Release Readiness Assessment &mdash; QAINfinity">
+<meta property="og:description" content="A free 2-minute self-assessment across test coverage, automation health, performance, security, and QA capacity &mdash; see where your real release risk is.">
+<meta property="og:url" content="https://www.qainfinity.com/release-readiness/">
+<meta property="og:image" content="https://www.qainfinity.com/assets/og/default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Release Readiness Assessment &mdash; QAINfinity">
+<meta name="twitter:description" content="A free 2-minute self-assessment across test coverage, automation health, performance, security, and QA capacity &mdash; see where your real release risk is.">
+<meta name="twitter:image" content="https://www.qainfinity.com/assets/og/default.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "QAInfinity",
+  "url": "https://www.qainfinity.com/",
+  "logo": "https://www.qainfinity.com/assets/og/default.png",
+  "email": "info@qainfinity.com",
+  "telephone": "+91-9540752593",
+  "sameAs": [
+    "https://www.linkedin.com/company/qain-finity/"
+  ]
+}
+</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&display=swap">
+<style>
+  :root {
+    --bg: #f7f7fb; --surface: #ffffff; --surface-2: #eef0f7;
+    --text: #14151d; --text-dim: #565c6d; --border: rgba(20,21,29,0.09);
+    --accent-1: #4338ca; --accent-2: #7c3aed; --accent-3: #0891b2; --good: #0d9488;
+    --warn: #b45309; --bad: #b91c1c;
+    --glow-a: rgba(79,70,229,0.16); --glow-b: rgba(139,92,246,0.12);
+    --shadow: 0 1px 2px rgba(20,21,29,0.06);
+    --logo-ink: #20255c; --logo-line: #3f7373; --term-accent: #0E7A4B;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0a0b12; --surface: #12141f; --surface-2: #181b28;
+      --text: #f2f3f8; --text-dim: #9ba1b4; --border: rgba(255,255,255,0.08);
+      --accent-1: #4f46e5; --accent-2: #8b5cf6; --accent-3: #22d3ee; --good: #34d399;
+      --warn: #f59e0b; --bad: #f87171;
+      --glow-a: rgba(79,70,229,0.35); --glow-b: rgba(139,92,246,0.22);
+      --shadow: 0 1px 2px rgba(0,0,0,0.4);
+      --logo-ink: #eef0fb; --logo-line: #5fd0d0; --term-accent: #35E28A;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0a0b12; --surface: #12141f; --surface-2: #181b28;
+    --text: #f2f3f8; --text-dim: #9ba1b4; --border: rgba(255,255,255,0.08);
+    --accent-1: #4f46e5; --accent-2: #8b5cf6; --accent-3: #22d3ee; --good: #34d399;
+    --warn: #f59e0b; --bad: #f87171;
+    --glow-a: rgba(79,70,229,0.35); --glow-b: rgba(139,92,246,0.22);
+    --shadow: 0 1px 2px rgba(0,0,0,0.4);
+    --logo-ink: #eef0fb; --logo-line: #5fd0d0; --term-accent: #35E28A;
+  }
+  :root[data-theme="light"] {
+    --bg: #f7f7fb; --surface: #ffffff; --surface-2: #eef0f7;
+    --text: #14151d; --text-dim: #565c6d; --border: rgba(20,21,29,0.09);
+    --accent-1: #4338ca; --accent-2: #7c3aed; --accent-3: #0891b2; --good: #0d9488;
+    --warn: #b45309; --bad: #b91c1c;
+    --glow-a: rgba(79,70,229,0.16); --glow-b: rgba(139,92,246,0.12);
+    --shadow: 0 1px 2px rgba(20,21,29,0.06);
+    --logo-ink: #20255c; --logo-line: #3f7373; --term-accent: #0E7A4B;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 0 32px; }
+  .mono { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; letter-spacing: 0.09em; text-transform: uppercase; font-size: 12px; }
+  h1, h2, h3 { font-weight: 800; letter-spacing: -0.03em; text-wrap: balance; margin: 0; }
+  p { color: var(--text-dim); line-height: 1.65; margin: 0; }
+  a { color: inherit; text-decoration: none; }
+
+  nav {
+    position: sticky; top: 0; z-index: 20; background: var(--bg);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-row { display: flex; align-items: center; justify-content: space-between; padding: 13px 32px; max-width: 900px; margin: 0 auto; }
+  .brand-icon { display: block; flex-shrink: 0; }
+  .brand-word { font-family: 'JetBrains Mono', ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-weight: 700; font-size: 18px; letter-spacing: -0.01em; color: var(--logo-ink); }
+  .brand-word .accent { color: var(--term-accent); }
+  .btn-grad {
+    padding: 10px 20px; border-radius: 999px; font-size: 14.5px; font-weight: 700;
+    background: linear-gradient(95deg, var(--accent-1), var(--accent-2));
+    color: #fff; display: inline-block; box-shadow: var(--shadow); border: none; cursor: pointer; font-family: inherit;
+  }
+  .btn-outline {
+    padding: 9px 18px; border-radius: 999px; font-size: 14px; font-weight: 700;
+    border: 1px solid var(--border); color: var(--text-dim); display: inline-flex; align-items: center; gap: 6px;
+    background: transparent; cursor: pointer; font-family: inherit;
+  }
+  .brand { display: flex; align-items: center; gap: 9px; }
+  .nav-links { display: flex; gap: 26px; font-size: 14px; color: var(--text-dim); }
+  .nav-links a:hover { color: var(--text); }
+
+  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13.5px; font-weight: 700; color: var(--text-dim); margin-bottom: 22px; }
+  .back-link:hover { color: var(--text); }
+
+  .hero { position: relative; padding: 40px 0 40px; overflow: hidden; }
+  .hero::before {
+    content: ""; position: absolute; inset: -20% -10% -20% -10%;
+    background: radial-gradient(circle at 50% 20%, var(--glow-a), var(--glow-b) 40%, transparent 70%);
+    z-index: -1;
+  }
+  .case-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
+  .case-tags span { font-size: 12.5px; padding: 5px 12px; border-radius: 999px; border: 1px solid var(--border); color: var(--text-dim); }
+  .hero h1 { font-size: 38px; }
+  .hero p.lede { max-width: 640px; margin-top: 16px; font-size: 17px; font-style: italic; }
+
+  section { padding: 44px 0; }
+
+  .progress-track { height: 6px; border-radius: 999px; background: var(--surface-2); overflow: hidden; margin: 8px 0 40px; border: 1px solid var(--border); }
+  .progress-fill { height: 100%; width: 0%; background: linear-gradient(95deg, var(--accent-1), var(--accent-2)); transition: width 0.2s ease; }
+
+  .category { padding: 30px 0; border-top: 1px solid var(--border); }
+  .category:first-child { border-top: none; padding-top: 0; }
+  .category h2 { font-size: 20px; }
+  .category .cat-meta { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+
+  .question { margin-top: 24px; }
+  .question p.q-text { color: var(--text); font-size: 15.5px; font-weight: 600; max-width: 640px; }
+  .answers { display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
+  .answers label {
+    display: inline-flex; align-items: center; gap: 7px; padding: 9px 16px; border-radius: 999px;
+    border: 1px solid var(--border); font-size: 13.5px; font-weight: 600; color: var(--text-dim); cursor: pointer;
+    background: var(--surface); transition: border-color 0.15s ease, color 0.15s ease;
+  }
+  .answers input { accent-color: var(--accent-2); }
+  .answers label:has(input:checked) { border-color: var(--accent-2); color: var(--text); background: var(--surface-2); }
+
+  .submit-row { margin-top: 44px; text-align: center; }
+  .submit-row .hint { font-size: 13px; margin-top: 10px; }
+
+  #result { display: none; margin-top: 20px; }
+  .result-card {
+    padding: 34px 30px; border-radius: 20px; background: var(--surface-2); border: 1px solid var(--border); text-align: center;
+  }
+  .result-card .score { font-size: 15px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+  .result-card h3 { font-size: 26px; margin-top: 10px; }
+  .result-card p { max-width: 520px; margin: 14px auto 0; font-size: 15px; }
+  .result-card .ctas { margin-top: 26px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+  .inline-link { color: var(--accent-2); font-weight: 700; }
+
+  footer { padding: 30px 0 50px; border-top: 1px solid var(--border); }
+  .foot-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-size: 13px; color: var(--text-dim); }
+
+  @media (max-width: 780px) {
+    .nav-links { display: none; }
+  }
+  @media (max-width: 700px) {
+    .hero h1 { font-size: 28px; }
+    .wrap { padding: 0 20px; }
+    .answers { gap: 8px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-row">
+    <a class="brand" href="../index.html" aria-label="QAINfinity">
+      <svg class="brand-icon" width="36" height="36" viewBox="0 0 120 120" aria-hidden="true">
+        <rect x="4" y="4" width="112" height="112" rx="26" fill="#14171A" stroke="#35E28A" stroke-width="4"/>
+        <text x="14" y="76" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-weight="700" font-size="46" fill="#6B7280">$</text>
+        <polyline points="52,34 78,60 52,86" fill="none" stroke="#35E28A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="90" y="46" width="13" height="28" rx="3" fill="#35E28A"/>
+      </svg>
+      <span class="brand-word">qain<span class="accent">finity</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="../index.html#services">Services</a>
+      <a href="../index.html#insights">Insights</a>
+      <a href="../index.html#loopsy">Loopsy</a>
+      <a href="../index.html#faq">FAQ</a>
+    </div>
+    <a class="btn-grad" href="../index.html#contact">Contact / Book a Consult</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="wrap">
+    <a class="back-link" href="../index.html#services" onclick="event.preventDefault(); if (window.history.length > 1) { window.history.back(); } else { window.location.href = '../index.html#services'; }">&larr; Back to Services</a>
+    <div class="case-tags"><span>Free Self-Assessment</span><span>2 Minutes</span></div>
+    <span class="mono" style="color:var(--accent-2); display:block; margin-bottom:14px;">Release Readiness</span>
+    <h1>Is your next release actually ready to ship?</h1>
+    <p class="lede">13 questions across coverage, automation, performance, security, and team capacity. No email required &mdash; answer honestly and see where your real risk is, right here.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+
+    <form id="rr-form">
+      <div class="category">
+        <h2>Test coverage &amp; execution</h2>
+        <p class="cat-meta">Do you actually know what's tested, or is coverage a guess?</p>
+
+        <div class="question">
+          <p class="q-text">Do your critical user journeys have documented, repeatable test cases &mdash; or does coverage live mostly in one tester's head?</p>
+          <div class="answers">
+            <label><input type="radio" name="q1" value="0" required> Documented</label>
+            <label><input type="radio" name="q1" value="1"> Partly</label>
+            <label><input type="radio" name="q1" value="2"> In someone's head</label>
+          </div>
+        </div>
+        <div class="question">
+          <p class="q-text">Is a full regression pass run before every release, or only when someone remembers to?</p>
+          <div class="answers">
+            <label><input type="radio" name="q2" value="0" required> Every release</label>
+            <label><input type="radio" name="q2" value="1"> Usually</label>
+            <label><input type="radio" name="q2" value="2"> Rarely / not sure</label>
+          </div>
+        </div>
+        <div class="question">
+          <p class="q-text">When a defect reaches production, do you find out within a day &mdash; or does it usually surface through user complaints?</p>
+          <div class="answers">
+            <label><input type="radio" name="q3" value="0" required> Same day</label>
+            <label><input type="radio" name="q3" value="1"> A few days</label>
+            <label><input type="radio" name="q3" value="2"> Users tell us</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="category">
+        <h2>Automation health</h2>
+        <p class="cat-meta">Automation that breaks every UI change isn't saving you time.</p>
+
+        <div class="question">
+          <p class="q-text">What share of your regression suite is automated rather than run by hand?</p>
+          <div class="answers">
+            <label><input type="radio" name="q4" value="0" required> Most of it</label>
+            <label><input type="radio" name="q4" value="1"> Some of it</label>
+            <label><input type="radio" name="q4" value="2"> Little to none</label>
+          </div>
+        </div>
+        <div class="question">
+          <p class="q-text">When the UI changes, do your automated tests keep working &mdash; or do they break and need rewriting?</p>
+          <div class="answers">
+            <label><input type="radio" name="q5" value="0" required> Keep working</label>
+            <label><input type="radio" name="q5" value="1"> Some breakage</label>
+            <label><input type="radio" name="q5" value="2"> Constantly breaking</label>
+          </div>
+        </div>
+        <div class="question">
+          <p class="q-text">Are your automated suites wired into CI and run on every build, or run manually now and then?</p>
+          <div class="answers">
+            <label><input type="radio" name="q6" value="0" required> Every build</label>
+            <label><input type="radio" name="q6" value="1"> Sometimes</label>
+            <label><input type="radio" name="q6" value="2"> Manually</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="category">
+        <h2>Performance &amp; security</h2>
+        <p class="cat-meta">"Seems fine" isn't the same as tested.</p>
+
+        <div class="question">
+          <p class="q-text">Have you load-tested your critical paths under expected peak traffic in the last 6 months?</p>
+          <div class="answers">
+            <label><input type="radio" name="q7" value="0" required> Yes</label>
+            <label><input type="radio" name="q7" value="1"> A while ago</label>
+            <label><input type="radio" name="q7" value="2"> No / not sure</label>
+          </div>
+        </div>
+        <div class="question">
+          <p class="q-text">Has this release had a security-focused QA pass, or only functional testing?</p>
+          <div class="answers">
+            <label><input type="radio" name="q8" value="0" required> Security pass done</label>
+            <label><input type="radio" name="q8" value="1"> Partly</label>
+            <label><input type="radio" name="q8" value="2"> Functional only</label>
+          </div>
+        </div>
+        <div class="question">
+          <p class="q-text">Do you know your system's actual breaking point under load, or just that it "seems fine" in normal use?</p>
+          <div class="answers">
+            <label><input type="radio" name="q9" value="0" required> We know the limit</label>
+            <label><input type="radio" name="q9" value="1"> Rough idea</label>
+            <label><input type="radio" name="q9" value="2"> No idea</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="category">
+        <h2>Team capacity</h2>
+        <p class="cat-meta">QA that can't scale with release velocity becomes the bottleneck.</p>
+
+        <div class="question">
+          <p class="q-text">Is QA capacity keeping pace with release velocity, or is QA the thing slowing releases down?</p>
+          <div class="answers">
+            <label><input type="radio" name="q10" value="0" required> Keeping pace</label>
+            <label><input type="radio" name="q10" value="1"> Occasionally strained</label>
+            <label><input type="radio" name="q10" value="2"> The bottleneck</label>
+          </div>
+        </div>
+        <div class="question">
+          <p class="q-text">If you needed another QA engineer next month, do you have a fast path &mdash; or would it take a standard hiring cycle?</p>
+          <div class="answers">
+            <label><input type="radio" name="q11" value="0" required> Fast path</label>
+            <label><input type="radio" name="q11" value="1"> Could manage</label>
+            <label><input type="radio" name="q11" value="2"> 6+ week hire</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="category">
+        <h2>Release process</h2>
+        <p class="cat-meta">A judgment call isn't a go/no-go signal.</p>
+
+        <div class="question">
+          <p class="q-text">Is there a clear, criteria-based go/no-go signal before each release, or is it mostly a judgment call?</p>
+          <div class="answers">
+            <label><input type="radio" name="q12" value="0" required> Clear criteria</label>
+            <label><input type="radio" name="q12" value="1"> Somewhat defined</label>
+            <label><input type="radio" name="q12" value="2"> Judgment call</label>
+          </div>
+        </div>
+        <div class="question">
+          <p class="q-text">If this release breaks something in production, how quickly would you know and be able to roll back?</p>
+          <div class="answers">
+            <label><input type="radio" name="q13" value="0" required> Minutes</label>
+            <label><input type="radio" name="q13" value="1"> Within hours</label>
+            <label><input type="radio" name="q13" value="2"> Not sure</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="submit-row">
+        <button type="submit" class="btn-grad">See my results</button>
+        <p class="hint">Nothing is sent anywhere &mdash; this is scored right here in your browser.</p>
+      </div>
+    </form>
+
+    <div id="result">
+      <div class="result-card">
+        <span class="score mono" id="score-label"></span>
+        <h3 id="result-heading"></h3>
+        <p id="result-body"></p>
+        <div class="ctas">
+          <a class="btn-grad" href="../index.html#contact">Book a Consult</a>
+          <a class="btn-outline" href="#" id="retake-link">Retake the assessment</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-row">
+      <span>&copy; QAINfinity</span>
+      <a href="../contract-to-hire/" style="font-weight:700;">Contract-to-Hire</a>
+      <span>info@qainfinity.com &nbsp;&middot;&nbsp; +91-9540752593</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('a[href="#contact"], a[href$="index.html#contact"]').forEach(function (link) {
+  link.addEventListener('click', function () {
+    try { sessionStorage.setItem('qain_contact_source', link.textContent.trim()); } catch (e) {}
+  });
+});
+
+(function () {
+  var form = document.getElementById('rr-form');
+  var result = document.getElementById('result');
+  var progressFill = document.getElementById('progress-fill');
+  var TOTAL_QUESTIONS = 13;
+  var MAX_SCORE = TOTAL_QUESTIONS * 2;
+
+  function countAnswered() {
+    var answered = 0;
+    for (var i = 1; i <= TOTAL_QUESTIONS; i++) {
+      if (form.querySelector('input[name="q' + i + '"]:checked')) answered++;
+    }
+    return answered;
+  }
+
+  form.addEventListener('change', function () {
+    progressFill.style.width = Math.round((countAnswered() / TOTAL_QUESTIONS) * 100) + '%';
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var score = 0;
+    for (var i = 1; i <= TOTAL_QUESTIONS; i++) {
+      var checked = form.querySelector('input[name="q' + i + '"]:checked');
+      if (checked) score += parseInt(checked.value, 10);
+    }
+
+    var scoreLabel = document.getElementById('score-label');
+    var heading = document.getElementById('result-heading');
+    var body = document.getElementById('result-body');
+    var card = result.querySelector('.result-card');
+
+    if (score <= 8) {
+      scoreLabel.textContent = 'Risk score: ' + score + ' / ' + MAX_SCORE + ' — Low';
+      scoreLabel.style.color = 'var(--good)';
+      heading.textContent = 'You’re in solid shape.';
+      body.textContent = 'Your process covers the basics well. The gaps that remain are usually where a second set of eyes — or a fresh automation pass — finds what internal teams stop noticing.';
+    } else if (score <= 17) {
+      scoreLabel.textContent = 'Risk score: ' + score + ' / ' + MAX_SCORE + ' — Medium';
+      scoreLabel.style.color = 'var(--warn)';
+      heading.textContent = 'There’s real risk sitting in a few spots.';
+      body.textContent = 'A mix of solid ground and open gaps — usually in automation coverage, performance visibility, or release signal. Worth a focused look before your next major release, not a full rebuild.';
+    } else {
+      scoreLabel.textContent = 'Risk score: ' + score + ' / ' + MAX_SCORE + ' — High';
+      scoreLabel.style.color = 'var(--bad)';
+      heading.textContent = 'Your releases are running on hope.';
+      body.textContent = 'Multiple categories show real gaps — the kind that usually surface in production instead of before it. This is exactly the situation Contract-to-Hire and Managed QA engagements are built to de-risk fast.';
+    }
+
+    form.style.display = 'none';
+    progressFill.style.width = '100%';
+    result.style.display = 'block';
+    result.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  document.getElementById('retake-link').addEventListener('click', function (e) {
+    e.preventDefault();
+    form.reset();
+    progressFill.style.width = '0%';
+    result.style.display = 'none';
+    form.style.display = 'block';
+    form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+})();
+</script>
+</body>
+</html>
