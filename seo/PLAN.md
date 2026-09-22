@@ -26,7 +26,9 @@
 
 ## Phase 2 — Information architecture
 
-- [ ] `[AUTO]` Build `/services/` hub + 4 dedicated service pages (Manual & Automation Testing, AI-Powered Test Automation, QA Staffing & Contract-to-Hire, Performance & Security Testing) — each currently just a 2-line card on the homepage, not indexable on its own.
+**Convention for every new page in this phase:** end the page's closing CTA with two options side by side — the primary "Book a Consult" link, plus a secondary `btn-outline` link to `/release-readiness/` (wording like "Not ready to talk? Check your risk first"). See the pattern already live on `/contract-to-hire/` and all 3 case-study pages. This is a deliberately low-commitment, self-serve option for CTO/CEO visitors who aren't ready to book a call yet — don't skip it when building new pages.
+
+- [ ] `[AUTO]` Build `/services/` hub + 4 dedicated service pages (Manual & Automation Testing, AI-Powered Test Automation, Dedicated QA Engineers, Performance & Security Testing) — each currently just a 2-line card on the homepage, not indexable on its own. (Note: the staffing service is now named "Dedicated QA Engineers" on the homepage, not "QA Staffing & Contract-to-Hire" — match that naming here.)
 - [ ] `[AUTO]` Build a real `/about` page — team credentials, certifications, and explicit time-zone-overlap messaging for UK/AU/APAC buyers.
 - [ ] `[AUTO]` Add an `/industries` or use-case page set (fintech, iGaming — reuse the existing real-money-gaming case study, SaaS).
 
@@ -37,6 +39,8 @@
 - [ ] `[AUTO]` Keyword shortlist for target geos (UK/EU/AU/APAC QA outsourcing intent), append to Content Backlog below. *(next research day — go deeper on search-volume/intent per keyword rather than topic gaps)*
 
 ## Phase 4 — Content / blog (each post = its own day, always `[PR]`)
+
+**Convention:** every blog post should end with the same primary + secondary CTA pattern described under Phase 2 (Book a Consult + a link to `/release-readiness/`) — this is where CTO/CEO readers who've just read decision-stage content (cost comparisons, model comparisons) are most likely to want a low-commitment next step before booking a call.
 
 - [ ] `[PR]` Blog: "In-House vs. Outsourced QA: A Cost and Risk Comparison for Startups"
 - [ ] `[PR]` Blog: "What Is Contract-to-Hire QA Staffing (and Why It Reduces Hiring Risk)"
