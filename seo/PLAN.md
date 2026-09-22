@@ -40,7 +40,7 @@
 
 - [ ] `[PR]` Blog: "In-House vs. Outsourced QA: A Cost and Risk Comparison for Startups"
 - [ ] `[PR]` Blog: "What Is Contract-to-Hire QA Staffing (and Why It Reduces Hiring Risk)"
-- [ ] `[PR]` Blog: "How AI QA Agents Cut Regression Testing Time by 90% — Lessons from the Angara Case Study"
+- [ ] `[PR]` Blog: "How AI QA Agents Cut Regression Testing Time by 90%" — do NOT name Angara or any real client in this post; the Angara engagement predated Loopsy/AI tooling, so tying their name to an AI-regression story would misrepresent that actual engagement. Write it as a general industry piece (framed around what agentic QA does to regression cycles, citing the Gartner/agentic-QA research already in the Content Backlog below), not a client case study.
 - [ ] `[PR]` Blog: "A Buyer's Guide to QA Outsourcing Time Zones: Working Across UK/AU/APAC Hours"
 - [ ] `[PR]` Blog: "Performance Testing Checklist Before Your Next Product Launch"
 - [ ] `[PR]` Blog: "Agentic QA in 2026: What Autonomous Test Agents Actually Change for Your Release Cycle" (ties directly to Loopsy; timely trend per 2026-09-17 research)
