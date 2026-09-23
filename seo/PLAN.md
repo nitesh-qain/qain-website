@@ -21,16 +21,30 @@
 - [x] `[AUTO]` Add JSON-LD structured data: `Organization` sitewide, `FAQPage` on the homepage FAQ section, `Article` on each case study. — done 2026-09-20, commit `44e2471`
 - [x] `[AUTO]` Add JSON-LD `Review`/testimonial markup for the homepage testimonials section. — done 2026-09-21, commit `8b5ffb2`
 - [x] `[AUTO]` Create `robots.txt` and `sitemap.xml`, verify all 5 URLs resolve with no broken internal links or 404s sitewide. — done 2026-09-22, commit `2d77295` (site has grown to 7 pages since this task was scoped — `/contract-to-hire/` and `/release-readiness/` shipped manually on 2026-09-22 — so the sitemap covers all 7 live URLs)
-- [ ] `[NEEDS-YOU]` Verify site ownership in Google Search Console and submit `sitemap.xml` (needs your Google login).
+- [x] `[NEEDS-YOU]` Verify site ownership in Google Search Console and submit `sitemap.xml` — done 2026-09-22 by the site owner; property is the domain property `sc-domain:qainfinity.com`, `nitesh0732@gmail.com` is Owner. Sitemap submission still needs confirming inside the GSC dashboard now that `sitemap.xml` exists (shipped 2026-09-22, commit `2d77295`).
 - [ ] `[AUTO]` Basic Core Web Vitals pass — check the animated gradient/glow CSS isn't hurting LCP/CLS on mobile.
 
 ## Phase 2 — Information architecture
 
 **Convention for every new page in this phase:** end the page's closing CTA with two options side by side — the primary "Book a Consult" link, plus a secondary `btn-outline` link to `/release-readiness/` (wording like "Not ready to talk? Check your risk first"). See the pattern already live on `/contract-to-hire/` and all 3 case-study pages. This is a deliberately low-commitment, self-serve option for CTO/CEO visitors who aren't ready to book a call yet — don't skip it when building new pages.
 
-- [ ] `[AUTO]` Build `/services/` hub + 4 dedicated service pages (Manual & Automation Testing, AI-Powered Test Automation, Dedicated QA Engineers, Performance & Security Testing) — each currently just a 2-line card on the homepage, not indexable on its own. (Note: the staffing service is now named "Dedicated QA Engineers" on the homepage, not "QA Staffing & Contract-to-Hire" — match that naming here.)
+**Keyword-driven build order (from Keyword Planner data, Sept 2026 — ranges only, no live Ads campaign since 2020, but good enough to rank keywords against each other; owner will provide a fresh CSV monthly):**
+
+*Tier 1 — build first, real volume (100–1K/month) in both US and Europe:* `qa outsourcing`, `software testing services`, `test automation services`, `qa testing services`, `quality assurance services`.
+
+*Tier 2 — US only (100–1K/month), build after Tier 1:* `qa outsourcing company`, `qa outsourcing services`, `manual testing services`, `mobile app testing services` (line item, not a standalone page), `hire qa engineers`, `api testing services` (line item, not standalone).
+
+*Keep as page content only, not page targets (10–100 or no data):* `qa staffing`, `contract to hire qa`, `qa team augmentation`, `software testing company dubai`.
+
+*Middle East decision (owner-approved 2026-09-23):* every UAE/KSA keyword in the CSV is 10–100/month or no data — demoted from "parallel region page" to a lighter, later-stage page. Do not build a full UAE/KSA region page in the same pass as US/Europe; revisit in Month 3 or later, sized to the actual (low) demand.
+
+*Region-page duplicate-content strategy (owner-approved 2026-09-23 — "do as per your judgement"):* no hreflang (content is English-only across all target markets, so there's no language variant to disambiguate). Each region page must be genuinely differentiated — different case-study emphasis, different time-zone-overlap specifics, GDPR language for EU, data-residency language for UAE/KSA when that page eventually gets built — and self-canonical (never pointing at a "master" page). Do not template three near-identical pages with the region name swapped; that risks Google treating them as duplicate content, the same risk flagged with `go.qainfinity.com`.
+
+*Legacy `/services` URL decision (owner-approved 2026-09-23):* "let it die" — no 301 redirect from the old WordPress-era `/services`-style slugs. The new `/services/` build gets a fresh URL; the old indexed URLs are left to fall out of Google's index naturally (they already 404, and don't match any current page's naming).
+
+- [ ] `[AUTO]` Build `/services/` hub + dedicated service pages, in the keyword-driven order above — not the original "4 pages named after the 4 homepage cards" plan. Hub targets `qa outsourcing` / `software testing services`; first two dedicated pages target `test automation services` (the Loopsy/AI automation angle) and `manual testing services`. (Note: the staffing service is now named "Dedicated QA Engineers" on the homepage, not "QA Staffing & Contract-to-Hire" — match that naming here; `hire qa engineers` is its target keyword, likely folding into `/contract-to-hire/` rather than a brand-new page — confirm with owner before building.)
 - [ ] `[AUTO]` Build a real `/about` page — team credentials, certifications, and explicit time-zone-overlap messaging for UK/AU/APAC buyers.
-- [ ] `[AUTO]` Add an `/industries` or use-case page set (fintech, iGaming — reuse the existing real-money-gaming case study, SaaS).
+- [ ] `[AUTO]` Add US and Europe region pages (Month 2) — see region-page strategy above. UAE/KSA demoted, not part of this pass.
 
 ## Phase 3 — Research (no site changes, findings feed Phase 4)
 
