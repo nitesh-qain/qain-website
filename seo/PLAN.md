@@ -99,5 +99,3 @@ Sources: [TestDevLab — Best QA Outsourcing Companies for Startups 2026](https:
 - 2026-09-22 — Phase 1: added `robots.txt` (allow-all + sitemap reference) and `sitemap.xml` covering all 7 live pages (homepage, `/contract-to-hire/`, `/release-readiness/`, case-studies hub, and the 3 case-study pages — 2 more than the "5 pages" this task was originally scoped for, since the site owner shipped `/contract-to-hire/` and `/release-readiness/` manually earlier the same day); verified zero broken internal links/assets sitewide and all 7 pages + both new files return HTTP 200 in a headless-Chromium pass — commit `2d77295`
 
 *(each shipped/opened item gets one line here: date — task — commit SHA or PR link)*
-
-<!-- gate infra smoke test, safe to ignore -->
