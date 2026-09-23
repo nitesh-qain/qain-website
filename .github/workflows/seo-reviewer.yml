@@ -1,0 +1,70 @@
+name: SEO agent independent reviewer
+
+# The second, independent check from seo/PLAN.md's approval-lane design:
+# reviews the raw diff for technical problems (broken-looking internal
+# links, invalid JSON-LD, surprising visible-text changes outside what an
+# additive SEO change should touch). Deliberately blind to the worker's own
+# reasoning -- it only ever sees `git diff`, never the nightly routine's
+# chat transcript, so it can't just rubber-stamp whatever the worker
+# rationalized. It can block a merge (this becomes a required status
+# check); it cannot approve anything itself, and it never touches
+# REVIEW-lane content decisions (client claims, new pages, copy) -- those
+# are always @nitesh-qain's call regardless of what this check says.
+#
+# Needs the ANTHROPIC_API_KEY secret. Until that's added, this workflow
+# skips itself cleanly (see the `has-key` step) rather than blocking every
+# PR on a missing secret.
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [main]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check for API key
+        id: has-key
+        run: |
+          if [ -z "${{ secrets.ANTHROPIC_API_KEY }}" ]; then
+            echo "present=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::ANTHROPIC_API_KEY not set -- independent reviewer is skipped until it's added as a repo secret. See seo/PLAN.md item 3."
+          else
+            echo "present=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Get the diff
+        if: steps.has-key.outputs.present == 'true'
+        run: |
+          git fetch origin main --quiet
+          git diff origin/main...${{ github.event.pull_request.head.sha }} > /tmp/pr.diff
+          # Cap the diff size sent to the API -- large diffs (e.g. a full
+          # new page) get truncated rather than failing the call outright.
+          head -c 60000 /tmp/pr.diff > /tmp/pr_trimmed.diff
+
+      - name: Review with Claude
+        if: steps.has-key.outputs.present == 'true'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python3 seo/scripts/reviewer_call_claude.py
+
+      - name: Comment the verdict and fail the check if issues were found
+        if: steps.has-key.outputs.present == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -o pipefail
+          python3 seo/scripts/reviewer_format_comment.py | tee /tmp/comment_body.md
+          RESULT=$?
+          gh pr comment "${{ github.event.pull_request.number }}" --body-file /tmp/comment_body.md
+          exit $RESULT

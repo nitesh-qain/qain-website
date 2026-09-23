@@ -1,0 +1,16 @@
+# Always-review paths for the SEO agent's approval lanes (see seo/PLAN.md).
+# Anything matched here requires @nitesh-qain's review before merge, regardless
+# of what the seo-gate workflow decides — this is the blanket safety net for
+# infrastructure and the one confirmed "top-10 page" (the homepage).
+#
+# This does NOT cover every REVIEW-lane case from PLAN.md (e.g. a brand-new
+# file under an existing directory like case-studies/, or a title/H1 edit
+# buried inside an otherwise-small diff) — CODEOWNERS only matches by path,
+# not by what changed within a file. Those cases are caught by the seo-gate
+# workflow's content-level checks instead. See seo/RUNBOOK.md for the full
+# split between what CODEOWNERS enforces and what the gate enforces.
+
+/index.html        @nitesh-qain
+/robots.txt         @nitesh-qain
+/vercel.json         @nitesh-qain
+/.github/            @nitesh-qain

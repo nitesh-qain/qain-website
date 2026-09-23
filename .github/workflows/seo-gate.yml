@@ -1,0 +1,52 @@
+name: SEO agent merge gate
+
+# Rule-based (not LLM) gate for PRs the SEO nightly agent opens. Classifies
+# the diff as AUTO-eligible or REVIEW-required per seo/PLAN.md's approval
+# lanes, using seo/scripts/gate_classify.py. AUTO-eligible PRs get an
+# approving review + auto-merge queued from this workflow; everything else
+# is left exactly as-is, waiting on @nitesh-qain's manual review (enforced
+# by branch protection requiring 1 approval, plus CODEOWNERS for the
+# always-sensitive paths).
+#
+# This workflow never touches content, never edits the PR, and can't itself
+# merge anything that fails branch protection's other required checks (e.g.
+# the seo-reviewer workflow, once wired up with an Anthropic API key).
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [main]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  classify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Classify the diff
+        id: classify
+        run: |
+          python3 seo/scripts/gate_classify.py main "${{ github.event.pull_request.head.sha }}" | tee /tmp/verdict.json
+          echo "verdict=$(python3 -c "import json;print(json.load(open('/tmp/verdict.json'))['verdict'])")" >> "$GITHUB_OUTPUT"
+
+      - name: Comment the verdict
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 seo/scripts/gate_format_comment.py > /tmp/comment_body.md
+          gh pr comment "${{ github.event.pull_request.number }}" --body-file /tmp/comment_body.md
+
+      - name: Approve and queue auto-merge (AUTO-eligible only)
+        if: steps.classify.outputs.verdict == 'auto'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh pr review "${{ github.event.pull_request.number }}" --approve --body "Auto-approved by seo-gate: within the [AUTO] lane, no review-lane triggers matched."
+          gh pr merge "${{ github.event.pull_request.number }}" --auto --squash || echo "::warning::Auto-merge could not be queued (branch protection may not be enabled yet, or another required check is still pending) -- PR is approved but will need a manual merge click for now."

@@ -36,6 +36,22 @@ Create `seo/reports/YYYY-MM-DD.md` with:
 
 End the run by sending a short chat message to the user summarizing the day in 2-3 sentences with a link to the report and any PR(s).
 
+## Target flow: PRs + merge gate (built 2026-09-23, NOT YET ACTIVE)
+
+This is the intended end-state from the nightly-agent rebuild, per the owner's spec. The infrastructure below is fully built and tested against real historical commits, but **steps 2 and 3 above still push straight to `main`** — that hasn't been switched over yet. Do not change that push behavior based on this section alone; it needs one more explicit go-ahead from the owner, since flipping it changes how every future run behaves starting that same night. If/when that's given, this section's steps replace step 2.4 and step 3.3-3.4 above, and this note gets deleted.
+
+**What's already built and live in the repo:**
+- `.github/CODEOWNERS` — forces @nitesh-qain review on `index.html`, `robots.txt`, `vercel.json`, and `.github/` itself, regardless of what the gate below decides.
+- `seo/scripts/gate_classify.py` — rule-based (not LLM) classifier. Diffs the PR against `main`, applies PLAN.md's AUTO vs REVIEW rules (new/deleted files, title/H1/canonical/nav/robots/hreflang/redirect/pricing changes, new client-name mentions outside JSON-LD blocks, >5 or >20 files changed), outputs `{"verdict": "auto"|"review", "reasons": [...]}`. Tested against 3 real historical commits (`44e2471`, `8b5ffb2` correctly classify AUTO; `76a0ab9`, `f03f987..d5744b5` correctly classify REVIEW).
+- `.github/workflows/seo-gate.yml` — runs the classifier on every PR into `main`, comments the verdict, and for AUTO-eligible PRs, approves + queues auto-merge. For REVIEW PRs, does nothing further — branch protection (once enabled) blocks merge until @nitesh-qain approves.
+- `.github/workflows/seo-reviewer.yml` — the independent second check. Sends the raw diff (never the worker's own reasoning) to Claude, checks for broken-looking links, invalid JSON-LD, and visible-text changes that look bigger than an additive SEO edit. Blocks AUTO-lane auto-merge on failure; never blocks the owner's own manual merge of REVIEW-lane PRs. **Currently skips itself** — needs the `ANTHROPIC_API_KEY` repo secret before it does anything (reminder scheduled for 2026-09-24 2:30pm IST to gather this + 3 other LLM keys).
+- Repo settings changed to make the above possible: `allow_auto_merge` and Actions' `can_approve_pull_request_reviews` were both off by default and are now on.
+
+**What's still needed to actually activate this:**
+1. Branch protection on `main` — require a PR, require 1 approval, require the `seo-gate` and (once the API key exists) `seo-reviewer` status checks. Not yet enabled.
+2. This RUNBOOK's steps 2.4 and 3.3-3.4 need rewriting so the worker pushes to a branch (e.g. `seo/auto/<date>` or `seo/review/<slug>`) and opens a PR instead of pushing straight to `main`.
+3. Explicit owner confirmation to flip both of the above on the same night, since before that point every `[AUTO]` push still goes straight to `main` with no gate at all.
+
 ## Guardrails (do not deviate)
 - Never push to `main` without a passing verification pass per step 2.3.
 - Never merge a blog PR — that is always the user's action.
