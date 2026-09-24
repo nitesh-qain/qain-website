@@ -175,7 +175,8 @@
     background: var(--surface-2); border-radius: 0 12px 12px 0; font-style: italic; color: var(--text);
   }
 
-  .data-table { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 14.5px; }
+  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 16px; }
+  .data-table { width: 100%; min-width: 480px; border-collapse: collapse; font-size: 14.5px; }
   .data-table th, .data-table td { text-align: left; padding: 11px 14px; border-bottom: 1px solid var(--border); }
   .data-table th { color: var(--text-dim); font-weight: 700; font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.04em; }
   .data-table td { color: var(--text); font-weight: 600; }
@@ -270,11 +271,13 @@
       <div class="story-block">
         <h2>The Results</h2>
         <p>Run sequentially, the automation replaced a full 8-hour day of manual regression with a coffee break:</p>
+        <div class="table-scroll">
         <table class="data-table">
           <tr><th>Regression cycle</th><th>Before (manual)</th><th>After &mdash; sequential</th><th>After &mdash; parallel (optional)</th></tr>
           <tr><td>Web</td><td>8 hours (full working day)</td><td>~30 minutes</td><td>~3 minutes</td></tr>
           <tr><td>Mobile</td><td>8 hours (full working day)</td><td>~2 hours (single device)</td><td>~3&ndash;7 minutes</td></tr>
         </table>
+        </div>
         <p style="margin-top:14px; font-size:13.5px;">Parallel execution scales with the compute a team chooses to invest &mdash; Angara can dial cycle time down further whenever they want, without changing the suites.</p>
         <ul style="margin-top:20px;">
           <li><strong>Faster releases, lower risk.</strong> A full web regression pass now fits inside 30 minutes instead of an 8-hour day &mdash; changes ship faster, with more confidence, and near-instantly once run in parallel.</li>
