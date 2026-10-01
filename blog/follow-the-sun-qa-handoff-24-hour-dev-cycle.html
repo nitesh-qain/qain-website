@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BCRF8NCENT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-BCRF8NCENT');
+</script>
+
+<title>The Follow-the-Sun QA Handoff: A 24-Hour Dev Cycle, Not an Overnight Gap &mdash; QAINfinity</title>
+<meta name="description" content="How a short daily handoff turns an offshore time-zone gap into a round-the-clock dev cycle: devs ship, QA tests overnight, devs return to tested code.">
+<link rel="canonical" href="https://www.qainfinity.com/blog/follow-the-sun-qa-handoff-24-hour-dev-cycle.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="QAINfinity">
+<meta property="og:title" content="The Follow-the-Sun QA Handoff: A 24-Hour Dev Cycle, Not an Overnight Gap &mdash; QAINfinity">
+<meta property="og:description" content="How a short daily handoff turns an offshore time-zone gap into a round-the-clock dev cycle: devs ship, QA tests overnight, devs return to tested code.">
+<meta property="og:url" content="https://www.qainfinity.com/blog/follow-the-sun-qa-handoff-24-hour-dev-cycle.html">
+<meta property="og:image" content="https://www.qainfinity.com/assets/og/default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Follow-the-Sun QA Handoff: A 24-Hour Dev Cycle, Not an Overnight Gap &mdash; QAINfinity">
+<meta name="twitter:description" content="How a short daily handoff turns an offshore time-zone gap into a round-the-clock dev cycle: devs ship, QA tests overnight, devs return to tested code.">
+<meta name="twitter:image" content="https://www.qainfinity.com/assets/og/default.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "QAInfinity",
+  "url": "https://www.qainfinity.com/",
+  "logo": "https://www.qainfinity.com/assets/og/default.png",
+  "email": "info@qainfinity.com",
+  "telephone": "+91-9540752593",
+  "sameAs": [
+    "https://www.linkedin.com/company/qain-finity/"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The Follow-the-Sun QA Handoff: A 24-Hour Dev Cycle, Not an Overnight Gap",
+  "description": "How a short daily handoff turns an offshore time-zone gap into a round-the-clock dev cycle: devs ship, QA tests overnight, devs return to tested code.",
+  "image": "https://www.qainfinity.com/assets/og/default.png",
+  "datePublished": "2026-10-01",
+  "dateModified": "2026-10-01",
+  "author": {
+    "@type": "Organization",
+    "name": "QAInfinity",
+    "url": "https://www.qainfinity.com/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "QAInfinity",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.qainfinity.com/assets/og/default.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.qainfinity.com/blog/follow-the-sun-qa-handoff-24-hour-dev-cycle.html"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a follow-the-sun QA model?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A follow-the-sun QA model schedules a QA team in a different time zone so their working day starts roughly when the development team's day ends. A short overlap window (typically 1-2 hours) is used for handoff and sync, and QA then tests what was built that day while developers are offline — so defects are triaged and waiting, not discovered days later."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do QA engineers need to work night shifts for this to work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No — that's the point. In a follow-the-sun handoff, QA engineers work their own normal daytime hours in their own time zone. It's the time-zone offset itself, not a night shift, that creates the overlap with a distant dev team's end of day."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much daily overlap does a follow-the-sun handoff actually need?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In practice, 1-2 hours of live overlap is enough — just enough time for a sync on what shipped, open questions, and priorities for the day. The value isn't in the overlap hours themselves; it's in what happens during the many hours QA is working while the dev team is asleep or offline."
+      }
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&display=swap">
+<style>
+  :root {
+    --bg: #f7f7fb; --surface: #ffffff; --surface-2: #eef0f7;
+    --text: #14151d; --text-dim: #565c6d; --border: rgba(20,21,29,0.09);
+    --accent-1: #4338ca; --accent-2: #7c3aed; --accent-3: #0891b2; --good: #0d9488;
+    --glow-a: rgba(79,70,229,0.16); --glow-b: rgba(139,92,246,0.12);
+    --shadow: 0 1px 2px rgba(20,21,29,0.06);
+    --logo-ink: #20255c; --logo-line: #3f7373; --term-accent: #0E7A4B;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0a0b12; --surface: #12141f; --surface-2: #181b28;
+      --text: #f2f3f8; --text-dim: #9ba1b4; --border: rgba(255,255,255,0.08);
+      --accent-1: #4f46e5; --accent-2: #8b5cf6; --accent-3: #22d3ee; --good: #34d399;
+      --glow-a: rgba(79,70,229,0.35); --glow-b: rgba(139,92,246,0.22);
+      --shadow: 0 1px 2px rgba(0,0,0,0.4);
+      --logo-ink: #eef0fb; --logo-line: #5fd0d0; --term-accent: #35E28A;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0a0b12; --surface: #12141f; --surface-2: #181b28;
+    --text: #f2f3f8; --text-dim: #9ba1b4; --border: rgba(255,255,255,0.08);
+    --accent-1: #4f46e5; --accent-2: #8b5cf6; --accent-3: #22d3ee; --good: #34d399;
+    --glow-a: rgba(79,70,229,0.35); --glow-b: rgba(139,92,246,0.22);
+    --shadow: 0 1px 2px rgba(0,0,0,0.4);
+    --logo-ink: #eef0fb; --logo-line: #5fd0d0; --term-accent: #35E28A;
+  }
+  :root[data-theme="light"] {
+    --bg: #f7f7fb; --surface: #ffffff; --surface-2: #eef0f7;
+    --text: #14151d; --text-dim: #565c6d; --border: rgba(20,21,29,0.09);
+    --accent-1: #4338ca; --accent-2: #7c3aed; --accent-3: #0891b2; --good: #0d9488;
+    --glow-a: rgba(79,70,229,0.16); --glow-b: rgba(139,92,246,0.12);
+    --shadow: 0 1px 2px rgba(20,21,29,0.06);
+    --logo-ink: #20255c; --logo-line: #3f7373; --term-accent: #0E7A4B;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 0 32px; }
+  .mono { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; letter-spacing: 0.09em; text-transform: uppercase; font-size: 12px; }
+  h1, h2, h3 { font-weight: 800; letter-spacing: -0.03em; text-wrap: balance; margin: 0; }
+  p { color: var(--text-dim); line-height: 1.65; margin: 0; }
+  a { color: inherit; text-decoration: none; }
+
+  nav {
+    position: sticky; top: 0; z-index: 20; background: var(--bg);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-row { display: flex; align-items: center; justify-content: space-between; padding: 13px 32px; max-width: 900px; margin: 0 auto; }
+  .brand-icon { display: block; flex-shrink: 0; }
+  .brand-word { font-family: 'JetBrains Mono', ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-weight: 700; font-size: 18px; letter-spacing: -0.01em; color: var(--logo-ink); }
+  .brand-word .accent { color: var(--term-accent); }
+  .btn-grad {
+    padding: 10px 20px; border-radius: 999px; font-size: 14.5px; font-weight: 700;
+    background: linear-gradient(95deg, var(--accent-1), var(--accent-2));
+    color: #fff; display: inline-block; box-shadow: var(--shadow);
+  }
+  .btn-outline {
+    padding: 9px 18px; border-radius: 999px; font-size: 14px; font-weight: 700;
+    border: 1px solid var(--border); color: var(--text-dim); display: inline-flex; align-items: center; gap: 6px;
+  }
+  .brand { display: flex; align-items: center; gap: 9px; }
+  .nav-links { display: flex; gap: 26px; font-size: 14px; color: var(--text-dim); }
+  .nav-links a:hover { color: var(--text); }
+
+  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13.5px; font-weight: 700; color: var(--text-dim); margin-bottom: 22px; }
+  .back-link:hover { color: var(--text); }
+
+  .hero { position: relative; padding: 40px 0 40px; overflow: hidden; }
+  .hero::before {
+    content: ""; position: absolute; inset: -20% -10% -20% -10%;
+    background: radial-gradient(circle at 50% 20%, var(--glow-a), var(--glow-b) 40%, transparent 70%);
+    z-index: -1;
+  }
+  .case-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
+  .case-tags span { font-size: 12.5px; padding: 5px 12px; border-radius: 999px; border: 1px solid var(--border); color: var(--text-dim); }
+  .hero h1 { font-size: 36px; }
+  .hero p.lede { max-width: 640px; margin-top: 16px; font-size: 17px; }
+
+  section { padding: 44px 0; }
+  .result-card {
+    margin: 8px 0 40px; padding: 22px 26px; border-radius: 16px;
+    background: var(--surface-2); border: 1px solid var(--border);
+    display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
+  }
+  .result-card .big { font-size: 34px; font-weight: 800; color: var(--accent-2); font-variant-numeric: tabular-nums; }
+  .result-card .small { font-size: 14px; color: var(--text-dim); }
+
+  .story h2 { font-size: 22px; margin-bottom: 12px; }
+  .story-block { padding: 28px 0; border-top: 1px solid var(--border); }
+  .story-block:first-child { border-top: none; padding-top: 0; }
+  .story-block p { font-size: 15.5px; margin-top: 4px; }
+  .story-block ul { margin: 12px 0 0; padding-left: 20px; }
+  .story-block li { font-size: 15.5px; color: var(--text-dim); line-height: 1.6; margin-top: 8px; }
+  .story-block li strong { color: var(--text); }
+  .quote-block {
+    margin-top: 20px; padding: 20px 24px; border-left: 3px solid var(--accent-2);
+    background: var(--surface-2); border-radius: 0 12px 12px 0; font-style: italic; color: var(--text);
+  }
+  .qa-block { margin-top: 20px; padding: 18px 22px; border-radius: 14px; background: var(--surface-2); border: 1px solid var(--border); }
+  .qa-block + .qa-block { margin-top: 14px; }
+  .qa-block .q { font-weight: 700; color: var(--text); font-size: 15px; }
+  .qa-block .a { margin-top: 6px; font-size: 14.5px; }
+
+  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 16px; }
+  .data-table { width: 100%; min-width: 480px; border-collapse: collapse; font-size: 14.5px; }
+  .data-table th, .data-table td { text-align: left; padding: 11px 14px; border-bottom: 1px solid var(--border); }
+  .data-table th { color: var(--text-dim); font-weight: 700; font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .data-table td { color: var(--text); font-weight: 600; }
+  .data-table caption { text-align: left; font-size: 13px; color: var(--text-dim); margin-top: 10px; caption-side: bottom; }
+
+  .sources { font-size: 13px; margin-top: 10px; }
+  .sources a { color: var(--accent-2); font-weight: 600; }
+  .sources a:hover { text-decoration: underline; }
+
+  .closing {
+    text-align: center; border-radius: 24px; padding: 50px 36px;
+    background: linear-gradient(160deg, var(--surface-2), var(--surface));
+    border: 1px solid var(--border); position: relative; overflow: hidden; margin-top: 20px;
+  }
+  .closing::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 50% 0%, var(--glow-a), transparent 60%); pointer-events: none; }
+  .closing h2 { font-size: 26px; max-width: 480px; margin: 0 auto 12px; position: relative; }
+  .closing p { position: relative; max-width: 420px; margin: 0 auto 24px; }
+
+  footer { padding: 30px 0 50px; border-top: 1px solid var(--border); }
+  .foot-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-size: 13px; color: var(--text-dim); }
+
+  @media (max-width: 780px) {
+    .nav-links { display: none; }
+  }
+  @media (max-width: 700px) {
+    .hero h1 { font-size: 27px; }
+    .wrap { padding: 0 20px; }
+    .data-table { font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-row">
+    <a class="brand" href="../index.html" aria-label="QAINfinity">
+      <svg class="brand-icon" width="36" height="36" viewBox="0 0 120 120" aria-hidden="true">
+        <rect x="4" y="4" width="112" height="112" rx="26" fill="#14171A" stroke="#35E28A" stroke-width="4"/>
+        <text x="14" y="76" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-weight="700" font-size="46" fill="#6B7280">$</text>
+        <polyline points="52,34 78,60 52,86" fill="none" stroke="#35E28A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="90" y="46" width="13" height="28" rx="3" fill="#35E28A"/>
+      </svg>
+      <span class="brand-word">qain<span class="accent">finity</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="../index.html#services">Services</a>
+      <a href="../index.html#insights">Insights</a>
+      <a href="../index.html#loopsy">Loopsy</a>
+      <a href="../index.html#faq">FAQ</a>
+    </div>
+    <a class="btn-grad" href="../index.html#contact">Contact / Book a Consult</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="wrap">
+    <a class="back-link" href="../blog/index.html">&larr; Back to Blog</a>
+    <div class="case-tags"><span>QA Outsourcing</span><span>Process</span><span>US &amp; UK Teams</span></div>
+    <span class="mono" style="color:var(--accent-2); display:block; margin-bottom:14px;">Blog &middot; 4 min read</span>
+    <h1>The Follow-the-Sun QA Handoff: A 24-Hour Dev Cycle, Not an Overnight Gap</h1>
+    <p class="lede">Most teams assume a large time-zone offset means work just waits until someone's awake to pick it up. Done right, the offset is the asset, not the obstacle &mdash; here's how a follow-the-sun QA handoff actually works, and why it only takes a short daily sync to run it.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="result-card">
+      <span class="big">1&ndash;2 hrs</span><span class="small">the only daily live overlap a follow-the-sun QA handoff needs to turn an 8&ndash;10 hour time gap into round-the-clock progress</span>
+    </div>
+
+    <div class="story">
+      <div class="story-block">
+        <h2>What "follow-the-sun" actually means</h2>
+        <p>A follow-the-sun model schedules a QA team in a time zone roughly opposite a dev team's &mdash; so QA's working day starts around when the dev team's day ends. It's a well-established pattern in distributed engineering, not unique to any one vendor. What makes it work isn't a vague "we're flexible on hours" promise; it's a deliberate, repeatable handoff built around one short sync window each day.</p>
+      </div>
+      <div class="story-block">
+        <h2>How the handoff actually runs, step by step</h2>
+        <ul>
+          <li><strong>End-of-day sync (1&ndash;2 hours).</strong> As the dev team wraps up, QA comes online and the two teams overlap briefly &mdash; what shipped today, what's unclear, what to prioritize. This is the only live window the whole model depends on.</li>
+          <li><strong>QA tests through their own day.</strong> With context from the sync, QA works through what was built that day &mdash; functional testing, regression, whatever the day's scope calls for &mdash; while the dev team is offline.</li>
+          <li><strong>Bugs and status land before devs are back.</strong> QA files defects and a status summary at the end of their day, so it's sitting there &mdash; not discovered days later in a stand-up.</li>
+          <li><strong>Devs start the next day already caught up.</strong> Instead of opening a backlog of untested work, the dev team's morning starts with yesterday's code already tested and feedback already written.</li>
+        </ul>
+      </div>
+      <div class="story-block">
+        <h2>Why this beats a generic "we work your hours" promise</h2>
+        <p>Plenty of outsourcing pitches lean on vague overnight availability without any real structure behind it &mdash; which is exactly the kind of blanket promise that falls apart under scrutiny. The difference here is specific and checkable: a defined overlap window agreed before work starts, and concrete handoff artifacts (synced priorities, filed bugs, a written status) at each end of the cycle. That's what actually prevents work from sitting idle, not a claim about time zones on its own.</p>
+        <div class="quote-block">The time-zone gap that looks like a problem on a kickoff call is the same gap that, structured properly, gets a team roughly a full extra working day of testing for every calendar day &mdash; without anyone working a night shift.</div>
+      </div>
+      <div class="story-block">
+        <h2>Where this fits for US and UK/Europe teams</h2>
+        <p>The value of a follow-the-sun handoff scales with the size of the time-zone gap. It's the strongest fit for <a href="../regions/us/" style="color:var(--accent-2); font-weight:700;">US teams</a>, where the offset against India is large enough that QA's full working day genuinely runs while US engineers are offline. For <a href="../regions/europe/" style="color:var(--accent-2); font-weight:700;">UK and Europe teams</a>, the India time-zone gap is already small enough that QAInfinity engineers can be live for most of a standard UK/EU working day directly &mdash; the follow-the-sun handoff still applies at the edges of the day, but full-day overlap is the bigger story there.</p>
+      </div>
+      <div class="story-block">
+        <h2>Quick answers</h2>
+        <div class="qa-block">
+          <div class="q">What is a follow-the-sun QA model?</div>
+          <div class="a">A model where QA is scheduled in a time zone roughly opposite the dev team's, so QA's working day starts around when the dev team's day ends. A short overlap window (1&ndash;2 hours) handles sync and handoff; QA then tests what was built that day while developers are offline.</div>
+        </div>
+        <div class="qa-block">
+          <div class="q">Do QA engineers need to work night shifts for this to work?</div>
+          <div class="a">No &mdash; that's the point. QA engineers work their own normal daytime hours in their own time zone. It's the time-zone offset itself, not a night shift, that creates the overlap with a distant dev team's end of day.</div>
+        </div>
+        <div class="qa-block">
+          <div class="q">How much daily overlap does a follow-the-sun handoff actually need?</div>
+          <div class="a">In practice, 1&ndash;2 hours of live overlap is enough for a sync on what shipped, open questions, and the day's priorities. The real value isn't in the overlap hours themselves &mdash; it's in the many hours QA is working while the dev team is offline.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="closing">
+      <h2>Want QA that keeps moving after your team logs off?</h2>
+      <p>Tell us what you're building and where you need coverage. We reply within one business day.</p>
+      <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:2px;">
+        <a class="btn-grad" href="../index.html#contact">Book a Consult</a>
+        <a class="btn-outline" href="../release-readiness/">Not ready to talk? Check your risk first &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-row">
+      <span>&copy; QAINfinity</span>
+      <a href="../contract-to-hire/" style="font-weight:700;">Contract-to-Hire</a>
+      <a href="../release-readiness/" style="font-weight:700;">Release Readiness</a>
+      <span>info@qainfinity.com &nbsp;&middot;&nbsp; +91-9540752593</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('a[href="#contact"], a[href$="index.html#contact"]').forEach(function (link) {
+  link.addEventListener('click', function () {
+    try { sessionStorage.setItem('qain_contact_source', link.textContent.trim()); } catch (e) {}
+  });
+});
+</script>
+</body>
+</html>
