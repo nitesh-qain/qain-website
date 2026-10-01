@@ -52,9 +52,25 @@ CLIENT_NAMES = [
 ]
 CLIENT_RE = re.compile(r"\b(" + "|".join(re.escape(n) for n in CLIENT_NAMES) + r")\b", re.I)
 
+NAV_BLOCK_RE = re.compile(r"<nav\b.*?</nav>", re.I | re.S)
+
 
 def run(cmd):
     return subprocess.run(cmd, shell=True, capture_output=True, text=True, check=True).stdout
+
+
+def nav_block(file_content):
+    """Extracts the <nav>...</nav> block's full text, or None if the file
+    has no nav. Comparing this block's text between base and head (instead
+    of scanning diff lines for suspicious substrings) is what actually
+    catches a change like PR #2's: a new <a> added inside .nav-cta, with
+    a worker-invented class name no pattern list anticipated, and a CSS
+    rule for `.nav-cta` that isn't even in `class="..."` form. A line-
+    pattern approach is a permanent game of whack-a-mole against whatever
+    class name a future change happens to use; comparing the actual
+    rendered-nav substring isn't guessable around."""
+    m = NAV_BLOCK_RE.search(file_content)
+    return m.group(0) if m else None
 
 
 def main():
@@ -88,6 +104,13 @@ def main():
         if base_name in ALWAYS_REVIEW_PATHS or path.startswith(ALWAYS_REVIEW_PREFIXES):
             reasons.append(f"{path}: always-review path")
             continue
+
+        # Structural nav check (see nav_block's docstring for why this has
+        # to compare rendered content, not pattern-match diff lines).
+        base_full = run(f"git show origin/{base}:{path!r} 2>/dev/null || true")
+        head_full = run(f"git show {head}:{path!r} 2>/dev/null || true")
+        if nav_block(base_full) != nav_block(head_full):
+            reasons.append(f"{path}: nav block content changed")
 
         # Content-level check: scan only ADDED lines in the diff for this file.
         # Track JSON-LD <script> blocks as we go -- structured data that
