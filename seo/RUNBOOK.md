@@ -25,7 +25,14 @@ Read `seo/PLAN.md` top to bottom. Take the first unchecked `[AUTO]` or `[PR]` ta
 ## 4. If it's a `[AUTO]` research-only task (Phase 3)
 No site changes. Run the web research, then append findings directly into the `Content Backlog` section of `PLAN.md` (new candidate blog topics, keyword notes) so Phase 4 has fresh material. If findings suggest a new `[AUTO]` or `[PR]` task worth prioritizing, add it to the relevant phase list.
 
-## 5. Always: write the daily report
+## 5. Check for owner-approved competitor ideas
+Read `seo/COMPETITOR-IDEAS.md` (maintained by the separate Competitor Research agent — see [COMPETITOR-RUNBOOK.md](COMPETITOR-RUNBOOK.md); it never touches the live site or PLAN.md itself, it only proposes). For every row whose `Status` is `Approved`:
+1. Add a new task to the relevant `PLAN.md` phase, tagged `[AUTO]`, `[PR]`, or `[NEEDS-YOU]` using the same rules as any other task (a new page or blog-style content is `[PR]`; a third-party account/listing is `[NEEDS-YOU]`; a small structural/schema change to an existing page is `[AUTO]`). Carry over the row's "Our version" description and any Prerequisites into the task text so context isn't lost.
+2. Update that row's `Status` in `seo/COMPETITOR-IDEAS.md` to `Turned into task`, with a short link/reference to the new PLAN.md line.
+3. Do this even on a day when you also execute a different task from step 1 — it's a few-line edit, not a full task slot, so it doesn't count against "one task per run."
+Commit `seo/COMPETITOR-IDEAS.md` alongside `PLAN.md` and the day's report when you push those at the end of the run (documentation-only, no browser-verification pass needed).
+
+## 6. Always: write the daily report
 Create `seo/reports/YYYY-MM-DD.md` with:
 - **Shipped today** — task, files changed, commit link (if pushed to main)
 - **Opened for review** — PR links awaiting merge (blog posts)
@@ -58,3 +65,4 @@ This is the intended end-state from the nightly-agent rebuild, per the owner's s
 - Never create third-party accounts (Clutch/GoodFirms/G2/LinkedIn) — those are `[NEEDS-YOU]`.
 - Never fabricate client names, testimonials, statistics, or press mentions in blog content.
 - One task focus per run — don't silently expand scope beyond what PLAN.md lists.
+- Never set a `seo/COMPETITOR-IDEAS.md` row's `Status` yourself — only turn `Approved` rows into tasks. `Proposed` and `Skip` rows are the Competitor Research agent's and the owner's territory, not this run's.
