@@ -3,7 +3,9 @@
 This is the exact procedure to follow on each daily run. Read [PLAN.md](PLAN.md) first.
 
 ## 1. Pick today's task(s)
-Read `seo/PLAN.md` top to bottom. Take the first unchecked `[AUTO]` or `[PR]` task. Skip `[NEEDS-YOU]` tasks but note any you pass over in today's report as a reminder. Do one task per run unless it's small enough to safely pair with the next (e.g. robots.txt + sitemap.xml).
+Read `seo/PLAN.md` top to bottom. Take the first unchecked `[AUTO]` or `[PR]` task, with one exception: **if its line already contains `PR opened: <link> — awaiting review`, it's still unchecked but already in progress — skip it too**, the same way you'd skip `[NEEDS-YOU]`, and move to the next unchecked task below it. Note any skipped-because-already-open-PR item in today's report (one line: task + PR link + how long it's been open) so the owner sees it's still waiting on them, same as a `[NEEDS-YOU]` reminder. This prevents opening a second, near-duplicate PR for a topic that's already sitting in review. If literally every remaining unchecked task is either `[NEEDS-YOU]` or already has an open PR, there's nothing to execute this run — skip straight to writing the report (step 6).
+
+Skip `[NEEDS-YOU]` tasks but note any you pass over in today's report as a reminder. Do one task per run unless it's small enough to safely pair with the next (e.g. robots.txt + sitemap.xml).
 
 ## 2. If it's an `[AUTO]` site/technical task
 1. Make the change directly in the working tree on `main`.
@@ -16,6 +18,7 @@ Read `seo/PLAN.md` top to bottom. Take the first unchecked `[AUTO]` or `[PR]` ta
 5. Check off the task in `PLAN.md` with the date and short commit SHA, and add a line to the Change Log section.
 
 ## 3. If it's a `[PR]` content/blog task
+0. Safety check before doing any work: run `gh pr list --state open --json headRefName,title,url` and confirm no open branch/PR already matches this task's topic (its `seo/blog-<slug>` branch naming, or a title that's clearly the same post). This is a second check on top of step 1's scan of PLAN.md's own `PR opened:` markers — if the two ever disagree (e.g. PLAN.md wasn't updated for some reason but a PR exists), trust `gh pr list` and skip this task, noting the mismatch in the report.
 1. Research first: use web search for (a) what competing QA-outsourcing vendors targeting UK/AU/APAC buyers are publishing, and (b) any recent, relevant QA/AI-testing news worth referencing for timeliness. Keep it grounded — don't fabricate stats, sources, or client names.
 2. Write the post as a real page matching the site's existing design system (reuse the head/meta/schema pattern established in Phase 1 once it has landed). Save it under `blog/<slug>.html` (create the `blog/` directory and a `blog/index.html` listing on the first post).
 3. Create a branch named `seo/blog-<slug>`, commit the draft there, push the branch.
