@@ -56,9 +56,15 @@
   </url>
   <url>
     <loc>https://www.qainfinity.com/blog/index.html</loc>
-    <lastmod>2026-10-01</lastmod>
+    <lastmod>2026-10-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.qainfinity.com/blog/qa-outsourcing-time-zones-uk-au-apac-buyers-guide.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.qainfinity.com/blog/in-house-vs-outsourced-qa-cost-risk-comparison.html</loc>
