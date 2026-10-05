@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BCRF8NCENT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-BCRF8NCENT');
+</script>
+
+<title>How AI QA Agents Cut Regression Testing Time by 90% &mdash; QAINfinity</title>
+<meta name="description" content="Real 2026 deployments show agentic QA cutting regression cycles by up to 90%. Here's what's actually changed, the numbers behind it, and what it means for teams evaluating a QA partner.">
+<link rel="canonical" href="https://www.qainfinity.com/blog/ai-qa-agents-cut-regression-testing-time.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="QAINfinity">
+<meta property="og:title" content="How AI QA Agents Cut Regression Testing Time by 90% &mdash; QAINfinity">
+<meta property="og:description" content="Real 2026 deployments show agentic QA cutting regression cycles by up to 90%. Here's what's actually changed, the numbers behind it, and what it means for teams evaluating a QA partner.">
+<meta property="og:url" content="https://www.qainfinity.com/blog/ai-qa-agents-cut-regression-testing-time.html">
+<meta property="og:image" content="https://www.qainfinity.com/assets/og/default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How AI QA Agents Cut Regression Testing Time by 90% &mdash; QAINfinity">
+<meta name="twitter:description" content="Real 2026 deployments show agentic QA cutting regression cycles by up to 90%. Here's what's actually changed, the numbers behind it, and what it means for teams evaluating a QA partner.">
+<meta name="twitter:image" content="https://www.qainfinity.com/assets/og/default.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "QAInfinity",
+  "url": "https://www.qainfinity.com/",
+  "logo": "https://www.qainfinity.com/assets/og/default.png",
+  "email": "info@qainfinity.com",
+  "telephone": "+91-9540752593",
+  "sameAs": [
+    "https://www.linkedin.com/company/qain-finity/"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How AI QA Agents Cut Regression Testing Time by 90%",
+  "description": "Real 2026 deployments show agentic QA cutting regression cycles by up to 90%. Here's what's actually changed, the numbers behind it, and what it means for teams evaluating a QA partner.",
+  "image": "https://www.qainfinity.com/assets/og/default.png",
+  "datePublished": "2026-10-02",
+  "dateModified": "2026-10-02",
+  "author": {
+    "@type": "Organization",
+    "name": "QAInfinity",
+    "url": "https://www.qainfinity.com/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "QAInfinity",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.qainfinity.com/assets/og/default.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.qainfinity.com/blog/ai-qa-agents-cut-regression-testing-time.html"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is agentic QA?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Agentic QA refers to AI systems that don't just execute pre-written test scripts, but autonomously decide what to test, generate test cases, execute them, and analyze results with minimal human direction per cycle — surfacing root-cause hypotheses rather than only a pass/fail result. It's a step beyond conventional test automation, which still requires a human to write and maintain every script."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can AI testing agents replace human QA engineers in regression testing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not entirely. Agentic QA tools generate and execute tests at machine speed, but engineers still set testing direction and review outcomes before a release ships. The real gain is speed and coverage on the repetitive, scriptable parts of regression — not a removal of human judgment from the release decision."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much can AI actually cut regression testing time?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Reported real-world deployments vary by team and suite maturity, but documented 2026 cases include a regression cycle dropping from 10 days to 2 (a 90% cut, reported via G2-verified reviews), a GPS pet-tracker company's release-candidate testing window shrinking from two to three days down to a few hours, and a 60% productivity increase alongside an 85% drop in manual effort at another enterprise deployment. The common thread is that the larger and more manual the existing regression suite, the bigger the percentage cut."
+      }
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&display=swap">
+<style>
+  :root {
+    --bg: #f7f7fb; --surface: #ffffff; --surface-2: #eef0f7;
+    --text: #14151d; --text-dim: #565c6d; --border: rgba(20,21,29,0.09);
+    --accent-1: #4338ca; --accent-2: #7c3aed; --accent-3: #0891b2; --good: #0d9488;
+    --glow-a: rgba(79,70,229,0.16); --glow-b: rgba(139,92,246,0.12);
+    --shadow: 0 1px 2px rgba(20,21,29,0.06);
+    --logo-ink: #20255c; --logo-line: #3f7373; --term-accent: #0E7A4B;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0a0b12; --surface: #12141f; --surface-2: #181b28;
+      --text: #f2f3f8; --text-dim: #9ba1b4; --border: rgba(255,255,255,0.08);
+      --accent-1: #4f46e5; --accent-2: #8b5cf6; --accent-3: #22d3ee; --good: #34d399;
+      --glow-a: rgba(79,70,229,0.35); --glow-b: rgba(139,92,246,0.22);
+      --shadow: 0 1px 2px rgba(0,0,0,0.4);
+      --logo-ink: #eef0fb; --logo-line: #5fd0d0; --term-accent: #35E28A;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0a0b12; --surface: #12141f; --surface-2: #181b28;
+    --text: #f2f3f8; --text-dim: #9ba1b4; --border: rgba(255,255,255,0.08);
+    --accent-1: #4f46e5; --accent-2: #8b5cf6; --accent-3: #22d3ee; --good: #34d399;
+    --glow-a: rgba(79,70,229,0.35); --glow-b: rgba(139,92,246,0.22);
+    --shadow: 0 1px 2px rgba(0,0,0,0.4);
+    --logo-ink: #eef0fb; --logo-line: #5fd0d0; --term-accent: #35E28A;
+  }
+  :root[data-theme="light"] {
+    --bg: #f7f7fb; --surface: #ffffff; --surface-2: #eef0f7;
+    --text: #14151d; --text-dim: #565c6d; --border: rgba(20,21,29,0.09);
+    --accent-1: #4338ca; --accent-2: #7c3aed; --accent-3: #0891b2; --good: #0d9488;
+    --glow-a: rgba(79,70,229,0.16); --glow-b: rgba(139,92,246,0.12);
+    --shadow: 0 1px 2px rgba(20,21,29,0.06);
+    --logo-ink: #20255c; --logo-line: #3f7373; --term-accent: #0E7A4B;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 0 32px; }
+  .mono { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; letter-spacing: 0.09em; text-transform: uppercase; font-size: 12px; }
+  h1, h2, h3 { font-weight: 800; letter-spacing: -0.03em; text-wrap: balance; margin: 0; }
+  p { color: var(--text-dim); line-height: 1.65; margin: 0; }
+  a { color: inherit; text-decoration: none; }
+
+  nav {
+    position: sticky; top: 0; z-index: 20; background: var(--bg);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-row { display: flex; align-items: center; justify-content: space-between; padding: 13px 32px; max-width: 900px; margin: 0 auto; }
+  .brand-icon { display: block; flex-shrink: 0; }
+  .brand-word { font-family: 'JetBrains Mono', ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-weight: 700; font-size: 18px; letter-spacing: -0.01em; color: var(--logo-ink); }
+  .brand-word .accent { color: var(--term-accent); }
+  .btn-grad {
+    padding: 10px 20px; border-radius: 999px; font-size: 14.5px; font-weight: 700;
+    background: linear-gradient(95deg, var(--accent-1), var(--accent-2));
+    color: #fff; display: inline-block; box-shadow: var(--shadow);
+  }
+  .btn-outline {
+    padding: 9px 18px; border-radius: 999px; font-size: 14px; font-weight: 700;
+    border: 1px solid var(--border); color: var(--text-dim); display: inline-flex; align-items: center; gap: 6px;
+  }
+  .brand { display: flex; align-items: center; gap: 9px; }
+  .nav-links { display: flex; gap: 26px; font-size: 14px; color: var(--text-dim); }
+  .nav-links a:hover { color: var(--text); }
+
+  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13.5px; font-weight: 700; color: var(--text-dim); margin-bottom: 22px; }
+  .back-link:hover { color: var(--text); }
+
+  .hero { position: relative; padding: 40px 0 40px; overflow: hidden; }
+  .hero::before {
+    content: ""; position: absolute; inset: -20% -10% -20% -10%;
+    background: radial-gradient(circle at 50% 20%, var(--glow-a), var(--glow-b) 40%, transparent 70%);
+    z-index: -1;
+  }
+  .case-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
+  .case-tags span { font-size: 12.5px; padding: 5px 12px; border-radius: 999px; border: 1px solid var(--border); color: var(--text-dim); }
+  .hero h1 { font-size: 34px; }
+  .hero p.lede { max-width: 640px; margin-top: 16px; font-size: 17px; }
+
+  section { padding: 44px 0; }
+  .result-card {
+    margin: 8px 0 40px; padding: 22px 26px; border-radius: 16px;
+    background: var(--surface-2); border: 1px solid var(--border);
+    display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
+  }
+  .result-card .big { font-size: 34px; font-weight: 800; color: var(--accent-2); font-variant-numeric: tabular-nums; }
+  .result-card .small { font-size: 14px; color: var(--text-dim); }
+
+  .story h2 { font-size: 22px; margin-bottom: 12px; }
+  .story-block { padding: 28px 0; border-top: 1px solid var(--border); }
+  .story-block:first-child { border-top: none; padding-top: 0; }
+  .story-block p { font-size: 15.5px; margin-top: 4px; }
+  .story-block ul { margin: 12px 0 0; padding-left: 20px; }
+  .story-block li { font-size: 15.5px; color: var(--text-dim); line-height: 1.6; margin-top: 8px; }
+  .story-block li strong { color: var(--text); }
+  .quote-block {
+    margin-top: 20px; padding: 20px 24px; border-left: 3px solid var(--accent-2);
+    background: var(--surface-2); border-radius: 0 12px 12px 0; font-style: italic; color: var(--text);
+  }
+  .qa-block { margin-top: 20px; padding: 18px 22px; border-radius: 14px; background: var(--surface-2); border: 1px solid var(--border); }
+  .qa-block + .qa-block { margin-top: 14px; }
+  .qa-block .q { font-weight: 700; color: var(--text); font-size: 15px; }
+  .qa-block .a { margin-top: 6px; font-size: 14.5px; }
+
+  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 16px; }
+  .data-table { width: 100%; min-width: 480px; border-collapse: collapse; font-size: 14.5px; }
+  .data-table th, .data-table td { text-align: left; padding: 11px 14px; border-bottom: 1px solid var(--border); }
+  .data-table th { color: var(--text-dim); font-weight: 700; font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .data-table td { color: var(--text); font-weight: 600; }
+  .data-table caption { text-align: left; font-size: 13px; color: var(--text-dim); margin-top: 10px; caption-side: bottom; }
+
+  .sources { font-size: 13px; margin-top: 10px; }
+  .sources a { color: var(--accent-2); font-weight: 600; }
+  .sources a:hover { text-decoration: underline; }
+
+  .closing {
+    text-align: center; border-radius: 24px; padding: 50px 36px;
+    background: linear-gradient(160deg, var(--surface-2), var(--surface));
+    border: 1px solid var(--border); position: relative; overflow: hidden; margin-top: 20px;
+  }
+  .closing::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 50% 0%, var(--glow-a), transparent 60%); pointer-events: none; }
+  .closing h2 { font-size: 26px; max-width: 480px; margin: 0 auto 12px; position: relative; }
+  .closing p { position: relative; max-width: 420px; margin: 0 auto 24px; }
+
+  footer { padding: 30px 0 50px; border-top: 1px solid var(--border); }
+  .foot-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-size: 13px; color: var(--text-dim); }
+
+  @media (max-width: 780px) {
+    .nav-links { display: none; }
+  }
+  @media (max-width: 700px) {
+    .hero h1 { font-size: 26px; }
+    .wrap { padding: 0 20px; }
+    .data-table { font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-row">
+    <a class="brand" href="../index.html" aria-label="QAINfinity">
+      <svg class="brand-icon" width="36" height="36" viewBox="0 0 120 120" aria-hidden="true">
+        <rect x="4" y="4" width="112" height="112" rx="26" fill="#14171A" stroke="#35E28A" stroke-width="4"/>
+        <text x="14" y="76" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-weight="700" font-size="46" fill="#6B7280">$</text>
+        <polyline points="52,34 78,60 52,86" fill="none" stroke="#35E28A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="90" y="46" width="13" height="28" rx="3" fill="#35E28A"/>
+      </svg>
+      <span class="brand-word">qain<span class="accent">finity</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="../index.html#services">Services</a>
+      <a href="../index.html#insights">Insights</a>
+      <a href="../index.html#loopsy">Loopsy</a>
+      <a href="../index.html#faq">FAQ</a>
+    </div>
+    <a class="btn-grad" href="../index.html#contact">Contact / Book a Consult</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="wrap">
+    <a class="back-link" href="../blog/index.html">&larr; Back to Blog</a>
+    <div class="case-tags"><span>AI &amp; Automation</span><span>Regression Testing</span><span>Agentic QA</span></div>
+    <span class="mono" style="color:var(--accent-2); display:block; margin-bottom:14px;">Blog &middot; 6 min read</span>
+    <h1>How AI QA Agents Cut Regression Testing Time by 90%</h1>
+    <p class="lede">"Agentic QA" is 2026's buzzword, but the regression-cycle numbers behind it are real and documented. Here's what's actually different from the test automation teams already had, the deployments that back up a 90% cut, and what it should change about how you evaluate a QA partner.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="result-card">
+      <span class="big">10 &rarr; 2 days</span><span class="small">one documented regression cycle, automated to a 90% time cut with agentic QA &mdash; see the deployment numbers below</span>
+    </div>
+
+    <div class="story">
+      <div class="story-block">
+        <h2>Agentic QA isn't just "more test automation"</h2>
+        <p>Conventional test automation still needs an engineer to write a script, decide what it checks, and update it every time the UI or API changes &mdash; the tool executes, but a human directs every step. Agentic QA tools work differently: given a goal (a feature, a user story, a release scope), they plan their own test approach, generate the test cases, execute them, analyze the results, and surface a root-cause hypothesis for failures &mdash; with an engineer reviewing outcomes rather than authoring and maintaining every script by hand.</p>
+        <p style="margin-top:12px;">That distinction matters because it's also why regression specifically benefits so disproportionately: regression suites are large, repetitive, and built on functionality that's already shipped and understood &mdash; exactly the kind of scriptable, well-bounded work an agent can take over fastest, while exploratory and judgment-heavy testing still needs a human in the loop.</p>
+      </div>
+
+      <div class="story-block">
+        <h2>The numbers: what real 2026 deployments report</h2>
+        <p>These aren't projections &mdash; they're outcomes reported from live rollouts:</p>
+        <div class="table-scroll">
+        <table class="data-table">
+          <tr><th>Deployment</th><th>Before</th><th>After</th><th>Change</th></tr>
+          <tr><td>Regression suite (G2-verified review)</td><td>10 days</td><td>2 days</td><td>~90% cut, 5&times; faster</td></tr>
+          <tr><td>Release-candidate testing (Fi, GPS pet trackers)</td><td>2&ndash;3 days</td><td>A few hours</td><td>&gt;90% cut</td></tr>
+          <tr><td>Enterprise deployment (Tricentis customer)</td><td>Manual-heavy baseline</td><td>85% less manual effort</td><td>60% productivity increase</td></tr>
+          <tr><td>LTM test automation &amp; design (Tricentis)</td><td>Manual baseline</td><td>67% faster automation</td><td>50% quicker test design</td></tr>
+        </table>
+        <p class="sources">See <a href="https://quashbugs.com/blog/ai-testing-statistics" target="_blank" rel="noopener">Quash's 2026 AI testing statistics roundup</a> (G2-verified regression figures) and <a href="https://pie.inc/blog/agentic-ai-test-automation/" target="_blank" rel="noopener">Pie's agentic AI test automation case study</a> for the Fi deployment; Tricentis figures from <a href="https://www.tricentis.com/blog/qa-trends-ai-agentic-testing" target="_blank" rel="noopener">Tricentis' 2026 QA trends report</a>.</p>
+        </div>
+        <p style="margin-top:14px;">The pattern across all four: the bigger and more manual the regression suite going in, the bigger the percentage cut coming out. A mature, already-automated suite has less manual slack left to remove; a backlog of untouched manual regression has the most to gain.</p>
+      </div>
+
+      <div class="story-block">
+        <h2>Why this is happening now, not three years ago</h2>
+        <p>Gartner projects that 40% of enterprise applications will feature task-specific AI agents by the end of 2026, up from under 5% in 2025 &mdash; one of the fastest capability-adoption curves tracked in recent enterprise software. On the QA side specifically, the World Quality Report found 45% of QA teams already using some form of AI in testing, up from 22% just two years earlier, and industry surveys put the share of QA professionals using AI to generate or optimize test scripts at 72%.</p>
+        <p style="margin-top:12px;">The underlying shift is that large language models got reliably good at two things regression testing depends on: reading a UI or API surface well enough to generate meaningful test cases from a plain-language spec, and explaining *why* a test failed instead of just reporting that it did. Neither was dependable enough to trust at scale until roughly the last 18 months.</p>
+        <div class="quote-block">The capability curve didn't move gradually here &mdash; Gartner's own number is an 8&times; jump in a single year. Teams evaluating a QA partner in 2026 are comparing against a different baseline than they were in 2024, whether they've priced that in yet or not.</div>
+        <p class="sources">Adoption figures from <a href="https://testquality.com/the-shift-to-agentic-qa-beyond-automated-testing-to-autonomous-ai-generation-in-2026/" target="_blank" rel="noopener">TestQuality's agentic QA adoption analysis</a> (Gartner, Deloitte figures cited) and <a href="https://quashbugs.com/blog/ai-testing-statistics" target="_blank" rel="noopener">Quash's AI testing statistics</a> (World Quality Report figures).</p>
+      </div>
+
+      <div class="story-block">
+        <h2>What this should change about evaluating a QA partner</h2>
+        <p>A 90% regression-time claim is easy to say and hard to verify from the outside. The honest questions to ask a prospective QA partner aren't "do you use AI" &mdash; nearly everyone will say yes now &mdash; they're sharper than that: which parts of your regression suite does the agent actually own end-to-end versus merely assist with, what does human review still gate before a release ships, and can you see a before/after cycle-time number on a comparable suite, not just a vendor's general industry stat.</p>
+        <p style="margin-top:12px;">This is also the thinking behind how we built <a href="../index.html#loopsy" style="color:var(--accent-2); font-weight:700;">Loopsy</a>, our in-house AI QA platform: automation effort down up to 80% faster to build and maintain versus a hand-written framework, with engineers still reviewing what ships &mdash; not an unsupervised agent making the release call. The agentic layer should compress the mechanical part of regression, not remove the judgment call at the end of it.</p>
+      </div>
+
+      <div class="story-block">
+        <h2>Quick answers</h2>
+        <div class="qa-block">
+          <div class="q">What is agentic QA?</div>
+          <div class="a">AI systems that don't just execute pre-written test scripts, but autonomously decide what to test, generate test cases, execute them, and analyze results with minimal human direction per cycle &mdash; surfacing root-cause hypotheses rather than only a pass/fail result. It's a step beyond conventional test automation, which still requires a human to write and maintain every script.</div>
+        </div>
+        <div class="qa-block">
+          <div class="q">Can AI testing agents replace human QA engineers in regression testing?</div>
+          <div class="a">Not entirely. Agentic QA tools generate and execute tests at machine speed, but engineers still set testing direction and review outcomes before a release ships. The real gain is speed and coverage on the repetitive, scriptable parts of regression &mdash; not a removal of human judgment from the release decision.</div>
+        </div>
+        <div class="qa-block">
+          <div class="q">How much can AI actually cut regression testing time?</div>
+          <div class="a">Reported real-world deployments vary by team and suite maturity, but documented 2026 cases include a regression cycle dropping from 10 days to 2 (a 90% cut, reported via G2-verified reviews), a GPS pet-tracker company's release-candidate testing window shrinking from two to three days down to a few hours, and a 60% productivity increase alongside an 85% drop in manual effort at another enterprise deployment. The common thread: the larger and more manual the existing suite, the bigger the percentage cut.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="closing">
+      <h2>Curious what agentic QA would cut from your release cycle?</h2>
+      <p>Tell us what your regression suite looks like today. We reply within one business day.</p>
+      <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:2px;">
+        <a class="btn-grad" href="../index.html#contact">Book a Consult</a>
+        <a class="btn-outline" href="../release-readiness/">Not ready to talk? Check your risk first &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-row">
+      <span>&copy; QAINfinity</span>
+      <a href="../contract-to-hire/" style="font-weight:700;">Contract-to-Hire</a>
+      <a href="../release-readiness/" style="font-weight:700;">Release Readiness</a>
+      <span>info@qainfinity.com &nbsp;&middot;&nbsp; +91-9540752593</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('a[href="#contact"], a[href$="index.html#contact"]').forEach(function (link) {
+  link.addEventListener('click', function () {
+    try { sessionStorage.setItem('qain_contact_source', link.textContent.trim()); } catch (e) {}
+  });
+});
+</script>
+</body>
+</html>
