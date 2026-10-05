@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BCRF8NCENT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-BCRF8NCENT');
+</script>
+
+<title>Performance Testing Checklist Before Your Next Product Launch &mdash; QAINfinity</title>
+<meta name="description" content="A practical pre-launch performance testing checklist: which tests to run (load, stress, spike, soak), what to measure, and why skipping it is the most common way launches break in public.">
+<link rel="canonical" href="https://www.qainfinity.com/blog/performance-testing-checklist-before-product-launch.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="QAINfinity">
+<meta property="og:title" content="Performance Testing Checklist Before Your Next Product Launch &mdash; QAINfinity">
+<meta property="og:description" content="A practical pre-launch performance testing checklist: which tests to run (load, stress, spike, soak), what to measure, and why skipping it is the most common way launches break in public.">
+<meta property="og:url" content="https://www.qainfinity.com/blog/performance-testing-checklist-before-product-launch.html">
+<meta property="og:image" content="https://www.qainfinity.com/assets/og/default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Performance Testing Checklist Before Your Next Product Launch &mdash; QAINfinity">
+<meta name="twitter:description" content="A practical pre-launch performance testing checklist: which tests to run (load, stress, spike, soak), what to measure, and why skipping it is the most common way launches break in public.">
+<meta name="twitter:image" content="https://www.qainfinity.com/assets/og/default.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "QAInfinity",
+  "url": "https://www.qainfinity.com/",
+  "logo": "https://www.qainfinity.com/assets/og/default.png",
+  "email": "info@qainfinity.com",
+  "telephone": "+91-9540752593",
+  "sameAs": [
+    "https://www.linkedin.com/company/qain-finity/"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Performance Testing Checklist Before Your Next Product Launch",
+  "description": "A practical pre-launch performance testing checklist: which tests to run (load, stress, spike, soak), what to measure, and why skipping it is the most common way launches break in public.",
+  "image": "https://www.qainfinity.com/assets/og/default.png",
+  "datePublished": "2026-10-04",
+  "dateModified": "2026-10-04",
+  "author": {
+    "@type": "Organization",
+    "name": "QAInfinity",
+    "url": "https://www.qainfinity.com/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "QAInfinity",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.qainfinity.com/assets/og/default.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.qainfinity.com/blog/performance-testing-checklist-before-product-launch.html"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What's the difference between load testing, stress testing, spike testing, and soak testing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Load testing checks how your system behaves under the traffic you actually expect. Stress testing pushes past that to find the breaking point and see how it fails. Spike testing simulates a sudden surge — a launch mention, a push notification, a viral post — rather than gradual growth. Soak testing runs a steady load for hours to surface slow leaks like memory growth or connection-pool exhaustion that only show up over time. A launch checklist needs all four, not just one."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How soon before launch should performance testing happen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Early enough that a bottleneck found in testing is a code fix, not a launch-day scramble — in practice, that means starting performance testing well before launch week, not the night before. Shift-left is the operative idea: run lighter load tests throughout development against each major build, then a full load/stress/spike pass against a production-like environment once the release is feature-complete, with enough runway left to fix what you find."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do we need a dedicated performance testing team, or can QA handle it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most teams don't need a separate performance-testing function — they need their QA process to actually include it, with the right tooling and a defined pass/fail threshold (an SLO), rather than treating performance as a separate concern nobody owns. What matters is that someone defines the traffic model and the SLO before the test runs, not which team's name is on the test."
+      }
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&display=swap">
+<style>
+  :root {
+    --bg: #f7f7fb; --surface: #ffffff; --surface-2: #eef0f7;
+    --text: #14151d; --text-dim: #565c6d; --border: rgba(20,21,29,0.09);
+    --accent-1: #4338ca; --accent-2: #7c3aed; --accent-3: #0891b2; --good: #0d9488;
+    --glow-a: rgba(79,70,229,0.16); --glow-b: rgba(139,92,246,0.12);
+    --shadow: 0 1px 2px rgba(20,21,29,0.06);
+    --logo-ink: #20255c; --logo-line: #3f7373; --term-accent: #0E7A4B;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0a0b12; --surface: #12141f; --surface-2: #181b28;
+      --text: #f2f3f8; --text-dim: #9ba1b4; --border: rgba(255,255,255,0.08);
+      --accent-1: #4f46e5; --accent-2: #8b5cf6; --accent-3: #22d3ee; --good: #34d399;
+      --glow-a: rgba(79,70,229,0.35); --glow-b: rgba(139,92,246,0.22);
+      --shadow: 0 1px 2px rgba(0,0,0,0.4);
+      --logo-ink: #eef0fb; --logo-line: #5fd0d0; --term-accent: #35E28A;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0a0b12; --surface: #12141f; --surface-2: #181b28;
+    --text: #f2f3f8; --text-dim: #9ba1b4; --border: rgba(255,255,255,0.08);
+    --accent-1: #4f46e5; --accent-2: #8b5cf6; --accent-3: #22d3ee; --good: #34d399;
+    --glow-a: rgba(79,70,229,0.35); --glow-b: rgba(139,92,246,0.22);
+    --shadow: 0 1px 2px rgba(0,0,0,0.4);
+    --logo-ink: #eef0fb; --logo-line: #5fd0d0; --term-accent: #35E28A;
+  }
+  :root[data-theme="light"] {
+    --bg: #f7f7fb; --surface: #ffffff; --surface-2: #eef0f7;
+    --text: #14151d; --text-dim: #565c6d; --border: rgba(20,21,29,0.09);
+    --accent-1: #4338ca; --accent-2: #7c3aed; --accent-3: #0891b2; --good: #0d9488;
+    --glow-a: rgba(79,70,229,0.16); --glow-b: rgba(139,92,246,0.12);
+    --shadow: 0 1px 2px rgba(20,21,29,0.06);
+    --logo-ink: #20255c; --logo-line: #3f7373; --term-accent: #0E7A4B;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 0 32px; }
+  .mono { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; letter-spacing: 0.09em; text-transform: uppercase; font-size: 12px; }
+  h1, h2, h3 { font-weight: 800; letter-spacing: -0.03em; text-wrap: balance; margin: 0; }
+  p { color: var(--text-dim); line-height: 1.65; margin: 0; }
+  a { color: inherit; text-decoration: none; }
+
+  nav {
+    position: sticky; top: 0; z-index: 20; background: var(--bg);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-row { display: flex; align-items: center; justify-content: space-between; padding: 13px 32px; max-width: 900px; margin: 0 auto; }
+  .brand-icon { display: block; flex-shrink: 0; }
+  .brand-word { font-family: 'JetBrains Mono', ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-weight: 700; font-size: 18px; letter-spacing: -0.01em; color: var(--logo-ink); }
+  .brand-word .accent { color: var(--term-accent); }
+  .btn-grad {
+    padding: 10px 20px; border-radius: 999px; font-size: 14.5px; font-weight: 700;
+    background: linear-gradient(95deg, var(--accent-1), var(--accent-2));
+    color: #fff; display: inline-block; box-shadow: var(--shadow);
+  }
+  .btn-outline {
+    padding: 9px 18px; border-radius: 999px; font-size: 14px; font-weight: 700;
+    border: 1px solid var(--border); color: var(--text-dim); display: inline-flex; align-items: center; gap: 6px;
+  }
+  .brand { display: flex; align-items: center; gap: 9px; }
+  .nav-links { display: flex; gap: 26px; font-size: 14px; color: var(--text-dim); }
+  .nav-links a:hover { color: var(--text); }
+
+  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13.5px; font-weight: 700; color: var(--text-dim); margin-bottom: 22px; }
+  .back-link:hover { color: var(--text); }
+
+  .hero { position: relative; padding: 40px 0 40px; overflow: hidden; }
+  .hero::before {
+    content: ""; position: absolute; inset: -20% -10% -20% -10%;
+    background: radial-gradient(circle at 50% 20%, var(--glow-a), var(--glow-b) 40%, transparent 70%);
+    z-index: -1;
+  }
+  .case-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
+  .case-tags span { font-size: 12.5px; padding: 5px 12px; border-radius: 999px; border: 1px solid var(--border); color: var(--text-dim); }
+  .hero h1 { font-size: 36px; }
+  .hero p.lede { max-width: 640px; margin-top: 16px; font-size: 17px; }
+
+  section { padding: 44px 0; }
+  .result-card {
+    margin: 8px 0 40px; padding: 22px 26px; border-radius: 16px;
+    background: var(--surface-2); border: 1px solid var(--border);
+    display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
+  }
+  .result-card .big { font-size: 34px; font-weight: 800; color: var(--accent-2); font-variant-numeric: tabular-nums; }
+  .result-card .small { font-size: 14px; color: var(--text-dim); }
+
+  .story h2 { font-size: 22px; margin-bottom: 12px; }
+  .story-block { padding: 28px 0; border-top: 1px solid var(--border); }
+  .story-block:first-child { border-top: none; padding-top: 0; }
+  .story-block p { font-size: 15.5px; margin-top: 4px; }
+  .story-block ul { margin: 12px 0 0; padding-left: 20px; }
+  .story-block li { font-size: 15.5px; color: var(--text-dim); line-height: 1.6; margin-top: 8px; }
+  .story-block li strong { color: var(--text); }
+  .quote-block {
+    margin-top: 20px; padding: 20px 24px; border-left: 3px solid var(--accent-2);
+    background: var(--surface-2); border-radius: 0 12px 12px 0; font-style: italic; color: var(--text);
+  }
+  .qa-block { margin-top: 20px; padding: 18px 22px; border-radius: 14px; background: var(--surface-2); border: 1px solid var(--border); }
+  .qa-block + .qa-block { margin-top: 14px; }
+  .qa-block .q { font-weight: 700; color: var(--text); font-size: 15px; }
+  .qa-block .a { margin-top: 6px; font-size: 14.5px; }
+
+  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 16px; }
+  .data-table { width: 100%; min-width: 480px; border-collapse: collapse; font-size: 14.5px; }
+  .data-table th, .data-table td { text-align: left; padding: 11px 14px; border-bottom: 1px solid var(--border); }
+  .data-table th { color: var(--text-dim); font-weight: 700; font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .data-table td { color: var(--text); font-weight: 600; }
+  .data-table caption { text-align: left; font-size: 13px; color: var(--text-dim); margin-top: 10px; caption-side: bottom; }
+
+  .sources { font-size: 13px; margin-top: 10px; }
+  .sources a { color: var(--accent-2); font-weight: 600; }
+  .sources a:hover { text-decoration: underline; }
+
+  .closing {
+    text-align: center; border-radius: 24px; padding: 50px 36px;
+    background: linear-gradient(160deg, var(--surface-2), var(--surface));
+    border: 1px solid var(--border); position: relative; overflow: hidden; margin-top: 20px;
+  }
+  .closing::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 50% 0%, var(--glow-a), transparent 60%); pointer-events: none; }
+  .closing h2 { font-size: 26px; max-width: 480px; margin: 0 auto 12px; position: relative; }
+  .closing p { position: relative; max-width: 420px; margin: 0 auto 24px; }
+
+  footer { padding: 30px 0 50px; border-top: 1px solid var(--border); }
+  .foot-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-size: 13px; color: var(--text-dim); }
+
+  @media (max-width: 780px) {
+    .nav-links { display: none; }
+  }
+  @media (max-width: 700px) {
+    .hero h1 { font-size: 27px; }
+    .wrap { padding: 0 20px; }
+    .data-table { font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-row">
+    <a class="brand" href="../index.html" aria-label="QAINfinity">
+      <svg class="brand-icon" width="36" height="36" viewBox="0 0 120 120" aria-hidden="true">
+        <rect x="4" y="4" width="112" height="112" rx="26" fill="#14171A" stroke="#35E28A" stroke-width="4"/>
+        <text x="14" y="76" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-weight="700" font-size="46" fill="#6B7280">$</text>
+        <polyline points="52,34 78,60 52,86" fill="none" stroke="#35E28A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="90" y="46" width="13" height="28" rx="3" fill="#35E28A"/>
+      </svg>
+      <span class="brand-word">qain<span class="accent">finity</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="../index.html#services">Services</a>
+      <a href="../index.html#insights">Insights</a>
+      <a href="../index.html#loopsy">Loopsy</a>
+      <a href="../index.html#faq">FAQ</a>
+    </div>
+    <a class="btn-grad" href="../index.html#contact">Contact / Book a Consult</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="wrap">
+    <a class="back-link" href="../blog/index.html">&larr; Back to Blog</a>
+    <div class="case-tags"><span>Performance Testing</span><span>Pre-Launch</span><span>Checklist</span></div>
+    <span class="mono" style="color:var(--accent-2); display:block; margin-bottom:14px;">Blog &middot; 6 min read</span>
+    <h1>Performance Testing Checklist Before Your Next Product Launch</h1>
+    <p class="lede">Most launch-day outages aren't caused by a bug nobody caught &mdash; they're caused by traffic nobody tested for. Here's the checklist to run before you ship, so launch day surfaces a marketing win instead of an incident channel.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="result-card">
+      <span class="big">$14K&ndash;$23.75K</span><span class="small">estimated cost per minute of unplanned downtime at a mid-sized-to-enterprise company &mdash; most of which a pre-launch load test is built to catch before it happens live</span>
+    </div>
+
+    <div class="story">
+      <div class="story-block">
+        <h2>Why performance testing is the thing launches skip</h2>
+        <p>Functional QA gets the attention in the run-up to a launch &mdash; does the signup flow work, does checkout complete, does the new feature behave. Performance testing gets squeezed, because the app "seems fine" in every manual check. The problem is that manual checks never generate the traffic pattern a real launch does: a spike from a Product Hunt feature, a push notification to your full list, a press mention, or simply everyone on your waitlist signing up in the same ten-minute window. A system that's fast for one tester is a different system under concurrent load, and the only way to know how it behaves is to actually test it.</p>
+      </div>
+
+      <div class="story-block">
+        <h2>The four tests a launch checklist actually needs</h2>
+        <ul>
+          <li><strong>Load testing</strong> &mdash; simulate the traffic you expect at launch (and a buffer above it) and confirm response times and error rates hold at that level, not just at everyday volume.</li>
+          <li><strong>Stress testing</strong> &mdash; push past expected load deliberately to find where the system actually breaks, and confirm it degrades gracefully (queues, rate limits, friendly errors) rather than falling over entirely.</li>
+          <li><strong>Spike testing</strong> &mdash; simulate a sudden surge rather than gradual growth &mdash; the shape of traffic a launch actually produces, which a steady ramp-up load test won't catch on its own.</li>
+          <li><strong>Soak testing</strong> &mdash; run a realistic load for several hours to catch the slow failures that only show up over time, like memory leaks, connection-pool exhaustion, or a disk filling with logs &mdash; the kind of issue that takes a system down hours into a launch, not minutes into it.</li>
+        </ul>
+        <p>Each one answers a different question, and a launch checklist that only runs one of them is only answering one of the four ways a launch can actually fail.</p>
+      </div>
+
+      <div class="story-block">
+        <h2>The checklist, in order</h2>
+        <ul>
+          <li><strong>Set the pass/fail bar before you test, not after.</strong> Define a concrete SLO &mdash; for example, "p95 response time under 800ms at 2,000 concurrent users, error rate under 0.1%" &mdash; so a test result is a clear pass or fail, not a judgment call made under launch-week pressure.</li>
+          <li><strong>Test against a production-like environment.</strong> Same infrastructure sizing, same scaling policy, same data volume. A load test against a smaller staging environment tells you how staging behaves, not how production will.</li>
+          <li><strong>Model real traffic, not a guess.</strong> Base the test's traffic pattern and request mix on actual analytics or the closest comparable launch, not an assumed "everyone browses evenly" shape.</li>
+          <li><strong>Include your third-party dependencies in the test.</strong> Payment gateways, auth providers, email/SMS senders, and any external API your critical path calls can throttle or slow down under load even when your own servers are fine &mdash; and that's exactly where a checkout or signup flow quietly breaks on launch day.</li>
+          <li><strong>Watch the golden signals while the test runs, not just the final report.</strong> Latency, traffic, error rate, and saturation together tell you where a bottleneck actually is &mdash; database, cache, a single slow endpoint &mdash; rather than just that something, somewhere, got slow.</li>
+          <li><strong>Wire a regression gate into CI/CD.</strong> A performance budget that's only checked once before a big launch quietly erodes with every release after it. Running a lighter load test on every build keeps the checklist from being a one-time pre-launch fire drill.</li>
+          <li><strong>Have a launch-day response plan ready, not just a clean test result.</strong> Know your scale-up levers (autoscaling thresholds, a manual capacity bump, a feature flag to shed non-critical load) before you need them, because even a well-tested system can meet a traffic shape nobody modeled.</li>
+        </ul>
+      </div>
+
+      <div class="story-block">
+        <h2>What this actually protects</h2>
+        <p>The business case isn't abstract. A long-running Google/SOASTA study of over 10,000 mobile sites found that 53% of mobile visits are abandoned once a page takes longer than three seconds to load &mdash; still the baseline benchmark the industry measures against. On the revenue side, Rakuten 24's own Core Web Vitals work found that a good Largest Contentful Paint score alone drove a 61.13% increase in conversion rate and a 53.37% lift in revenue per visitor, validated with a real A/B test rather than a projection. A launch that holds up under load isn't just avoiding an outage &mdash; it's protecting the conversion rate the rest of the launch plan is built around.</p>
+        <div class="quote-block">A load test that fails three weeks before launch is a bug ticket. The same failure discovered on launch day is an incident channel, a status page, and a much harder conversation with whoever greenlit the launch date.</div>
+      </div>
+
+      <div class="story-block">
+        <h2>Where this fits alongside the rest of your QA</h2>
+        <p>Performance testing isn't a separate discipline bolted onto a launch checklist &mdash; it's one more layer of the same release-readiness question as functional coverage and regression testing, which is why we build it into the same engagements rather than treating it as an add-on. If you want a quick gut-check on where your own release risk actually sits &mdash; including whether you've load-tested your critical paths recently &mdash; our <a href="../release-readiness/" style="color:var(--accent-2); font-weight:700;">free release-readiness self-assessment</a> covers this alongside coverage, automation health, and security in about two minutes.</p>
+      </div>
+
+      <div class="story-block">
+        <h2>Quick answers</h2>
+        <div class="qa-block">
+          <div class="q">What's the difference between load testing, stress testing, spike testing, and soak testing?</div>
+          <div class="a">Load testing checks behavior under expected traffic. Stress testing pushes past that to find the breaking point. Spike testing simulates a sudden surge rather than gradual growth. Soak testing runs a steady load for hours to surface slow leaks like memory growth or connection-pool exhaustion. A launch checklist needs all four, not just one.</div>
+        </div>
+        <div class="qa-block">
+          <div class="q">How soon before launch should performance testing happen?</div>
+          <div class="a">Early enough that a bottleneck found in testing is a code fix, not a launch-day scramble. Run lighter load tests throughout development against each major build, then a full load/stress/spike pass against a production-like environment once the release is feature-complete, with enough runway left to fix what you find.</div>
+        </div>
+        <div class="qa-block">
+          <div class="q">Do we need a dedicated performance testing team, or can QA handle it?</div>
+          <div class="a">Most teams don't need a separate performance-testing function &mdash; they need their QA process to actually include it, with the right tooling and a defined SLO, rather than treating performance as a separate concern nobody owns.</div>
+        </div>
+        <p class="sources">Sources: <a href="https://web.dev/case-studies/rakuten" target="_blank" rel="noopener">web.dev &mdash; Rakuten 24 Core Web Vitals case study</a> &middot; <a href="https://www.marketingdive.com/news/google-53-of-mobile-users-abandon-sites-that-take-over-3-seconds-to-load/426070/" target="_blank" rel="noopener">Google/SOASTA mobile load-time study, via Marketing Dive</a> &middot; <a href="https://gatling.io/blog/the-cost-of-downtime" target="_blank" rel="noopener">Gatling &mdash; The Cost of Downtime</a> &middot; <a href="https://grafana.com/load-testing/types-of-load-testing/" target="_blank" rel="noopener">Grafana &mdash; Types of Load Testing</a> &middot; <a href="https://www.browserstack.com/guide/types-of-performance-test" target="_blank" rel="noopener">BrowserStack &mdash; Types of Performance Test</a></p>
+      </div>
+    </div>
+
+    <div class="closing">
+      <h2>Launching soon and not sure what breaks under load?</h2>
+      <p>Tell us what you're shipping and when. We reply within one business day.</p>
+      <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:2px;">
+        <a class="btn-grad" href="../index.html#contact">Book a Consult</a>
+        <a class="btn-outline" href="../release-readiness/">Not ready to talk? Check your risk first &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-row">
+      <span>&copy; QAINfinity</span>
+      <a href="../contract-to-hire/" style="font-weight:700;">Contract-to-Hire</a>
+      <a href="../release-readiness/" style="font-weight:700;">Release Readiness</a>
+      <span>info@qainfinity.com &nbsp;&middot;&nbsp; +91-9540752593</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('a[href="#contact"], a[href$="index.html#contact"]').forEach(function (link) {
+  link.addEventListener('click', function () {
+    try { sessionStorage.setItem('qain_contact_source', link.textContent.trim()); } catch (e) {}
+  });
+});
+</script>
+</body>
+</html>
