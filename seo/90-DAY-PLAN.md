@@ -22,6 +22,8 @@
 
 Expected load on the owner: **2 PRs a week** (one post, one page) plus 3 LinkedIn drafts. ~20 minutes.
 
+Full list of every post, page and task: [CONTENT-CALENDAR.md](CONTENT-CALENDAR.md).
+
 ## Month by month
 **Month 1 (Nov) — close the gaps buyers hit first.** Pricing and vendor-selection posts, FAQ page, Dedicated QA Engineers and Performance & Security pages, the cost calculator, the industries hub with Gaming. AUTO work: related-reading links, breadcrumbs, key-takeaway blocks, FAQ schema on services.
 **Month 2 (Dec) — industries and depth.** E-commerce, Fintech, AI/LLM, On-demand pages; LLM-testing, regression, metrics, mobile and API posts; refresh the oldest posts; accessibility, Core Web Vitals and cannibalization audits.
