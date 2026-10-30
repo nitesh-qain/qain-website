@@ -2,10 +2,24 @@
 
 This is the exact procedure to follow on each daily run. Read [PLAN.md](PLAN.md) first.
 
+## 0. Rhythm and never-idle rules (added 2026-10-31 — read before step 1)
+Context: [90-DAY-PLAN.md](90-DAY-PLAN.md). The backlog once sat empty for ~3 weeks; these rules make that impossible. Use the IST date for "today".
+
+**Weekday rules**
+- **Saturday:** write `seo/outreach/YYYY-MM-DD.md` — 3 LinkedIn post drafts for content shipped or merged that week, 1 backlink/guest-post pitch draft aimed at a specific QA or engineering-leadership publication, and 1 genuinely helpful answer (Quora/Reddit/Stack Exchange style, disclosing affiliation). Drafts only, never posted. No Contract-to-Hire for overseas audiences. Commit as documentation.
+- **Sunday:** (a) append a row to `seo/data/visibility-log.md` by web-searching the queries listed there; (b) backlog health: count unchecked eligible (`[AUTO]`/`[PR]`, not `PR opened`) tasks in PLAN.md. If fewer than 15, replenish from the topic bank in 90-DAY-PLAN.md and the Content Backlog (grounded in real research) before anything else; if Phase 6 has fewer than 10 unchecked tasks left, draft Phase 7 instead; (c) read `seo/data/gsc-*.csv` if present and note anything notable in the report.
+- **Monday–Friday:** the normal queue, step 1 onward.
+
+**Open-PR cap.** Run `gh pr list --state open --author @me --json number,title,createdAt`. If 4 or more agent PRs are already open, do NOT open another. Write the next `[PR]` item as a draft in `seo/blog-drafts/<slug>.html` (committed, not deployed — `seo/` is excluded from deploys), mark the task line `draft ready: seo/blog-drafts/<slug>.html`, and spend tonight's slot on the next eligible `[AUTO]` task. When the pile drops below 4, open PRs from drafts first.
+
+**Never end a night idle.** "No actionable backlog" is not an acceptable result. If steps 1–5 find nothing eligible, do one evergreen task (rotate by the day of month, oldest-first): (1) refresh the oldest blog post with newer sources and bump `dateModified`; (2) broken-link and 404 sweep; (3) add 3 real Q&As + FAQ JSON-LD to the page with the fewest; (4) internal-link audit of the newest content; (5) SERP-gap research for one target keyword, appended to the Content Backlog; (6) title/meta length audit with proposals. Record which one you did in the report.
+
+**Daily chat message must start with a "Needs you:" line** — number of open PRs, age of the oldest in days, and any `[NEEDS-YOU]` items from `seo/OWNER-CHECKLIST.md` — before the 2–3 sentence summary. If 5 or more PRs are open or the oldest is over 10 days old, say so plainly.
+
 ## 1. Pick today's task(s)
 Read `seo/PLAN.md` top to bottom. Take the first unchecked `[AUTO]` or `[PR]` task, with one exception: **if its line already contains `PR opened: <link> — awaiting review`, it's still unchecked but already in progress — skip it too**, the same way you'd skip `[NEEDS-YOU]`, and move to the next unchecked task below it. Note any skipped-because-already-open-PR item in today's report (one line: task + PR link + how long it's been open) so the owner sees it's still waiting on them, same as a `[NEEDS-YOU]` reminder. This prevents opening a second, near-duplicate PR for a topic that's already sitting in review. If literally every remaining unchecked task is either `[NEEDS-YOU]` or already has an open PR, there's nothing to execute this run — skip straight to writing the report (step 6).
 
-Skip `[NEEDS-YOU]` tasks but note any you pass over in today's report as a reminder. Do one task per run unless it's small enough to safely pair with the next (e.g. robots.txt + sitemap.xml).
+Skip `[NEEDS-YOU]` tasks but note any you pass over in today's report as a reminder. Do one task per run unless it's small enough to safely pair with the next (e.g. robots.txt + sitemap.xml). Respect the section 0 rules (weekday, PR cap, never idle).
 
 ## 2. If it's an `[AUTO]` site/technical task
 1. Make the change directly in the working tree on `main`.
