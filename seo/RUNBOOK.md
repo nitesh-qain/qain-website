@@ -68,4 +68,5 @@ This is the intended end-state from the nightly-agent rebuild, per the owner's s
 - Never create third-party accounts (Clutch/GoodFirms/G2/LinkedIn) — those are `[NEEDS-YOU]`.
 - Never fabricate client names, testimonials, statistics, or press mentions in blog content.
 - One task focus per run — don't silently expand scope beyond what PLAN.md lists.
+- Contract-to-Hire is India-only. Never mention, link or imply CTH / payroll conversion / "performance-based trial" on content for non-India buyers (US, UK, EU, AU/NZ, APAC) — lead with the 24-hour overnight-QA cycle instead. See the 2026-10-30 note in PLAN.md.
 - Never set a `seo/COMPETITOR-IDEAS.md` row's `Status` yourself — only turn `Approved` rows into tasks. `Proposed` and `Skip` rows are the Competitor Research agent's and the owner's territory, not this run's.
