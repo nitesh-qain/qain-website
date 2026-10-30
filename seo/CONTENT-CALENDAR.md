@@ -5,7 +5,7 @@ A readable view of Phase 6 in [PLAN.md](PLAN.md), which is the source of truth. 
 ## The weekly PR
 | Week | What ships (one PR) | Depends on |
 |---|---|---|
-| W1 (11-02) | **Trust-fix bundle:** Europe/US/services time-zone copy around the two scheduling options; Contract-to-Hire off the homepage; 98% / 80% figures sourced or replaced; brand spelling in titles | D3 (else the figures are replaced) |
+| W1 (11-02) | **Trust-fix bundle:** Europe/US/services time-zone copy around the two scheduling options; Contract-to-Hire off the homepage; placeholder 98% / 80% figures removed; brand spelling in titles | — |
 | W2 (11-09) | `/services/dedicated-qa-engineers/` (onboarding section included) | — |
 | W3 (11-16) | `/pricing/`: how a remote QA team works and what it costs | D4b |
 | W4 (11-23) | Cost estimator on `/pricing/` + post "How Much Does QA Outsourcing Cost in 2026?" | D8 |

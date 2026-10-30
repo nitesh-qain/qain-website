@@ -3,7 +3,7 @@
 This is the exact procedure to follow on each daily run. Read [PLAN.md](PLAN.md) first.
 
 ## 0. Rhythm and never-wasted rules (v2, 2026-10-31 — read before step 1)
-Context: [90-DAY-PLAN.md](90-DAY-PLAN.md). The first version of these rules ("never end a night idle") stopped the 3-week stall but turned the run into a content assembly line. v2 keeps the stall alerts and drops the volume pressure. **The goal of every run is the next most valuable action toward winning an overseas QA customer**, not a full backlog. Use the IST date for "today".
+Context: [90-DAY-PLAN.md](90-DAY-PLAN.md). The first version of these rules ("never end a night idle") stopped the 3-week stall but turned the run into a content assembly line. v2 keeps the stall alerts and drops the volume pressure. **The goal of every run is the next most valuable action toward winning an overseas QA customer**, not a full backlog. North star (owner): every change must make a visitor trust QAInfinity more. Use the IST date for "today".
 
 **Weekday rules**
 - **Saturday:** write `seo/outreach/YYYY-MM-DD.md` with (a) **one** LinkedIn post draft for the founder's personal profile about something shipped or learned that week, and (b) the week's **one off-page asset** from the cadence in 90-DAY-PLAN.md (rotate: a directory-profile copy pack, an expert-quote answer, a monthly founder article draft for a QA community or publication, a monthly client/partner link or testimonial request). Drafts only, never posted or sent. No Contract-to-Hire for overseas audiences. Don't draft Clutch/GoodFirms review requests before 2026-11-23 (they're parked until 2026-11-30; have them ready for that date). Commit as documentation.

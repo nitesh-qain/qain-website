@@ -4,6 +4,8 @@
 
 **Why v2 (2026-10-31):** the first version solved the 3-week idle stall by making the agent produce constantly (26 content PRs and 39 auto tasks in 13 weeks). Three independent reviews (Claude, GPT, Gemini) agreed that this was the wrong trade for a young, low-authority domain: overlapping pricing pages, doorway-style region pages, approach-led industry pages, compliance-adjacent wording, and almost no work on trust or authority. Repo checks also found problems on live pages that matter more than any new page. Full reasoning: [PLAN-REVIEW-2026-10-31.md](PLAN-REVIEW-2026-10-31.md). The queue itself is Phase 6 in [PLAN.md](PLAN.md); this file is the strategy.
 
+**North star (owner, 2026-10-31): every change must make a visitor trust QAInfinity more.** When a task would add volume without adding trust, or puts a claim we can't back in front of a buyer, don't do it.
+
 ## Principles
 1. **Fix trust before adding pages.** A false or unbacked claim on a live page outweighs any new post.
 2. **Publish only what's backed by proof or a real offer.** No approach-led industry pages, no compliance or certification-adjacent wording.
@@ -35,7 +37,7 @@ Auto tasks (no owner time) run on the other nights: related reading (never linki
 |---|---|---|
 | D1 | Hours the team works for US/UK/AU clients | **Answered 2026-10-31:** any time zone; the two scheduling options above. |
 | D2 | Contract-to-Hire on the homepage | **Answered 2026-10-31:** remove from the homepage, keep in `/faq/`; footer link, CTH page and case studies stay. |
-| D3 | Basis for "98% client satisfaction" and "up to 80% faster" (Loopsy) | Open. Without a documented basis, the W1 PR replaces them. |
+| D3 | Basis for "98% client satisfaction" and "up to 80% faster" (Loopsy) | **Answered 2026-10-31:** placeholders, no basis. Both come off in W1. |
 | D4 | Engagement models overseas | **Answered 2026-10-31:** remote QA team, hourly $18–45, either schedule; no fixed-price. |
 | D4b | Does working the client's hours (e.g. a US night shift) change the rate? | Open. Needed for `/pricing/` (W3). |
 | D5 | Do we deliver performance testing (tools, a past engagement)? Any security work? | Open. Decides W8. |

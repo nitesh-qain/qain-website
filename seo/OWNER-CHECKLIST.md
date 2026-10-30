@@ -16,7 +16,7 @@ Keep this short. Anything here is also summarised in the agent's daily message.
 - [ ] **Google Search Console:** confirm `sitemap.xml` shows "Success", then use *URL Inspection → Request indexing* on the homepage, `/services/`, `/regions/us/`, `/regions/europe/` and each new page as it merges.
 - [ ] **Search Console API:** a read-only service account so the agent reads queries itself.
 - [ ] Bing Webmaster Tools: submit `sitemap.xml` (the verification file is already in the repo).
-- [ ] **Answer the open decisions** D3, D4b, D5–D10 in [90-DAY-PLAN.md](90-DAY-PLAN.md). D3 is needed by W1 (Nov 2), D4b by W3, D8 by W4, D5 by W8.
+- [ ] **Answer the open decisions** D4b, D5–D10 in [90-DAY-PLAN.md](90-DAY-PLAN.md). D4b is needed by W3, D8 by W4, D5 by W8.
 - [ ] Decide a backup merger (a trusted person with GitHub write access) for when you are away.
 - [ ] Add the `ANTHROPIC_API_KEY` repo secret so the second-check reviewer runs.
 - [ ] 2026-11-30: decide on Clutch/GoodFirms review requests and video testimonials (parked until then).
