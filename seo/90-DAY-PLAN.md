@@ -12,15 +12,15 @@
 ## Weekly rhythm (nightly run, 1 AM IST)
 | Night | Work | Lane |
 |---|---|---|
-| Mon | One new blog post | PR |
+| Mon | One new page (service, industry, region, tool) | PR |
 | Tue | On-page / internal linking / content refresh | AUTO |
-| Wed | One new page (service, industry, region, tool) | PR |
+| Wed | One blog post that supports that week's page and links to it | PR |
 | Thu | Technical or content-quality task | AUTO |
 | Fri | Technical or content-quality task | AUTO |
 | Sat | Outreach drafts (LinkedIn posts, a backlink pitch, an answer to post) saved in `seo/outreach/` — drafts only | AUTO |
 | Sun | Visibility log + backlog health check + replenish | AUTO |
 
-Expected load on the owner: **2 PRs a week** (one post, one page) plus 3 LinkedIn drafts. ~20 minutes.
+Expected load on the owner: **2 PRs a week** (one page, one supporting post) plus 3 LinkedIn drafts. ~20 minutes.
 
 Full list of every post, page and task: [CONTENT-CALENDAR.md](CONTENT-CALENDAR.md).
 
@@ -49,6 +49,7 @@ Full list of every post, page and task: [CONTENT-CALENDAR.md](CONTENT-CALENDAR.m
 
 ## Topic bank (for replenishing)
 Blog: QA outsourcing vs. in-house for startups at each stage; test-data management; flaky-test fixes; visual regression testing; accessibility testing basics (informational only, we don't sell compliance testing); performance testing tools compared; AI test generation limits; how to read a QA vendor's proposal; QA for SaaS onboarding flows; release checklist templates.
+Dropped from the 13-week queue but still good: "Test Automation ROI: When to Automate, and When Not To" (pairs with /services/test-automation/); "Shift-Left Testing: Where an External QA Team Fits in CI/CD".
 Pages: comparison pages (managed testing vs. staff augmentation); a glossary hub; a resources/downloads page (checklists); more industry pages only where we can write approach-led content honestly.
 Off-page (drafts for the owner to send): guest-post pitches to QA and engineering-leadership blogs; answers on Quora/Stack Exchange/Reddit where genuinely helpful (disclose affiliation); expert-quote services; Loopsy launch posts.
 

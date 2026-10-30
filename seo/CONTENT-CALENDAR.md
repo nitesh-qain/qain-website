@@ -1,24 +1,24 @@
 # Content calendar (Nov 2, 2026 – Jan 29, 2027)
 
-Generated from the Phase 6 queue in [PLAN.md](PLAN.md); PLAN.md is the source of truth. Order matters more than dates. Every blog and page is a PR you merge; the automatic (AUTO) tasks go live on their own.
+Generated from the Phase 6 queue in [PLAN.md](PLAN.md); PLAN.md is the source of truth. Each week: Monday = a page, Wednesday = a blog post that supports that page. Every page and post is a PR you merge; AUTO tasks go live on their own.
 
-## New blog posts and pages
+## Pages and their supporting posts
 
-| Week | Mon — blog post (PR) | Wed — page (PR) |
+| Week | Mon — page (PR) | Wed — supporting blog post (PR) |
 |---|---|---|
-| W1 (11-02) | How Much Does QA Outsourcing Cost in 2026? Pricing Models and What Drives the Rate | `/faq/` |
-| W2 (11-09) | How to Choose a QA Outsourcing Vendor: 12 Questions to Ask Before You Sign | `/services/dedicated-qa-engineers/` (competitor idea #5, part 1) |
-| W3 (11-16) | Test Automation ROI: When to Automate, and When Not To | `/services/performance-security-testing/` (competitor idea #5, part 2) |
-| W4 (11-23) | How to Test LLM Apps and AI Agents: Evals, LLM-as-a-Judge and Regression Sets | `/tools/qa-cost-calculator/` |
-| W5 (11-30) | Onboarding an Offshore QA Team: The First 30 Days | `/industries/` hub + `/industries/gaming/` (competitor idea #4) |
-| W6 (12-07) | A Regression Testing Strategy for Teams That Ship Weekly | `/industries/ecommerce/` (competitor ideas #4 + #8) |
-| W7 (12-14) | QA Metrics CTOs Should Actually Track (and the Vanity Ones to Ignore) | `/industries/fintech/` (approach-led, competitor idea #4) |
-| W8 (12-21) | Mobile App Testing Checklist: Device Matrix, OS Fragmentation and Release Gates | `/industries/ai-llm-testing/` (approach-led, competitor idea #4) |
-| W9 (12-28) | API Testing Beyond Status Codes: What to Cover Before Release | `/industries/on-demand-apps/` (approach-led, competitor idea #4) |
-| W10 (01-04) | What to Put in a QA Outsourcing Contract: NDA, IP, SLAs and Exit Terms | `/regions/australia-nz/` |
-| W11 (01-11) | E-commerce Peak-Season Testing Checklist: Checkout, Payments and Load | `/regions/canada/` |
-| W12 (01-18) | Playwright vs. Cypress vs. Selenium in 2026: How to Choose | `/regions/singapore-apac/` |
-| W13 (01-25) | Shift-Left Testing: Where an External QA Team Fits in Your CI/CD Pipeline | `/engagement-models/` |
+| W1 (11-02) | `/faq/` | How to Choose a QA Outsourcing Vendor: 12 Questions to Ask Before You Sign |
+| W2 (11-09) | `/services/dedicated-qa-engineers/` (competitor idea #5, part 1) | Onboarding a Dedicated QA Engineer: The First 30 Days |
+| W3 (11-16) | `/services/performance-security-testing/` (competitor idea #5, part 2) | API Testing Beyond Status Codes: Functional, Performance and Security Cases |
+| W4 (11-23) | `/tools/qa-cost-calculator/` | How Much Does QA Outsourcing Cost in 2026? Pricing Models and What Drives the Rate |
+| W5 (11-30) | `/industries/` hub + `/industries/gaming/` (competitor idea #4) | QA for Online and Real-Money Gaming Platforms: What to Test Before Launch |
+| W6 (12-07) | `/industries/ecommerce/` (competitor ideas #4 + #8) | E-commerce Peak-Season Testing Checklist: Checkout, Payments and Load |
+| W7 (12-14) | `/industries/fintech/` (approach-led, competitor idea #4) | Fintech QA: Testing Payments, Ledgers and Reconciliation Flows |
+| W8 (12-21) | `/industries/ai-llm-testing/` (approach-led, competitor idea #4) | How to Test LLM Apps and AI Agents: Evals, LLM-as-a-Judge and Regression Sets |
+| W9 (12-28) | `/industries/on-demand-apps/` (approach-led, competitor idea #4) | Mobile App Testing Checklist for On-Demand and Marketplace Apps |
+| W10 (01-04) | `/regions/australia-nz/` | What to Put in a QA Outsourcing Contract: NDA, IP, SLAs and Exit Terms |
+| W11 (01-11) | `/regions/canada/` | A Regression Testing Strategy for Teams That Ship Weekly |
+| W12 (01-18) | `/regions/singapore-apac/` | Playwright vs. Cypress vs. Selenium in 2026: How to Choose |
+| W13 (01-25) | `/engagement-models/` | QA Metrics CTOs Should Actually Track (and How to Hold a QA Vendor to Them) |
 
 ## Automatic tasks (Tue / Thu / Fri)
 
