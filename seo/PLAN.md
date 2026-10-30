@@ -82,7 +82,7 @@
 
 - [ ] `[NEEDS-YOU]` Create and verify company profile on Clutch, GoodFirms, G2 (needs your account/company verification).
 - [ ] `[NEEDS-YOU]` Solicit client reviews on the above platforms for existing case-study clients.
-- [ ] `[AUTO]` (draft only) LinkedIn post drafts accompanying each shipped blog post — included in that day's report for you to post manually.
+- [ ] `[AUTO]` (draft only) LinkedIn post drafts accompanying each shipped blog post — included in that day's report for you to post manually. **Standing item — never check off and never pick it as the night's task; it is covered by the Saturday outreach-drafts rule in RUNBOOK section 0.**
 
 ---
 
