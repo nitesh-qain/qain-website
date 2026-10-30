@@ -18,7 +18,7 @@ Generated from the Phase 6 queue in [PLAN.md](PLAN.md); PLAN.md is the source of
 | W10 (01-04) | `/regions/australia-nz/` | What to Put in a QA Outsourcing Contract: NDA, IP, SLAs and Exit Terms |
 | W11 (01-11) | `/regions/canada/` | A Regression Testing Strategy for Teams That Ship Weekly |
 | W12 (01-18) | `/regions/singapore-apac/` | Playwright vs. Cypress vs. Selenium in 2026: How to Choose |
-| W13 (01-25) | `/engagement-models/` | QA Metrics CTOs Should Actually Track (and How to Hold a QA Vendor to Them) |
+| W13 (01-25) | `/engagement-models/` | QA Outsourcing Pricing Models Compared: Time-and-Materials, Dedicated Team and Fixed Price |
 
 ## Automatic tasks (Tue / Thu / Fri)
 

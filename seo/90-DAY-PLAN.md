@@ -49,7 +49,7 @@ Full list of every post, page and task: [CONTENT-CALENDAR.md](CONTENT-CALENDAR.m
 
 ## Topic bank (for replenishing)
 Blog: QA outsourcing vs. in-house for startups at each stage; test-data management; flaky-test fixes; visual regression testing; accessibility testing basics (informational only, we don't sell compliance testing); performance testing tools compared; AI test generation limits; how to read a QA vendor's proposal; QA for SaaS onboarding flows; release checklist templates.
-Dropped from the 13-week queue but still good: "Test Automation ROI: When to Automate, and When Not To" (pairs with /services/test-automation/); "Shift-Left Testing: Where an External QA Team Fits in CI/CD".
+Dropped from the 13-week queue but still good: "QA Metrics CTOs Should Actually Track (and How to Hold a QA Vendor to Them)"; "Test Automation ROI: When to Automate, and When Not To" (pairs with /services/test-automation/); "Shift-Left Testing: Where an External QA Team Fits in CI/CD".
 Pages: comparison pages (managed testing vs. staff augmentation); a glossary hub; a resources/downloads page (checklists); more industry pages only where we can write approach-led content honestly.
 Off-page (drafts for the owner to send): guest-post pitches to QA and engineering-leadership blogs; answers on Quora/Stack Exchange/Reddit where genuinely helpful (disclose affiliation); expert-quote services; Loopsy launch posts.
 
