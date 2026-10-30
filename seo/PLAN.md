@@ -11,6 +11,8 @@
 - `[PR]` — automation drafts content on a branch and opens a GitHub PR. Never merges it. Goes live only after you review and merge.
 - `[NEEDS-YOU]` — requires an action only you can take (creating an account, verifying domain ownership, posting to LinkedIn). Automation will not attempt these; they stay listed as reminders.
 
+**90-day plan (from 2026-10-31):** Phase 6 below is the working queue for Nov 2 – Jan 29, with a weekly rhythm and never-idle rules — see [90-DAY-PLAN.md](90-DAY-PLAN.md) and the owner's short list in [OWNER-CHECKLIST.md](OWNER-CHECKLIST.md).
+
 **Competitor Research agent (separate from the daily agent above):** a monthly routine (first Monday, 9am IST) audits 6–8 verified India-run QA-firm peers with a real US presence and proposes ideas in [COMPETITOR-IDEAS.md](COMPETITOR-IDEAS.md) — procedure in [COMPETITOR-RUNBOOK.md](COMPETITOR-RUNBOOK.md). It never edits the live site, only proposes. Mark a row `Approved` there and the daily agent above turns it into a task here on its next run (see RUNBOOK.md step 5).
 
 ---
@@ -339,3 +341,4 @@ Sources: [TestingXperts — Why UK Businesses Outsource Software Testing in 2026
 
 *(each shipped/opened item gets one line here: date — task — commit SHA or PR link)*
 - 2026-10-30 — Owner decisions (interactive session): Contract-to-Hire is India-only; US/Europe lead with the 24-hour overnight-QA cycle. `regions/us/` and `regions/europe/` rewritten (hero lede, metrics tile, CTH/trial/11-engineer blocks and links removed). Competitor ideas #2, #4 (industries hub, merged with #8), #5, #7 approved; #1 and #3 skipped; #6 and #9 parked to 2026-11-30.
+- 2026-10-31 — Created the 90-day plan: Phase 6 queue (65 Mon–Fri tasks: 13 blog posts, 13 pages, 39 AUTO tasks), weekend rules (outreach drafts, visibility log, backlog health), open-PR cap of 4, never-idle rule, owner checklist. Approved competitor ideas #2, #4, #5, #7 folded into Phase 6.
