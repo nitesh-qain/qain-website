@@ -1,91 +1,40 @@
-# Content calendar (Nov 2, 2026 – Jan 29, 2027)
+# Content calendar, v2 (Nov 2, 2026 – Jan 29, 2027)
 
-Generated from the Phase 6 queue in [PLAN.md](PLAN.md); PLAN.md is the source of truth. Each week: Monday = a page, Wednesday = a blog post that supports that page. Every page and post is a PR you merge; AUTO tasks go live on their own.
+A readable view of Phase 6 in [PLAN.md](PLAN.md), which is the source of truth. **One PR a week, on Monday.** Every PR waits for your merge; auto tasks go live on their own. Strategy: [90-DAY-PLAN.md](90-DAY-PLAN.md).
 
-## Pages and their supporting posts
-
-| Week | Mon — page (PR) | Wed — supporting blog post (PR) |
+## The weekly PR
+| Week | What ships (one PR) | Depends on |
 |---|---|---|
-| W1 (11-02) | `/faq/` | How to Choose a QA Outsourcing Vendor: 12 Questions to Ask Before You Sign |
-| W2 (11-09) | `/services/dedicated-qa-engineers/` (competitor idea #5, part 1) | Onboarding a Dedicated QA Engineer: The First 30 Days |
-| W3 (11-16) | `/services/performance-security-testing/` (competitor idea #5, part 2) | API Testing Beyond Status Codes: Functional, Performance and Security Cases |
-| W4 (11-23) | `/tools/qa-cost-calculator/` | How Much Does QA Outsourcing Cost in 2026? Pricing Models and What Drives the Rate |
-| W5 (11-30) | `/industries/` hub + `/industries/gaming/` (competitor idea #4) | QA for Online and Real-Money Gaming Platforms: What to Test Before Launch |
-| W6 (12-07) | `/industries/ecommerce/` (competitor ideas #4 + #8) | E-commerce Peak-Season Testing Checklist: Checkout, Payments and Load |
-| W7 (12-14) | `/industries/fintech/` (approach-led, competitor idea #4) | Fintech QA: Testing Payments, Ledgers and Reconciliation Flows |
-| W8 (12-21) | `/industries/ai-llm-testing/` (approach-led, competitor idea #4) | How to Test LLM Apps and AI Agents: Evals, LLM-as-a-Judge and Regression Sets |
-| W9 (12-28) | `/industries/on-demand-apps/` (approach-led, competitor idea #4) | Mobile App Testing Checklist for On-Demand and Marketplace Apps |
-| W10 (01-04) | `/regions/australia-nz/` | What to Put in a QA Outsourcing Contract: NDA, IP, SLAs and Exit Terms |
-| W11 (01-11) | `/regions/canada/` | A Regression Testing Strategy for Teams That Ship Weekly |
-| W12 (01-18) | `/regions/singapore-apac/` | Playwright vs. Cypress vs. Selenium in 2026: How to Choose |
-| W13 (01-25) | `/engagement-models/` | QA Outsourcing Pricing Models Compared: Time-and-Materials, Dedicated Team and Fixed Price |
+| W1 (11-02) | **Trust-fix bundle:** Europe/US/services time-zone copy around the two scheduling options; Contract-to-Hire off the homepage; 98% / 80% figures sourced or replaced; brand spelling in titles | D3 (else the figures are replaced) |
+| W2 (11-09) | `/services/dedicated-qa-engineers/` (onboarding section included) | — |
+| W3 (11-16) | `/pricing/`: how a remote QA team works and what it costs | D4b |
+| W4 (11-23) | Cost estimator on `/pricing/` + post "How Much Does QA Outsourcing Cost in 2026?" | D8 |
+| W5 (11-30) | `/offshore-qa/`: "we work your hours, or run a 24-hour cycle", with a city table (replaces the AU/NZ, Canada and Singapore pages) | — |
+| W6 (12-07) | `/faq/` (includes the Contract-to-Hire Q&A) + post "How to Evaluate an Offshore QA Partner" | — |
+| W7 (12-14) | `/industries/ecommerce/` + deeper Angara case study | — |
+| W8 (12-21) | `/services/performance-testing/` | **D5** (skipped if no) |
+| W9 (12-28) | Post "How to Test LLM Apps and AI Agents" | Owner confirms wording |
+| W10 (01-04) | *(no PR)* Search Console analysis → 3 proposals for you to approve | GSC access or CSV |
+| W11 (01-11) | First approved proposal | Your approval |
+| W12 (01-18) | Second approved proposal | Your approval |
+| W13 (01-25) | *(no PR)* 90-day review + Phase 7 draft from evidence | — |
 
-## Automatic tasks (Tue / Thu / Fri)
-
-**W1**
-- Tue `AUTO` Add a "Related reading" block to every blog post (1 service page + 2 sibling posts each, relevant by topic, descriptive anchor text). Append only; no other text change.
-- Thu `AUTO` Add `BreadcrumbList` JSON-LD to every sub-page (head-only change, no visible layout change).
-- Fri `AUTO` Image and asset audit sitewide: alt text, explicit width/height, `loading="lazy"` below the fold, no oversized files. No visual change.
-
-**W2**
-- Tue `AUTO` Add a short "Key takeaways" block at the top of blog posts 1–5, built only from each post's own existing content (no new claims or stats).
-- Thu `AUTO` Add the same "Key takeaways" block to the remaining existing blog posts.
-- Fri `AUTO` Heading-hierarchy audit across all pages: exactly one H1, logical H2/H3, no skipped levels; fix without changing visible design.
-
-**W3**
-- Tue `AUTO` Add 3–5 real Q&As plus matching `FAQPage` JSON-LD to `/services/` (questions buyers actually ask; answers from existing site content only).
-- Thu `AUTO` Add 3–5 Q&As plus `FAQPage` JSON-LD to `/services/manual-testing/`.
-- Fri `AUTO` Add 3–5 Q&As plus `FAQPage` JSON-LD to `/services/test-automation/`.
-
-**W4**
-- Tue `AUTO` Add anchor-link tables of contents to long blog posts (over ~1,500 words).
-- Thu `AUTO` Add a visible "Last updated" date to every blog post and `dateModified` to its Article JSON-LD. Author byline + `Person` schema for founder Nitesh Saxena only if a bio al…
-- Fri `AUTO` Sitemap audit: every live page present, `lastmod` accurate, no non-existent URLs, canonical matches sitemap.
-
-**W5**
-- Tue `AUTO` Contextual internal-link pass for the new FAQ, dedicated-QA-engineers and performance/security pages: link from the services hub, region pages and the most relevant blog …
-- Thu `AUTO` Core Web Vitals re-audit on the 5 heaviest pages after the new content; fix regressions.
-- Fri `AUTO` Accessibility and SEO-adjacent pass: form labels, link text, contrast, focus states, `lang`.
-
-**W6**
-- Tue `AUTO` Cannibalization and duplicate-content audit across region pages and blog posts; report overlaps, fix thin duplicates by differentiating copy.
-- Thu `AUTO` External-link audit: verify every cited source in blog posts still resolves; replace or remove dead ones.
-- Fri `AUTO` Add a results table and 3 Q&As with `FAQPage` JSON-LD to the case-study pages, using only figures already published in them.
-
-**W7**
-- Tue `AUTO` Refresh the 3 oldest blog posts: update sources and figures, add a short "What's changed" note, bump `dateModified`.
-- Thu `AUTO` Mobile layout pass at 375/768/1024px on all pages (nav, tables, tiles, calculators); fix overflow.
-- Fri `AUTO` Contextual internal links to the new industry pages from relevant services, case-study and blog pages (body text only).
-
-**W8**
-- Tue `AUTO` Refresh the next 3 oldest blog posts.
-- Thu `AUTO` JSON-LD validation sweep on every page: parses, correct `@type`, URLs use `https://www.qainfinity.com`; fix issues.
-- Fri `AUTO` Anchor-text review of internal links: varied, descriptive, no generic "click here".
-
-**W9**
-- Tue `AUTO` Orphan- and thin-page check: every page reachable in ≤3 clicks from the homepage; list pages under ~300 words.
-- Thu `AUTO` Cross-link the new region pages with the time-zone, nearshore-vs-offshore and follow-the-sun posts (body text only).
-- Fri `AUTO` Metadata CTR audit (proposal only): for each page, list the current title/meta, the target keyword, and a proposed rewrite within length limits. Write proposals into the …
-
-**W10**
-- Tue `PR` Apply the metadata CTR audit proposals: rewrite titles and meta descriptions on the pages where the proposal is clearly better (within length limits, keeping each page's …
-- Thu `AUTO` Broken-link and 404 sweep across every page, plus a check that the new pages are in the sitemap.
-- Fri `AUTO` Add contextual links from case studies to the matching industry pages.
-
-**W11**
-- Tue `PR` Create `/llms.txt` (plain-text site summary for AI crawlers: who we are, services, key pages, contact) and reference it from nothing else. Facts only from existing site c…
-- Thu `AUTO` Refresh the next 3 oldest blog posts (third batch).
-- Fri `AUTO` Schema coverage matrix: for each page, list which JSON-LD types exist and which are missing; add missing low-risk types (head-only).
-
-**W12**
-- Tue `AUTO` Verify the site renders correctly with JavaScript disabled for key content (headings, body, links) and fix anything search engines would miss.
-- Thu `AUTO` Refresh internal links and "Related reading" blocks across all posts so every new post is linked from at least 2 others.
-- Fri `AUTO` Re-run the full technical audit (links, JSON-LD, titles/meta lengths, canonicals, sitemap, mobile) and fix everything fixable.
-
-**W13**
-- Tue `AUTO` Read the last 12 weeks of `seo/data/visibility-log.md` and the monthly GSC export (if the owner has added it to `seo/data/`); write `seo/reports/90-day-review.md`: what s…
-- Thu `AUTO` Draft Phase 7 (next 90 days) into `PLAN.md`: ~60 tasks in the same weekly pattern, based on the 90-day review and the Content Backlog. This prevents an empty backlog afte…
-- Fri `AUTO` Final Phase 6 check: confirm every shipped task is checked off with a link, and Phase 7 has at least 20 unchecked tasks.
+## Auto tasks (no owner time)
+- **W1:** related reading on every post (never linking to the Contract-to-Hire posts) · breadcrumbs · image audit · heading audit
+- **W2:** key takeaways (posts 1–5, then the rest) · tables of contents · sitemap audit
+- **W3:** real "last updated" dates (no date bumping) · JSON-LD validation · links to the dedicated-QA page
+- **W4:** links to `/pricing/` · Core Web Vitals · accessibility pass
+- **W5:** mobile layout pass · external-link audit · anchor-text review
+- **W6:** links to `/offshore-qa/` · orphan/thin-page check · cannibalization report
+- **W7:** e-commerce cross-links · broken-link sweep · schema coverage (no FAQ schema outside `/faq/`)
+- **W8:** no-JavaScript render check · related-reading refresh
+- **W9:** reason-based refresh only (dead sources, outdated figures)
+- **W12:** full technical re-audit
+- **W13:** final Phase 6 check
 
 ## Weekends
-Sat: outreach drafts (3 LinkedIn posts, 1 backlink pitch, 1 answer to post) in `seo/outreach/`. Sun: search-visibility log in `seo/data/` and backlog refill.
+- **Sat:** one founder LinkedIn post draft + the week's one off-page asset, in `seo/outreach/`.
+- **Sun:** visibility log + Search Console read; no count-based backlog refill.
+
+## Not in this quarter
+Australia/NZ, Canada and Singapore pages (only with Search Console evidence) · industries hub, gaming, fintech, AI/LLM and on-demand pages (only with a delivery case study; fintech stays out) · e-commerce peak-season post (Aug–Sep 2027) · `/llms.txt` (any quiet night after W9) · Clutch/GoodFirms reviews (decision on 2026-11-30).
