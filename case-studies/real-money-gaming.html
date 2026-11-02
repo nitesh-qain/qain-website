@@ -204,13 +204,14 @@
     .wrap { padding: 0 20px; }
     .data-table { font-size: 13px; }
   }
+  .foot-legal { font-size: 12px; color: var(--text-dim); margin: 14px 0 0; }
 </style>
 </head>
 <body>
 
 <nav>
   <div class="nav-row">
-    <a class="brand" href="../index.html" aria-label="QAINfinity">
+    <a class="brand" href="/" aria-label="QAINfinity">
       <svg class="brand-icon" width="36" height="36" viewBox="0 0 120 120" aria-hidden="true">
         <rect x="4" y="4" width="112" height="112" rx="26" fill="#14171A" stroke="#35E28A" stroke-width="4"/>
         <text x="14" y="76" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-weight="700" font-size="46" fill="#6B7280">$</text>
@@ -220,20 +221,19 @@
       <span class="brand-word">qain<span class="accent">finity</span></span>
     </a>
     <div class="nav-links">
-      <a href="../index.html#services">Services</a>
-      <a href="../index.html#insights">Insights</a>
+      <a href="/#services">Services</a>
       <a href="../blog/">Blog</a>
       <a href="index.html">Case Studies</a>
-      <a href="../index.html#loopsy">Loopsy</a>
-      <a href="../index.html#faq">FAQ</a>
+      <a href="/#loopsy">Loopsy</a>
+      <a href="/#faq">FAQ</a>
     </div>
-    <a class="btn-grad" href="../index.html#contact">Contact / Book a Consult</a>
+    <a class="btn-grad" href="/#contact">Contact / Book a Consult</a>
   </div>
 </nav>
 
 <section class="hero">
   <div class="wrap">
-    <a class="back-link" href="../index.html#insights" onclick="event.preventDefault(); if (window.history.length > 1) { window.history.back(); } else { window.location.href = '../index.html#insights'; }">&larr; Back to Case Studies</a>
+    <a class="back-link" href="/#insights" onclick="event.preventDefault(); if (window.history.length > 1) { window.history.back(); } else { window.location.href = '/#insights'; }">&larr; Back to Case Studies</a>
     <div class="case-tags"><span>Real-Money Gaming</span><span>Contract-to-Hire</span><span>QA Staffing</span></div>
     <span class="mono" style="color:var(--accent-2); display:block; margin-bottom:14px;">Case Study</span>
     <h1>How Contract-to-Hire Built a High-Performance QA Team &mdash; 11 Placed, 11 Converted</h1>
@@ -244,7 +244,7 @@
 <section>
   <div class="wrap">
     <div class="result-card">
-      <span class="big">11 / 11</span><span class="small">QA engineers placed and converted to full-time payroll &mdash; 100% conversion, zero backfill</span>
+      <span class="big">11 / 11</span><span class="small">QA engineers placed and converted to full-time payroll &mdash; 100% conversion, no backfill needed</span>
     </div>
 
     <div class="story">
@@ -279,14 +279,13 @@
           <tr><td>QA engineers placed</td><td>11</td></tr>
           <tr><td>Converted to full-time</td><td>11 (100%)</td></tr>
           <tr><td>Backfilling / re-hiring costs</td><td>None</td></tr>
-          <tr><td>Hiring risk carried by client</td><td>Zero</td></tr>
         </table>
         <ul>
-          <li><strong>Zero hiring risk.</strong> The client committed only after seeing each engineer perform on real work.</li>
+          <li><strong>Lower hiring risk.</strong> The client committed only after seeing each engineer perform on real work; all 11 were retained.</li>
           <li><strong>Faster scaling with predictable performance.</strong> The team came up to speed on live releases, not in a probation vacuum.</li>
           <li><strong>No backfill or re-hire costs.</strong> Every seat placed was a seat that stuck.</li>
         </ul>
-        <div class="quote-block">11 placed. 11 converted. Zero backfill. Seeing real-world performance &mdash; not interview impressions &mdash; proved to be the safest path to a permanent commitment.</div>
+        <div class="quote-block">11 placed. 11 converted. No backfill. Seeing real-world performance &mdash; not interview impressions &mdash; proved to be the safest path to a permanent commitment.</div>
       </div>
       <div class="story-block">
         <h2>Why It Matters</h2>
@@ -299,7 +298,7 @@
       <h2>Have a similar hiring-risk problem?</h2>
       <p>Tell us what you're testing and where it's breaking. We reply within one business day.</p>
       <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:2px;">
-        <a class="btn-grad" href="../index.html#contact">Book a Consult</a>
+        <a class="btn-grad" href="/#contact">Book a Consult</a>
         <a class="btn-outline" href="../release-readiness/">Not ready to talk? Check your risk first &rarr;</a>
       </div>
     </div>
@@ -314,11 +313,12 @@
       <a href="../release-readiness/" style="font-weight:700;">Release Readiness</a>
       <span>info@qainfinity.com &nbsp;&middot;&nbsp; +91-9540752593</span>
     </div>
+    <p class="foot-legal">QAInfinity Private Limited &middot; Gurugram, Haryana, India</p>
   </div>
 </footer>
 
 <script>
-document.querySelectorAll('a[href="#contact"], a[href$="index.html#contact"]').forEach(function (link) {
+document.querySelectorAll('a[href="#contact"], a[href$="index.html#contact"], a[href$="/#contact"]').forEach(function (link) {
   link.addEventListener('click', function () {
     try { sessionStorage.setItem('qain_contact_source', link.textContent.trim()); } catch (e) {}
   });

@@ -243,13 +243,20 @@
     .wrap { padding: 0 20px; }
     .data-table { font-size: 13px; }
   }
+  .related-block { padding: 28px 0; border-top: 1px solid var(--border); }
+  .related-block h2 { font-size: 20px; margin: 0 0 10px; }
+  .related-block ul { margin: 0; padding-left: 20px; }
+  .related-block li { font-size: 15px; color: var(--text-dim); margin-top: 8px; }
+  .related-block a { color: var(--accent-2); font-weight: 600; text-decoration: none; }
+  .related-block a:hover { text-decoration: underline; }
+  .foot-legal { font-size: 12px; color: var(--text-dim); margin: 14px 0 0; }
 </style>
 </head>
 <body>
 
 <nav>
   <div class="nav-row">
-    <a class="brand" href="../index.html" aria-label="QAINfinity">
+    <a class="brand" href="/" aria-label="QAINfinity">
       <svg class="brand-icon" width="36" height="36" viewBox="0 0 120 120" aria-hidden="true">
         <rect x="4" y="4" width="112" height="112" rx="26" fill="#14171A" stroke="#35E28A" stroke-width="4"/>
         <text x="14" y="76" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-weight="700" font-size="46" fill="#6B7280">$</text>
@@ -259,14 +266,13 @@
       <span class="brand-word">qain<span class="accent">finity</span></span>
     </a>
     <div class="nav-links">
-      <a href="../index.html#services">Services</a>
-      <a href="../index.html#insights">Insights</a>
+      <a href="/#services">Services</a>
       <a href="index.html">Blog</a>
       <a href="../case-studies/">Case Studies</a>
-      <a href="../index.html#loopsy">Loopsy</a>
-      <a href="../index.html#faq">FAQ</a>
+      <a href="/#loopsy">Loopsy</a>
+      <a href="/#faq">FAQ</a>
     </div>
-    <a class="btn-grad" href="../index.html#contact">Contact / Book a Consult</a>
+    <a class="btn-grad" href="/#contact">Contact / Book a Consult</a>
   </div>
 </nav>
 
@@ -274,7 +280,8 @@
   <div class="wrap">
     <a class="back-link" href="../blog/index.html">&larr; Back to Blog</a>
     <div class="case-tags"><span>QA Outsourcing</span><span>Nearshore vs Offshore</span><span>UK &amp; EU Buyers</span></div>
-    <span class="mono" style="color:var(--accent-2); display:block; margin-bottom:14px;">Blog &middot; 7 min read</span>
+    <span class="mono" style="color:var(--accent-2); display:block; margin-bottom:6px;">Blog &middot; 7 min read</span>
+    <p style="font-size:13px; color:var(--text-dim); margin:0 0 14px;">Published October 7, 2026 &middot; By QAInfinity</p>
     <h1>Nearshore vs. Offshore QA: What UK/EU Buyers Actually Get with an India-Based Partner</h1>
     <p class="lede">For a UK or EU buyer, "nearshore" usually has a specific meaning already in mind &mdash; an EU-to-EU team, not an India-based one. That mental model is reasonable, but it's quietly deciding the comparison before you've looked at what each option actually gives you on rate, overlap, and data-transfer mechanics. Here's that comparison, run honestly in both directions.</p>
   </div>
@@ -301,7 +308,7 @@
           <tr><td>Blended QA rate (2026 est.)</td><td>$35&ndash;85/hr</td><td>$18&ndash;45/hr</td></tr>
           <tr><td>Overlap with UK business hours</td><td>Same or ~1 hr offset &mdash; full natural overlap</td><td>4.5&ndash;5.5 hrs behind (IST) &mdash; also a full working-day overlap, no shift needed</td></tr>
           <tr><td>Cross-border GDPR transfer mechanism needed?</td><td>No &mdash; EU-to-EU, no Article 45 question</td><td>Yes &mdash; India has no EU adequacy decision, so SCCs + a DPA are the standard route</td></tr>
-          <tr><td>Typical savings vs. UK/Western Europe onshore rates</td><td>Smaller &mdash; nearshore sits between onshore and offshore</td><td>Larger &mdash; offshore is reported at 65&ndash;83% savings vs. onshore in some 2026 estimates</td></tr>
+          <tr><td>Typical savings vs. UK/Western Europe onshore rates</td><td>Smaller &mdash; nearshore sits between onshore and offshore</td><td>Larger &mdash; offshore outsourcing is widely reported to save well over half of onshore cost, though the exact percentage varies by source and scope</td></tr>
         </table>
         <p class="sources">Rate ranges via <a href="https://bestarion.com/offshore-vs-nearshore-outsourcing/" target="_blank" rel="noopener">Bestarion's 2026 offshore vs. nearshore cost breakdown</a> and <a href="https://www.qasource.com/blog/offshore-qa-vs-nearshore-qa/" target="_blank" rel="noopener">QASource's offshore vs. nearshore QA comparison</a>; UK/Europe offset figures match our own <a href="../regions/europe/" style="color:var(--accent-2); font-weight:700;">UK &amp; Europe region page</a> and the <a href="qa-outsourcing-time-zones-uk-au-apac-buyers-guide.html" style="color:var(--accent-2); font-weight:700;">time-zone buyer's guide</a> published here.</p>
         </div>
@@ -348,11 +355,20 @@
       </div>
     </div>
 
+      <div class="story-block related-block">
+        <h2>Related reading</h2>
+        <ul>
+          <li><a href="../services/">QA Outsourcing Services</a></li>
+          <li><a href="qa-outsourcing-time-zones-uk-au-apac-buyers-guide.html">A Buyer's Guide to QA Outsourcing Time Zones: Working Across UK/AU/APAC Hours</a></li>
+          <li><a href="follow-the-sun-qa-handoff-24-hour-dev-cycle.html">The Follow-the-Sun QA Handoff: A 24-Hour Dev Cycle, Not an Overnight Gap</a></li>
+        </ul>
+      </div>
+
     <div class="closing">
       <h2>Weighing nearshore against an India-based team?</h2>
       <p>Tell us your overlap requirements and any data in scope, and we'll tell you plainly whether we're a fit &mdash; transfer mechanism included.</p>
       <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:2px;">
-        <a class="btn-grad" href="../index.html#contact">Book a Consult</a>
+        <a class="btn-grad" href="/#contact">Book a Consult</a>
         <a class="btn-outline" href="../release-readiness/">Not ready to talk? Check your risk first &rarr;</a>
       </div>
     </div>
@@ -367,11 +383,12 @@
       <a href="../release-readiness/" style="font-weight:700;">Release Readiness</a>
       <span>info@qainfinity.com &nbsp;&middot;&nbsp; +91-9540752593</span>
     </div>
+    <p class="foot-legal">QAInfinity Private Limited &middot; Gurugram, Haryana, India</p>
   </div>
 </footer>
 
 <script>
-document.querySelectorAll('a[href="#contact"], a[href$="index.html#contact"]').forEach(function (link) {
+document.querySelectorAll('a[href="#contact"], a[href$="index.html#contact"], a[href$="/#contact"]').forEach(function (link) {
   link.addEventListener('click', function () {
     try { sessionStorage.setItem('qain_contact_source', link.textContent.trim()); } catch (e) {}
   });

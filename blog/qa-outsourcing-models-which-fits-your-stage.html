@@ -243,13 +243,20 @@
     .wrap { padding: 0 20px; }
     .data-table { font-size: 13px; }
   }
+  .related-block { padding: 28px 0; border-top: 1px solid var(--border); }
+  .related-block h2 { font-size: 20px; margin: 0 0 10px; }
+  .related-block ul { margin: 0; padding-left: 20px; }
+  .related-block li { font-size: 15px; color: var(--text-dim); margin-top: 8px; }
+  .related-block a { color: var(--accent-2); font-weight: 600; text-decoration: none; }
+  .related-block a:hover { text-decoration: underline; }
+  .foot-legal { font-size: 12px; color: var(--text-dim); margin: 14px 0 0; }
 </style>
 </head>
 <body>
 
 <nav>
   <div class="nav-row">
-    <a class="brand" href="../index.html" aria-label="QAINfinity">
+    <a class="brand" href="/" aria-label="QAINfinity">
       <svg class="brand-icon" width="36" height="36" viewBox="0 0 120 120" aria-hidden="true">
         <rect x="4" y="4" width="112" height="112" rx="26" fill="#14171A" stroke="#35E28A" stroke-width="4"/>
         <text x="14" y="76" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-weight="700" font-size="46" fill="#6B7280">$</text>
@@ -259,14 +266,13 @@
       <span class="brand-word">qain<span class="accent">finity</span></span>
     </a>
     <div class="nav-links">
-      <a href="../index.html#services">Services</a>
-      <a href="../index.html#insights">Insights</a>
+      <a href="/#services">Services</a>
       <a href="index.html">Blog</a>
       <a href="../case-studies/">Case Studies</a>
-      <a href="../index.html#loopsy">Loopsy</a>
-      <a href="../index.html#faq">FAQ</a>
+      <a href="/#loopsy">Loopsy</a>
+      <a href="/#faq">FAQ</a>
     </div>
-    <a class="btn-grad" href="../index.html#contact">Contact / Book a Consult</a>
+    <a class="btn-grad" href="/#contact">Contact / Book a Consult</a>
   </div>
 </nav>
 
@@ -274,7 +280,8 @@
   <div class="wrap">
     <a class="back-link" href="../blog/index.html">&larr; Back to Blog</a>
     <div class="case-tags"><span>QA Outsourcing</span><span>Engagement Models</span><span>Buyer's Guide</span></div>
-    <span class="mono" style="color:var(--accent-2); display:block; margin-bottom:14px;">Blog &middot; 7 min read</span>
+    <span class="mono" style="color:var(--accent-2); display:block; margin-bottom:6px;">Blog &middot; 7 min read</span>
+    <p style="font-size:13px; color:var(--text-dim); margin:0 0 14px;">Published October 6, 2026 &middot; By QAInfinity</p>
     <h1>QA Outsourcing Isn't One Thing: Managed Team vs. Staff Augmentation vs. Contract-to-Hire</h1>
     <p class="lede">Most "QA outsourcing" pitches land in one of three very different shapes, usually without saying which one you're actually buying. Managed team, staff augmentation, and Contract-to-Hire answer three different questions &mdash; mixing them up is a common, avoidable way an otherwise-good engagement ends up feeling like the wrong fit.</p>
   </div>
@@ -283,7 +290,7 @@
 <section>
   <div class="wrap">
     <div class="result-card">
-      <span class="big">58%</span><span class="small">of enterprise IT engagements in 2026 run a hybrid mix of these models rather than picking just one, per Gartner's IT Services Framework &mdash; the three aren't mutually exclusive, and they aren't interchangeable either</span>
+      <span class="big">Not interchangeable</span><span class="small">Managed team, staff augmentation, and Contract-to-Hire answer three different questions &mdash; many real engagements blend more than one as the work evolves, rather than picking just one upfront</span>
     </div>
 
     <div class="story">
@@ -345,11 +352,20 @@
       </div>
     </div>
 
+      <div class="story-block related-block">
+        <h2>Related reading</h2>
+        <ul>
+          <li><a href="../services/">QA Outsourcing Services</a></li>
+          <li><a href="what-is-contract-to-hire-qa-staffing.html">What Is Contract-to-Hire QA Staffing (and Why It Reduces Hiring Risk)</a></li>
+          <li><a href="in-house-vs-outsourced-qa-cost-risk-comparison.html">In-House vs. Outsourced QA: A Cost and Risk Comparison for Startups</a></li>
+        </ul>
+      </div>
+
     <div class="closing">
       <h2>Not sure which model fits where you are?</h2>
       <p>Tell us what's actually uncertain &mdash; scope, capacity, or a specific hire &mdash; and we'll tell you plainly which shape fits.</p>
       <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:2px;">
-        <a class="btn-grad" href="../index.html#contact">Book a Consult</a>
+        <a class="btn-grad" href="/#contact">Book a Consult</a>
         <a class="btn-outline" href="../release-readiness/">Not ready to talk? Check your risk first &rarr;</a>
       </div>
     </div>
@@ -364,11 +380,12 @@
       <a href="../release-readiness/" style="font-weight:700;">Release Readiness</a>
       <span>info@qainfinity.com &nbsp;&middot;&nbsp; +91-9540752593</span>
     </div>
+    <p class="foot-legal">QAInfinity Private Limited &middot; Gurugram, Haryana, India</p>
   </div>
 </footer>
 
 <script>
-document.querySelectorAll('a[href="#contact"], a[href$="index.html#contact"]').forEach(function (link) {
+document.querySelectorAll('a[href="#contact"], a[href$="index.html#contact"], a[href$="/#contact"]').forEach(function (link) {
   link.addEventListener('click', function () {
     try { sessionStorage.setItem('qain_contact_source', link.textContent.trim()); } catch (e) {}
   });

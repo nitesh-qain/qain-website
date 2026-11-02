@@ -242,13 +242,20 @@
     .wrap { padding: 0 20px; }
     .data-table { font-size: 13px; }
   }
+  .related-block { padding: 28px 0; border-top: 1px solid var(--border); }
+  .related-block h2 { font-size: 20px; margin: 0 0 10px; }
+  .related-block ul { margin: 0; padding-left: 20px; }
+  .related-block li { font-size: 15px; color: var(--text-dim); margin-top: 8px; }
+  .related-block a { color: var(--accent-2); font-weight: 600; text-decoration: none; }
+  .related-block a:hover { text-decoration: underline; }
+  .foot-legal { font-size: 12px; color: var(--text-dim); margin: 14px 0 0; }
 </style>
 </head>
 <body>
 
 <nav>
   <div class="nav-row">
-    <a class="brand" href="../index.html" aria-label="QAINfinity">
+    <a class="brand" href="/" aria-label="QAINfinity">
       <svg class="brand-icon" width="36" height="36" viewBox="0 0 120 120" aria-hidden="true">
         <rect x="4" y="4" width="112" height="112" rx="26" fill="#14171A" stroke="#35E28A" stroke-width="4"/>
         <text x="14" y="76" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-weight="700" font-size="46" fill="#6B7280">$</text>
@@ -258,12 +265,11 @@
       <span class="brand-word">qain<span class="accent">finity</span></span>
     </a>
     <div class="nav-links">
-      <a href="../index.html#services">Services</a>
-      <a href="../index.html#insights">Insights</a>
-      <a href="../index.html#loopsy">Loopsy</a>
-      <a href="../index.html#faq">FAQ</a>
+      <a href="/#services">Services</a>
+      <a href="/#loopsy">Loopsy</a>
+      <a href="/#faq">FAQ</a>
     </div>
-    <a class="btn-grad" href="../index.html#contact">Contact / Book a Consult</a>
+    <a class="btn-grad" href="/#contact">Contact / Book a Consult</a>
   </div>
 </nav>
 
@@ -271,7 +277,8 @@
   <div class="wrap">
     <a class="back-link" href="../blog/index.html">&larr; Back to Blog</a>
     <div class="case-tags"><span>Performance Testing</span><span>Pre-Launch</span><span>Checklist</span></div>
-    <span class="mono" style="color:var(--accent-2); display:block; margin-bottom:14px;">Blog &middot; 6 min read</span>
+    <span class="mono" style="color:var(--accent-2); display:block; margin-bottom:6px;">Blog &middot; 6 min read</span>
+    <p style="font-size:13px; color:var(--text-dim); margin:0 0 14px;">Published October 4, 2026 &middot; By QAInfinity</p>
     <h1>Performance Testing Checklist Before Your Next Product Launch</h1>
     <p class="lede">Most launch-day outages aren't caused by a bug nobody caught &mdash; they're caused by traffic nobody tested for. Here's the checklist to run before you ship, so launch day surfaces a marketing win instead of an incident channel.</p>
   </div>
@@ -280,7 +287,7 @@
 <section>
   <div class="wrap">
     <div class="result-card">
-      <span class="big">$14K&ndash;$23.75K</span><span class="small">estimated cost per minute of unplanned downtime at a mid-sized-to-enterprise company &mdash; most of which a pre-launch load test is built to catch before it happens live</span>
+      <span class="big">$14K&ndash;$23.75K</span><span class="small">estimated cost per minute of unplanned downtime, average-to-large-enterprise, per industry surveys &mdash; most of which a pre-launch load test is built to catch before it happens live</span>
     </div>
 
     <div class="story">
@@ -315,7 +322,7 @@
 
       <div class="story-block">
         <h2>What this actually protects</h2>
-        <p>The business case isn't abstract. A long-running Google/SOASTA study of over 10,000 mobile sites found that 53% of mobile visits are abandoned once a page takes longer than three seconds to load &mdash; still the baseline benchmark the industry measures against. On the revenue side, Rakuten 24's own Core Web Vitals work found that a good Largest Contentful Paint score alone drove a 61.13% increase in conversion rate and a 53.37% lift in revenue per visitor, validated with a real A/B test rather than a projection. A launch that holds up under load isn't just avoiding an outage &mdash; it's protecting the conversion rate the rest of the launch plan is built around.</p>
+        <p>The business case isn't abstract. Google's 2016 study of over 10,000 mobile sites found that 53% of mobile visits are abandoned once a page takes longer than three seconds to load &mdash; dated, but still the baseline benchmark the industry measures against. On the revenue side, Rakuten 24's own Core Web Vitals work &mdash; a real A/B test, not a projection &mdash; found that investing in faster Largest Contentful Paint produced a 53.37% increase in revenue per visitor and a 33.13% increase in conversion rate. A launch that holds up under load isn't just avoiding an outage &mdash; it's protecting the conversion rate the rest of the launch plan is built around.</p>
         <div class="quote-block">A load test that fails three weeks before launch is a bug ticket. The same failure discovered on launch day is an incident channel, a status page, and a much harder conversation with whoever greenlit the launch date.</div>
       </div>
 
@@ -338,15 +345,24 @@
           <div class="q">Do we need a dedicated performance testing team, or can QA handle it?</div>
           <div class="a">Most teams don't need a separate performance-testing function &mdash; they need their QA process to actually include it, with the right tooling and a defined SLO, rather than treating performance as a separate concern nobody owns.</div>
         </div>
-        <p class="sources">Sources: <a href="https://web.dev/case-studies/rakuten" target="_blank" rel="noopener">web.dev &mdash; Rakuten 24 Core Web Vitals case study</a> &middot; <a href="https://www.marketingdive.com/news/google-53-of-mobile-users-abandon-sites-that-take-over-3-seconds-to-load/426070/" target="_blank" rel="noopener">Google/SOASTA mobile load-time study, via Marketing Dive</a> &middot; <a href="https://gatling.io/blog/the-cost-of-downtime" target="_blank" rel="noopener">Gatling &mdash; The Cost of Downtime</a> &middot; <a href="https://grafana.com/load-testing/types-of-load-testing/" target="_blank" rel="noopener">Grafana &mdash; Types of Load Testing</a> &middot; <a href="https://www.browserstack.com/guide/types-of-performance-test" target="_blank" rel="noopener">BrowserStack &mdash; Types of Performance Test</a></p>
+        <p class="sources">Sources: <a href="https://web.dev/case-studies/rakuten" target="_blank" rel="noopener">web.dev &mdash; Rakuten 24 Core Web Vitals case study</a> &middot; <a href="https://www.marketingdive.com/news/google-53-of-mobile-users-abandon-sites-that-take-over-3-seconds-to-load/426070/" target="_blank" rel="noopener">Google's 2016 mobile load-time study, via Marketing Dive</a> &middot; <a href="https://www.bigpanda.io/blog/bigpanda-business-value-report/" target="_blank" rel="noopener">BigPanda's downtime-cost research</a> (industry surveys put average unplanned downtime around $14,000/minute, rising to roughly $23,750/minute for large enterprises) &middot; <a href="https://grafana.com/load-testing/types-of-load-testing/" target="_blank" rel="noopener">Grafana &mdash; Types of Load Testing</a> &middot; <a href="https://www.browserstack.com/guide/types-of-performance-test" target="_blank" rel="noopener">BrowserStack &mdash; Types of Performance Test</a></p>
       </div>
     </div>
+
+      <div class="story-block related-block">
+        <h2>Related reading</h2>
+        <ul>
+          <li><a href="../services/">QA Outsourcing Services</a></li>
+          <li><a href="ai-qa-agents-cut-regression-testing-time.html">How AI QA Agents Are Cutting Regression Testing Time</a></li>
+          <li><a href="in-house-vs-outsourced-qa-cost-risk-comparison.html">In-House vs. Outsourced QA: A Cost and Risk Comparison for Startups</a></li>
+        </ul>
+      </div>
 
     <div class="closing">
       <h2>Launching soon and not sure what breaks under load?</h2>
       <p>Tell us what you're shipping and when. We reply within one business day.</p>
       <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:2px;">
-        <a class="btn-grad" href="../index.html#contact">Book a Consult</a>
+        <a class="btn-grad" href="/#contact">Book a Consult</a>
         <a class="btn-outline" href="../release-readiness/">Not ready to talk? Check your risk first &rarr;</a>
       </div>
     </div>
@@ -361,11 +377,12 @@
       <a href="../release-readiness/" style="font-weight:700;">Release Readiness</a>
       <span>info@qainfinity.com &nbsp;&middot;&nbsp; +91-9540752593</span>
     </div>
+    <p class="foot-legal">QAInfinity Private Limited &middot; Gurugram, Haryana, India</p>
   </div>
 </footer>
 
 <script>
-document.querySelectorAll('a[href="#contact"], a[href$="index.html#contact"]').forEach(function (link) {
+document.querySelectorAll('a[href="#contact"], a[href$="index.html#contact"], a[href$="/#contact"]').forEach(function (link) {
   link.addEventListener('click', function () {
     try { sessionStorage.setItem('qain_contact_source', link.textContent.trim()); } catch (e) {}
   });

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BCRF8NCENT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-BCRF8NCENT');
+</script>
+
+<title>Terms of Use &mdash; QAInfinity</title>
+<meta name="description" content="Terms governing use of the qainfinity.com website.">
+<link rel="canonical" href="https://www.qainfinity.com/terms/">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&display=swap">
+<style>
+  :root {
+    --bg: #f7f7fb; --surface: #ffffff; --surface-2: #eef0f7;
+    --text: #14151d; --text-dim: #565c6d; --border: rgba(20,21,29,0.09);
+    --accent-1: #4338ca; --accent-2: #7c3aed; --accent-3: #0891b2; --good: #0d9488;
+    --glow-a: rgba(79,70,229,0.16); --glow-b: rgba(139,92,246,0.12);
+    --shadow: 0 1px 2px rgba(20,21,29,0.06);
+    --logo-ink: #20255c; --logo-line: #3f7373; --term-accent: #0E7A4B;
+    --warn-bg: #fef3c7; --warn-border: #f59e0b; --warn-text: #78350f;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0a0b12; --surface: #12141f; --surface-2: #181b28;
+      --text: #f2f3f8; --text-dim: #9ba1b4; --border: rgba(255,255,255,0.08);
+      --accent-1: #4f46e5; --accent-2: #8b5cf6; --accent-3: #22d3ee; --good: #34d399;
+      --glow-a: rgba(79,70,229,0.35); --glow-b: rgba(139,92,246,0.22);
+      --shadow: 0 1px 2px rgba(0,0,0,0.4);
+      --logo-ink: #eef0fb; --logo-line: #5fd0d0; --term-accent: #35E28A;
+      --warn-bg: #3f2d05; --warn-border: #b45309; --warn-text: #fde68a;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0a0b12; --surface: #12141f; --surface-2: #181b28;
+    --text: #f2f3f8; --text-dim: #9ba1b4; --border: rgba(255,255,255,0.08);
+    --accent-1: #4f46e5; --accent-2: #8b5cf6; --accent-3: #22d3ee; --good: #34d399;
+    --glow-a: rgba(79,70,229,0.35); --glow-b: rgba(139,92,246,0.22);
+    --shadow: 0 1px 2px rgba(0,0,0,0.4);
+    --logo-ink: #eef0fb; --logo-line: #5fd0d0; --term-accent: #35E28A;
+    --warn-bg: #3f2d05; --warn-border: #b45309; --warn-text: #fde68a;
+  }
+  :root[data-theme="light"] {
+    --bg: #f7f7fb; --surface: #ffffff; --surface-2: #eef0f7;
+    --text: #14151d; --text-dim: #565c6d; --border: rgba(20,21,29,0.09);
+    --accent-1: #4338ca; --accent-2: #7c3aed; --accent-3: #0891b2; --good: #0d9488;
+    --glow-a: rgba(79,70,229,0.16); --glow-b: rgba(139,92,246,0.12);
+    --shadow: 0 1px 2px rgba(20,21,29,0.06);
+    --logo-ink: #20255c; --logo-line: #3f7373; --term-accent: #0E7A4B;
+    --warn-bg: #fef3c7; --warn-border: #f59e0b; --warn-text: #78350f;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 32px; }
+  .mono { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; letter-spacing: 0.09em; text-transform: uppercase; font-size: 12px; }
+  h1, h2 { font-weight: 800; letter-spacing: -0.03em; text-wrap: balance; margin: 0; }
+  h2 { font-size: 20px; margin: 0 0 10px; }
+  p { color: var(--text-dim); line-height: 1.65; margin: 0; }
+  a { color: var(--accent-2); font-weight: 600; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  nav {
+    position: sticky; top: 0; z-index: 20; background: var(--bg);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-row { display: flex; align-items: center; justify-content: space-between; padding: 13px 32px; max-width: 760px; margin: 0 auto; }
+  .brand-icon { display: block; flex-shrink: 0; }
+  .brand-word { font-family: 'JetBrains Mono', ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-weight: 700; font-size: 18px; letter-spacing: -0.01em; color: var(--logo-ink); }
+  .brand-word .accent { color: var(--term-accent); }
+  .btn-grad {
+    padding: 10px 20px; border-radius: 999px; font-size: 14.5px; font-weight: 700;
+    background: linear-gradient(95deg, var(--accent-1), var(--accent-2));
+    color: #fff; display: inline-block; box-shadow: var(--shadow); text-decoration: none;
+  }
+  .brand { display: flex; align-items: center; gap: 9px; }
+  .nav-links { display: flex; gap: 26px; font-size: 14px; color: var(--text-dim); }
+  .nav-links a { white-space: nowrap; color: var(--text-dim); font-weight: 400; }
+  .nav-links a:hover { color: var(--text); text-decoration: none; }
+
+  .draft-banner {
+    background: var(--warn-bg); border: 1px solid var(--warn-border); color: var(--warn-text);
+    border-radius: 12px; padding: 14px 18px; font-size: 14px; font-weight: 700;
+    margin: 28px 0; text-align: center;
+  }
+
+  .hero { padding: 20px 0 10px; }
+  .hero h1 { font-size: 32px; }
+  .hero p.lede { max-width: 620px; margin-top: 12px; font-size: 15.5px; }
+  .meta-line { font-size: 13px; color: var(--text-dim); margin-top: 10px; }
+
+  section { padding: 28px 0; }
+  .story-block { padding: 24px 0; border-top: 1px solid var(--border); }
+  .story-block:first-child { border-top: none; padding-top: 0; }
+  .story-block p { font-size: 15px; margin-top: 8px; }
+  .story-block ul { margin: 10px 0 0; padding-left: 20px; }
+  .story-block li { font-size: 15px; color: var(--text-dim); line-height: 1.65; margin-top: 8px; }
+  .story-block li strong { color: var(--text); }
+
+  footer { padding: 30px 0 50px; border-top: 1px solid var(--border); }
+  .foot-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-size: 13px; color: var(--text-dim); }
+  .foot-row a { color: var(--text-dim); }
+  .foot-legal { font-size: 12px; color: var(--text-dim); margin: 14px 0 0; }
+
+  @media (max-width: 780px) {
+    .nav-links { display: none; }
+  }
+  @media (max-width: 700px) {
+    .hero h1 { font-size: 24px; }
+    .wrap { padding: 0 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-row">
+    <a class="brand" href="/" aria-label="QAINfinity">
+      <svg class="brand-icon" width="36" height="36" viewBox="0 0 120 120" aria-hidden="true">
+        <rect x="4" y="4" width="112" height="112" rx="26" fill="#14171A" stroke="#35E28A" stroke-width="4"/>
+        <text x="14" y="76" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-weight="700" font-size="46" fill="#6B7280">$</text>
+        <polyline points="52,34 78,60 52,86" fill="none" stroke="#35E28A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="90" y="46" width="13" height="28" rx="3" fill="#35E28A"/>
+      </svg>
+      <span class="brand-word">qain<span class="accent">finity</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="/#services">Services</a>
+      <a href="/blog/">Blog</a>
+      <a href="/case-studies/">Case Studies</a>
+    </div>
+    <a class="btn-grad" href="/#contact">Contact / Book a Consult</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="draft-banner">DRAFT &mdash; needs owner and legal review before publishing. Not live, not linked from the site.</div>
+    <span class="mono" style="color:var(--accent-2); display:block; margin-bottom:10px;">Legal</span>
+    <h1>Terms of Use</h1>
+    <p class="lede">These terms cover your use of qainfinity.com itself &mdash; the website, not any specific client engagement, which is governed by its own separately signed agreement.</p>
+    <p class="meta-line">Last updated: [owner/legal to set a date on publish] &middot; QAInfinity Private Limited, Gurugram, Haryana, India &middot; Contact: <a href="mailto:info@qainfinity.com">info@qainfinity.com</a></p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+
+    <div class="story-block">
+      <h2>Agreement to these terms</h2>
+      <p>By browsing or using qainfinity.com, you agree to these terms. If you don't agree, please don't use the site. See our <a href="/privacy-policy/">Privacy Policy</a> for how we handle information you share with us here.</p>
+    </div>
+
+    <div class="story-block">
+      <h2>What this site is</h2>
+      <p>qainfinity.com is QAInfinity Private Limited's marketing and informational website. It describes our QA outsourcing and staffing services, publishes case studies and blog posts, and lets you reach us by form, email, phone, WhatsApp, or by booking a call. Nothing on this site is itself a contract for services &mdash; an actual QA engagement is governed by a separate agreement we sign directly with a client, not by these terms.</p>
+    </div>
+
+    <div class="story-block">
+      <h2>Using the site</h2>
+      <p>You may browse the site and use the contact form, booking link, and chat buttons for their intended purpose &mdash; reaching out to us about our services. Please don't:</p>
+      <ul>
+        <li>Use the contact form to send spam, unsolicited advertising, or anything unlawful.</li>
+        <li>Attempt to disrupt, scrape at scale, or interfere with the site's normal operation.</li>
+        <li>Copy, republish, or reuse the site's content, case studies, or branding (including the QAInfinity name and logo) without asking us first.</li>
+      </ul>
+    </div>
+
+    <div class="story-block">
+      <h2>Content on this site</h2>
+      <p>Blog posts, case studies, and marketing pages on this site reflect our own understanding and, where cited, third-party research at the time of writing. We try to be accurate and to cite real sources for figures that aren't our own, but industry statistics and market conditions change &mdash; treat this content as informational, not as a guarantee or as professional advice for your specific situation.</p>
+      <p style="margin-top:10px;">Case studies describe real client engagements with figures we can document; we don't publish a figure we can't back up, and we don't invent client names, testimonials, or results.</p>
+    </div>
+
+    <div class="story-block">
+      <h2>Third-party links and tools</h2>
+      <p>This site links out to services we don't control &mdash; Google Calendar for booking, WhatsApp for chat, LinkedIn, and sources cited in blog posts. Once you leave qainfinity.com for one of those, their own terms and privacy policies apply, not ours.</p>
+    </div>
+
+    <div class="story-block">
+      <h2>No warranty</h2>
+      <p>This site and its content are provided as-is. We don't guarantee the site will be error-free, uninterrupted, or available at all times, and we aren't responsible for losses arising from your use of the site itself (as distinct from any signed client agreement, which has its own terms).</p>
+    </div>
+
+    <div class="story-block">
+      <h2>Governing law</h2>
+      <p>These terms are governed by the laws of India. [Flag for legal review: specific jurisdiction/venue language, if needed.]</p>
+    </div>
+
+    <div class="story-block">
+      <h2>Changes to these terms</h2>
+      <p>We may update these terms as the site changes. Once published, this page will show a Last Updated date above.</p>
+    </div>
+
+    <div class="story-block">
+      <h2>Contact</h2>
+      <p>Questions about these terms: <a href="mailto:info@qainfinity.com">info@qainfinity.com</a> &middot; QAInfinity Private Limited, Gurugram, Haryana, India.</p>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-row">
+      <span>&copy; QAInfinity</span>
+      <a href="/services/">Services</a>
+      <a href="/release-readiness/">Release Readiness</a>
+      <span>info@qainfinity.com &nbsp;&middot;&nbsp; +91-9540752593</span>
+    </div>
+    <p class="foot-legal">QAInfinity Private Limited &middot; Gurugram, Haryana, India</p>
+  </div>
+</footer>
+
+</body>
+</html>

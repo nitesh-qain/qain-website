@@ -199,13 +199,14 @@
     .metric:nth-child(3) { border-top: 1px solid var(--border); }
     .metric:nth-child(4) { border-top: 1px solid var(--border); }
   }
+  .foot-legal { font-size: 12px; color: var(--text-dim); margin: 14px 0 0; }
 </style>
 </head>
 <body>
 
 <nav>
   <div class="nav-row">
-    <a class="brand" href="../../index.html" aria-label="QAINfinity">
+    <a class="brand" href="/" aria-label="QAINfinity">
       <svg class="brand-icon" width="36" height="36" viewBox="0 0 120 120" aria-hidden="true">
         <rect x="4" y="4" width="112" height="112" rx="26" fill="#14171A" stroke="#35E28A" stroke-width="4"/>
         <text x="14" y="76" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-weight="700" font-size="46" fill="#6B7280">$</text>
@@ -215,20 +216,19 @@
       <span class="brand-word">qain<span class="accent">finity</span></span>
     </a>
     <div class="nav-links">
-      <a href="../../index.html#services">Services</a>
-      <a href="../../index.html#insights">Insights</a>
+      <a href="/#services">Services</a>
       <a href="../../blog/">Blog</a>
       <a href="../../case-studies/">Case Studies</a>
-      <a href="../../index.html#loopsy">Loopsy</a>
-      <a href="../../index.html#faq">FAQ</a>
+      <a href="/#loopsy">Loopsy</a>
+      <a href="/#faq">FAQ</a>
     </div>
-    <a class="btn-grad" href="../../index.html#contact">Contact / Book a Consult</a>
+    <a class="btn-grad" href="/#contact">Contact / Book a Consult</a>
   </div>
 </nav>
 
 <section class="hero">
   <div class="wrap">
-    <a class="back-link" href="../../index.html" onclick="event.preventDefault(); if (window.history.length > 1) { window.history.back(); } else { window.location.href = '../../index.html'; }">&larr; Back to Home</a>
+    <a class="back-link" href="/" onclick="event.preventDefault(); if (window.history.length > 1) { window.history.back(); } else { window.location.href = '/'; }">&larr; Back to Home</a>
     <div class="case-tags"><span>QA Outsourcing</span><span>UK &amp; Europe</span></div>
     <span class="mono" style="color:var(--accent-2); display:block; margin-bottom:14px;">For UK &amp; Europe Teams</span>
     <h1>QA Outsourcing With Full-Day Overlap for UK &amp; Europe Teams</h1>
@@ -267,7 +267,7 @@
       </div>
       <div class="story-block">
         <h2>Proof it works</h2>
-        <p><a class="inline-link" href="../../case-studies/automation.html">How QAINfinity cut Angara's regression cycle from 8 hours to 30 minutes &rarr;</a></p>
+        <p><a class="inline-link" href="../../case-studies/automation.html">How QAINfinity cut Angara's web regression cycle from 8 hours to 30 minutes &rarr;</a></p>
         <p style="margin-top:10px;">See the full breakdown of what's available on our <a class="inline-link" href="../../services/">Services</a> page, or take the free <a class="inline-link" href="../../release-readiness/">Release Readiness Assessment</a> &mdash; 13 questions, 2 minutes, no email required.</p>
         <p style="margin-top:10px;">Curious how the schedule works day to day? <a class="inline-link" href="../../blog/follow-the-sun-qa-handoff-24-hour-dev-cycle.html">The Follow-the-Sun QA Handoff &rarr;</a></p>
       </div>
@@ -281,7 +281,7 @@
       <h2>Want to talk to the team directly?</h2>
       <p>Tell us what you're building and where quality is slipping. We reply within one business day.</p>
       <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:2px;">
-        <a class="btn-grad" href="../../index.html#contact">Book a Consult</a>
+        <a class="btn-grad" href="/#contact">Book a Consult</a>
         <a class="btn-outline" href="../../release-readiness/">Not ready to talk? Check your risk first &rarr;</a>
       </div>
     </div>
@@ -297,11 +297,12 @@
       <a href="../../release-readiness/" style="font-weight:700;">Release Readiness</a>
       <span>info@qainfinity.com &nbsp;&middot;&nbsp; +91-9540752593</span>
     </div>
+    <p class="foot-legal">QAInfinity Private Limited &middot; Gurugram, Haryana, India</p>
   </div>
 </footer>
 
 <script>
-document.querySelectorAll('a[href="#contact"], a[href$="index.html#contact"]').forEach(function (link) {
+document.querySelectorAll('a[href="#contact"], a[href$="index.html#contact"], a[href$="/#contact"]').forEach(function (link) {
   link.addEventListener('click', function () {
     try { sessionStorage.setItem('qain_contact_source', link.textContent.trim()); } catch (e) {}
   });

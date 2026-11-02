@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BCRF8NCENT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-BCRF8NCENT');
+</script>
+
+<title>Privacy Policy &mdash; QAInfinity</title>
+<meta name="description" content="How QAInfinity collects, uses, and protects information from visitors to qainfinity.com.">
+<link rel="canonical" href="https://www.qainfinity.com/privacy-policy/">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&display=swap">
+<style>
+  :root {
+    --bg: #f7f7fb; --surface: #ffffff; --surface-2: #eef0f7;
+    --text: #14151d; --text-dim: #565c6d; --border: rgba(20,21,29,0.09);
+    --accent-1: #4338ca; --accent-2: #7c3aed; --accent-3: #0891b2; --good: #0d9488;
+    --glow-a: rgba(79,70,229,0.16); --glow-b: rgba(139,92,246,0.12);
+    --shadow: 0 1px 2px rgba(20,21,29,0.06);
+    --logo-ink: #20255c; --logo-line: #3f7373; --term-accent: #0E7A4B;
+    --warn-bg: #fef3c7; --warn-border: #f59e0b; --warn-text: #78350f;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0a0b12; --surface: #12141f; --surface-2: #181b28;
+      --text: #f2f3f8; --text-dim: #9ba1b4; --border: rgba(255,255,255,0.08);
+      --accent-1: #4f46e5; --accent-2: #8b5cf6; --accent-3: #22d3ee; --good: #34d399;
+      --glow-a: rgba(79,70,229,0.35); --glow-b: rgba(139,92,246,0.22);
+      --shadow: 0 1px 2px rgba(0,0,0,0.4);
+      --logo-ink: #eef0fb; --logo-line: #5fd0d0; --term-accent: #35E28A;
+      --warn-bg: #3f2d05; --warn-border: #b45309; --warn-text: #fde68a;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0a0b12; --surface: #12141f; --surface-2: #181b28;
+    --text: #f2f3f8; --text-dim: #9ba1b4; --border: rgba(255,255,255,0.08);
+    --accent-1: #4f46e5; --accent-2: #8b5cf6; --accent-3: #22d3ee; --good: #34d399;
+    --glow-a: rgba(79,70,229,0.35); --glow-b: rgba(139,92,246,0.22);
+    --shadow: 0 1px 2px rgba(0,0,0,0.4);
+    --logo-ink: #eef0fb; --logo-line: #5fd0d0; --term-accent: #35E28A;
+    --warn-bg: #3f2d05; --warn-border: #b45309; --warn-text: #fde68a;
+  }
+  :root[data-theme="light"] {
+    --bg: #f7f7fb; --surface: #ffffff; --surface-2: #eef0f7;
+    --text: #14151d; --text-dim: #565c6d; --border: rgba(20,21,29,0.09);
+    --accent-1: #4338ca; --accent-2: #7c3aed; --accent-3: #0891b2; --good: #0d9488;
+    --glow-a: rgba(79,70,229,0.16); --glow-b: rgba(139,92,246,0.12);
+    --shadow: 0 1px 2px rgba(20,21,29,0.06);
+    --logo-ink: #20255c; --logo-line: #3f7373; --term-accent: #0E7A4B;
+    --warn-bg: #fef3c7; --warn-border: #f59e0b; --warn-text: #78350f;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 32px; }
+  .mono { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; letter-spacing: 0.09em; text-transform: uppercase; font-size: 12px; }
+  h1, h2 { font-weight: 800; letter-spacing: -0.03em; text-wrap: balance; margin: 0; }
+  h2 { font-size: 20px; margin: 0 0 10px; }
+  p { color: var(--text-dim); line-height: 1.65; margin: 0; }
+  a { color: var(--accent-2); font-weight: 600; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  nav {
+    position: sticky; top: 0; z-index: 20; background: var(--bg);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-row { display: flex; align-items: center; justify-content: space-between; padding: 13px 32px; max-width: 760px; margin: 0 auto; }
+  .brand-icon { display: block; flex-shrink: 0; }
+  .brand-word { font-family: 'JetBrains Mono', ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-weight: 700; font-size: 18px; letter-spacing: -0.01em; color: var(--logo-ink); }
+  .brand-word .accent { color: var(--term-accent); }
+  .btn-grad {
+    padding: 10px 20px; border-radius: 999px; font-size: 14.5px; font-weight: 700;
+    background: linear-gradient(95deg, var(--accent-1), var(--accent-2));
+    color: #fff; display: inline-block; box-shadow: var(--shadow); text-decoration: none;
+  }
+  .brand { display: flex; align-items: center; gap: 9px; }
+  .nav-links { display: flex; gap: 26px; font-size: 14px; color: var(--text-dim); }
+  .nav-links a { white-space: nowrap; color: var(--text-dim); font-weight: 400; }
+  .nav-links a:hover { color: var(--text); text-decoration: none; }
+
+  .draft-banner {
+    background: var(--warn-bg); border: 1px solid var(--warn-border); color: var(--warn-text);
+    border-radius: 12px; padding: 14px 18px; font-size: 14px; font-weight: 700;
+    margin: 28px 0; text-align: center;
+  }
+
+  .hero { padding: 20px 0 10px; }
+  .hero h1 { font-size: 32px; }
+  .hero p.lede { max-width: 620px; margin-top: 12px; font-size: 15.5px; }
+  .meta-line { font-size: 13px; color: var(--text-dim); margin-top: 10px; }
+
+  section { padding: 28px 0; }
+  .story-block { padding: 24px 0; border-top: 1px solid var(--border); }
+  .story-block:first-child { border-top: none; padding-top: 0; }
+  .story-block p { font-size: 15px; margin-top: 8px; }
+  .story-block ul { margin: 10px 0 0; padding-left: 20px; }
+  .story-block li { font-size: 15px; color: var(--text-dim); line-height: 1.65; margin-top: 8px; }
+  .story-block li strong { color: var(--text); }
+
+  footer { padding: 30px 0 50px; border-top: 1px solid var(--border); }
+  .foot-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-size: 13px; color: var(--text-dim); }
+  .foot-row a { color: var(--text-dim); }
+  .foot-legal { font-size: 12px; color: var(--text-dim); margin: 14px 0 0; }
+
+  @media (max-width: 780px) {
+    .nav-links { display: none; }
+  }
+  @media (max-width: 700px) {
+    .hero h1 { font-size: 24px; }
+    .wrap { padding: 0 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-row">
+    <a class="brand" href="/" aria-label="QAINfinity">
+      <svg class="brand-icon" width="36" height="36" viewBox="0 0 120 120" aria-hidden="true">
+        <rect x="4" y="4" width="112" height="112" rx="26" fill="#14171A" stroke="#35E28A" stroke-width="4"/>
+        <text x="14" y="76" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-weight="700" font-size="46" fill="#6B7280">$</text>
+        <polyline points="52,34 78,60 52,86" fill="none" stroke="#35E28A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="90" y="46" width="13" height="28" rx="3" fill="#35E28A"/>
+      </svg>
+      <span class="brand-word">qain<span class="accent">finity</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="/#services">Services</a>
+      <a href="/blog/">Blog</a>
+      <a href="/case-studies/">Case Studies</a>
+    </div>
+    <a class="btn-grad" href="/#contact">Contact / Book a Consult</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="draft-banner">DRAFT &mdash; needs owner and legal review before publishing. Not live, not linked from the site.</div>
+    <span class="mono" style="color:var(--accent-2); display:block; margin-bottom:10px;">Legal</span>
+    <h1>Privacy Policy</h1>
+    <p class="lede">This explains what information qainfinity.com collects when you visit, and what we do with it.</p>
+    <p class="meta-line">Last updated: [owner/legal to set a date on publish] &middot; Controller: QAInfinity Private Limited, Gurugram, Haryana, India &middot; Contact: <a href="mailto:info@qainfinity.com">info@qainfinity.com</a></p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+
+    <div class="story-block">
+      <h2>What this site actually does</h2>
+      <p>This page describes exactly what happens on qainfinity.com today &mdash; no more, no less. It isn't a certification of compliance with any particular law, and it isn't legal advice; that's why it's a draft pending review.</p>
+    </div>
+
+    <div class="story-block">
+      <h2>Information you give us directly</h2>
+      <p>If you fill in the contact form on the homepage, we collect the name, company, work email, phone number, and message you type in, plus which page/link you clicked before opening the form (used only to show us what prompted your enquiry). That information is sent to a Google Apps Script endpoint we control, which records it into a Google Sheet. We use it only to respond to your enquiry &mdash; we don't sell it, rent it, or use it for advertising.</p>
+      <p style="margin-top:10px;">If you book a meeting through the "Book a Meeting" button, you're taken to Google Calendar's own booking page (calendar.app.google) to pick a time and share your details. That page is operated by Google, not us; whatever you enter there is handled under Google's own privacy policy, not this one.</p>
+      <p style="margin-top:10px;">If you use the WhatsApp button, it opens a chat with our number through WhatsApp (wa.me). That conversation happens on WhatsApp's own platform, operated by Meta, under WhatsApp's own terms &mdash; we only see messages you choose to send us there.</p>
+    </div>
+
+    <div class="story-block">
+      <h2>Information collected automatically</h2>
+      <p>We use Google Analytics 4 (GA4) to understand how visitors use the site &mdash; which pages are read, roughly where visitors come from, and general device/browser type. GA4 sets its own cookies in your browser to do this. We haven't layered any additional advertising or remarketing tracking on top of the standard GA4 install. For details on what Google itself does with that data, see Google's own privacy policy.</p>
+      <p style="margin-top:10px;">Separately, when you click a "Contact" or "Book a Consult" link anywhere on the site, we briefly store the text of that link in your browser's <code>sessionStorage</code> (not a cookie) so the contact form can show which link brought you there. This value is cleared automatically once the form loads it, is never sent anywhere unless you submit the form, and disappears entirely when you close the tab.</p>
+    </div>
+
+    <div class="story-block">
+      <h2>Cookies</h2>
+      <p>The only cookies currently set on this site come from Google Analytics (GA4). We don't currently show a cookie-consent banner. [Flag for legal review: whether one is required for our target markets given the GA4 setup above.]</p>
+    </div>
+
+    <div class="story-block">
+      <h2>How long we keep information</h2>
+      <p>Contact-form submissions stay in our Google Sheet until we delete them; we don't currently have an automatic deletion schedule. GA4 data is retained according to Google's own default analytics retention settings, which we haven't customized.</p>
+    </div>
+
+    <div class="story-block">
+      <h2>Your choices</h2>
+      <p>You can ask us to tell you what contact-form information we hold about you, or to delete it, by emailing <a href="mailto:info@qainfinity.com">info@qainfinity.com</a>. We'll act on that request directly; we aren't making any claim here about which specific privacy law gives you that right &mdash; that's for legal review to add if appropriate for a given market.</p>
+    </div>
+
+    <div class="story-block">
+      <h2>Children</h2>
+      <p>This site is a business-to-business marketing site and isn't directed at children. We don't knowingly collect information from children through the contact form.</p>
+    </div>
+
+    <div class="story-block">
+      <h2>Changes to this policy</h2>
+      <p>If what this site actually does changes &mdash; a new form field, a new analytics or booking tool &mdash; we'll update this page to match. Once published, this page will show a Last Updated date above.</p>
+    </div>
+
+    <div class="story-block">
+      <h2>Contact</h2>
+      <p>Questions about this policy: <a href="mailto:info@qainfinity.com">info@qainfinity.com</a> &middot; QAInfinity Private Limited, Gurugram, Haryana, India.</p>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-row">
+      <span>&copy; QAInfinity</span>
+      <a href="/services/">Services</a>
+      <a href="/release-readiness/">Release Readiness</a>
+      <span>info@qainfinity.com &nbsp;&middot;&nbsp; +91-9540752593</span>
+    </div>
+    <p class="foot-legal">QAInfinity Private Limited &middot; Gurugram, Haryana, India</p>
+  </div>
+</footer>
+
+</body>
+</html>
