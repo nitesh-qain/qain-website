@@ -2,14 +2,14 @@
 
 **Goal:** get overseas buyers (UK/EU, US, Australia/NZ, Canada, APAC) to find QAInfinity, trust it and start a conversation. Rankings and page counts are means, not the goal.
 
-**Why v2 (2026-10-31):** the first version solved the 3-week idle stall by making the agent produce constantly (26 content PRs and 39 auto tasks in 13 weeks). Three independent reviews (Claude, GPT, Gemini) agreed that this was the wrong trade for a young, low-authority domain: overlapping pricing pages, doorway-style region pages, approach-led industry pages, compliance-adjacent wording, and almost no work on trust or authority. Repo checks also found problems on live pages that matter more than any new page. Full reasoning: [PLAN-REVIEW-2026-10-31.md](PLAN-REVIEW-2026-10-31.md). The queue itself is Phase 6 in [PLAN.md](PLAN.md); this file is the strategy.
+**Why v2 (2026-10-31):** the first version solved the 3-week idle stall by making the agent produce constantly (26 content PRs and 39 auto tasks in 13 weeks). Three independent reviews (Claude, GPT, Gemini) agreed that this was the wrong trade for a young, low-authority domain: overlapping pricing pages, doorway-style region pages, approach-led industry pages, compliance-adjacent wording, and almost no work on trust or authority. Repo checks also found problems on live pages that matter more than any new page. Full reasoning: [PLAN-REVIEW-2026-10-31.md](PLAN-REVIEW-2026-10-31.md). **Update 2026-11-03:** the owner reinstated the industry and AI pages as approach-led pages (a CTO who reads how we would test their industry learns we know the work) and added an industry & AI track of three extra PRs a week in W2–W3. The queue itself is Phase 6 in [PLAN.md](PLAN.md); this file is the strategy.
 
 **North star (owner, 2026-10-31): every change must make a visitor trust QAInfinity more.** When a task would add volume without adding trust, or puts a claim we can't back in front of a buyer, don't do it.
 
 ## Principles
 1. **Fix trust before adding pages.** A false or unbacked claim on a live page outweighs any new post.
-2. **Publish only what's backed by proof or a real offer.** No approach-led industry pages, no compliance or certification-adjacent wording.
-3. **One PR a week**, bundled by theme, small enough to fact-check properly.
+2. **Publish only what's backed by proof or a real offer.** Approach-led industry and AI pages are allowed (owner, 2026-11-03) when labelled "our approach" with no claimed delivery. No compliance or certification-adjacent wording.
+3. **A core PR every Monday**, bundled by theme, small enough to fact-check properly. In W2–W3 the industry & AI track adds three more PRs a week (Tue–Thu).
 4. **One off-page action a week** from the owner, with the agent drafting everything.
 5. **Expansion is demand-led.** Weeks 10–13 come from Search Console evidence, not a topic bank.
 6. **The agent's job is the next most valuable action**, not a full backlog (RUNBOOK section 0).
@@ -25,9 +25,9 @@ No fixed-price or project-based engagements. Contract-to-Hire isn't offered over
 | Weeks | Theme | The one PR each week |
 |---|---|---|
 | W1 | Fix trust | Time-zone copy, homepage Contract-to-Hire removal, unbacked stats, brand spelling |
-| W2–W4 | Commercial core | `/services/dedicated-qa-engineers/` · `/pricing/` · estimator on `/pricing/` + "How much does QA outsourcing cost" post |
-| W5–W7 | The pitch and due diligence | `/offshore-qa/` (all regions, both scheduling options) · `/faq/` + "How to evaluate an offshore QA partner" · `/industries/ecommerce/` + deeper Angara case study |
-| W8–W9 | Expertise, only where real | `/services/performance-testing/` *(if D5)* · "How to test LLM apps and AI agents" *(owner confirms wording)* |
+| W2–W4 | Commercial core (+ industry & AI track in W2–W3) | `/services/dedicated-qa-engineers/` · `/pricing/` · estimator on `/pricing/` + "How much does QA outsourcing cost" post. Tue–Thu of W2–W3: AI/LLM and agent testing + LLM-apps post · e-commerce + Angara write-up · gaming + post · fintech + post · on-demand apps + mobile checklist · industries hub + LLM-as-a-judge post |
+| W5–W7 | The pitch and due diligence | `/offshore-qa/` (all regions, both scheduling options) · `/faq/` + "How to evaluate an offshore QA partner" · W7 Monday slot freed for catch-up |
+| W8–W9 | Expertise, only where real | `/services/performance-testing/` *(if D5)* · W9 Monday slot freed for catch-up |
 | W10–W13 | Demand-led | Search Console analysis → up to 2 owner-approved PRs → 90-day review → Phase 7 draft from evidence |
 
 Auto tasks (no owner time) run on the other nights: related reading (never linking to the Contract-to-Hire posts), breadcrumbs, audits, internal links to each new page after it merges. Readable list: [CONTENT-CALENDAR.md](CONTENT-CALENDAR.md).
@@ -41,8 +41,8 @@ Auto tasks (no owner time) run on the other nights: related reading (never linki
 | D4 | Engagement models overseas | **Answered 2026-10-31:** remote QA team, hourly $18–45, either schedule; no fixed-price. |
 | D4b | Does working the client's hours (e.g. a US night shift) change the rate? | Open. Needed for `/pricing/` (W3). |
 | D5 | Do we deliver performance testing (tools, a past engagement)? Any security work? | Open. Decides W8. |
-| D6 | Were Snabbit/Ninjacart QA engagements we can name and describe? | Open. Decides a future on-demand page. |
-| D7 | Have we tested an AI/LLM product for a paying client? | Open. AI service page vs post only. |
+| D6 | Were Snabbit/Ninjacart QA engagements we can name and describe? | **Answered 2026-11-03 by decision:** the on-demand page ships approach-led and generic; no client is named. |
+| D7 | Have we tested an AI/LLM product for a paying client? | **Answered 2026-11-03 by decision:** AI/LLM and agent testing ships as an approach-led service page (`/services/ai-llm-testing/`) plus posts; no client or past result claimed. |
 | D8 | Estimator bands: $18–30 junior/mid, $30–45 senior/SDET? | Open. Needed by W4. |
 | D9 | Is the US a primary target? (PLAN.md's header says outside India, US and the Middle East; the review pack included the US.) | Open. Affects region emphasis. |
 | D10 | Founder bio (2–3 lines + LinkedIn URL) for bylines | Open. Byline + `Person` schema. |
@@ -79,7 +79,7 @@ Page-1 rankings for generic terms like `qa outsourcing` are unlikely this quarte
 
 ## Away protocol
 - Auto tasks keep going live on their own (low-risk, verified).
-- PRs queue up to the cap of 2; after that the agent writes drafts ahead in `seo/blog-drafts/`. New pages and posts go live only when the owner merges.
+- PRs queue up to the open-PR cap (2 normally, 6 during the industry & AI track); after that the agent writes drafts ahead in `seo/blog-drafts/`. New pages and posts go live only when the owner merges.
 - On return: merge in PR-number order, post the latest LinkedIn draft, read the latest report.
 - Optional: name a backup person with merge rights. The agent never merges its own PRs.
 
