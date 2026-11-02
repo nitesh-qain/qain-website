@@ -254,7 +254,7 @@
 
 <nav>
   <div class="nav-row">
-    <a class="brand" href="../index.html" aria-label="QAINfinity">
+    <a class="brand" href="/" aria-label="QAINfinity">
       <svg class="brand-icon" width="36" height="36" viewBox="0 0 120 120" aria-hidden="true">
         <rect x="4" y="4" width="112" height="112" rx="26" fill="#14171A" stroke="#35E28A" stroke-width="4"/>
         <text x="14" y="76" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-weight="700" font-size="46" fill="#6B7280">$</text>
@@ -264,11 +264,11 @@
       <span class="brand-word">qain<span class="accent">finity</span></span>
     </a>
     <div class="nav-links">
-      <a href="../index.html#services">Services</a>
-      <a href="../index.html#loopsy">Loopsy</a>
-      <a href="../index.html#faq">FAQ</a>
+      <a href="/#services">Services</a>
+      <a href="/#loopsy">Loopsy</a>
+      <a href="/#faq">FAQ</a>
     </div>
-    <a class="btn-grad" href="../index.html#contact">Contact / Book a Consult</a>
+    <a class="btn-grad" href="/#contact">Contact / Book a Consult</a>
   </div>
 </nav>
 
@@ -362,7 +362,7 @@
       <h2>Need overlap with a specific time zone?</h2>
       <p>Tell us where your team works and we'll scope the exact scheduled block before anything is signed.</p>
       <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:2px;">
-        <a class="btn-grad" href="../index.html#contact">Book a Consult</a>
+        <a class="btn-grad" href="/#contact">Book a Consult</a>
         <a class="btn-outline" href="../release-readiness/">Not ready to talk? Check your risk first &rarr;</a>
       </div>
     </div>
@@ -381,7 +381,7 @@
 </footer>
 
 <script>
-document.querySelectorAll('a[href="#contact"], a[href$="index.html#contact"]').forEach(function (link) {
+document.querySelectorAll('a[href="#contact"], a[href$="index.html#contact"], a[href$="/#contact"]').forEach(function (link) {
   link.addEventListener('click', function () {
     try { sessionStorage.setItem('qain_contact_source', link.textContent.trim()); } catch (e) {}
   });

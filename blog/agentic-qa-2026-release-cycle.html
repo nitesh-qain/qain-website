@@ -255,7 +255,7 @@
 
 <nav>
   <div class="nav-row">
-    <a class="brand" href="../index.html" aria-label="QAINfinity">
+    <a class="brand" href="/" aria-label="QAINfinity">
       <svg class="brand-icon" width="36" height="36" viewBox="0 0 120 120" aria-hidden="true">
         <rect x="4" y="4" width="112" height="112" rx="26" fill="#14171A" stroke="#35E28A" stroke-width="4"/>
         <text x="14" y="76" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-weight="700" font-size="46" fill="#6B7280">$</text>
@@ -265,13 +265,13 @@
       <span class="brand-word">qain<span class="accent">finity</span></span>
     </a>
     <div class="nav-links">
-      <a href="../index.html#services">Services</a>
+      <a href="/#services">Services</a>
       <a href="index.html">Blog</a>
       <a href="../case-studies/">Case Studies</a>
-      <a href="../index.html#loopsy">Loopsy</a>
-      <a href="../index.html#faq">FAQ</a>
+      <a href="/#loopsy">Loopsy</a>
+      <a href="/#faq">FAQ</a>
     </div>
-    <a class="btn-grad" href="../index.html#contact">Contact / Book a Consult</a>
+    <a class="btn-grad" href="/#contact">Contact / Book a Consult</a>
   </div>
 </nav>
 
@@ -328,7 +328,7 @@
       <div class="story-block">
         <h2>What it changes about choosing (and pricing) a QA partner</h2>
         <p>The outsourced software testing market is reportedly around $50 billion in 2026 and still growing at double-digit rates, and the pricing models inside it are visibly splitting into three shapes as agentic tooling spreads: traditional hourly outsourcing (roughly $25&ndash;$90/hr, billed on headcount), outcome- or coverage-based services priced on what gets tested rather than hours worked, and flat-fee AI-native QA-as-a-service offerings. That split matters for buyers because it changes what question to ask &mdash; not "do you use AI" (nearly every vendor will say yes by now), but what you're actually being billed for: a person's time, or a defined amount of coverage delivered.</p>
-        <p style="margin-top:12px;">This is also why we built <a href="../index.html#loopsy" style="color:var(--accent-2); font-weight:700;">Loopsy</a>, our in-house AI QA platform, as something our own engineers use rather than a replacement for them &mdash; automation effort down, faster to build and maintain, with a human QA engineer still setting test direction and reviewing what ships. A managed team using agentic tooling well should be able to show you a real before/after cycle-time number on a release cadence like yours, not just quote an industry-wide statistic.</p>
+        <p style="margin-top:12px;">This is also why we built <a href="/#loopsy" style="color:var(--accent-2); font-weight:700;">Loopsy</a>, our in-house AI QA platform, as something our own engineers use rather than a replacement for them &mdash; automation effort down, faster to build and maintain, with a human QA engineer still setting test direction and reviewing what ships. A managed team using agentic tooling well should be able to show you a real before/after cycle-time number on a release cadence like yours, not just quote an industry-wide statistic.</p>
         <p class="sources">Market size and pricing-model split via <a href="https://www.virtustant.com/blog/qa-outsourcing-services" target="_blank" rel="noopener">Virtustant's 2026 QA outsourcing services guide</a> and industry reporting on outcome-based and AI-native QA-as-a-service pricing.</p>
       </div>
 
@@ -362,7 +362,7 @@
       <h2>Want a real number on your own release cycle?</h2>
       <p>Tell us what your pipeline looks like today. We reply within one business day.</p>
       <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:2px;">
-        <a class="btn-grad" href="../index.html#contact">Book a Consult</a>
+        <a class="btn-grad" href="/#contact">Book a Consult</a>
         <a class="btn-outline" href="../release-readiness/">Not ready to talk? Check your risk first &rarr;</a>
       </div>
     </div>
@@ -381,7 +381,7 @@
 </footer>
 
 <script>
-document.querySelectorAll('a[href="#contact"], a[href$="index.html#contact"]').forEach(function (link) {
+document.querySelectorAll('a[href="#contact"], a[href$="index.html#contact"], a[href$="/#contact"]').forEach(function (link) {
   link.addEventListener('click', function () {
     try { sessionStorage.setItem('qain_contact_source', link.textContent.trim()); } catch (e) {}
   });
