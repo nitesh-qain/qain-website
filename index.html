@@ -313,8 +313,8 @@
   .clients-track { display: flex; align-items: center; width: max-content; margin: 0; padding: 22px 0; list-style: none; animation: clients-scroll 45s linear infinite; }
   .clients-plate:hover .clients-track { animation-play-state: paused; }
   .clients-track li { margin-right: 56px; flex-shrink: 0; }
-  .clients-track img { display: block; width: auto; height: var(--h); filter: grayscale(1) contrast(1.15) brightness(0.85); opacity: 0.92; transition: filter .2s, opacity .2s; }
-  .clients-track li:hover img { filter: none; opacity: 1; }
+  .clients-track img { display: block; width: auto; height: var(--h); filter: grayscale(1) contrast(1.15) brightness(0.85); opacity: 0.92; transition: filter .4s, opacity .4s; }
+  .clients-track li:hover img, .clients-track li.is-focus img { filter: none; opacity: 1; }
   @keyframes clients-scroll { from { transform: translateX(56px); } to { transform: translateX(calc(-50% + 56px)); } }
   @media (max-width: 860px) {
     .clients-track img { height: calc(var(--h) * 0.8); }
@@ -869,6 +869,36 @@
         });
     });
   }
+})();
+</script>
+<script>
+/* Logo strip: colour the logo(s) nearest the centre as they scroll past (2 on desktop, 1 on mobile). */
+(function () {
+  var plate = document.querySelector('.clients-plate');
+  if (!plate || !window.IntersectionObserver) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var items = Array.prototype.slice.call(plate.querySelectorAll('li'));
+  var wide = window.matchMedia('(min-width: 861px)');
+  var visible = false, raf = 0, last = 0;
+  function update(t) {
+    raf = 0;
+    if (!visible) return;
+    if (t - last > 90) {
+      last = t;
+      var box = plate.getBoundingClientRect(), mid = box.left + box.width / 2;
+      var ranked = items.map(function (li) {
+        var r = li.getBoundingClientRect();
+        return { li: li, d: Math.abs(r.left + r.width / 2 - mid) };
+      }).sort(function (a, b) { return a.d - b.d; });
+      var n = wide.matches ? 2 : 1;
+      ranked.forEach(function (x, i) { x.li.classList.toggle('is-focus', i < n); });
+    }
+    raf = requestAnimationFrame(update);
+  }
+  new IntersectionObserver(function (e) {
+    visible = e[0].isIntersecting;
+    if (visible && !raf) raf = requestAnimationFrame(update);
+  }).observe(plate);
 })();
 </script>
 </body>
