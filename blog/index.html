@@ -262,7 +262,7 @@
           <dt>The shift</dt>
           <dd>Commit-triggered agents analyze a code change, select relevant test scenarios, execute across web/API/integration layers, and investigate failures &mdash; testing scoped to the change, not a scheduled full-suite run.</dd>
           <dt>What's compressing</dt>
-          <dd>Full test cycles reportedly dropping from days to ~2 hours, coverage up ~40% in a month, and multi-agent architectures cutting manual QA effort by 38% in one microservices study.</dd>
+          <dd>One vendor case (ThinkSys/Boostlingo) reports a 5&ndash;7 day test cycle dropping to ~2 hours; a 2026 multi-agent architecture study reports up to 60% fewer invalid generated tests and a 30% coverage improvement over single-model baselines.</dd>
           <dt>What still needs a human</dt>
           <dd>A faster test cycle removes a bottleneck, not the release decision &mdash; rollback readiness, flagged-but-not-blocking calls, and coverage gaps still need a person to sign off.</dd>
         </dl>
@@ -341,20 +341,20 @@
       <div>
         <span class="mono case-tag">Blog &middot; AI &amp; Automation</span>
         <p style="font-size:12.5px; color:var(--text-dim); margin:4px 0 0;">Published October 2, 2026</p>
-        <h2>How AI QA Agents Cut Regression Testing Time by 90%</h2>
-        <p>Real 2026 deployments show agentic QA cutting regression cycles by up to 90% &mdash; what's actually different, the numbers behind it, and what it means for evaluating a QA partner.</p>
+        <h2>How AI QA Agents Are Cutting Regression Testing Time</h2>
+        <p>Agentic QA is measurably cutting regression cycles in real 2026 deployments &mdash; what's actually different, what the evidence shows, and what it means for evaluating a QA partner.</p>
         <div class="case-meta"><span>AI &amp; Automation</span><span>Regression Testing</span><span>Agentic QA</span></div>
       </div>
       <div class="case-body">
         <dl>
           <dt>The numbers</dt>
-          <dd>Documented 2026 deployments report regression cycles cut from 10 days to 2 (G2-verified reviews), release-candidate testing shrinking from 2&ndash;3 days to a few hours, and an 85% drop in manual effort at another enterprise rollout.</dd>
+          <dd>Vendor case studies report large cuts to regression cycle time and manual effort from agentic tooling &mdash; but those figures come from vendors' own marketing, not independent audits, so treat any single statistic as directional.</dd>
           <dt>Why now</dt>
-          <dd>Gartner projects 40% of enterprise applications will feature task-specific AI agents by end of 2026, up from under 5% in 2025 &mdash; QA-specific AI adoption has more than doubled since 2024.</dd>
+          <dd>Gartner forecasts up to 40% of enterprise applications will feature task-specific AI agents by end of 2026, up from under 5% in 2025 &mdash; an app-wide forecast, not QA-specific, but the clearest independently-sourced marker of how fast this is moving.</dd>
           <dt>What to ask a vendor</dt>
           <dd>Not "do you use AI," but which parts of regression the agent owns end-to-end, what human review still gates before release, and whether there's a real before/after cycle-time number.</dd>
         </dl>
-        <div class="result-card"><span class="big">90%</span><span class="small">regression cycle-time cut reported in a documented 2026 agentic QA deployment</span></div>
+        <div class="result-card"><span class="big">Up to 40%</span><span class="small">of enterprise applications projected to carry task-specific AI agents by end of 2026, per Gartner</span></div>
         <a href="ai-qa-agents-cut-regression-testing-time.html" style="display:inline-block; margin-top:16px; font-size:13.5px; font-weight:700; color:var(--accent-2);">Read the full post &rarr;</a>
       </div>
     </div>
@@ -372,7 +372,7 @@
           <dt>The checklist</dt>
           <dd>Set an SLO before testing, test against a production-like environment with real traffic patterns, include third-party dependencies, watch the golden signals live, and wire a regression gate into CI/CD so it isn't a one-time pre-launch fire drill.</dd>
           <dt>Why it matters</dt>
-          <dd>A good Largest Contentful Paint score alone drove a 61.13% conversion-rate increase in Rakuten 24's own Core Web Vitals case study &mdash; and unplanned downtime runs an estimated $14,000&ndash;$23,750 per minute at mid-size-to-enterprise scale.</dd>
+          <dd>Investing in faster Largest Contentful Paint produced a 53.37% increase in revenue per visitor and a 33.13% increase in conversion rate in Rakuten 24's own A/B-tested Core Web Vitals case study &mdash; and unplanned downtime runs an estimated $14,000&ndash;$23,750 per minute at mid-size-to-enterprise scale.</dd>
           <dt>The takeaway</dt>
           <dd>Load, stress, spike, and soak testing each answer a different failure mode &mdash; a launch checklist that only runs one of them is only covering one of the four ways a launch can break.</dd>
         </dl>
