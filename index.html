@@ -359,8 +359,9 @@
     width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
     font-size: 13px; font-weight: 700; color: #fff;
     background: linear-gradient(135deg, var(--accent-1), var(--accent-3));
-    flex-shrink: 0;
+    flex-shrink: 0; overflow: hidden;
   }
+  .avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .who .name { font-size: 14.5px; font-weight: 700; color: var(--text); }
   .who .role { font-size: 13px; color: var(--text-dim); }
 
@@ -602,7 +603,7 @@
     <div class="proof-grid">
       <div class="proof-card">
         <p class="quote">While setting up a fresh release team, it was challenging to find engineers who are reliable, honest, and hardworking. QAINfinity provided the right candidates &mdash; today, 70% of my team is from QAINfinity.</p>
-        <div class="who"><div class="avatar">PB</div><div><div class="name">Pankaj Bhatt</div><div class="role">Engineering Manager, MPL</div></div></div>
+        <div class="who"><div class="avatar"><img src="assets/testimonials/pankaj-bhatt.jpg" alt="Pankaj Bhatt" width="38" height="38" loading="lazy"></div><div><div class="name">Pankaj Bhatt</div><div class="role">Engineering Manager, MPL</div></div></div>
       </div>
       <div class="proof-card">
         <p class="quote">We were impressed with the automation and release solutions QAINfinity provided. It reduced our testing and release cycles and delivered outstanding results.</p>
@@ -610,11 +611,11 @@
       </div>
       <div class="proof-card">
         <p class="quote">QAINfinity delivered exceptional managed testing and automation services &mdash; handling everything from planning to execution, ensuring high-quality releases on time.</p>
-        <div class="who"><div class="avatar">MB</div><div><div class="name">Mukul Bhaisora</div><div class="role">Founder & Director, QualityLabs</div></div></div>
+        <div class="who"><div class="avatar"><img src="assets/testimonials/mukul-bhaisora.jpg" alt="Mukul Bhaisora" width="38" height="38" loading="lazy"></div><div><div class="name">Mukul Bhaisora</div><div class="role">Founder & Director, QualityLabs</div></div></div>
       </div>
       <div class="proof-card">
         <p class="quote">The staff augmentation model let us scale efficiently without compromising on expertise. Highly recommended for reliable QA support.</p>
-        <div class="who"><div class="avatar">NA</div><div><div class="name">Nishank Agarwal</div><div class="role">Co-Founder, Creatiosoft</div></div></div>
+        <div class="who"><div class="avatar"><img src="assets/testimonials/nishank-agarwal.jpg" alt="Nishank Agarwal" width="38" height="38" loading="lazy"></div><div><div class="name">Nishank Agarwal</div><div class="role">Co-Founder, Creatiosoft</div></div></div>
       </div>
     </div>
   </div>
