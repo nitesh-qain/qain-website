@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BCRF8NCENT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-BCRF8NCENT');
+</script>
+
+<title>How to Test LLM Apps and AI Agents: Evals, LLM-as-a-Judge and Regression Sets &mdash; QAInfinity</title>
+<meta name="description" content="A practical look at testing LLM-powered apps and AI agents: deterministic checks first, calibrated LLM-as-a-judge scoring, step-level agent evaluation, and regression testing for non-deterministic, frequently-changing prompts and models.">
+<link rel="canonical" href="https://www.qainfinity.com/blog/how-to-test-llm-apps-ai-agents.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="QAINfinity">
+<meta property="og:title" content="How to Test LLM Apps and AI Agents: Evals, LLM-as-a-Judge and Regression Sets &mdash; QAInfinity">
+<meta property="og:description" content="A practical look at testing LLM-powered apps and AI agents: deterministic checks first, calibrated LLM-as-a-judge scoring, step-level agent evaluation, and regression testing for non-deterministic, frequently-changing prompts and models.">
+<meta property="og:url" content="https://www.qainfinity.com/blog/how-to-test-llm-apps-ai-agents.html">
+<meta property="og:image" content="https://www.qainfinity.com/assets/og/default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Test LLM Apps and AI Agents: Evals, LLM-as-a-Judge and Regression Sets &mdash; QAInfinity">
+<meta name="twitter:description" content="A practical look at testing LLM-powered apps and AI agents: deterministic checks first, calibrated LLM-as-a-judge scoring, step-level agent evaluation, and regression testing for non-deterministic, frequently-changing prompts and models.">
+<meta name="twitter:image" content="https://www.qainfinity.com/assets/og/default.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "QAInfinity",
+  "url": "https://www.qainfinity.com/",
+  "logo": "https://www.qainfinity.com/assets/og/default.png",
+  "email": "info@qainfinity.com",
+  "telephone": "+91-9540752593",
+  "sameAs": [
+    "https://www.linkedin.com/company/qain-finity/"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Test LLM Apps and AI Agents: Evals, LLM-as-a-Judge and Regression Sets",
+  "description": "A practical look at testing LLM-powered apps and AI agents: deterministic checks first, calibrated LLM-as-a-judge scoring, step-level agent evaluation, and regression testing for non-deterministic, frequently-changing prompts and models.",
+  "image": "https://www.qainfinity.com/assets/og/default.png",
+  "datePublished": "2026-11-10",
+  "dateModified": "2026-11-10",
+  "author": {
+    "@type": "Organization",
+    "name": "QAInfinity",
+    "url": "https://www.qainfinity.com/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "QAInfinity",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.qainfinity.com/assets/og/default.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.qainfinity.com/blog/how-to-test-llm-apps-ai-agents.html"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.qainfinity.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://www.qainfinity.com/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "How to Test LLM Apps and AI Agents: Evals, LLM-as-a-Judge and Regression Sets"
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&display=swap">
+<style>
+  :root {
+    --bg: #f7f7fb; --surface: #ffffff; --surface-2: #eef0f7;
+    --text: #14151d; --text-dim: #565c6d; --border: rgba(20,21,29,0.09);
+    --accent-1: #4338ca; --accent-2: #7c3aed; --accent-3: #0891b2; --good: #0d9488;
+    --glow-a: rgba(79,70,229,0.16); --glow-b: rgba(139,92,246,0.12);
+    --shadow: 0 1px 2px rgba(20,21,29,0.06);
+    --logo-ink: #20255c; --logo-line: #3f7373; --term-accent: #0E7A4B;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0a0b12; --surface: #12141f; --surface-2: #181b28;
+      --text: #f2f3f8; --text-dim: #9ba1b4; --border: rgba(255,255,255,0.08);
+      --accent-1: #4f46e5; --accent-2: #8b5cf6; --accent-3: #22d3ee; --good: #34d399;
+      --glow-a: rgba(79,70,229,0.35); --glow-b: rgba(139,92,246,0.22);
+      --shadow: 0 1px 2px rgba(0,0,0,0.4);
+      --logo-ink: #eef0fb; --logo-line: #5fd0d0; --term-accent: #35E28A;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0a0b12; --surface: #12141f; --surface-2: #181b28;
+    --text: #f2f3f8; --text-dim: #9ba1b4; --border: rgba(255,255,255,0.08);
+    --accent-1: #4f46e5; --accent-2: #8b5cf6; --accent-3: #22d3ee; --good: #34d399;
+    --glow-a: rgba(79,70,229,0.35); --glow-b: rgba(139,92,246,0.22);
+    --shadow: 0 1px 2px rgba(0,0,0,0.4);
+    --logo-ink: #eef0fb; --logo-line: #5fd0d0; --term-accent: #35E28A;
+  }
+  :root[data-theme="light"] {
+    --bg: #f7f7fb; --surface: #ffffff; --surface-2: #eef0f7;
+    --text: #14151d; --text-dim: #565c6d; --border: rgba(20,21,29,0.09);
+    --accent-1: #4338ca; --accent-2: #7c3aed; --accent-3: #0891b2; --good: #0d9488;
+    --glow-a: rgba(79,70,229,0.16); --glow-b: rgba(139,92,246,0.12);
+    --shadow: 0 1px 2px rgba(20,21,29,0.06);
+    --logo-ink: #20255c; --logo-line: #3f7373; --term-accent: #0E7A4B;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 0 32px; }
+  .mono { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; letter-spacing: 0.09em; text-transform: uppercase; font-size: 12px; }
+  h1, h2, h3 { font-weight: 800; letter-spacing: -0.03em; text-wrap: balance; margin: 0; }
+  p { color: var(--text-dim); line-height: 1.65; margin: 0; }
+  a { color: inherit; text-decoration: none; }
+
+  nav {
+    position: sticky; top: 0; z-index: 20; background: var(--bg);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-row { display: flex; align-items: center; justify-content: space-between; padding: 13px 32px; max-width: 900px; margin: 0 auto; }
+  .brand-icon { display: block; flex-shrink: 0; }
+  .brand-word { font-family: 'JetBrains Mono', ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-weight: 700; font-size: 18px; letter-spacing: -0.01em; color: var(--logo-ink); }
+  .brand-word .accent { color: var(--term-accent); }
+  .btn-grad {
+    padding: 10px 20px; border-radius: 999px; font-size: 14.5px; font-weight: 700;
+    background: linear-gradient(95deg, var(--accent-1), var(--accent-2));
+    color: #fff; display: inline-block; box-shadow: var(--shadow);
+  }
+  .btn-outline {
+    padding: 9px 18px; border-radius: 999px; font-size: 14px; font-weight: 700;
+    border: 1px solid var(--border); color: var(--text-dim); display: inline-flex; align-items: center; gap: 6px;
+  }
+  .brand { display: flex; align-items: center; gap: 9px; }
+  .nav-links { display: flex; gap: 26px; font-size: 14px; color: var(--text-dim); }
+  .nav-links a { white-space: nowrap; }
+  .nav-links a:hover { color: var(--text); }
+
+  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13.5px; font-weight: 700; color: var(--text-dim); margin-bottom: 22px; }
+  .back-link:hover { color: var(--text); }
+
+  .hero { position: relative; padding: 40px 0 40px; overflow: hidden; }
+  .hero::before {
+    content: ""; position: absolute; inset: -20% -10% -20% -10%;
+    background: radial-gradient(circle at 50% 20%, var(--glow-a), var(--glow-b) 40%, transparent 70%);
+    z-index: -1;
+  }
+  .case-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
+  .case-tags span { font-size: 12.5px; padding: 5px 12px; border-radius: 999px; border: 1px solid var(--border); color: var(--text-dim); }
+  .hero h1 { font-size: 32px; }
+  .hero p.lede { max-width: 640px; margin-top: 16px; font-size: 17px; }
+
+  section { padding: 44px 0; }
+  .result-card {
+    margin: 8px 0 40px; padding: 22px 26px; border-radius: 16px;
+    background: var(--surface-2); border: 1px solid var(--border);
+    display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
+  }
+  .result-card .big { font-size: 30px; font-weight: 800; color: var(--accent-2); font-variant-numeric: tabular-nums; }
+  .result-card .small { font-size: 14px; color: var(--text-dim); }
+
+  .story h2 { font-size: 22px; margin-bottom: 12px; }
+  .story-block { padding: 28px 0; border-top: 1px solid var(--border); }
+  .story-block:first-child { border-top: none; padding-top: 0; }
+  .story-block p { font-size: 15.5px; margin-top: 4px; }
+  .story-block ul { margin: 12px 0 0; padding-left: 20px; }
+  .story-block li { font-size: 15.5px; color: var(--text-dim); line-height: 1.6; margin-top: 8px; }
+  .story-block li strong { color: var(--text); }
+  .qa-block { margin-top: 20px; padding: 18px 22px; border-radius: 14px; background: var(--surface-2); border: 1px solid var(--border); }
+  .qa-block + .qa-block { margin-top: 14px; }
+  .qa-block .q { font-weight: 700; color: var(--text); font-size: 15px; }
+  .qa-block .a { margin-top: 6px; font-size: 14.5px; }
+
+  .sources { font-size: 13px; margin-top: 10px; }
+  .sources a { color: var(--accent-2); font-weight: 600; }
+  .sources a:hover { text-decoration: underline; }
+
+  .closing {
+    text-align: center; border-radius: 24px; padding: 50px 36px;
+    background: linear-gradient(160deg, var(--surface-2), var(--surface));
+    border: 1px solid var(--border); position: relative; overflow: hidden; margin-top: 20px;
+  }
+  .closing::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 50% 0%, var(--glow-a), transparent 60%); pointer-events: none; }
+  .closing h2 { font-size: 26px; max-width: 480px; margin: 0 auto 12px; position: relative; }
+  .closing p { position: relative; max-width: 420px; margin: 0 auto 24px; }
+
+  footer { padding: 30px 0 50px; border-top: 1px solid var(--border); }
+  .foot-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-size: 13px; color: var(--text-dim); }
+
+  @media (max-width: 780px) {
+    .nav-links { display: none; }
+  }
+  @media (max-width: 700px) {
+    .hero h1 { font-size: 26px; }
+    .wrap { padding: 0 20px; }
+  }
+  .related-block { padding: 28px 0; border-top: 1px solid var(--border); }
+  .related-block h2 { font-size: 20px; margin: 0 0 10px; }
+  .related-block ul { margin: 0; padding-left: 20px; }
+  .related-block li { font-size: 15px; color: var(--text-dim); margin-top: 8px; }
+  .related-block a { color: var(--accent-2); font-weight: 600; text-decoration: none; }
+  .related-block a:hover { text-decoration: underline; }
+  .foot-legal { font-size: 12px; color: var(--text-dim); margin: 14px 0 0; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-row">
+    <a class="brand" href="/" aria-label="QAINfinity">
+      <svg class="brand-icon" width="36" height="36" viewBox="0 0 120 120" aria-hidden="true">
+        <rect x="4" y="4" width="112" height="112" rx="26" fill="#14171A" stroke="#35E28A" stroke-width="4"/>
+        <text x="14" y="76" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-weight="700" font-size="46" fill="#6B7280">$</text>
+        <polyline points="52,34 78,60 52,86" fill="none" stroke="#35E28A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="90" y="46" width="13" height="28" rx="3" fill="#35E28A"/>
+      </svg>
+      <span class="brand-word">qain<span class="accent">finity</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="/#services">Services</a>
+      <a href="index.html">Blog</a>
+      <a href="../case-studies/">Case Studies</a>
+      <a href="/#loopsy">Loopsy</a>
+      <a href="/#faq">FAQ</a>
+    </div>
+    <a class="btn-grad" href="/#contact">Contact / Book a Consult</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="wrap">
+    <a class="back-link" href="../blog/index.html">&larr; Back to Blog</a>
+    <div class="case-tags"><span>AI &amp; Automation</span><span>LLM Testing</span><span>Agent Evals</span></div>
+    <span class="mono" style="color:var(--accent-2); display:block; margin-bottom:6px;">Blog &middot; 8 min read</span>
+    <p style="font-size:13px; color:var(--text-dim); margin:0 0 14px;">Published November 10, 2026 &middot; By QAInfinity</p>
+    <h1>How to Test LLM Apps and AI Agents: Evals, LLM-as-a-Judge and Regression Sets</h1>
+    <p class="lede">Testing a feature built on an LLM is a different problem from testing a deterministic one &mdash; the same input can produce a different, still-acceptable output, and the failure modes (a confident wrong answer, a dropped instruction, a tool called with the wrong argument) rarely surface in a quick manual check. Here's what current practitioner and research guidance actually says about building eval sets, grading with LLM-as-a-judge, and catching regressions when a prompt or model changes.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p style="font-size:13px; color:var(--text-dim); font-style:italic; margin-bottom:28px;">The figures and claims below come from third-party vendor guides and one independent research preprint, not QAInfinity engagements &mdash; each is attributed to its source, and we've flagged the ones we couldn't independently verify.</p>
+
+    <div class="result-card">
+      <span class="big">20&ndash;60</span><span class="small">model calls a single agent task can involve before a final answer appears &mdash; one reason a pass/fail check on the final output alone misses real failures, per DigitalOcean's LLM-as-a-judge guide</span>
+    </div>
+
+    <div class="story">
+      <div class="story-block">
+        <h2>Deterministic checks first; save the judge model for what code can't grade</h2>
+        <p>The first instinct with an LLM feature is often to grade everything with another LLM. Current guidance pushes back on that: run cheap, code-based checks first &mdash; does the output parse as valid JSON, does it include a required field, is a banned phrase absent &mdash; and reserve LLM-as-a-judge for the qualitative slice a rule genuinely can't score, like whether an answer is actually helpful or faithful to a source document. Judge-based grading is also more reliable when the question it's asked is narrow and binary (a specific yes/no) rather than an open-ended quality score, with failing or unclear verdicts routed to a human reviewer rather than trusted blindly.</p>
+        <p class="sources">Deterministic-first grading and narrow yes/no criteria via <a href="https://www.digitalocean.com/resources/articles/llm-as-a-judge" target="_blank" rel="noopener">DigitalOcean's LLM-as-a-judge guide</a> and <a href="https://mastra.ai/articles/llm-as-a-judge" target="_blank" rel="noopener">Mastra's guide to evaluating LLM and agent outputs at scale</a>.</p>
+      </div>
+
+      <div class="story-block">
+        <h2>A judge model is only as good as its calibration against humans</h2>
+        <p>An LLM-as-a-judge setup that's never been checked against real human review is a guess with extra confidence. The guidance here is consistent across sources: validate the judge's verdicts against a sampled set of human-labeled examples, monitor for drift over time rather than calibrating once and assuming it holds, and watch for known judge biases &mdash; favoring longer answers, favoring whichever answer appears first in a pairwise comparison. Mitigations include randomizing answer order and, where it matters, using a judge model from a different provider than the one being graded, to reduce self-preference bias.</p>
+        <p class="sources">Human-calibration and drift monitoring via <a href="https://www.openlayer.com/blog/llm-as-judge-evaluation-guide" target="_blank" rel="noopener">Openlayer's LLM-as-judge evaluation guide</a>; position and verbosity bias via <a href="https://arize.com/blog/when-to-use-llm-as-a-judge/" target="_blank" rel="noopener">Arize's guide on when to use LLM-as-a-judge</a>.</p>
+      </div>
+
+      <div class="story-block">
+        <h2>Agents need step-level grading, not just a check on the final answer</h2>
+        <p>An agent task typically chains many model calls &mdash; planning, tool selection, argument construction, intermediate reasoning &mdash; before producing a final answer. A single pass/fail check on that final output can miss a wrong tool call or a skipped step that happened to still land on a plausible-looking result. Some evaluation setups now use an "agent-as-a-judge" that gathers evidence from the full trace and runs its own checks before issuing a verdict, rather than grading the end state alone.</p>
+        <p class="sources">Multi-call agent evaluation and agent-as-a-judge approaches via <a href="https://www.digitalocean.com/resources/articles/llm-as-a-judge" target="_blank" rel="noopener">DigitalOcean's LLM-as-a-judge guide</a>.</p>
+      </div>
+
+      <div class="story-block">
+        <h2>The same prompt, run twice, can give two different answers &mdash; test for that, don't ignore it</h2>
+        <p>Sampling temperature, model weight updates, and tool-call latency all introduce run-to-run variation, so grading a single run against one fixed expected string risks flagging a genuinely working feature as broken (or the reverse). Practitioner guidance recommends running each test case several times and comparing an averaged score against a baseline within a stated tolerance band, rather than treating one run as a verdict. One cited data point worth taking seriously as a caution, not a target: an article summarizing Anthropic's own eval research puts single-run agent success rates around 68&ndash;74% &mdash; a reminder that a single pass or fail on one run is a weak signal either way.</p>
+        <p class="sources">Statistical, tolerance-based pass criteria via <a href="https://www.frugaltesting.com/blog/how-to-test-non-deterministic-ai-features-in-production-a-practical-framework-for-qa-teams" target="_blank" rel="noopener">FrugalTesting's framework for testing non-deterministic AI features</a>; single-run reliability figures via <a href="https://builtin.com/articles/ai-testing-framework-engineers" target="_blank" rel="noopener">Built In's piece on how engineers test AI</a>, citing Anthropic's own eval research.</p>
+      </div>
+
+      <div class="story-block">
+        <h2>Prompts and models change often &mdash; treat each change like a release</h2>
+        <p>A prompt revision or a model-version upgrade can regress behavior the same way a code change can, and both happen more often than most teams' release processes account for. The practical pattern showing up across current guidance: version-control prompts like code, run the full eval suite before a prompt or model change ships, and snapshot the actual rendered prompt so it can be diffed against a committed baseline &mdash; catching an accidental wording change from an unrelated refactor before it reaches production. A March 2026 independent research preprint (AgentAssay) proposes a statistical approach to regression-testing agents specifically after prompt, tool, or model changes, reporting large efficiency gains over naive re-testing; those are the single author's own reported numbers from one preprint, not an independently audited result, so we're flagging it as a research direction worth watching rather than a settled figure.</p>
+        <p class="sources">Prompt version control and CI-gated eval runs via <a href="https://www.channel.tel/blog/agent-regression-testing-ci-cd-pipeline" target="_blank" rel="noopener">Channel's guide to agent regression testing in CI/CD</a>; prompt snapshotting via <a href="https://tianpan.co/blog/2026-04-15-agent-test-pyramid-llm-testing" target="_blank" rel="noopener">tianpan.co's piece on the agent test pyramid</a>; the AgentAssay preprint is on <a href="https://arxiv.org/abs/2603.02601" target="_blank" rel="noopener">arXiv (2603.02601)</a>.</p>
+      </div>
+
+      <div class="story-block">
+        <h2>Quick answers</h2>
+        <div class="qa-block">
+          <div class="q">Can I just use GPT or Claude to grade my own LLM feature's output?</div>
+          <div class="a">You can, but only after checking that judge against real human-labeled examples first, and only for the qualitative questions a deterministic rule can't answer. Used uncalibrated, a judge model inherits its own biases &mdash; favoring longer or earlier-shown answers &mdash; and will quietly misgrade in ways a rule-based check never would.</div>
+        </div>
+        <div class="qa-block">
+          <div class="q">Why does testing an AI agent need more than testing a chatbot's final reply?</div>
+          <div class="a">An agent's final answer is the end of a chain of model calls &mdash; tool selection, argument construction, intermediate steps &mdash; and a wrong step can still produce a plausible-looking final answer. Step-level grading catches failures a final-answer-only check misses.</div>
+        </div>
+        <div class="qa-block">
+          <div class="q">How do I test something that gives a different answer every time I run it?</div>
+          <div class="a">Run the same case multiple times and judge an averaged pass rate against a baseline within a tolerance band, rather than expecting one fixed output. A single run is too noisy a signal to trust on its own, in either direction.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="story-block related-block">
+      <h2>Related reading</h2>
+      <ul>
+        <li><a href="../services/ai-llm-testing/">AI &amp; LLM Application Testing &mdash; our approach</a></li>
+        <li><a href="agentic-qa-2026-release-cycle.html">Agentic QA in 2026: What Autonomous Test Agents Actually Change for Your Release Cycle</a></li>
+        <li><a href="ai-qa-agents-cut-regression-testing-time.html">How AI QA Agents Are Cutting Regression Testing Time</a></li>
+      </ul>
+    </div>
+
+    <div class="closing">
+      <h2>Shipping an LLM feature or agent and need a testing plan for it?</h2>
+      <p>Tell us what you're building. We reply within one business day.</p>
+      <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:2px;">
+        <a class="btn-grad" href="/#contact">Book a Consult</a>
+        <a class="btn-outline" href="../release-readiness/">Not ready to talk? Check your risk first &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-row">
+      <span>&copy; QAINfinity</span>
+      <a href="../contract-to-hire/" style="font-weight:700;">Contract-to-Hire</a>
+      <a href="../release-readiness/" style="font-weight:700;">Release Readiness</a>
+      <span>info@qainfinity.com &nbsp;&middot;&nbsp; +91-9540752593</span>
+    </div>
+    <p class="foot-legal">QAInfinity Private Limited &middot; Gurugram, Haryana, India</p>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('a[href="#contact"], a[href$="index.html#contact"], a[href$="/#contact"]').forEach(function (link) {
+  link.addEventListener('click', function () {
+    try { sessionStorage.setItem('qain_contact_source', link.textContent.trim()); } catch (e) {}
+  });
+});
+</script>
+</body>
+</html>
