@@ -50,7 +50,7 @@
   "description": "Case study: how QAINfinity cut Angara's web regression testing cycle from 8 hours to 30 minutes through targeted test automation.",
   "image": "https://www.qainfinity.com/assets/og/default.png",
   "datePublished": "2024-05-08",
-  "dateModified": "2024-05-08",
+  "dateModified": "2026-11-11",
   "author": {
     "@type": "Organization",
     "name": "QAInfinity",
@@ -298,6 +298,11 @@
         </ul>
       </div>
       <div class="story-block">
+        <h2>Catalogue and Checkout, in Detail</h2>
+        <p>Two things made Angara's regression surface bigger than a typical catalogue site. First, every product is customizable &mdash; stone, setting, metal, and size can all change the price and the rendered image in real time, so a single SKU in the catalogue is really a large family of valid configurations, each of which has to price and render correctly. Second, the checkout flow carries that configuration state through cart, shipping, and payment, so a defect introduced anywhere upstream (a stale price, a misapplied setting) tends to surface downstream, at the point where it costs the most: the moment a customer is paying.</p>
+        <p style="margin-top:12px;">The automated suites were built around that shape of risk rather than around generic page-load checks: configuration-to-cart journeys that carry a specific stone/setting/size combination all the way through to order confirmation, visual verification on the configurator and product pages where "the right stone and setting, rendered correctly" is the actual product, and regression coverage that runs on every release rather than being reserved for a periodic full sweep. That's what let the suite replace a full day of manual testing on <em>every</em> release, not just occasional ones.</p>
+      </div>
+      <div class="story-block">
         <h2>The Results</h2>
         <p>Run sequentially, the automation replaced a full 8-hour day of manual regression with a coffee break:</p>
         <div class="table-scroll">
@@ -317,7 +322,7 @@
       </div>
       <div class="story-block">
         <h2>Why It Worked</h2>
-        <p>QAINfinity didn't just automate what already existed &mdash; we documented it, verified it the way customers actually experience the product (visually), and built it to scale with the team's ambitions through CI and parallel execution. The result is regression that keeps pace with the business instead of holding it back.</p>
+        <p>QAINfinity didn't just automate what already existed &mdash; we documented it, verified it the way customers actually experience the product (visually), and built it to scale with the team's ambitions through CI and parallel execution. The result is regression that keeps pace with the business instead of holding it back. For how we approach this risk profile more generally &mdash; checkout, payment flows, and catalogue accuracy on any e-commerce or D2C platform &mdash; see our <a href="../industries/ecommerce/" style="color:var(--accent-2); font-weight:700;">e-commerce QA testing</a> page.</p>
       </div>
     </div>
 
