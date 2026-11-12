@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BCRF8NCENT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-BCRF8NCENT');
+</script>
+
+<title>How to Test an Online Gaming Platform: A QA Guide &mdash; QAInfinity</title>
+<meta name="description" content="A practical guide to testing online gaming and real-money platforms: wallet and bet-settlement integrity under concurrency, load testing for tournament spikes, device coverage built from real usage, and responsible-gaming and fraud edge cases.">
+<link rel="canonical" href="https://www.qainfinity.com/blog/how-to-test-online-gaming-platform.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="QAInfinity">
+<meta property="og:title" content="How to Test an Online Gaming Platform: A QA Guide &mdash; QAInfinity">
+<meta property="og:description" content="A practical guide to testing online gaming and real-money platforms: wallet and bet-settlement integrity under concurrency, load testing for tournament spikes, device coverage built from real usage, and responsible-gaming and fraud edge cases.">
+<meta property="og:url" content="https://www.qainfinity.com/blog/how-to-test-online-gaming-platform.html">
+<meta property="og:image" content="https://www.qainfinity.com/assets/og/default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Test an Online Gaming Platform: A QA Guide &mdash; QAInfinity">
+<meta name="twitter:description" content="A practical guide to testing online gaming and real-money platforms: wallet and bet-settlement integrity under concurrency, load testing for tournament spikes, device coverage built from real usage, and responsible-gaming and fraud edge cases.">
+<meta name="twitter:image" content="https://www.qainfinity.com/assets/og/default.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "QAInfinity",
+  "url": "https://www.qainfinity.com/",
+  "logo": "https://www.qainfinity.com/assets/og/default.png",
+  "email": "info@qainfinity.com",
+  "telephone": "+91-9540752593",
+  "sameAs": [
+    "https://www.linkedin.com/company/qain-finity/"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Test an Online Gaming Platform: A QA Guide",
+  "description": "A practical guide to testing online gaming and real-money platforms: wallet and bet-settlement integrity under concurrency, load testing for tournament spikes, device coverage built from real usage, and responsible-gaming and fraud edge cases.",
+  "image": "https://www.qainfinity.com/assets/og/default.png",
+  "datePublished": "2026-11-12",
+  "dateModified": "2026-11-12",
+  "author": {
+    "@type": "Organization",
+    "name": "QAInfinity",
+    "url": "https://www.qainfinity.com/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "QAInfinity",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.qainfinity.com/assets/og/default.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.qainfinity.com/blog/how-to-test-online-gaming-platform.html"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.qainfinity.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://www.qainfinity.com/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "How to Test an Online Gaming Platform: A QA Guide"
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&display=swap">
+<style>
+  :root {
+    --bg: #f7f7fb; --surface: #ffffff; --surface-2: #eef0f7;
+    --text: #14151d; --text-dim: #565c6d; --border: rgba(20,21,29,0.09);
+    --accent-1: #4338ca; --accent-2: #7c3aed; --accent-3: #0891b2; --good: #0d9488;
+    --glow-a: rgba(79,70,229,0.16); --glow-b: rgba(139,92,246,0.12);
+    --shadow: 0 1px 2px rgba(20,21,29,0.06);
+    --logo-ink: #20255c; --logo-line: #3f7373; --term-accent: #0E7A4B;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0a0b12; --surface: #12141f; --surface-2: #181b28;
+      --text: #f2f3f8; --text-dim: #9ba1b4; --border: rgba(255,255,255,0.08);
+      --accent-1: #4f46e5; --accent-2: #8b5cf6; --accent-3: #22d3ee; --good: #34d399;
+      --glow-a: rgba(79,70,229,0.35); --glow-b: rgba(139,92,246,0.22);
+      --shadow: 0 1px 2px rgba(0,0,0,0.4);
+      --logo-ink: #eef0fb; --logo-line: #5fd0d0; --term-accent: #35E28A;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0a0b12; --surface: #12141f; --surface-2: #181b28;
+    --text: #f2f3f8; --text-dim: #9ba1b4; --border: rgba(255,255,255,0.08);
+    --accent-1: #4f46e5; --accent-2: #8b5cf6; --accent-3: #22d3ee; --good: #34d399;
+    --glow-a: rgba(79,70,229,0.35); --glow-b: rgba(139,92,246,0.22);
+    --shadow: 0 1px 2px rgba(0,0,0,0.4);
+    --logo-ink: #eef0fb; --logo-line: #5fd0d0; --term-accent: #35E28A;
+  }
+  :root[data-theme="light"] {
+    --bg: #f7f7fb; --surface: #ffffff; --surface-2: #eef0f7;
+    --text: #14151d; --text-dim: #565c6d; --border: rgba(20,21,29,0.09);
+    --accent-1: #4338ca; --accent-2: #7c3aed; --accent-3: #0891b2; --good: #0d9488;
+    --glow-a: rgba(79,70,229,0.16); --glow-b: rgba(139,92,246,0.12);
+    --shadow: 0 1px 2px rgba(20,21,29,0.06);
+    --logo-ink: #20255c; --logo-line: #3f7373; --term-accent: #0E7A4B;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 0 32px; }
+  .mono { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; letter-spacing: 0.09em; text-transform: uppercase; font-size: 12px; }
+  h1, h2, h3 { font-weight: 800; letter-spacing: -0.03em; text-wrap: balance; margin: 0; }
+  p { color: var(--text-dim); line-height: 1.65; margin: 0; }
+  a { color: inherit; text-decoration: none; }
+
+  nav {
+    position: sticky; top: 0; z-index: 20; background: var(--bg);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-row { display: flex; align-items: center; justify-content: space-between; padding: 13px 32px; max-width: 900px; margin: 0 auto; }
+  .brand-icon { display: block; flex-shrink: 0; }
+  .brand-word { font-family: 'JetBrains Mono', ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-weight: 700; font-size: 18px; letter-spacing: -0.01em; color: var(--logo-ink); }
+  .brand-word .accent { color: var(--term-accent); }
+  .btn-grad {
+    padding: 10px 20px; border-radius: 999px; font-size: 14.5px; font-weight: 700;
+    background: linear-gradient(95deg, var(--accent-1), var(--accent-2));
+    color: #fff; display: inline-block; box-shadow: var(--shadow);
+  }
+  .btn-outline {
+    padding: 9px 18px; border-radius: 999px; font-size: 14px; font-weight: 700;
+    border: 1px solid var(--border); color: var(--text-dim); display: inline-flex; align-items: center; gap: 6px;
+  }
+  .brand { display: flex; align-items: center; gap: 9px; }
+  .nav-links { display: flex; gap: 26px; font-size: 14px; color: var(--text-dim); }
+  .nav-links a { white-space: nowrap; }
+  .nav-links a:hover { color: var(--text); }
+
+  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13.5px; font-weight: 700; color: var(--text-dim); margin-bottom: 22px; }
+  .back-link:hover { color: var(--text); }
+
+  .hero { position: relative; padding: 40px 0 40px; overflow: hidden; }
+  .hero::before {
+    content: ""; position: absolute; inset: -20% -10% -20% -10%;
+    background: radial-gradient(circle at 50% 20%, var(--glow-a), var(--glow-b) 40%, transparent 70%);
+    z-index: -1;
+  }
+  .case-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
+  .case-tags span { font-size: 12.5px; padding: 5px 12px; border-radius: 999px; border: 1px solid var(--border); color: var(--text-dim); }
+  .hero h1 { font-size: 32px; }
+  .hero p.lede { max-width: 640px; margin-top: 16px; font-size: 17px; }
+
+  section { padding: 44px 0; }
+  .result-card {
+    margin: 8px 0 40px; padding: 22px 26px; border-radius: 16px;
+    background: var(--surface-2); border: 1px solid var(--border);
+    display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
+  }
+  .result-card .big { font-size: 30px; font-weight: 800; color: var(--accent-2); font-variant-numeric: tabular-nums; }
+  .result-card .small { font-size: 14px; color: var(--text-dim); }
+
+  .story h2 { font-size: 22px; margin-bottom: 12px; }
+  .story-block { padding: 28px 0; border-top: 1px solid var(--border); }
+  .story-block:first-child { border-top: none; padding-top: 0; }
+  .story-block p { font-size: 15.5px; margin-top: 4px; }
+  .story-block ul { margin: 12px 0 0; padding-left: 20px; }
+  .story-block li { font-size: 15.5px; color: var(--text-dim); line-height: 1.6; margin-top: 8px; }
+  .story-block li strong { color: var(--text); }
+  .qa-block { margin-top: 20px; padding: 18px 22px; border-radius: 14px; background: var(--surface-2); border: 1px solid var(--border); }
+  .qa-block + .qa-block { margin-top: 14px; }
+  .qa-block .q { font-weight: 700; color: var(--text); font-size: 15px; }
+  .qa-block .a { margin-top: 6px; font-size: 14.5px; }
+
+  .sources { font-size: 13px; margin-top: 10px; }
+  .sources a { color: var(--accent-2); font-weight: 600; }
+  .sources a:hover { text-decoration: underline; }
+
+  .closing {
+    text-align: center; border-radius: 24px; padding: 50px 36px;
+    background: linear-gradient(160deg, var(--surface-2), var(--surface));
+    border: 1px solid var(--border); position: relative; overflow: hidden; margin-top: 20px;
+  }
+  .closing::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 50% 0%, var(--glow-a), transparent 60%); pointer-events: none; }
+  .closing h2 { font-size: 26px; max-width: 480px; margin: 0 auto 12px; position: relative; }
+  .closing p { position: relative; max-width: 420px; margin: 0 auto 24px; }
+
+  footer { padding: 30px 0 50px; border-top: 1px solid var(--border); }
+  .foot-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-size: 13px; color: var(--text-dim); }
+
+  @media (max-width: 780px) {
+    .nav-links { display: none; }
+  }
+  @media (max-width: 700px) {
+    .hero h1 { font-size: 26px; }
+    .wrap { padding: 0 20px; }
+  }
+  .related-block { padding: 28px 0; border-top: 1px solid var(--border); }
+  .related-block h2 { font-size: 20px; margin: 0 0 10px; }
+  .related-block ul { margin: 0; padding-left: 20px; }
+  .related-block li { font-size: 15px; color: var(--text-dim); margin-top: 8px; }
+  .related-block a { color: var(--accent-2); font-weight: 600; text-decoration: none; }
+  .related-block a:hover { text-decoration: underline; }
+  .foot-legal { font-size: 12px; color: var(--text-dim); margin: 14px 0 0; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-row">
+    <a class="brand" href="/" aria-label="QAINfinity">
+      <svg class="brand-icon" width="36" height="36" viewBox="0 0 120 120" aria-hidden="true">
+        <rect x="4" y="4" width="112" height="112" rx="26" fill="#14171A" stroke="#35E28A" stroke-width="4"/>
+        <text x="14" y="76" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-weight="700" font-size="46" fill="#6B7280">$</text>
+        <polyline points="52,34 78,60 52,86" fill="none" stroke="#35E28A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="90" y="46" width="13" height="28" rx="3" fill="#35E28A"/>
+      </svg>
+      <span class="brand-word">qain<span class="accent">finity</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="/#services">Services</a>
+      <a href="index.html">Blog</a>
+      <a href="../case-studies/">Case Studies</a>
+      <a href="/#loopsy">Loopsy</a>
+      <a href="/#faq">FAQ</a>
+    </div>
+    <a class="btn-grad" href="/#contact">Contact / Book a Consult</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="wrap">
+    <a class="back-link" href="../blog/index.html">&larr; Back to Blog</a>
+    <div class="case-tags"><span>Industry &amp; AI</span><span>Gaming QA</span><span>Load Testing</span></div>
+    <span class="mono" style="color:var(--accent-2); display:block; margin-bottom:6px;">Blog &middot; 9 min read</span>
+    <p style="font-size:13px; color:var(--text-dim); margin:0 0 14px;">Published November 12, 2026 &middot; By QAInfinity</p>
+    <h1>How to Test an Online Gaming Platform: A QA Guide</h1>
+    <p class="lede">Testing a gaming platform is a different problem once real money or real player accounts are involved &mdash; the same wallet, bet-settlement, and concurrency bugs that would just be annoying on a free-to-play title become refunds, fraud exposure, and churn on a real-money one. Here's what current practitioner guidance says about concurrency, payments, device coverage, and the responsible-gaming and fraud edge cases that generic QA checklists tend to skip.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p style="font-size:13px; color:var(--text-dim); font-style:italic; margin-bottom:28px;">The figures and claims below come from third-party QA practitioner guides, not QAInfinity engagements &mdash; each is attributed to its source, and we've flagged single-vendor claims that aren't independently verified.</p>
+
+    <div class="result-card">
+      <span class="big">Up to 40%</span><span class="small">the surge in concurrent players a new event or expansion can produce &mdash; enough to overwhelm a server pool sized for an ordinary day, per one practitioner guide on game performance testing</span>
+    </div>
+
+    <div class="story">
+      <div class="story-block">
+        <h2>Concurrency is the failure mode that doesn't show up until launch day</h2>
+        <p>Everyday traffic tells you almost nothing about the hour a tournament, a live event, or a promotion sends a surge of players in at once. One guide to multiplayer performance testing puts the jump as high as 40% during a new event or expansion &mdash; enough to overwhelm a server pool that was only ever tested against steady-state load. A separate iGaming-focused guide makes the same point about betting platforms, where traffic around major events is described as extreme compared to a normal day. The common failure in both cases isn't the absence of load testing, it's load testing run with a fraction of real concurrency or with data that doesn't resemble actual peak behavior, which produces results that look fine right up until the real spike hits.</p>
+        <p class="sources">Concurrency-surge figures via <a href="https://qawerk.com/blog/game-performance-testing-optimize-multiplayer-game-performance/" target="_blank" rel="noopener">QAwerk's guide to game performance testing</a>; iGaming peak-traffic behavior via <a href="https://ubertesters.com/blog/testing-for-online-casino-slot-games-igaming-platforms/" target="_blank" rel="noopener">Ubertesters' guide to testing online casino and iGaming platforms</a>.</p>
+      </div>
+
+      <div class="story-block">
+        <h2>Load testing needs to cover the backend, not just the client</h2>
+        <p>A test that only checks whether the game screen stays responsive misses where real-money platforms actually break under load: database limits, backend capacity, and matchmaking or bet-settlement behavior once many actions land at once. One widely-cited vendor claim describes a casino game handling 10,000 concurrent users with sub-0.2-second response times &mdash; a single vendor's own case, not an independently audited benchmark, so treat it as a demonstration of what's achievable with the right architecture rather than a baseline every platform should expect to hit.</p>
+        <p class="sources">Backend-scoped load testing guidance and the 10,000-user case via <a href="https://qawerk.com/blog/game-performance-testing-optimize-multiplayer-game-performance/" target="_blank" rel="noopener">QAwerk's guide to game performance testing</a>.</p>
+      </div>
+
+      <div class="story-block">
+        <h2>Payment and wallet testing fails in the sandbox and passes in production &mdash; or the other way around</h2>
+        <p>Payment gateway sandboxes are a known blind spot: testers report that a sandbox integration behaves correctly while real bank cards and live fraud-filter responses surface failures the sandbox never would. Practical edge cases worth building into a payment test suite include deposit confirmations that fail or arrive late, a session timing out mid-bet, and a wallet balance that's momentarily out of sync with an in-progress game action &mdash; all plausible points where money and gameplay state can drift apart.</p>
+        <p class="sources">Sandbox-vs-production payment gaps via <a href="https://ubertesters.com/blog/testing-for-online-casino-slot-games-igaming-platforms/" target="_blank" rel="noopener">Ubertesters' iGaming testing guide</a>; specific payment edge cases via <a href="https://www.globalapptesting.com/blog/gambling-app-testing-how-to-qa-online-casino-games-payments-and-compliance" target="_blank" rel="noopener">Global App Testing's guide to QA for online casino games, payments, and compliance</a>.</p>
+      </div>
+
+      <div class="story-block">
+        <h2>A confusing error message can trigger a fraud flag you didn't expect</h2>
+        <p>Fraud-filter behavior is genuinely hard to test end to end, because a simulated bank or card network doesn't reproduce the authentication timeouts and fraud-filter responses a real one does. One practical consequence worth designing for: an unclear payment error can prompt a player to simply retry, and repeated retries on the same card are exactly the pattern a fraud filter is built to catch &mdash; so a confusing error message isn't just a UX problem, it can create false-positive fraud flags that cost a legitimate player their deposit.</p>
+        <p class="sources">Fraud-filter and retry-pattern behavior via <a href="https://ubertesters.com/blog/testing-for-online-casino-slot-games-igaming-platforms/" target="_blank" rel="noopener">Ubertesters' iGaming testing guide</a>.</p>
+      </div>
+
+      <div class="story-block">
+        <h2>Build the device/OS matrix from real usage, not a generic list</h2>
+        <p>Guidance on compatibility testing is consistent: rank devices by actual player activity and OS-version distribution rather than testing a fixed, generic list, cover both older stable OS versions and the newest release, and keep real devices in the matrix because emulators still miss hardware-specific bugs that only show up on real silicon. One guide focused specifically on real-money betting apps argues the device/OS/network combination space is large enough that a platform needs real usage data to prioritize it sensibly rather than trying to cover everything. Matrices also age: guidance recommends revisiting them after launch using crash telemetry and emerging devices, not treating the initial matrix as fixed.</p>
+        <p class="sources">Usage-based matrix construction via <a href="https://snoopgame.com/blog/how-to-define-the-right-device-coverage-for-game-compatibility-testing/" target="_blank" rel="noopener">Snoopgame's guide to device coverage for game compatibility testing</a>; real-money betting app device/network scope via <a href="https://www.globalapptesting.com/blog/cross-device-qa-for-real-money-betting-apps-in-2026" target="_blank" rel="noopener">Global App Testing's guide to cross-device QA for real-money betting apps</a>.</p>
+      </div>
+
+      <div class="story-block">
+        <h2>Responsible-gaming and fraud edge cases are functional tests, not a compliance checkbox</h2>
+        <p>Age-verification prompts, deposit limits, and self-exclusion flows are product features like any other &mdash; which means they can have the same kind of functional bugs: a limit that doesn't persist across sessions, a self-exclusion flag that doesn't actually block a login, an age gate that can be bypassed by going back a page. One guide frames this plainly: a missing or incorrect responsible-gaming message is a real risk to a platform's licensing standing, which is a strong practical reason to test these flows with the same rigor as a payment flow, even though the legal compliance determination itself sits with licensed compliance review, not with functional QA.</p>
+        <p class="sources">Responsible-gaming feature and licensing-risk framing via <a href="https://ubertesters.com/blog/testing-for-online-casino-slot-games-igaming-platforms/" target="_blank" rel="noopener">Ubertesters' iGaming testing guide</a>.</p>
+      </div>
+
+      <div class="story-block">
+        <h2>Quick answers</h2>
+        <div class="qa-block">
+          <div class="q">Does QA testing cover RNG fairness or gaming certifications?</div>
+          <div class="a">No &mdash; RNG validation and formal gaming/regulatory certification are a licensed lab's job, separate from functional and load QA. What functional testing covers is everything around the RNG: wallet logic, bet settlement, payments, concurrency, and the responsible-gaming features built on top of it.</div>
+        </div>
+        <div class="qa-block">
+          <div class="q">How do you load-test for a tournament spike without risking production?</div>
+          <div class="a">Run the concurrency ramp against a staging environment sized and seeded to resemble the real peak &mdash; synthetic accounts and wallets, not live player data &mdash; so the test actually represents tournament-level load instead of a fraction of it.</div>
+        </div>
+        <div class="qa-block">
+          <div class="q">What's actually different about testing a real-money platform versus a free-to-play game?</div>
+          <div class="a">Money moves. A wallet bug, a payment edge case, or a fraud-filter false positive that would just be a bad review on a free-to-play title becomes a refund, a chargeback, or a regulatory conversation on a real-money one &mdash; so those paths need the same rigor a checkout flow gets on an e-commerce platform.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="story-block related-block">
+      <h2>Related reading</h2>
+      <ul>
+        <li><a href="../industries/gaming/">Online Gaming &amp; Real-Money Platform QA Testing &mdash; our approach</a></li>
+        <li><a href="performance-testing-checklist-before-product-launch.html">Performance Testing Checklist Before Your Next Product Launch</a></li>
+        <li><a href="agentic-qa-2026-release-cycle.html">Agentic QA in 2026: What Autonomous Test Agents Actually Change for Your Release Cycle</a></li>
+      </ul>
+    </div>
+
+    <div class="closing">
+      <h2>Shipping on a gaming or real-money platform and need a testing plan for it?</h2>
+      <p>Tell us what you're building. We reply within one business day.</p>
+      <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:2px;">
+        <a class="btn-grad" href="/#contact">Book a Consult</a>
+        <a class="btn-outline" href="../release-readiness/">Not ready to talk? Check your risk first &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-row">
+      <span>&copy; QAInfinity</span>
+      <a href="../contract-to-hire/" style="font-weight:700;">Contract-to-Hire</a>
+      <a href="../release-readiness/" style="font-weight:700;">Release Readiness</a>
+      <span>info@qainfinity.com &nbsp;&middot;&nbsp; +91-9540752593</span>
+    </div>
+    <p class="foot-legal">QAInfinity Private Limited &middot; Gurugram, Haryana, India</p>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('a[href="#contact"], a[href$="index.html#contact"], a[href$="/#contact"]').forEach(function (link) {
+  link.addEventListener('click', function () {
+    try { sessionStorage.setItem('qain_contact_source', link.textContent.trim()); } catch (e) {}
+  });
+});
+</script>
+</body>
+</html>
