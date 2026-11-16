@@ -226,6 +226,28 @@
 
     <div class="case">
       <div>
+        <span class="mono case-tag">Blog &middot; Fintech QA</span>
+        <p style="font-size:12.5px; color:var(--text-dim); margin:4px 0 0;">Published November 17, 2026</p>
+        <h2>How to Test Fintech and Payment Apps: Ledgers, Retries and Reconciliation</h2>
+        <p>Idempotency and retry-safe payment requests, duplicate webhook handling, ledger-to-processor reconciliation, and the sandbox limits generic checklists skip.</p>
+        <div class="case-meta"><span>Industry &amp; AI</span><span>Fintech QA</span><span>Payments Testing</span></div>
+      </div>
+      <div class="case-body">
+        <dl>
+          <dt>Idempotency</dt>
+          <dd>A retried payment request should return the original result, not create a second one &mdash; Stripe's own docs retain an idempotency key's response for at least 24 hours to make that possible.</dd>
+          <dt>Reconciliation</dt>
+          <dd>A duplicate webhook doesn't always double-charge, but it can double-count in the ledger &mdash; the mismatch rarely throws an error and surfaces weeks later instead.</dd>
+          <dt>Sandbox limits</dt>
+          <dd>Sandbox test cards cover most of a payment flow, but challenge steps like card-issuer authentication behave differently with a real card in the loop.</dd>
+        </dl>
+        <div class="result-card"><span class="big">24 hours</span><span class="small">how long Stripe retains an idempotency key's response so a retry can't create a second charge</span></div>
+        <a href="how-to-test-fintech-payment-apps.html" style="display:inline-block; margin-top:16px; font-size:13.5px; font-weight:700; color:var(--accent-2);">Read the full post &rarr;</a>
+      </div>
+    </div>
+
+    <div class="case">
+      <div>
         <span class="mono case-tag">Blog &middot; Gaming QA</span>
         <p style="font-size:12.5px; color:var(--text-dim); margin:4px 0 0;">Published November 12, 2026</p>
         <h2>How to Test an Online Gaming Platform: A QA Guide</h2>
