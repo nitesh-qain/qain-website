@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BCRF8NCENT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-BCRF8NCENT');
+</script>
+
+<title>Fintech &amp; Payment App QA Testing &mdash; QAInfinity</title>
+<meta name="description" content="QA for fintech and payment apps: payment-flow and retry/idempotency testing, ledger and balance reconciliation, sandbox and gateway testing, and onboarding journeys &mdash; our approach to testing software that moves money, using synthetic or masked test data only.">
+<link rel="canonical" href="https://www.qainfinity.com/industries/fintech/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="QAInfinity">
+<meta property="og:title" content="Fintech &amp; Payment App QA Testing &mdash; QAInfinity">
+<meta property="og:description" content="QA for fintech and payment apps: payment-flow and retry/idempotency testing, ledger and balance reconciliation, sandbox and gateway testing, and onboarding journeys &mdash; our approach to testing software that moves money, using synthetic or masked test data only.">
+<meta property="og:url" content="https://www.qainfinity.com/industries/fintech/">
+<meta property="og:image" content="https://www.qainfinity.com/assets/og/default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Fintech &amp; Payment App QA Testing &mdash; QAInfinity">
+<meta name="twitter:description" content="QA for fintech and payment apps: payment-flow and retry/idempotency testing, ledger and balance reconciliation, sandbox and gateway testing, and onboarding journeys &mdash; our approach to testing software that moves money, using synthetic or masked test data only.">
+<meta name="twitter:image" content="https://www.qainfinity.com/assets/og/default.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "QAInfinity",
+  "url": "https://www.qainfinity.com/",
+  "logo": "https://www.qainfinity.com/assets/og/default.png",
+  "foundingDate": "2019",
+  "email": "info@qainfinity.com",
+  "telephone": "+91-9540752593",
+  "sameAs": [
+    "https://www.linkedin.com/company/qain-finity/"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Fintech & Payment App QA Testing",
+  "name": "Fintech and Payment App QA Testing",
+  "description": "QA for fintech and payment apps: payment-flow and retry/idempotency testing, ledger and balance reconciliation, sandbox and gateway testing, and onboarding journeys.",
+  "provider": {
+    "@type": "Organization",
+    "name": "QAInfinity",
+    "url": "https://www.qainfinity.com/"
+  },
+  "url": "https://www.qainfinity.com/industries/fintech/"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.qainfinity.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Fintech & Payment App QA Testing"
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&display=swap">
+<style>
+  :root {
+    --bg: #f7f7fb; --surface: #ffffff; --surface-2: #eef0f7;
+    --text: #14151d; --text-dim: #565c6d; --border: rgba(20,21,29,0.09);
+    --accent-1: #4338ca; --accent-2: #7c3aed; --accent-3: #0891b2; --good: #0d9488;
+    --glow-a: rgba(79,70,229,0.16); --glow-b: rgba(139,92,246,0.12);
+    --shadow: 0 1px 2px rgba(20,21,29,0.06);
+    --logo-ink: #20255c; --logo-line: #3f7373; --term-accent: #0E7A4B;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0a0b12; --surface: #12141f; --surface-2: #181b28;
+      --text: #f2f3f8; --text-dim: #9ba1b4; --border: rgba(255,255,255,0.08);
+      --accent-1: #4f46e5; --accent-2: #8b5cf6; --accent-3: #22d3ee; --good: #34d399;
+      --glow-a: rgba(79,70,229,0.35); --glow-b: rgba(139,92,246,0.22);
+      --shadow: 0 1px 2px rgba(0,0,0,0.4);
+      --logo-ink: #eef0fb; --logo-line: #5fd0d0; --term-accent: #35E28A;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0a0b12; --surface: #12141f; --surface-2: #181b28;
+    --text: #f2f3f8; --text-dim: #9ba1b4; --border: rgba(255,255,255,0.08);
+    --accent-1: #4f46e5; --accent-2: #8b5cf6; --accent-3: #22d3ee; --good: #34d399;
+    --glow-a: rgba(79,70,229,0.35); --glow-b: rgba(139,92,246,0.22);
+    --shadow: 0 1px 2px rgba(0,0,0,0.4);
+    --logo-ink: #eef0fb; --logo-line: #5fd0d0; --term-accent: #35E28A;
+  }
+  :root[data-theme="light"] {
+    --bg: #f7f7fb; --surface: #ffffff; --surface-2: #eef0f7;
+    --text: #14151d; --text-dim: #565c6d; --border: rgba(20,21,29,0.09);
+    --accent-1: #4338ca; --accent-2: #7c3aed; --accent-3: #0891b2; --good: #0d9488;
+    --glow-a: rgba(79,70,229,0.16); --glow-b: rgba(139,92,246,0.12);
+    --shadow: 0 1px 2px rgba(20,21,29,0.06);
+    --logo-ink: #20255c; --logo-line: #3f7373; --term-accent: #0E7A4B;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 0 32px; }
+  .mono { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; letter-spacing: 0.09em; text-transform: uppercase; font-size: 12px; }
+  h1, h2, h3 { font-weight: 800; letter-spacing: -0.03em; text-wrap: balance; margin: 0; }
+  p { color: var(--text-dim); line-height: 1.65; margin: 0; }
+  a { color: inherit; text-decoration: none; }
+
+  nav {
+    position: sticky; top: 0; z-index: 20; background: var(--bg);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-row { display: flex; align-items: center; justify-content: space-between; padding: 13px 32px; max-width: 900px; margin: 0 auto; }
+  .brand-icon { display: block; flex-shrink: 0; }
+  .brand-word { font-family: 'JetBrains Mono', ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-weight: 700; font-size: 18px; letter-spacing: -0.01em; color: var(--logo-ink); }
+  .brand-word .accent { color: var(--term-accent); }
+  .btn-grad {
+    padding: 10px 20px; border-radius: 999px; font-size: 14.5px; font-weight: 700;
+    background: linear-gradient(95deg, var(--accent-1), var(--accent-2));
+    color: #fff; display: inline-block; box-shadow: var(--shadow);
+  }
+  .btn-outline {
+    padding: 9px 18px; border-radius: 999px; font-size: 14px; font-weight: 700;
+    border: 1px solid var(--border); color: var(--text-dim); display: inline-flex; align-items: center; gap: 6px;
+  }
+  .brand { display: flex; align-items: center; gap: 9px; }
+  .nav-links { display: flex; gap: 26px; font-size: 14px; color: var(--text-dim); }
+  .nav-links a { white-space: nowrap; }
+  .nav-links a:hover { color: var(--text); }
+
+  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13.5px; font-weight: 700; color: var(--text-dim); margin-bottom: 22px; }
+  .back-link:hover { color: var(--text); }
+
+  .hero { position: relative; padding: 40px 0 40px; overflow: hidden; }
+  .hero::before {
+    content: ""; position: absolute; inset: -20% -10% -20% -10%;
+    background: radial-gradient(circle at 50% 20%, var(--glow-a), var(--glow-b) 40%, transparent 70%);
+    z-index: -1;
+  }
+  .case-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
+  .case-tags span { font-size: 12.5px; padding: 5px 12px; border-radius: 999px; border: 1px solid var(--border); color: var(--text-dim); }
+  .hero h1 { font-size: 34px; }
+  .hero p.lede { max-width: 660px; margin-top: 16px; font-size: 17px; }
+
+  section { padding: 44px 0; }
+
+  .story h2 { font-size: 22px; margin-bottom: 12px; }
+  .story-block { padding: 28px 0; border-top: 1px solid var(--border); }
+  .story-block:first-child { border-top: none; padding-top: 0; }
+  .story-block p { font-size: 15.5px; margin-top: 4px; }
+  .story-block ul { margin: 12px 0 0; padding-left: 20px; }
+  .story-block li { font-size: 15.5px; color: var(--text-dim); line-height: 1.6; margin-top: 8px; }
+  .story-block li strong { color: var(--text); }
+  .story-block ol { margin: 12px 0 0; padding-left: 20px; }
+  .story-block ol li { margin-top: 10px; }
+
+  .inline-link { color: var(--accent-2); font-weight: 700; }
+
+  .closing {
+    text-align: center; border-radius: 24px; padding: 50px 36px;
+    background: linear-gradient(160deg, var(--surface-2), var(--surface));
+    border: 1px solid var(--border); position: relative; overflow: hidden; margin-top: 20px;
+  }
+  .closing::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 50% 0%, var(--glow-a), transparent 60%); pointer-events: none; }
+  .closing h2 { font-size: 26px; max-width: 480px; margin: 0 auto 12px; position: relative; }
+  .closing p { position: relative; max-width: 420px; margin: 0 auto 24px; }
+
+  footer { padding: 30px 0 50px; border-top: 1px solid var(--border); }
+  .foot-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-size: 13px; color: var(--text-dim); }
+
+  @media (max-width: 780px) {
+    .nav-links { display: none; }
+  }
+  @media (max-width: 700px) {
+    .hero h1 { font-size: 26px; }
+    .wrap { padding: 0 20px; }
+  }
+  .foot-legal { font-size: 12px; color: var(--text-dim); margin: 14px 0 0; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-row">
+    <a class="brand" href="/" aria-label="QAINfinity">
+      <svg class="brand-icon" width="36" height="36" viewBox="0 0 120 120" aria-hidden="true">
+        <rect x="4" y="4" width="112" height="112" rx="26" fill="#14171A" stroke="#35E28A" stroke-width="4"/>
+        <text x="14" y="76" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-weight="700" font-size="46" fill="#6B7280">$</text>
+        <polyline points="52,34 78,60 52,86" fill="none" stroke="#35E28A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="90" y="46" width="13" height="28" rx="3" fill="#35E28A"/>
+      </svg>
+      <span class="brand-word">qain<span class="accent">finity</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="/#services">Services</a>
+      <a href="../../blog/">Blog</a>
+      <a href="../../case-studies/">Case Studies</a>
+      <a href="/#loopsy">Loopsy</a>
+      <a href="/#faq">FAQ</a>
+    </div>
+    <a class="btn-grad" href="/#contact">Contact / Book a Consult</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="wrap">
+    <a class="back-link" href="/" onclick="event.preventDefault(); if (window.history.length > 1) { window.history.back(); } else { window.location.href = '/'; }">&larr; Back to Home</a>
+    <div class="case-tags"><span>Industry &middot; Fintech &amp; Payments</span><span>Idempotency &amp; Retries</span><span>Ledger Reconciliation</span></div>
+    <span class="mono" style="color:var(--accent-2); display:block; margin-bottom:14px;">Industry &middot; Our Approach</span>
+    <h1>QA Testing for Fintech and Payment Apps</h1>
+    <p class="lede">A payment that gets charged twice on a retry, a ledger that quietly drifts from what the processor reports, or a signup flow that blocks a real applicant doesn't read as a cosmetic bug in a product that moves money &mdash; it reads as a support ticket, a chargeback, or a number that doesn't add up weeks later. Here's how we think about testing one.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="story">
+      <div class="story-block">
+        <h2>What's actually at risk in a payment or fintech product</h2>
+        <p>Most of the damage in a fintech release doesn't look like a crash. It looks like a balance that's right on screen and wrong in the ledger, a payment that gets created twice because a retry wasn't idempotent, a webhook that arrives twice and gets processed twice, or an onboarding check that quietly rejects a legitimate applicant. None of that necessarily throws a visible error &mdash; it just costs money, trust, or a support queue. The paths that carry the most risk are also the hardest to exercise by hand: a gateway timeout followed by a user retry, two writes to the same balance landing at once, and the gap between what a confirmation screen shows the user and what actually settles days later.</p>
+      </div>
+      <div class="story-block">
+        <h2>Payment flows, including the retry and failure paths</h2>
+        <p>Every request that can create a charge, transfer, or payout is tested for what happens when it's sent more than once &mdash; a timeout followed by a user retry, a dropped connection, a double-click on "pay." The correct behavior is that a repeat of the exact same request returns the original outcome instead of creating a second one. We also test the failure paths on purpose: a request that's deliberately left hanging mid-flight, a decline that arrives late, a webhook that's replayed by the provider after a server error &mdash; not just the happy path where everything responds on the first try.</p>
+      </div>
+      <div class="story-block">
+        <h2>Ledger and balance reconciliation</h2>
+        <p>A payment that doesn't double-charge a customer can still double-count in the books &mdash; a webhook processed twice can insert a second internal record for the same event even when no second charge reaches the card. Reconciliation testing checks the internal ledger against what the payment processor and bank actually report, on a schedule, not as a one-off spot check, because this kind of mismatch rarely throws a visible error; it shows up later as a number that doesn't add up. We test this deliberately &mdash; forcing duplicate and out-of-order webhook delivery and confirming the ledger still matches the processor's own record afterward.</p>
+      </div>
+      <div class="story-block">
+        <h2>Sandbox and third-party gateway testing</h2>
+        <p>Sandbox credentials and test cards cover most of a payment flow, but not all of it &mdash; challenge flows like a card-issuer authentication step behave differently with a real card than with a sandbox test card, so a release that depends on that path needs a limited amount of real-card testing alongside the sandbox suite, not sandbox coverage alone treated as complete. Webhook and callback testing specifically includes the duplicate-delivery case: a provider retry after a timeout or a server error should produce one ledger entry, not two.</p>
+      </div>
+      <div class="story-block">
+        <h2>Onboarding journeys</h2>
+        <p>The signup and identity-check flow is tested as a functional journey, not just a form that submits: synthetic test identities and documents are run through the approve, reject, and manual-review paths to confirm each one produces the right downstream state and the right message to the applicant &mdash; not only that the happy path clears. A check that silently stalls instead of resolving, or that routes a straightforward case into manual review by mistake, is a functional bug worth catching before it blocks a real applicant.</p>
+      </div>
+      <div class="story-block">
+        <h2>Test data and environments</h2>
+        <p>Fintech QA runs on synthetic or masked data &mdash; synthetic accounts, balances, and identities &mdash; never real customer data or live payment credentials in a test environment. Payment flows use the gateway's own sandbox and test cards for the same reason, seeded into resettable environments so a reconciliation or retry run doesn't leave state behind that corrupts the next one.</p>
+      </div>
+      <div class="story-block">
+        <h2>A starter checklist</h2>
+        <ol>
+          <li>Idempotency on every request that can create a charge, transfer, or payout &mdash; a retried request returns the original result, never a second one</li>
+          <li>Deliberately forced failure paths: a hung request, a late decline, a dropped connection mid-charge</li>
+          <li>Duplicate and out-of-order webhook delivery, checked against a single resulting ledger entry</li>
+          <li>Ledger-to-processor reconciliation run on a schedule, not as a one-off spot check</li>
+          <li>Sandbox coverage for the payment flow, plus limited real-card testing for challenge steps sandboxes can't fully replicate</li>
+          <li>Onboarding approve, reject, and manual-review paths, each checked for the right downstream state and applicant messaging</li>
+          <li>Test data fully synthetic or masked, in resettable environments &mdash; no real customer data, no live payment credentials</li>
+        </ol>
+      </div>
+      <div class="story-block">
+        <h2>How this fits an engagement</h2>
+        <p>Fintech QA is delivered the same way as our other <a class="inline-link" href="/#services">services</a> &mdash; engineers embedded in your team or <a class="inline-link" href="../../services/dedicated-qa-engineers/">running testing end to end</a>, on your own hours or the 24-hour cycle. If you're not sure where your release risk actually is, the free <a class="inline-link" href="../../release-readiness/">Release Readiness Assessment</a> is a lower-commitment place to start.</p>
+      </div>
+    </div>
+
+    <div class="closing">
+      <h2>Building a payment flow or fintech product and not sure what's actually covered?</h2>
+      <p>Tell us what you're testing and where it's breaking. We reply within one business day.</p>
+      <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:2px;">
+        <a class="btn-grad" href="/#contact">Book a Consult</a>
+        <a class="btn-outline" href="../../release-readiness/">Not ready to talk? Check your risk first &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-row">
+      <span>&copy; QAInfinity</span>
+      <a href="../../contract-to-hire/" style="font-weight:700;">Contract-to-Hire</a>
+      <a href="../../release-readiness/" style="font-weight:700;">Release Readiness</a>
+      <span>info@qainfinity.com &nbsp;&middot;&nbsp; +91-9540752593</span>
+    </div>
+    <p class="foot-legal">QAInfinity Private Limited &middot; Gurugram, Haryana, India</p>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('a[href="#contact"], a[href$="index.html#contact"], a[href$="/#contact"]').forEach(function (link) {
+  link.addEventListener('click', function () {
+    try { sessionStorage.setItem('qain_contact_source', link.textContent.trim()); } catch (e) {}
+  });
+});
+</script>
+</body>
+</html>

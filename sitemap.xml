@@ -74,9 +74,15 @@
   </url>
   <url>
     <loc>https://www.qainfinity.com/blog/index.html</loc>
-    <lastmod>2026-11-11</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.qainfinity.com/blog/how-to-test-fintech-payment-apps.html</loc>
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.qainfinity.com/blog/how-to-test-online-gaming-platform.html</loc>
@@ -153,6 +159,12 @@
   <url>
     <loc>https://www.qainfinity.com/industries/gaming/</loc>
     <lastmod>2026-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.qainfinity.com/industries/fintech/</loc>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
