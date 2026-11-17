@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BCRF8NCENT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-BCRF8NCENT');
+</script>
+
+<title>Mobile App Testing Checklist for On-Demand and Marketplace Apps &mdash; QAInfinity</title>
+<meta name="description" content="A practical mobile testing checklist for on-demand and marketplace apps: real-time matching and dispatch, GPS accuracy in the field, device-level push-notification failures, network conditions beyond office Wi-Fi, and peak-load drills &mdash; with sources.">
+<link rel="canonical" href="https://www.qainfinity.com/blog/mobile-app-testing-checklist-on-demand-marketplace-apps.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="QAInfinity">
+<meta property="og:title" content="Mobile App Testing Checklist for On-Demand and Marketplace Apps &mdash; QAInfinity">
+<meta property="og:description" content="A practical mobile testing checklist for on-demand and marketplace apps: real-time matching and dispatch, GPS accuracy in the field, device-level push-notification failures, network conditions beyond office Wi-Fi, and peak-load drills &mdash; with sources.">
+<meta property="og:url" content="https://www.qainfinity.com/blog/mobile-app-testing-checklist-on-demand-marketplace-apps.html">
+<meta property="og:image" content="https://www.qainfinity.com/assets/og/default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mobile App Testing Checklist for On-Demand and Marketplace Apps &mdash; QAInfinity">
+<meta name="twitter:description" content="A practical mobile testing checklist for on-demand and marketplace apps: real-time matching and dispatch, GPS accuracy in the field, device-level push-notification failures, network conditions beyond office Wi-Fi, and peak-load drills &mdash; with sources.">
+<meta name="twitter:image" content="https://www.qainfinity.com/assets/og/default.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "QAInfinity",
+  "url": "https://www.qainfinity.com/",
+  "logo": "https://www.qainfinity.com/assets/og/default.png",
+  "email": "info@qainfinity.com",
+  "telephone": "+91-9540752593",
+  "sameAs": [
+    "https://www.linkedin.com/company/qain-finity/"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Mobile App Testing Checklist for On-Demand and Marketplace Apps",
+  "description": "A practical mobile testing checklist for on-demand and marketplace apps: real-time matching and dispatch, GPS accuracy in the field, device-level push-notification failures, network conditions beyond office Wi-Fi, and peak-load drills.",
+  "image": "https://www.qainfinity.com/assets/og/default.png",
+  "datePublished": "2026-11-18",
+  "dateModified": "2026-11-18",
+  "author": {
+    "@type": "Organization",
+    "name": "QAInfinity",
+    "url": "https://www.qainfinity.com/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "QAInfinity",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.qainfinity.com/assets/og/default.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.qainfinity.com/blog/mobile-app-testing-checklist-on-demand-marketplace-apps.html"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.qainfinity.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://www.qainfinity.com/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Mobile App Testing Checklist for On-Demand and Marketplace Apps"
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&display=swap">
+<style>
+  :root {
+    --bg: #f7f7fb; --surface: #ffffff; --surface-2: #eef0f7;
+    --text: #14151d; --text-dim: #565c6d; --border: rgba(20,21,29,0.09);
+    --accent-1: #4338ca; --accent-2: #7c3aed; --accent-3: #0891b2; --good: #0d9488;
+    --glow-a: rgba(79,70,229,0.16); --glow-b: rgba(139,92,246,0.12);
+    --shadow: 0 1px 2px rgba(20,21,29,0.06);
+    --logo-ink: #20255c; --logo-line: #3f7373; --term-accent: #0E7A4B;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0a0b12; --surface: #12141f; --surface-2: #181b28;
+      --text: #f2f3f8; --text-dim: #9ba1b4; --border: rgba(255,255,255,0.08);
+      --accent-1: #4f46e5; --accent-2: #8b5cf6; --accent-3: #22d3ee; --good: #34d399;
+      --glow-a: rgba(79,70,229,0.35); --glow-b: rgba(139,92,246,0.22);
+      --shadow: 0 1px 2px rgba(0,0,0,0.4);
+      --logo-ink: #eef0fb; --logo-line: #5fd0d0; --term-accent: #35E28A;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0a0b12; --surface: #12141f; --surface-2: #181b28;
+    --text: #f2f3f8; --text-dim: #9ba1b4; --border: rgba(255,255,255,0.08);
+    --accent-1: #4f46e5; --accent-2: #8b5cf6; --accent-3: #22d3ee; --good: #34d399;
+    --glow-a: rgba(79,70,229,0.35); --glow-b: rgba(139,92,246,0.22);
+    --shadow: 0 1px 2px rgba(0,0,0,0.4);
+    --logo-ink: #eef0fb; --logo-line: #5fd0d0; --term-accent: #35E28A;
+  }
+  :root[data-theme="light"] {
+    --bg: #f7f7fb; --surface: #ffffff; --surface-2: #eef0f7;
+    --text: #14151d; --text-dim: #565c6d; --border: rgba(20,21,29,0.09);
+    --accent-1: #4338ca; --accent-2: #7c3aed; --accent-3: #0891b2; --good: #0d9488;
+    --glow-a: rgba(79,70,229,0.16); --glow-b: rgba(139,92,246,0.12);
+    --shadow: 0 1px 2px rgba(20,21,29,0.06);
+    --logo-ink: #20255c; --logo-line: #3f7373; --term-accent: #0E7A4B;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 0 32px; }
+  .mono { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; letter-spacing: 0.09em; text-transform: uppercase; font-size: 12px; }
+  h1, h2, h3 { font-weight: 800; letter-spacing: -0.03em; text-wrap: balance; margin: 0; }
+  p { color: var(--text-dim); line-height: 1.65; margin: 0; }
+  a { color: inherit; text-decoration: none; }
+
+  nav {
+    position: sticky; top: 0; z-index: 20; background: var(--bg);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-row { display: flex; align-items: center; justify-content: space-between; padding: 13px 32px; max-width: 900px; margin: 0 auto; }
+  .brand-icon { display: block; flex-shrink: 0; }
+  .brand-word { font-family: 'JetBrains Mono', ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-weight: 700; font-size: 18px; letter-spacing: -0.01em; color: var(--logo-ink); }
+  .brand-word .accent { color: var(--term-accent); }
+  .btn-grad {
+    padding: 10px 20px; border-radius: 999px; font-size: 14.5px; font-weight: 700;
+    background: linear-gradient(95deg, var(--accent-1), var(--accent-2));
+    color: #fff; display: inline-block; box-shadow: var(--shadow);
+  }
+  .btn-outline {
+    padding: 9px 18px; border-radius: 999px; font-size: 14px; font-weight: 700;
+    border: 1px solid var(--border); color: var(--text-dim); display: inline-flex; align-items: center; gap: 6px;
+  }
+  .brand { display: flex; align-items: center; gap: 9px; }
+  .nav-links { display: flex; gap: 26px; font-size: 14px; color: var(--text-dim); }
+  .nav-links a { white-space: nowrap; }
+  .nav-links a:hover { color: var(--text); }
+
+  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13.5px; font-weight: 700; color: var(--text-dim); margin-bottom: 22px; }
+  .back-link:hover { color: var(--text); }
+
+  .hero { position: relative; padding: 40px 0 40px; overflow: hidden; }
+  .hero::before {
+    content: ""; position: absolute; inset: -20% -10% -20% -10%;
+    background: radial-gradient(circle at 50% 20%, var(--glow-a), var(--glow-b) 40%, transparent 70%);
+    z-index: -1;
+  }
+  .case-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
+  .case-tags span { font-size: 12.5px; padding: 5px 12px; border-radius: 999px; border: 1px solid var(--border); color: var(--text-dim); }
+  .hero h1 { font-size: 32px; }
+  .hero p.lede { max-width: 640px; margin-top: 16px; font-size: 17px; }
+
+  section { padding: 44px 0; }
+  .result-card {
+    margin: 8px 0 40px; padding: 22px 26px; border-radius: 16px;
+    background: var(--surface-2); border: 1px solid var(--border);
+    display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
+  }
+  .result-card .big { font-size: 30px; font-weight: 800; color: var(--accent-2); font-variant-numeric: tabular-nums; }
+  .result-card .small { font-size: 14px; color: var(--text-dim); }
+
+  .story h2 { font-size: 22px; margin-bottom: 12px; }
+  .story-block { padding: 28px 0; border-top: 1px solid var(--border); }
+  .story-block:first-child { border-top: none; padding-top: 0; }
+  .story-block p { font-size: 15.5px; margin-top: 4px; }
+  .story-block ul { margin: 12px 0 0; padding-left: 20px; }
+  .story-block li { font-size: 15.5px; color: var(--text-dim); line-height: 1.6; margin-top: 8px; }
+  .story-block li strong { color: var(--text); }
+  .qa-block { margin-top: 20px; padding: 18px 22px; border-radius: 14px; background: var(--surface-2); border: 1px solid var(--border); }
+  .qa-block + .qa-block { margin-top: 14px; }
+  .qa-block .q { font-weight: 700; color: var(--text); font-size: 15px; }
+  .qa-block .a { margin-top: 6px; font-size: 14.5px; }
+
+  .sources { font-size: 13px; margin-top: 10px; }
+  .sources a { color: var(--accent-2); font-weight: 600; }
+  .sources a:hover { text-decoration: underline; }
+
+  .closing {
+    text-align: center; border-radius: 24px; padding: 50px 36px;
+    background: linear-gradient(160deg, var(--surface-2), var(--surface));
+    border: 1px solid var(--border); position: relative; overflow: hidden; margin-top: 20px;
+  }
+  .closing::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 50% 0%, var(--glow-a), transparent 60%); pointer-events: none; }
+  .closing h2 { font-size: 26px; max-width: 480px; margin: 0 auto 12px; position: relative; }
+  .closing p { position: relative; max-width: 420px; margin: 0 auto 24px; }
+
+  footer { padding: 30px 0 50px; border-top: 1px solid var(--border); }
+  .foot-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-size: 13px; color: var(--text-dim); }
+
+  @media (max-width: 780px) {
+    .nav-links { display: none; }
+  }
+  @media (max-width: 700px) {
+    .hero h1 { font-size: 26px; }
+    .wrap { padding: 0 20px; }
+  }
+  .related-block { padding: 28px 0; border-top: 1px solid var(--border); }
+  .related-block h2 { font-size: 20px; margin: 0 0 10px; }
+  .related-block ul { margin: 0; padding-left: 20px; }
+  .related-block li { font-size: 15px; color: var(--text-dim); margin-top: 8px; }
+  .related-block a { color: var(--accent-2); font-weight: 600; text-decoration: none; }
+  .related-block a:hover { text-decoration: underline; }
+  .foot-legal { font-size: 12px; color: var(--text-dim); margin: 14px 0 0; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-row">
+    <a class="brand" href="/" aria-label="QAINfinity">
+      <svg class="brand-icon" width="36" height="36" viewBox="0 0 120 120" aria-hidden="true">
+        <rect x="4" y="4" width="112" height="112" rx="26" fill="#14171A" stroke="#35E28A" stroke-width="4"/>
+        <text x="14" y="76" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-weight="700" font-size="46" fill="#6B7280">$</text>
+        <polyline points="52,34 78,60 52,86" fill="none" stroke="#35E28A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="90" y="46" width="13" height="28" rx="3" fill="#35E28A"/>
+      </svg>
+      <span class="brand-word">qain<span class="accent">finity</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="/#services">Services</a>
+      <a href="index.html">Blog</a>
+      <a href="../case-studies/">Case Studies</a>
+      <a href="/#loopsy">Loopsy</a>
+      <a href="/#faq">FAQ</a>
+    </div>
+    <a class="btn-grad" href="/#contact">Contact / Book a Consult</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="wrap">
+    <a class="back-link" href="../blog/index.html">&larr; Back to Blog</a>
+    <div class="case-tags"><span>Industry &amp; AI</span><span>On-Demand &amp; Marketplace</span><span>Mobile QA</span></div>
+    <span class="mono" style="color:var(--accent-2); display:block; margin-bottom:6px;">Blog &middot; 9 min read</span>
+    <p style="font-size:13px; color:var(--text-dim); margin:0 0 14px;">Published November 18, 2026 &middot; By QAInfinity</p>
+    <h1>Mobile App Testing Checklist for On-Demand and Marketplace Apps</h1>
+    <p class="lede">A generic mobile checklist covers devices, OS versions, and network conditions. An on-demand or marketplace app adds a second dimension most checklists skip: two apps, a matching engine, and a payments ledger that all have to agree on the same live state. Here's what engineering write-ups, platform documentation, and device-behavior trackers say about the failure modes specific to that category &mdash; sourced, not assumed.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p style="font-size:13px; color:var(--text-dim); font-style:italic; margin-bottom:28px;">The figures and claims below come from engineering blogs, platform documentation, and community device-behavior trackers, not QAInfinity engagements &mdash; each is attributed to its source.</p>
+
+    <div class="result-card">
+      <span class="big">Weekly</span><span class="small">how often Uber runs live load-testing drills (its internal tool "Hailstorm") against production-like traffic, per Uber's own engineering blog</span>
+    </div>
+
+    <div class="story">
+      <div class="story-block">
+        <h2>Matching and dispatch: test the timing, not just the outcome</h2>
+        <p>Uber's own developer documentation is specific about one timing detail that matters for testing: after a trip is created, the driver's status needs to update quickly &mdash; within seconds &mdash; or the flow can hit a timeout error, which is why its own guidance is to trigger the driver-accept state change immediately after trip creation rather than leaving a gap. Separately, an engineering write-up on ride-sharing matching design sets a concrete target worth borrowing for any dispatch system: a p95 of around 5 seconds to assign a provider, described as roughly the point where the experience starts to feel broken to the person waiting. Both point to the same test case: measure status-propagation and assignment latency directly, under load, rather than only checking that a match eventually happens.</p>
+        <p class="sources">Driver-status timing via <a href="https://developer.uber.com/docs/guest-rides/guest-ride-api-build-guide/frequently-asked-questions" target="_blank" rel="noopener">Uber's Guest Rides API build guide FAQ</a>; the p95 assignment-latency target via <a href="https://www.techinterview.org/post/3233464682/lld-ride-sharing-matching-engine/?format=md" target="_blank" rel="noopener">a ride-sharing matching-engine design write-up</a>.</p>
+      </div>
+
+      <div class="story-block">
+        <h2>Double-assignment is a concurrency bug, and it needs a concurrency test</h2>
+        <p>A matching engine that tracks provider status as a simple flag is vulnerable to two near-simultaneous requests both reading "available" and both assigning the same provider before either write lands. The fix pattern described in the same matching-engine write-up is a conditional update &mdash; the assignment only succeeds if the provider's row is still in the expected state when the write happens, and a failed conditional update means the system retries with the next candidate instead of double-booking. The test case this implies is deliberate: fire two assignment requests for the same provider at close to the same instant and confirm exactly one wins, rather than trusting that it's statistically unlikely to happen in production.</p>
+        <p class="sources">Conditional-update assignment logic via <a href="https://www.techinterview.org/post/3233464682/lld-ride-sharing-matching-engine/?format=md" target="_blank" rel="noopener">the same ride-sharing matching-engine design write-up</a>.</p>
+      </div>
+
+      <div class="story-block">
+        <h2>GPS accuracy depends on the device, not just the signal</h2>
+        <p>Location-testing guides are consistent on one point: GPS and location accuracy vary by device, chipset, and OS version, and that variation is worse in dense urban environments &mdash; exactly where a lot of on-demand demand concentrates. That's the practical argument for testing location-dependent flows on a representative set of real devices in real conditions, not only against a simulated or mocked location feed, and for including a stale-or-missing-fix case in the test plan rather than assuming a fix is always current.</p>
+        <p class="sources">Device- and environment-dependent GPS accuracy via <a href="https://dev.to/jamescantor38/testing-challenges-in-last-mile-delivery-systems-gps-drift-connectivity-issues-1hke" target="_blank" rel="noopener">a last-mile delivery QA write-up on GPS drift and connectivity issues</a>.</p>
+      </div>
+
+      <div class="story-block">
+        <h2>Push notifications fail silently, and the cause is often the device, not the app</h2>
+        <p>A background push notification that never arrives is a recurring, well-documented failure mode on Android, and it's frequently caused by the device's own battery-management behavior rather than a bug in the app. dontkillmyapp.com, a community-run tracker of per-manufacturer background restrictions, documents OnePlus's "App Auto-Launch" feature as one that can stop an app from running in the background entirely unless it's explicitly exempted, and a separate sleep-tracking feature on some OnePlus devices that disables network connections during a learned "asleep" window &mdash; which blocks notification delivery outright during that window. The test implication: run the notification suite against backgrounded and battery-saver device states on a representative OEM set, not only against a foregrounded app with the screen on.</p>
+        <p class="sources">OnePlus background-restriction behavior via <a href="https://dontkillmyapp.com/oneplus" target="_blank" rel="noopener">dontkillmyapp.com's OnePlus page</a>.</p>
+      </div>
+
+      <div class="story-block">
+        <h2>Office Wi-Fi is the one network condition least like real use</h2>
+        <p>Mobile-testing guidance keeps repeating the same correction for a reason: testing exclusively on a strong office Wi-Fi connection is one of the most common gaps in a mobile test plan, because it's also the condition real users hit least often on an on-demand app used on the move. Standard guidance is to deliberately cover switching between Wi-Fi and mobile data mid-session, throttled 2G/3G conditions, and packet loss, using network-shaping tools built for exactly this, and to build the device matrix from actual usage analytics rather than a theoretical list of OS versions.</p>
+        <p class="sources">Network-condition and device-matrix guidance via <a href="https://www.browserstack.com/guide/mobile-app-testing-checklist" target="_blank" rel="noopener">BrowserStack's mobile app testing checklist</a>.</p>
+      </div>
+
+      <div class="story-block">
+        <h2>Peak load is tested as a recurring drill, not a one-time check</h2>
+        <p>Uber's own engineering blog describes running Hailstorm, an internal load-testing tool that uses test accounts to simulate extra traffic on the system, as part of weekly system-wide drills &mdash; alongside individual teams independently load-testing their own services on a self-service platform. The pattern worth borrowing at any scale is the cadence: treat peak-readiness as something re-verified on a schedule as the system changes, not a box checked once before the first launch.</p>
+        <p class="sources">Weekly load-testing drills via <a href="https://eng.uber.com/nye/" target="_blank" rel="noopener">Uber's own engineering blog on New Year's Eve traffic preparation</a>.</p>
+      </div>
+
+      <div class="story-block">
+        <h2>Quick answers</h2>
+        <div class="qa-block">
+          <div class="q">What makes testing an on-demand or marketplace app different from testing any other mobile app?</div>
+          <div class="a">The failure modes live in the seam between two apps and a matching engine that all have to agree on the same real-time state &mdash; a status update that's late, a double-assignment under concurrent requests, a location fix that's stale. A single-app test plan checks each screen in isolation and misses exactly that class of bug.</div>
+        </div>
+        <div class="qa-block">
+          <div class="q">Can location-dependent flows be tested without real devices?</div>
+          <div class="a">Not fully. Simulated GPS feeds are useful for iteration, but accuracy varies by device, chipset, and OS version in ways a simulator doesn't reproduce &mdash; particularly in dense urban areas, which is often where demand concentrates. Real-device testing in real conditions is the only way to catch that gap.</div>
+        </div>
+        <div class="qa-block">
+          <div class="q">Why would a push notification fail if the app's code is correct?</div>
+          <div class="a">Several Android device makers ship aggressive background-process and battery-management behavior by default that can silently stop a backgrounded app from receiving anything until it's reopened. Testing the notification path only with the app open and the screen on will miss this; it needs to run against backgrounded and battery-saver states on a representative device set.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="story-block related-block">
+      <h2>Related reading</h2>
+      <ul>
+        <li><a href="../industries/on-demand-apps/">On-Demand &amp; Marketplace App QA Testing &mdash; our approach</a></li>
+        <li><a href="how-to-test-online-gaming-platform.html">How to Test an Online Gaming Platform: A QA Guide</a></li>
+        <li><a href="performance-testing-checklist-before-product-launch.html">Performance Testing Checklist Before Your Next Product Launch</a></li>
+      </ul>
+    </div>
+
+    <div class="closing">
+      <h2>Building an on-demand or marketplace app and need a testing plan for it?</h2>
+      <p>Tell us what you're building. We reply within one business day.</p>
+      <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:2px;">
+        <a class="btn-grad" href="/#contact">Book a Consult</a>
+        <a class="btn-outline" href="../release-readiness/">Not ready to talk? Check your risk first &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-row">
+      <span>&copy; QAInfinity</span>
+      <a href="../contract-to-hire/" style="font-weight:700;">Contract-to-Hire</a>
+      <a href="../release-readiness/" style="font-weight:700;">Release Readiness</a>
+      <span>info@qainfinity.com &nbsp;&middot;&nbsp; +91-9540752593</span>
+    </div>
+    <p class="foot-legal">QAInfinity Private Limited &middot; Gurugram, Haryana, India</p>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('a[href="#contact"], a[href$="index.html#contact"], a[href$="/#contact"]').forEach(function (link) {
+  link.addEventListener('click', function () {
+    try { sessionStorage.setItem('qain_contact_source', link.textContent.trim()); } catch (e) {}
+  });
+});
+</script>
+</body>
+</html>

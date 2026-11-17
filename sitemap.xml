@@ -74,9 +74,15 @@
   </url>
   <url>
     <loc>https://www.qainfinity.com/blog/index.html</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.qainfinity.com/blog/mobile-app-testing-checklist-on-demand-marketplace-apps.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.qainfinity.com/blog/how-to-test-fintech-payment-apps.html</loc>
@@ -165,6 +171,12 @@
   <url>
     <loc>https://www.qainfinity.com/industries/fintech/</loc>
     <lastmod>2026-11-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.qainfinity.com/industries/on-demand-apps/</loc>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
