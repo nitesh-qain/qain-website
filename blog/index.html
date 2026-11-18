@@ -204,6 +204,7 @@
     </a>
     <div class="nav-links">
       <a href="/#services">Services</a>
+      <a href="/industries/">Industries</a>
       <a href="index.html">Blog</a>
       <a href="../case-studies/">Case Studies</a>
       <a href="/#loopsy">Loopsy</a>
@@ -223,6 +224,28 @@
 
 <section>
   <div class="wrap">
+
+    <div class="case">
+      <div>
+        <span class="mono case-tag">Blog &middot; LLM Evaluation</span>
+        <p style="font-size:12.5px; color:var(--text-dim); margin:4px 0 0;">Published November 19, 2026</p>
+        <h2>LLM-as-a-Judge Explained: How to Evaluate AI Output at Scale</h2>
+        <p>What LLM-as-a-judge actually measures, how well it agrees with human reviewers, the position- and length-bias research behind it, and how to calibrate a judge model before trusting it at scale.</p>
+        <div class="case-meta"><span>AI &amp; Automation</span><span>LLM Evaluation</span><span>Research Deep Dive</span></div>
+      </div>
+      <div class="case-body">
+        <dl>
+          <dt>Agreement with humans</dt>
+          <dd>GPT-4's agreement with human preference on MT-Bench/Chatbot Arena landed around 80%+, roughly matching human-human agreement &mdash; per the foundational 2023 study that introduced LLM-as-a-judge.</dd>
+          <dt>It's task-dependent</dt>
+          <dd>On harder, context-grounded grading, even the best-tested judge model reached only about 55% consistent accuracy in a 2025 benchmark &mdash; a very different result from open-ended chat grading.</dd>
+          <dt>Calibrate, don't assume</dt>
+          <dd>Use chance-corrected agreement (Cohen's kappa) against a human-labeled sample, not raw percent agreement, and re-check periodically for drift.</dd>
+        </dl>
+        <div class="result-card"><span class="big">~80%</span><span class="small">GPT-4's agreement with human preference on MT-Bench/Chatbot Arena, per Zheng et al.'s 2023 study</span></div>
+        <a href="llm-as-a-judge-explained-evaluating-ai-output-at-scale.html" style="display:inline-block; margin-top:16px; font-size:13.5px; font-weight:700; color:var(--accent-2);">Read the full post &rarr;</a>
+      </div>
+    </div>
 
     <div class="case">
       <div>

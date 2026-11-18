@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BCRF8NCENT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-BCRF8NCENT');
+</script>
+
+<title>LLM-as-a-Judge Explained: How to Evaluate AI Output at Scale &mdash; QAInfinity</title>
+<meta name="description" content="What LLM-as-a-judge actually measures, how well it agrees with human reviewers, the position- and length-bias research behind it, and how to calibrate a judge model before trusting its verdicts at scale.">
+<link rel="canonical" href="https://www.qainfinity.com/blog/llm-as-a-judge-explained-evaluating-ai-output-at-scale.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="QAINfinity">
+<meta property="og:title" content="LLM-as-a-Judge Explained: How to Evaluate AI Output at Scale &mdash; QAInfinity">
+<meta property="og:description" content="What LLM-as-a-judge actually measures, how well it agrees with human reviewers, the position- and length-bias research behind it, and how to calibrate a judge model before trusting its verdicts at scale.">
+<meta property="og:url" content="https://www.qainfinity.com/blog/llm-as-a-judge-explained-evaluating-ai-output-at-scale.html">
+<meta property="og:image" content="https://www.qainfinity.com/assets/og/default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="LLM-as-a-Judge Explained: How to Evaluate AI Output at Scale &mdash; QAInfinity">
+<meta name="twitter:description" content="What LLM-as-a-judge actually measures, how well it agrees with human reviewers, the position- and length-bias research behind it, and how to calibrate a judge model before trusting its verdicts at scale.">
+<meta name="twitter:image" content="https://www.qainfinity.com/assets/og/default.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "QAInfinity",
+  "url": "https://www.qainfinity.com/",
+  "logo": "https://www.qainfinity.com/assets/og/default.png",
+  "email": "info@qainfinity.com",
+  "telephone": "+91-9540752593",
+  "sameAs": [
+    "https://www.linkedin.com/company/qain-finity/"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "LLM-as-a-Judge Explained: How to Evaluate AI Output at Scale",
+  "description": "What LLM-as-a-judge actually measures, how well it agrees with human reviewers, the position- and length-bias research behind it, and how to calibrate a judge model before trusting its verdicts at scale.",
+  "image": "https://www.qainfinity.com/assets/og/default.png",
+  "datePublished": "2026-11-19",
+  "dateModified": "2026-11-19",
+  "author": {
+    "@type": "Organization",
+    "name": "QAInfinity",
+    "url": "https://www.qainfinity.com/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "QAInfinity",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.qainfinity.com/assets/og/default.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.qainfinity.com/blog/llm-as-a-judge-explained-evaluating-ai-output-at-scale.html"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.qainfinity.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://www.qainfinity.com/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "LLM-as-a-Judge Explained: How to Evaluate AI Output at Scale"
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&display=swap">
+<style>
+  :root {
+    --bg: #f7f7fb; --surface: #ffffff; --surface-2: #eef0f7;
+    --text: #14151d; --text-dim: #565c6d; --border: rgba(20,21,29,0.09);
+    --accent-1: #4338ca; --accent-2: #7c3aed; --accent-3: #0891b2; --good: #0d9488;
+    --glow-a: rgba(79,70,229,0.16); --glow-b: rgba(139,92,246,0.12);
+    --shadow: 0 1px 2px rgba(20,21,29,0.06);
+    --logo-ink: #20255c; --logo-line: #3f7373; --term-accent: #0E7A4B;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0a0b12; --surface: #12141f; --surface-2: #181b28;
+      --text: #f2f3f8; --text-dim: #9ba1b4; --border: rgba(255,255,255,0.08);
+      --accent-1: #4f46e5; --accent-2: #8b5cf6; --accent-3: #22d3ee; --good: #34d399;
+      --glow-a: rgba(79,70,229,0.35); --glow-b: rgba(139,92,246,0.22);
+      --shadow: 0 1px 2px rgba(0,0,0,0.4);
+      --logo-ink: #eef0fb; --logo-line: #5fd0d0; --term-accent: #35E28A;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0a0b12; --surface: #12141f; --surface-2: #181b28;
+    --text: #f2f3f8; --text-dim: #9ba1b4; --border: rgba(255,255,255,0.08);
+    --accent-1: #4f46e5; --accent-2: #8b5cf6; --accent-3: #22d3ee; --good: #34d399;
+    --glow-a: rgba(79,70,229,0.35); --glow-b: rgba(139,92,246,0.22);
+    --shadow: 0 1px 2px rgba(0,0,0,0.4);
+    --logo-ink: #eef0fb; --logo-line: #5fd0d0; --term-accent: #35E28A;
+  }
+  :root[data-theme="light"] {
+    --bg: #f7f7fb; --surface: #ffffff; --surface-2: #eef0f7;
+    --text: #14151d; --text-dim: #565c6d; --border: rgba(20,21,29,0.09);
+    --accent-1: #4338ca; --accent-2: #7c3aed; --accent-3: #0891b2; --good: #0d9488;
+    --glow-a: rgba(79,70,229,0.16); --glow-b: rgba(139,92,246,0.12);
+    --shadow: 0 1px 2px rgba(20,21,29,0.06);
+    --logo-ink: #20255c; --logo-line: #3f7373; --term-accent: #0E7A4B;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 0 32px; }
+  .mono { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; letter-spacing: 0.09em; text-transform: uppercase; font-size: 12px; }
+  h1, h2, h3 { font-weight: 800; letter-spacing: -0.03em; text-wrap: balance; margin: 0; }
+  p { color: var(--text-dim); line-height: 1.65; margin: 0; }
+  a { color: inherit; text-decoration: none; }
+
+  nav {
+    position: sticky; top: 0; z-index: 20; background: var(--bg);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-row { display: flex; align-items: center; justify-content: space-between; padding: 13px 32px; max-width: 900px; margin: 0 auto; }
+  .brand-icon { display: block; flex-shrink: 0; }
+  .brand-word { font-family: 'JetBrains Mono', ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-weight: 700; font-size: 18px; letter-spacing: -0.01em; color: var(--logo-ink); }
+  .brand-word .accent { color: var(--term-accent); }
+  .btn-grad {
+    padding: 10px 20px; border-radius: 999px; font-size: 14.5px; font-weight: 700;
+    background: linear-gradient(95deg, var(--accent-1), var(--accent-2));
+    color: #fff; display: inline-block; box-shadow: var(--shadow);
+  }
+  .btn-outline {
+    padding: 9px 18px; border-radius: 999px; font-size: 14px; font-weight: 700;
+    border: 1px solid var(--border); color: var(--text-dim); display: inline-flex; align-items: center; gap: 6px;
+  }
+  .brand { display: flex; align-items: center; gap: 9px; }
+  .nav-links { display: flex; gap: 26px; font-size: 14px; color: var(--text-dim); }
+  .nav-links a { white-space: nowrap; }
+  .nav-links a:hover { color: var(--text); }
+
+  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13.5px; font-weight: 700; color: var(--text-dim); margin-bottom: 22px; }
+  .back-link:hover { color: var(--text); }
+
+  .hero { position: relative; padding: 40px 0 40px; overflow: hidden; }
+  .hero::before {
+    content: ""; position: absolute; inset: -20% -10% -20% -10%;
+    background: radial-gradient(circle at 50% 20%, var(--glow-a), var(--glow-b) 40%, transparent 70%);
+    z-index: -1;
+  }
+  .case-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
+  .case-tags span { font-size: 12.5px; padding: 5px 12px; border-radius: 999px; border: 1px solid var(--border); color: var(--text-dim); }
+  .hero h1 { font-size: 32px; }
+  .hero p.lede { max-width: 640px; margin-top: 16px; font-size: 17px; }
+
+  section { padding: 44px 0; }
+  .result-card {
+    margin: 8px 0 40px; padding: 22px 26px; border-radius: 16px;
+    background: var(--surface-2); border: 1px solid var(--border);
+    display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
+  }
+  .result-card .big { font-size: 30px; font-weight: 800; color: var(--accent-2); font-variant-numeric: tabular-nums; }
+  .result-card .small { font-size: 14px; color: var(--text-dim); }
+
+  .story h2 { font-size: 22px; margin-bottom: 12px; }
+  .story-block { padding: 28px 0; border-top: 1px solid var(--border); }
+  .story-block:first-child { border-top: none; padding-top: 0; }
+  .story-block p { font-size: 15.5px; margin-top: 4px; }
+  .story-block ul { margin: 12px 0 0; padding-left: 20px; }
+  .story-block li { font-size: 15.5px; color: var(--text-dim); line-height: 1.6; margin-top: 8px; }
+  .story-block li strong { color: var(--text); }
+  .qa-block { margin-top: 20px; padding: 18px 22px; border-radius: 14px; background: var(--surface-2); border: 1px solid var(--border); }
+  .qa-block + .qa-block { margin-top: 14px; }
+  .qa-block .q { font-weight: 700; color: var(--text); font-size: 15px; }
+  .qa-block .a { margin-top: 6px; font-size: 14.5px; }
+
+  .sources { font-size: 13px; margin-top: 10px; }
+  .sources a { color: var(--accent-2); font-weight: 600; }
+  .sources a:hover { text-decoration: underline; }
+
+  .closing {
+    text-align: center; border-radius: 24px; padding: 50px 36px;
+    background: linear-gradient(160deg, var(--surface-2), var(--surface));
+    border: 1px solid var(--border); position: relative; overflow: hidden; margin-top: 20px;
+  }
+  .closing::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 50% 0%, var(--glow-a), transparent 60%); pointer-events: none; }
+  .closing h2 { font-size: 26px; max-width: 480px; margin: 0 auto 12px; position: relative; }
+  .closing p { position: relative; max-width: 420px; margin: 0 auto 24px; }
+
+  footer { padding: 30px 0 50px; border-top: 1px solid var(--border); }
+  .foot-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-size: 13px; color: var(--text-dim); }
+
+  @media (max-width: 780px) {
+    .nav-links { display: none; }
+  }
+  @media (max-width: 700px) {
+    .hero h1 { font-size: 26px; }
+    .wrap { padding: 0 20px; }
+  }
+  .related-block { padding: 28px 0; border-top: 1px solid var(--border); }
+  .related-block h2 { font-size: 20px; margin: 0 0 10px; }
+  .related-block ul { margin: 0; padding-left: 20px; }
+  .related-block li { font-size: 15px; color: var(--text-dim); margin-top: 8px; }
+  .related-block a { color: var(--accent-2); font-weight: 600; text-decoration: none; }
+  .related-block a:hover { text-decoration: underline; }
+  .foot-legal { font-size: 12px; color: var(--text-dim); margin: 14px 0 0; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-row">
+    <a class="brand" href="/" aria-label="QAINfinity">
+      <svg class="brand-icon" width="36" height="36" viewBox="0 0 120 120" aria-hidden="true">
+        <rect x="4" y="4" width="112" height="112" rx="26" fill="#14171A" stroke="#35E28A" stroke-width="4"/>
+        <text x="14" y="76" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-weight="700" font-size="46" fill="#6B7280">$</text>
+        <polyline points="52,34 78,60 52,86" fill="none" stroke="#35E28A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="90" y="46" width="13" height="28" rx="3" fill="#35E28A"/>
+      </svg>
+      <span class="brand-word">qain<span class="accent">finity</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="/#services">Services</a>
+      <a href="/industries/">Industries</a>
+      <a href="index.html">Blog</a>
+      <a href="../case-studies/">Case Studies</a>
+      <a href="/#loopsy">Loopsy</a>
+      <a href="/#faq">FAQ</a>
+    </div>
+    <a class="btn-grad" href="/#contact">Contact / Book a Consult</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="wrap">
+    <a class="back-link" href="../blog/index.html">&larr; Back to Blog</a>
+    <div class="case-tags"><span>AI &amp; Automation</span><span>LLM Evaluation</span><span>Research Deep Dive</span></div>
+    <span class="mono" style="color:var(--accent-2); display:block; margin-bottom:6px;">Blog &middot; 9 min read</span>
+    <p style="font-size:13px; color:var(--text-dim); margin:0 0 14px;">Published November 19, 2026 &middot; By QAInfinity</p>
+    <h1>LLM-as-a-Judge Explained: How to Evaluate AI Output at Scale</h1>
+    <p class="lede">Our <a href="how-to-test-llm-apps-ai-agents.html" style="color:var(--accent-2); font-weight:700;">LLM and agent testing post</a> touched on LLM-as-a-judge as one tool among several. This one goes deeper into the mechanism itself: where the technique comes from, how well it actually agrees with human reviewers, the specific biases researchers have measured, and what calibrating one against real human review looks like in practice.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p style="font-size:13px; color:var(--text-dim); font-style:italic; margin-bottom:28px;">The figures and claims below come from peer-reviewed and preprint research papers plus vendor/practitioner guides, not QAInfinity engagements &mdash; each is attributed to its source, and we've flagged the ones that are a single vendor's own numbers rather than independently verified.</p>
+
+    <div class="result-card">
+      <span class="big">~80%</span><span class="small">agreement between GPT-4 and human preference on MT-Bench/Chatbot Arena &mdash; roughly the same rate humans agree with each other &mdash; per Zheng et al.'s foundational 2023 study</span>
+    </div>
+
+    <div class="story">
+      <div class="story-block">
+        <h2>Where the technique comes from, and what it actually claims</h2>
+        <p>"LLM-as-a-judge" means using one language model to score or compare the output of another, instead of (or alongside) a human reviewer. The idea was formalized in a 2023 paper that introduced two companion benchmarks &mdash; MT-Bench, a curated multi-turn question set, and Chatbot Arena, a crowdsourced head-to-head voting platform &mdash; specifically to test whether a strong model's judgments track human ones. Its headline finding: GPT-4's agreement with human preference on both benchmarks landed around the same level that humans reach when they're compared against each other, which is the result that made LLM-as-a-judge a credible substitute for at least some human-review workload rather than a gimmick. A separate, earlier line of work (G-Eval) proposed a specific judging method &mdash; a chain-of-thought prompt plus a strict form-filling output format &mdash; and reported a Spearman correlation of 0.514 with human judgments on summarization, beating prior automatic metrics by a wide margin at the time.</p>
+        <p class="sources">Zheng et al., <a href="https://arxiv.org/abs/2306.05685" target="_blank" rel="noopener">"Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena"</a> (arXiv:2306.05685, NeurIPS 2023); Liu et al., <a href="https://arxiv.org/abs/2303.16634" target="_blank" rel="noopener">"G-Eval: NLG Evaluation using GPT-4 with Better Human Alignment"</a> (arXiv:2303.16634, EMNLP 2023).</p>
+      </div>
+
+      <div class="story-block">
+        <h2>That agreement rate isn't a constant &mdash; it depends heavily on the task</h2>
+        <p>The ~80% figure above came from open-ended instruction-following questions, which is a comparatively easy case for a judge model. A 2025 benchmark built specifically to test judges on contextual tasks &mdash; grading answers against a retrieved document or long source text, the way a RAG or summarization system needs to be graded &mdash; found that even the strongest tested model (OpenAI's o1) reached only around 55% consistent accuracy. That's a meaningful gap from the instruction-following result, and it's the clearest evidence available that "how good is LLM-as-a-judge" doesn't have one answer: a judge grading open-ended chat quality is working a very different, easier problem than one checking whether an answer is actually faithful to a 2,000-word source document.</p>
+        <p class="sources">Xu et al., <a href="https://arxiv.org/abs/2503.15620" target="_blank" rel="noopener">"Does Context Matter? ContextualJudgeBench for Evaluating LLM-based Judges in Contextual Settings"</a> (arXiv:2503.15620, ACL 2025).</p>
+      </div>
+
+      <div class="story-block">
+        <h2>Pointwise vs. pairwise, and the rubric that actually makes either one reliable</h2>
+        <p>A judge can grade one output on its own against a rubric (pointwise) or compare two outputs head-to-head and pick a winner (pairwise). Pairwise grading is generally the more reliable default for subjective quality questions, since "is this good" is a harder absolute judgment than "is this better than that" &mdash; but it isn't automatically immune to the structural biases below, and recent work shows a well-built rubric can close most of the gap for pointwise grading too. Either way, the prompt that does the grading needs the same four things: a stated role for the judge, an explicit, specific rubric rather than a vague "rate the quality," the actual input/output pair as variables, and a strict output format (often JSON) so a verdict can be parsed and aggregated programmatically rather than read by a person every time.</p>
+        <p class="sources">Rubric structure via <a href="https://klu.ai/glossary/llm-as-a-judge" target="_blank" rel="noopener">Klu's LLM-as-a-judge glossary entry</a>; pointwise/pairwise reliability via a rubric-calibration study summarized on <a href="https://arxiv.org/html/2602.02219" target="_blank" rel="noopener">arXiv (2602.02219)</a>.</p>
+      </div>
+
+      <div class="story-block">
+        <h2>Position bias is real and well-studied; length bias is messier than the common claim</h2>
+        <p>Position bias &mdash; a judge favoring whichever answer it sees first or second in a pairwise comparison, independent of actual quality &mdash; is the most rigorously documented failure mode. A systematic study found it's strongly affected by how close the two candidates actually are in quality: the closer the match, the more the judge's verdict swings on position alone, which is exactly the situation (two genuinely similar outputs) where a judge's verdict matters most. The standard fix is simple and cheap: run the comparison twice with the order swapped, or apply a permutation-based calibration. Length bias &mdash; "judges just prefer longer answers" &mdash; is repeated constantly but the evidence is more mixed than the position-bias finding: one study reports frontier judge models are considerably more length-robust than mid-tier ones, and the same position-bias study found the quality gap between candidates moved the needle on position bias far more than any length difference did. The practical fix that does hold up either way is length-controlled scoring &mdash; a method that estimates what a judge's win rate would be if both answers were the same length, which measurably improved one benchmark's correlation with large-scale crowdsourced human voting.</p>
+        <p class="sources">Position bias and quality-gap interaction via Shi et al., <a href="https://arxiv.org/html/2406.07791v9" target="_blank" rel="noopener">"Judging the Judges: A Systematic Study of Position Bias in LLM-as-a-Judge"</a> (arXiv:2406.07791); length-controlled win rate via Dubois et al., <a href="https://arxiv.org/abs/2404.04475" target="_blank" rel="noopener">"Length-Controlled AlpacaEval: A Simple Way to Debias Automatic Evaluators"</a> (arXiv:2404.04475), which reports raising correlation with Chatbot Arena from 0.94 to 0.98.</p>
+      </div>
+
+      <div class="story-block">
+        <h2>Self-preference is the bias that's easiest to forget</h2>
+        <p>A judge model tends to rate output from its own model family more favorably, independent of actual quality &mdash; which matters most when a team uses the same vendor's model to both generate and grade a feature's output. The two standard mitigations are using a judge from a different model family than whichever model generated the output being graded, and running an ensemble of judges (different models, or a specialized independent evaluator) and aggregating their verdicts rather than trusting any single judge's call. Neither eliminates the bias, but both make it visible: a judge that disagrees sharply with an independent second judge is a signal worth investigating before either verdict is trusted.</p>
+        <p class="sources">Self-preference and cross-model judging via Zheng et al., <a href="https://arxiv.org/abs/2306.05685" target="_blank" rel="noopener">"Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena"</a> (arXiv:2306.05685); ensemble mitigation via <a href="https://klu.ai/glossary/llm-as-a-judge" target="_blank" rel="noopener">Klu's LLM-as-a-judge glossary entry</a>.</p>
+      </div>
+
+      <div class="story-block">
+        <h2>Calibration against humans: use chance-corrected agreement, not raw percent agreement</h2>
+        <p>Human review stays the reference point a judge is calibrated against, not something a judge replaces outright. Raw percent agreement between judge and human can look reassuring and still be close to meaningless on an imbalanced dataset &mdash; if 90% of cases are easy "pass" verdicts, a judge that just says "pass" every time scores 90% agreement while catching nothing. Chance-corrected measures like Cohen's kappa are the standard fix, since they account for how much agreement you'd expect from random guessing given the actual class balance. One practitioner source suggests treating a judge-human kappa below 0.6 as a signal to stop and investigate &mdash; useful as a working rule of thumb, though it's not an established statistical standard, so don't treat 0.6 itself as a hard pass/fail line. The other standing recommendation is to refresh the human-labeled calibration set periodically (one source suggests quarterly) rather than calibrating once at setup and assuming the judge's behavior hasn't drifted since.</p>
+        <p class="sources">Calibration and drift monitoring via <a href="https://www.openlayer.com/blog/llm-as-judge-evaluation-guide" target="_blank" rel="noopener">Openlayer's LLM-as-judge evaluation guide</a>; Cohen's kappa and the 0.6 rule-of-thumb via <a href="https://levelup.gitconnected.com/llm-as-a-judge-calibration-cohens-kappa-and-judge-bias-in-production-e8e7b58ba064" target="_blank" rel="noopener">a practitioner write-up on LLM-as-a-judge calibration in production</a> &mdash; flagged here as one practitioner's rule of thumb, not a peer-reviewed threshold.</p>
+      </div>
+
+      <div class="story-block">
+        <h2>Bias auditing is the exception, not the norm, in real deployments</h2>
+        <p>It's worth being honest about how rarely any of the above actually gets checked. A 2026 scoping review of LLM-as-a-judge use in healthcare research found that among the studies that tested for bias at all, only about 16% tested for specific, named bias dimensions (position, length, self-preference, and so on) &mdash; most either skipped bias testing entirely or tested it loosely. That's a narrow, specific field, not a universal number, but it lines up with the broader pattern in this space: the research above exists and is fairly mature, but most teams deploying a judge model in production aren't yet running the position-swap test, the kappa check, or the cross-model ensemble that the research says actually matters. Newer proposals &mdash; a "meta-judge" that reviews and revises a first judge's rationale before it's final, and post-hoc statistical calibration of judge scores with a regression or classifier model &mdash; are still research directions, not settled production patterns.</p>
+        <p class="sources">Bias-testing prevalence via <a href="https://arxiv.org/pdf/2604.25933" target="_blank" rel="noopener">"A Scoping Review of LLM-as-a-Judge in Healthcare and the MedJUDGE Framework"</a> (arXiv:2604.25933).</p>
+      </div>
+
+      <div class="story-block">
+        <h2>Quick answers</h2>
+        <div class="qa-block">
+          <div class="q">Is LLM-as-a-judge as reliable as a human reviewer?</div>
+          <div class="a">On easier, open-ended tasks, a well-calibrated judge can reach human-level agreement with other humans. On harder, context-grounded tasks (grading against a long source document), even the best-tested model reached only about 55% consistent accuracy in one 2025 benchmark &mdash; so the honest answer is "it depends on the task," not a flat yes or no.</div>
+        </div>
+        <div class="qa-block">
+          <div class="q">Do LLM judges really prefer longer answers?</div>
+          <div class="a">Sometimes, but the evidence is more mixed than the common claim suggests. Frontier models appear more length-robust than mid-tier ones, and one study found the quality gap between candidates affects judge verdicts more than length does. Length-controlled scoring is the standing fix regardless of how strong the bias is in a given setup.</div>
+        </div>
+        <div class="qa-block">
+          <div class="q">What's the minimum I should do before trusting a judge model in production?</div>
+          <div class="a">Run it against a human-labeled sample and measure agreement with a chance-corrected statistic like Cohen's kappa, not raw percent agreement; swap comparison order to check for position bias; and, where it matters, use a judge from a different model family than whatever generated the output, to reduce self-preference. Refresh the calibration sample periodically rather than assuming day-one behavior holds.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="story-block related-block">
+      <h2>Related reading</h2>
+      <ul>
+        <li><a href="../services/ai-llm-testing/">AI &amp; LLM Application Testing &mdash; our approach</a></li>
+        <li><a href="how-to-test-llm-apps-ai-agents.html">How to Test LLM Apps and AI Agents: Evals, LLM-as-a-Judge and Regression Sets</a></li>
+        <li><a href="../industries/">Industries we test &mdash; including AI &amp; LLM products</a></li>
+      </ul>
+    </div>
+
+    <div class="closing">
+      <h2>Building eval infrastructure for an LLM feature or agent?</h2>
+      <p>Tell us what you're building. We reply within one business day.</p>
+      <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:2px;">
+        <a class="btn-grad" href="/#contact">Book a Consult</a>
+        <a class="btn-outline" href="../release-readiness/">Not ready to talk? Check your risk first &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-row">
+      <span>&copy; QAINfinity</span>
+      <a href="../contract-to-hire/" style="font-weight:700;">Contract-to-Hire</a>
+      <a href="../release-readiness/" style="font-weight:700;">Release Readiness</a>
+      <span>info@qainfinity.com &nbsp;&middot;&nbsp; +91-9540752593</span>
+    </div>
+    <p class="foot-legal">QAInfinity Private Limited &middot; Gurugram, Haryana, India</p>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('a[href="#contact"], a[href$="index.html#contact"], a[href$="/#contact"]').forEach(function (link) {
+  link.addEventListener('click', function () {
+    try { sessionStorage.setItem('qain_contact_source', link.textContent.trim()); } catch (e) {}
+  });
+});
+</script>
+</body>
+</html>
