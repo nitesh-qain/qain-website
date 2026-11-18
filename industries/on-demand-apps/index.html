@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BCRF8NCENT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-BCRF8NCENT');
+</script>
+
+<title>On-Demand &amp; Marketplace App QA Testing &mdash; QAInfinity</title>
+<meta name="description" content="QA for on-demand and marketplace apps: real-time matching and dispatch, location and maps accuracy, two-sided customer/provider flows, payments and refunds, notifications, device/network matrix, and peak-load readiness &mdash; our approach to testing software built on live supply and demand.">
+<link rel="canonical" href="https://www.qainfinity.com/industries/on-demand-apps/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="QAInfinity">
+<meta property="og:title" content="On-Demand &amp; Marketplace App QA Testing &mdash; QAInfinity">
+<meta property="og:description" content="QA for on-demand and marketplace apps: real-time matching and dispatch, location and maps accuracy, two-sided customer/provider flows, payments and refunds, notifications, device/network matrix, and peak-load readiness &mdash; our approach to testing software built on live supply and demand.">
+<meta property="og:url" content="https://www.qainfinity.com/industries/on-demand-apps/">
+<meta property="og:image" content="https://www.qainfinity.com/assets/og/default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="On-Demand &amp; Marketplace App QA Testing &mdash; QAInfinity">
+<meta name="twitter:description" content="QA for on-demand and marketplace apps: real-time matching and dispatch, location and maps accuracy, two-sided customer/provider flows, payments and refunds, notifications, device/network matrix, and peak-load readiness &mdash; our approach to testing software built on live supply and demand.">
+<meta name="twitter:image" content="https://www.qainfinity.com/assets/og/default.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "QAInfinity",
+  "url": "https://www.qainfinity.com/",
+  "logo": "https://www.qainfinity.com/assets/og/default.png",
+  "foundingDate": "2019",
+  "email": "info@qainfinity.com",
+  "telephone": "+91-9540752593",
+  "sameAs": [
+    "https://www.linkedin.com/company/qain-finity/"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "On-Demand & Marketplace App QA Testing",
+  "name": "On-Demand and Marketplace App QA Testing",
+  "description": "QA for on-demand and marketplace apps: real-time matching and dispatch, location and maps accuracy, two-sided customer/provider flows, payments and refunds, notifications, device/network matrix, and peak-load readiness.",
+  "provider": {
+    "@type": "Organization",
+    "name": "QAInfinity",
+    "url": "https://www.qainfinity.com/"
+  },
+  "url": "https://www.qainfinity.com/industries/on-demand-apps/"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.qainfinity.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "On-Demand & Marketplace App QA Testing"
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&display=swap">
+<style>
+  :root {
+    --bg: #f7f7fb; --surface: #ffffff; --surface-2: #eef0f7;
+    --text: #14151d; --text-dim: #565c6d; --border: rgba(20,21,29,0.09);
+    --accent-1: #4338ca; --accent-2: #7c3aed; --accent-3: #0891b2; --good: #0d9488;
+    --glow-a: rgba(79,70,229,0.16); --glow-b: rgba(139,92,246,0.12);
+    --shadow: 0 1px 2px rgba(20,21,29,0.06);
+    --logo-ink: #20255c; --logo-line: #3f7373; --term-accent: #0E7A4B;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0a0b12; --surface: #12141f; --surface-2: #181b28;
+      --text: #f2f3f8; --text-dim: #9ba1b4; --border: rgba(255,255,255,0.08);
+      --accent-1: #4f46e5; --accent-2: #8b5cf6; --accent-3: #22d3ee; --good: #34d399;
+      --glow-a: rgba(79,70,229,0.35); --glow-b: rgba(139,92,246,0.22);
+      --shadow: 0 1px 2px rgba(0,0,0,0.4);
+      --logo-ink: #eef0fb; --logo-line: #5fd0d0; --term-accent: #35E28A;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0a0b12; --surface: #12141f; --surface-2: #181b28;
+    --text: #f2f3f8; --text-dim: #9ba1b4; --border: rgba(255,255,255,0.08);
+    --accent-1: #4f46e5; --accent-2: #8b5cf6; --accent-3: #22d3ee; --good: #34d399;
+    --glow-a: rgba(79,70,229,0.35); --glow-b: rgba(139,92,246,0.22);
+    --shadow: 0 1px 2px rgba(0,0,0,0.4);
+    --logo-ink: #eef0fb; --logo-line: #5fd0d0; --term-accent: #35E28A;
+  }
+  :root[data-theme="light"] {
+    --bg: #f7f7fb; --surface: #ffffff; --surface-2: #eef0f7;
+    --text: #14151d; --text-dim: #565c6d; --border: rgba(20,21,29,0.09);
+    --accent-1: #4338ca; --accent-2: #7c3aed; --accent-3: #0891b2; --good: #0d9488;
+    --glow-a: rgba(79,70,229,0.16); --glow-b: rgba(139,92,246,0.12);
+    --shadow: 0 1px 2px rgba(20,21,29,0.06);
+    --logo-ink: #20255c; --logo-line: #3f7373; --term-accent: #0E7A4B;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 0 32px; }
+  .mono { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; letter-spacing: 0.09em; text-transform: uppercase; font-size: 12px; }
+  h1, h2, h3 { font-weight: 800; letter-spacing: -0.03em; text-wrap: balance; margin: 0; }
+  p { color: var(--text-dim); line-height: 1.65; margin: 0; }
+  a { color: inherit; text-decoration: none; }
+
+  nav {
+    position: sticky; top: 0; z-index: 20; background: var(--bg);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-row { display: flex; align-items: center; justify-content: space-between; padding: 13px 32px; max-width: 900px; margin: 0 auto; }
+  .brand-icon { display: block; flex-shrink: 0; }
+  .brand-word { font-family: 'JetBrains Mono', ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-weight: 700; font-size: 18px; letter-spacing: -0.01em; color: var(--logo-ink); }
+  .brand-word .accent { color: var(--term-accent); }
+  .btn-grad {
+    padding: 10px 20px; border-radius: 999px; font-size: 14.5px; font-weight: 700;
+    background: linear-gradient(95deg, var(--accent-1), var(--accent-2));
+    color: #fff; display: inline-block; box-shadow: var(--shadow);
+  }
+  .btn-outline {
+    padding: 9px 18px; border-radius: 999px; font-size: 14px; font-weight: 700;
+    border: 1px solid var(--border); color: var(--text-dim); display: inline-flex; align-items: center; gap: 6px;
+  }
+  .brand { display: flex; align-items: center; gap: 9px; }
+  .nav-links { display: flex; gap: 26px; font-size: 14px; color: var(--text-dim); }
+  .nav-links a { white-space: nowrap; }
+  .nav-links a:hover { color: var(--text); }
+
+  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13.5px; font-weight: 700; color: var(--text-dim); margin-bottom: 22px; }
+  .back-link:hover { color: var(--text); }
+
+  .hero { position: relative; padding: 40px 0 40px; overflow: hidden; }
+  .hero::before {
+    content: ""; position: absolute; inset: -20% -10% -20% -10%;
+    background: radial-gradient(circle at 50% 20%, var(--glow-a), var(--glow-b) 40%, transparent 70%);
+    z-index: -1;
+  }
+  .case-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
+  .case-tags span { font-size: 12.5px; padding: 5px 12px; border-radius: 999px; border: 1px solid var(--border); color: var(--text-dim); }
+  .hero h1 { font-size: 34px; }
+  .hero p.lede { max-width: 660px; margin-top: 16px; font-size: 17px; }
+
+  section { padding: 44px 0; }
+
+  .story h2 { font-size: 22px; margin-bottom: 12px; }
+  .story-block { padding: 28px 0; border-top: 1px solid var(--border); }
+  .story-block:first-child { border-top: none; padding-top: 0; }
+  .story-block p { font-size: 15.5px; margin-top: 4px; }
+  .story-block ul { margin: 12px 0 0; padding-left: 20px; }
+  .story-block li { font-size: 15.5px; color: var(--text-dim); line-height: 1.6; margin-top: 8px; }
+  .story-block li strong { color: var(--text); }
+  .story-block ol { margin: 12px 0 0; padding-left: 20px; }
+  .story-block ol li { margin-top: 10px; }
+
+  .inline-link { color: var(--accent-2); font-weight: 700; }
+
+  .closing {
+    text-align: center; border-radius: 24px; padding: 50px 36px;
+    background: linear-gradient(160deg, var(--surface-2), var(--surface));
+    border: 1px solid var(--border); position: relative; overflow: hidden; margin-top: 20px;
+  }
+  .closing::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 50% 0%, var(--glow-a), transparent 60%); pointer-events: none; }
+  .closing h2 { font-size: 26px; max-width: 480px; margin: 0 auto 12px; position: relative; }
+  .closing p { position: relative; max-width: 420px; margin: 0 auto 24px; }
+
+  footer { padding: 30px 0 50px; border-top: 1px solid var(--border); }
+  .foot-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-size: 13px; color: var(--text-dim); }
+
+  @media (max-width: 780px) {
+    .nav-links { display: none; }
+  }
+  @media (max-width: 700px) {
+    .hero h1 { font-size: 26px; }
+    .wrap { padding: 0 20px; }
+  }
+  .foot-legal { font-size: 12px; color: var(--text-dim); margin: 14px 0 0; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-row">
+    <a class="brand" href="/" aria-label="QAINfinity">
+      <svg class="brand-icon" width="36" height="36" viewBox="0 0 120 120" aria-hidden="true">
+        <rect x="4" y="4" width="112" height="112" rx="26" fill="#14171A" stroke="#35E28A" stroke-width="4"/>
+        <text x="14" y="76" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-weight="700" font-size="46" fill="#6B7280">$</text>
+        <polyline points="52,34 78,60 52,86" fill="none" stroke="#35E28A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="90" y="46" width="13" height="28" rx="3" fill="#35E28A"/>
+      </svg>
+      <span class="brand-word">qain<span class="accent">finity</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="/#services">Services</a>
+      <a href="../../blog/">Blog</a>
+      <a href="../../case-studies/">Case Studies</a>
+      <a href="/#loopsy">Loopsy</a>
+      <a href="/#faq">FAQ</a>
+    </div>
+    <a class="btn-grad" href="/#contact">Contact / Book a Consult</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="wrap">
+    <a class="back-link" href="/" onclick="event.preventDefault(); if (window.history.length > 1) { window.history.back(); } else { window.location.href = '/'; }">&larr; Back to Home</a>
+    <div class="case-tags"><span>Industry &middot; On-Demand &amp; Marketplace</span><span>Real-Time Matching</span><span>Two-Sided Flows</span></div>
+    <span class="mono" style="color:var(--accent-2); display:block; margin-bottom:14px;">Industry &middot; Our Approach</span>
+    <h1>QA Testing for On-Demand and Marketplace Apps</h1>
+    <p class="lede">An on-demand or marketplace app doesn't fail the way most software fails. The riskiest bugs show up in the seam between two apps that have to agree on the same reality in real time &mdash; a provider who's gone offline but still shows as available, a location that drifts a block away from where someone actually is, a payout that doesn't match the fee the customer was charged. Here's how we think about testing one.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="story">
+      <div class="story-block">
+        <h2>What's actually at risk in an on-demand or marketplace app</h2>
+        <p>Most on-demand and marketplace products run on a live, constantly-changing picture of supply and demand &mdash; who's available right now, where they are, what they're willing to do, and what it costs. A single-app testing mindset checks whether each screen works in isolation; it doesn't catch the failures that only show up when two apps, a matching engine, and a payments ledger all have to agree on the same state at the same moment. A provider's status update that arrives three seconds late, a location fix that's stale by the time it reaches the matcher, or a push notification that never arrives because a phone's battery manager silently killed the background connection &mdash; none of that throws a visible error. It just looks like the match took too long, the map was wrong, or nobody heard about the order. We built this page to describe how we'd test for that class of failure, not just the UI on top of it.</p>
+      </div>
+      <div class="story-block">
+        <h2>Real-time matching and dispatch</h2>
+        <p>The matching or dispatch engine is tested as a stateful system under contention, not as a single lookup. That means varying the inputs that actually drive a real assignment decision &mdash; location, current workload, availability, and estimated time to reach the job &mdash; rather than only exercising the single nearest-available-provider case. It also means testing the timing explicitly: how quickly a provider's online/offline status change reaches the matching engine, and what happens when two customers are assigned the same provider at nearly the same instant. A system that can't guarantee one provider isn't double-booked under concurrent requests will eventually double-book one in production; that's a case worth forcing deliberately rather than hoping load testing stumbles into it.</p>
+      </div>
+      <div class="story-block">
+        <h2>Location and maps accuracy</h2>
+        <p>Location testing has to happen on real devices, in real conditions, not only against a simulated GPS feed. Location accuracy varies by device, chipset, and OS version, and it degrades in specific, predictable ways &mdash; dense urban areas with tall buildings are a known weak spot for GPS accuracy, and that's exactly where a lot of on-demand demand actually concentrates. The test plan has to include a stale-or-missing-fix case (what the app shows and does when location hasn't updated in a while), not just the case where every fix arrives on time and accurate.</p>
+      </div>
+      <div class="story-block">
+        <h2>Two-sided flows: the customer and provider apps, tested together</h2>
+        <p>A customer app and a provider app are really one system wearing two interfaces, and most of the bugs that matter live in the handoff between them &mdash; a cancellation on one side that doesn't propagate to the other, a status the customer app shows that the provider app has already moved past. We test these as paired state machines: drive an action on one app and assert on the resulting state on both, rather than testing each app's screens independently and assuming the backend keeps them in sync. For flows built on live connections (a tracking map, a chat thread, a status feed), the assertion is against the resulting application state after an event &mdash; did the booking move to the right status, did the right screen update &mdash; not against the raw message on the wire, which keeps the tests stable when the message format changes later.</p>
+      </div>
+      <div class="story-block">
+        <h2>Payments, payouts, and refunds across two sides</h2>
+        <p>A marketplace payment usually has to be split the moment it's taken &mdash; a platform fee held back, the rest routed to the provider &mdash; which means a refund isn't just "give the money back," it's "unwind both sides of a split that may already have paid out separately." That reversal behaves differently depending on how the original split was structured, so it's tested explicitly for each path the platform actually uses, not assumed to work the same way everywhere. The same applies to a cancellation that happens after a provider has already started the job: what each side is charged or paid needs its own test case, not a shared assumption that "refund" always means "return everything."</p>
+      </div>
+      <div class="story-block">
+        <h2>Notifications, on both sides of the match</h2>
+        <p>A push notification that never arrives is one of the most common silent failures in this category, and a meaningful share of the cause isn't the app's own code &mdash; it's aggressive background-process and battery-management behavior that several Android device makers ship by default, which can quietly stop a backgrounded app from receiving anything until it's reopened. That means the notification test matrix has to include backgrounded and battery-saver states across a representative device set, not just the happy path of the app open and the screen on. The two-sided version of this bug is sharper than a single-app miss: a customer who gets no notification just has a bad moment; a provider who never gets the new-job alert costs the business the match.</p>
+      </div>
+      <div class="story-block">
+        <h2>Device, OS, and network-condition matrix</h2>
+        <p>Office Wi-Fi is the easiest network condition to test and the least representative of how these apps actually get used &mdash; on a street, in a building, on mobile data that drops in and out. The matrix needs deliberate coverage of switching between Wi-Fi and mobile data mid-session, throttled 2G/3G conditions, and packet loss, using the same kind of network-shaping tools that generic mobile QA already relies on, plus a device list prioritized by actual usage data rather than theoretical OS-version coverage. Emulators are useful for iteration but won't catch everything a real device will; device-specific rendering and location-accuracy differences are a recurring reason real-device passes still turn up issues a simulator run didn't.</p>
+      </div>
+      <div class="story-block">
+        <h2>Peak load</h2>
+        <p>Demand on these platforms doesn't arrive evenly &mdash; it spikes around specific hours, events, or weather, and the matching and payments systems have to stay correct under that spike, not just stay up. That means load testing against realistic peak-shaped traffic, not a flat ramp, and testing the degraded-mode behavior on purpose: what the app shows and does when match times lengthen under load, rather than assuming it never will. Large-scale ride-hailing and delivery platforms run this kind of load drill on a recurring schedule against their own production-like traffic patterns rather than treating it as a one-time pre-launch check, which is the right instinct to carry into a smaller platform's own release process too.</p>
+      </div>
+      <div class="story-block">
+        <h2>Test data and environments</h2>
+        <p>Matching, location, and payment-split logic get exercised with synthetic providers, synthetic customers, and synthetic locations in a resettable environment &mdash; never real user accounts, real payment credentials, or production location data. A test run that leaves live providers or bookings behind in a shared test environment corrupts the next run's results, so state gets seeded fresh and reset between runs rather than accumulated.</p>
+      </div>
+      <div class="story-block">
+        <h2>A starter checklist</h2>
+        <ol>
+          <li>Matching and dispatch tested with varied inputs (location, workload, availability, ETA), not just the single nearest-match case</li>
+          <li>Double-booking and concurrent-assignment cases forced deliberately, not left to chance</li>
+          <li>Location tested on real devices in real conditions, including a stale-or-missing-fix case</li>
+          <li>Customer and provider apps tested as one paired state machine, asserting on resulting state, not raw messages</li>
+          <li>Split-payment refund and cancellation-after-start-of-job paths tested explicitly for each structure the platform uses</li>
+          <li>Push notifications tested in backgrounded and battery-saver states across a representative device set on both sides of the match</li>
+          <li>Network matrix covers Wi-Fi/mobile-data switching, throttled conditions, and packet loss &mdash; not office Wi-Fi alone</li>
+          <li>Peak-shaped load testing with degraded-mode behavior checked on purpose, not just uptime</li>
+          <li>Test data fully synthetic, in resettable environments &mdash; no real users, payment credentials, or live locations</li>
+        </ol>
+      </div>
+      <div class="story-block">
+        <h2>How this fits an engagement</h2>
+        <p>On-demand and marketplace QA is delivered the same way as our other <a class="inline-link" href="/#services">services</a> &mdash; engineers embedded in your team or <a class="inline-link" href="../../services/dedicated-qa-engineers/">running testing end to end</a>, on your own hours or the 24-hour cycle. If you're not sure where your release risk actually is, the free <a class="inline-link" href="../../release-readiness/">Release Readiness Assessment</a> is a lower-commitment place to start.</p>
+      </div>
+    </div>
+
+    <div class="closing">
+      <h2>Building an on-demand or marketplace app and not sure what's actually covered?</h2>
+      <p>Tell us what you're testing and where it's breaking. We reply within one business day.</p>
+      <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:2px;">
+        <a class="btn-grad" href="/#contact">Book a Consult</a>
+        <a class="btn-outline" href="../../release-readiness/">Not ready to talk? Check your risk first &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-row">
+      <span>&copy; QAInfinity</span>
+      <a href="../../contract-to-hire/" style="font-weight:700;">Contract-to-Hire</a>
+      <a href="../../release-readiness/" style="font-weight:700;">Release Readiness</a>
+      <span>info@qainfinity.com &nbsp;&middot;&nbsp; +91-9540752593</span>
+    </div>
+    <p class="foot-legal">QAInfinity Private Limited &middot; Gurugram, Haryana, India</p>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('a[href="#contact"], a[href$="index.html#contact"], a[href$="/#contact"]').forEach(function (link) {
+  link.addEventListener('click', function () {
+    try { sessionStorage.setItem('qain_contact_source', link.textContent.trim()); } catch (e) {}
+  });
+});
+</script>
+</body>
+</html>
