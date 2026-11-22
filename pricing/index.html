@@ -193,6 +193,19 @@
     font-size: 13.5px; color: var(--text-dim);
   }
 
+  .estimator {
+    margin-top: 18px; padding: 22px 24px; border-radius: 16px;
+    background: var(--surface-2); border: 1px solid var(--border);
+  }
+  .estimator-row { display: flex; flex-direction: column; gap: 6px; margin-top: 14px; }
+  .estimator-row:first-child { margin-top: 0; }
+  .estimator-row label { font-size: 13px; font-weight: 700; color: var(--text); }
+  .estimator-row select {
+    width: 100%; padding: 10px 12px; border-radius: 10px; font-size: 14.5px;
+    border: 1px solid var(--border); background: var(--surface); color: var(--text);
+    font-family: inherit;
+  }
+
   .closing {
     text-align: center; border-radius: 24px; padding: 50px 36px;
     background: linear-gradient(160deg, var(--surface-2), var(--surface));
@@ -287,6 +300,43 @@
       </div>
 
       <div class="story-block">
+        <h2>Illustrative cost estimator</h2>
+        <p>Pick a team shape and scheduling option below for a rough weekly and monthly range. This runs entirely in your browser &mdash; nothing is sent anywhere, and nothing is captured. It's an illustrative estimate built on our own published $18&ndash;45/hr range and a standard 40-hr week, not a quote.</p>
+        <div class="estimator" id="estimator">
+          <div class="estimator-row">
+            <label for="est-team">Team shape</label>
+            <select id="est-team">
+              <option value="1">A single embedded engineer</option>
+              <option value="3" selected>A small embedded team (2&ndash;4 engineers)</option>
+              <option value="6">An end-to-end team for a release (5+ engineers)</option>
+            </select>
+          </div>
+          <div class="estimator-row">
+            <label for="est-seniority">Seniority / skill mix</label>
+            <select id="est-seniority">
+              <option value="junior">Mostly manual / junior&ndash;mid</option>
+              <option value="mixed" selected>Balanced manual + automation mix</option>
+              <option value="senior">Mostly automation / senior &amp; SDET</option>
+            </select>
+          </div>
+          <div class="estimator-row">
+            <label for="est-schedule">Scheduling option</label>
+            <select id="est-schedule">
+              <option value="own" selected>Your own hours</option>
+              <option value="24h">The 24-hour cycle</option>
+            </select>
+          </div>
+          <div class="result-card" style="margin-top:18px;">
+            <span class="big" id="est-weekly">$720&ndash;$1,800/wk</span>
+            <span class="small">illustrative, at a standard 40-hr week per engineer</span>
+          </div>
+          <p id="est-monthly" style="font-size:14px; margin-top:-6px;">&asymp; $3,120&ndash;$7,800/month (at 4.33 weeks/month)</p>
+          <p id="est-note" class="note" style="margin-top:14px;"></p>
+        </div>
+        <p style="margin-top:14px;">For comparison, a single fully-loaded in-house QA hire runs <strong>$130,000&ndash;$235,000/yr</strong> in the US or <strong>~$74,000&ndash;$102,000/yr</strong> in the UK once benefits, tooling, and ramp time are counted &mdash; see the full breakdown and sources in <a class="inline-link" href="../blog/in-house-vs-outsourced-qa-cost-risk-comparison.html">our In-House vs. Outsourced QA comparison</a>. For how the wider outsourcing market prices QA by region and model, see <a class="inline-link" href="../blog/how-much-does-qa-outsourcing-cost.html">How Much Does QA Outsourcing Cost in 2026?</a></p>
+      </div>
+
+      <div class="story-block">
         <h2>Typical team shapes</h2>
         <ul>
           <li><strong>A single embedded engineer</strong> &mdash; the most common starting point, slotted into one squad or product area.</li>
@@ -356,6 +406,45 @@ document.querySelectorAll('a[href="#contact"], a[href$="index.html#contact"], a[
     try { sessionStorage.setItem('qain_contact_source', link.textContent.trim()); } catch (e) {}
   });
 });
+
+(function () {
+  var RATE_LOW = 18, RATE_HIGH = 45, HOURS_PER_WEEK = 40, WEEKS_PER_MONTH = 4.33;
+  var teamEl = document.getElementById('est-team');
+  var seniorityEl = document.getElementById('est-seniority');
+  var scheduleEl = document.getElementById('est-schedule');
+  var weeklyEl = document.getElementById('est-weekly');
+  var monthlyEl = document.getElementById('est-monthly');
+  var noteEl = document.getElementById('est-note');
+  if (!teamEl || !seniorityEl || !scheduleEl || !weeklyEl || !monthlyEl || !noteEl) { return; }
+
+  function fmt(n) { return '$' + Math.round(n).toLocaleString('en-US'); }
+
+  function render() {
+    var team = parseInt(teamEl.value, 10) || 1;
+    var weeklyLow = RATE_LOW * HOURS_PER_WEEK * team;
+    var weeklyHigh = RATE_HIGH * HOURS_PER_WEEK * team;
+    var monthlyLow = weeklyLow * WEEKS_PER_MONTH;
+    var monthlyHigh = weeklyHigh * WEEKS_PER_MONTH;
+    weeklyEl.textContent = fmt(weeklyLow) + '–' + fmt(weeklyHigh) + '/wk';
+    monthlyEl.textContent = '≈ ' + fmt(monthlyLow) + '–' + fmt(monthlyHigh) + '/month (at 4.33 weeks/month)';
+
+    var seniorityPhrase = {
+      junior: 'skewing manual / junior–mid',
+      mixed: 'a balanced manual + automation mix',
+      senior: 'skewing automation / senior & SDET'
+    }[seniorityEl.value] || 'a balanced manual + automation mix';
+    var note = 'Every mix above uses the same published $18–45/hr range — we have not yet published a formal rate split by skill tier for the calculator, so a team ' + seniorityPhrase + ' shows where a real quote tends to land within that range, not a different number. ';
+    note += scheduleEl.value === '24h'
+      ? 'The 24-hour cycle costs the same as working your own hours — scheduling is a workflow choice, not a pricing one.'
+      : 'Working your own hours costs the same as the 24-hour cycle — scheduling is a workflow choice, not a pricing one.';
+    noteEl.textContent = note;
+  }
+
+  teamEl.addEventListener('change', render);
+  seniorityEl.addEventListener('change', render);
+  scheduleEl.addEventListener('change', render);
+  render();
+})();
 </script>
 </body>
 </html>
