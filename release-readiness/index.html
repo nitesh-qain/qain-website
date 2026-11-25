@@ -66,7 +66,7 @@
   :root {
     --bg: #f7f7fb; --surface: #ffffff; --surface-2: #eef0f7;
     --text: #14151d; --text-dim: #565c6d; --border: rgba(20,21,29,0.09);
-    --accent-1: #4338ca; --accent-2: #7c3aed; --accent-3: #0891b2; --good: #0d9488;
+    --accent-1: #4338ca; --accent-2: #7c3aed; --accent-3: #0891b2; --good: #0f766e;
     --warn: #b45309; --bad: #b91c1c;
     --glow-a: rgba(79,70,229,0.16); --glow-b: rgba(139,92,246,0.12);
     --shadow: 0 1px 2px rgba(20,21,29,0.06);
@@ -95,7 +95,7 @@
   :root[data-theme="light"] {
     --bg: #f7f7fb; --surface: #ffffff; --surface-2: #eef0f7;
     --text: #14151d; --text-dim: #565c6d; --border: rgba(20,21,29,0.09);
-    --accent-1: #4338ca; --accent-2: #7c3aed; --accent-3: #0891b2; --good: #0d9488;
+    --accent-1: #4338ca; --accent-2: #7c3aed; --accent-3: #0891b2; --good: #0f766e;
     --warn: #b45309; --bad: #b91c1c;
     --glow-a: rgba(79,70,229,0.16); --glow-b: rgba(139,92,246,0.12);
     --shadow: 0 1px 2px rgba(20,21,29,0.06);
@@ -198,9 +198,16 @@
     .answers { gap: 8px; }
   }
   .foot-legal { font-size: 12px; color: var(--text-dim); margin: 14px 0 0; }
+  .skip-link {
+    position: absolute; left: -9999px; top: 0; z-index: 1000;
+    background: var(--surface); color: var(--text); padding: 10px 18px;
+    border-radius: 0 0 10px 0; border: 1px solid var(--border); font-weight: 700; font-size: 14px;
+  }
+  .skip-link:focus { left: 0; }
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
 
 <nav>
   <div class="nav-row">
@@ -225,7 +232,7 @@
   </div>
 </nav>
 
-<section class="hero">
+<section class="hero" id="main-content">
   <div class="wrap">
     <a class="back-link" href="/#services" onclick="event.preventDefault(); if (window.history.length > 1) { window.history.back(); } else { window.location.href = '/#services'; }">&larr; Back to Services</a>
     <div class="case-tags"><span>Free Self-Assessment</span><span>2 Minutes</span></div>
@@ -237,7 +244,7 @@
 
 <section>
   <div class="wrap">
-    <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+    <div class="progress-track" role="progressbar" aria-label="Assessment progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-fill" id="progress-fill"></div></div>
 
     <form id="rr-form">
       <div class="category">
@@ -245,24 +252,24 @@
         <p class="cat-meta">Do you actually know what's tested, or is coverage a guess?</p>
 
         <div class="question">
-          <p class="q-text">Do your critical user journeys have documented, repeatable test cases &mdash; or does coverage live mostly in one tester's head?</p>
-          <div class="answers">
+          <p class="q-text" id="q1-text">Do your critical user journeys have documented, repeatable test cases &mdash; or does coverage live mostly in one tester's head?</p>
+          <div class="answers" role="radiogroup" aria-labelledby="q1-text">
             <label><input type="radio" name="q1" value="0" required> Documented</label>
             <label><input type="radio" name="q1" value="1"> Partly</label>
             <label><input type="radio" name="q1" value="2"> In someone's head</label>
           </div>
         </div>
         <div class="question">
-          <p class="q-text">Is a full regression pass run before every release, or only when someone remembers to?</p>
-          <div class="answers">
+          <p class="q-text" id="q2-text">Is a full regression pass run before every release, or only when someone remembers to?</p>
+          <div class="answers" role="radiogroup" aria-labelledby="q2-text">
             <label><input type="radio" name="q2" value="0" required> Every release</label>
             <label><input type="radio" name="q2" value="1"> Usually</label>
             <label><input type="radio" name="q2" value="2"> Rarely / not sure</label>
           </div>
         </div>
         <div class="question">
-          <p class="q-text">When a defect reaches production, do you find out within a day &mdash; or does it usually surface through user complaints?</p>
-          <div class="answers">
+          <p class="q-text" id="q3-text">When a defect reaches production, do you find out within a day &mdash; or does it usually surface through user complaints?</p>
+          <div class="answers" role="radiogroup" aria-labelledby="q3-text">
             <label><input type="radio" name="q3" value="0" required> Same day</label>
             <label><input type="radio" name="q3" value="1"> A few days</label>
             <label><input type="radio" name="q3" value="2"> Users tell us</label>
@@ -275,24 +282,24 @@
         <p class="cat-meta">Automation that breaks every UI change isn't saving you time.</p>
 
         <div class="question">
-          <p class="q-text">What share of your regression suite is automated rather than run by hand?</p>
-          <div class="answers">
+          <p class="q-text" id="q4-text">What share of your regression suite is automated rather than run by hand?</p>
+          <div class="answers" role="radiogroup" aria-labelledby="q4-text">
             <label><input type="radio" name="q4" value="0" required> Most of it</label>
             <label><input type="radio" name="q4" value="1"> Some of it</label>
             <label><input type="radio" name="q4" value="2"> Little to none</label>
           </div>
         </div>
         <div class="question">
-          <p class="q-text">When the UI changes, do your automated tests keep working &mdash; or do they break and need rewriting?</p>
-          <div class="answers">
+          <p class="q-text" id="q5-text">When the UI changes, do your automated tests keep working &mdash; or do they break and need rewriting?</p>
+          <div class="answers" role="radiogroup" aria-labelledby="q5-text">
             <label><input type="radio" name="q5" value="0" required> Keep working</label>
             <label><input type="radio" name="q5" value="1"> Some breakage</label>
             <label><input type="radio" name="q5" value="2"> Constantly breaking</label>
           </div>
         </div>
         <div class="question">
-          <p class="q-text">Are your automated suites wired into CI and run on every build, or run manually now and then?</p>
-          <div class="answers">
+          <p class="q-text" id="q6-text">Are your automated suites wired into CI and run on every build, or run manually now and then?</p>
+          <div class="answers" role="radiogroup" aria-labelledby="q6-text">
             <label><input type="radio" name="q6" value="0" required> Every build</label>
             <label><input type="radio" name="q6" value="1"> Sometimes</label>
             <label><input type="radio" name="q6" value="2"> Manually</label>
@@ -305,24 +312,24 @@
         <p class="cat-meta">"Seems fine" isn't the same as tested.</p>
 
         <div class="question">
-          <p class="q-text">Have you load-tested your critical paths under expected peak traffic in the last 6 months?</p>
-          <div class="answers">
+          <p class="q-text" id="q7-text">Have you load-tested your critical paths under expected peak traffic in the last 6 months?</p>
+          <div class="answers" role="radiogroup" aria-labelledby="q7-text">
             <label><input type="radio" name="q7" value="0" required> Yes</label>
             <label><input type="radio" name="q7" value="1"> A while ago</label>
             <label><input type="radio" name="q7" value="2"> No / not sure</label>
           </div>
         </div>
         <div class="question">
-          <p class="q-text">Has this release had a security-focused QA pass, or only functional testing?</p>
-          <div class="answers">
+          <p class="q-text" id="q8-text">Has this release had a security-focused QA pass, or only functional testing?</p>
+          <div class="answers" role="radiogroup" aria-labelledby="q8-text">
             <label><input type="radio" name="q8" value="0" required> Security pass done</label>
             <label><input type="radio" name="q8" value="1"> Partly</label>
             <label><input type="radio" name="q8" value="2"> Functional only</label>
           </div>
         </div>
         <div class="question">
-          <p class="q-text">Do you know your system's actual breaking point under load, or just that it "seems fine" in normal use?</p>
-          <div class="answers">
+          <p class="q-text" id="q9-text">Do you know your system's actual breaking point under load, or just that it "seems fine" in normal use?</p>
+          <div class="answers" role="radiogroup" aria-labelledby="q9-text">
             <label><input type="radio" name="q9" value="0" required> We know the limit</label>
             <label><input type="radio" name="q9" value="1"> Rough idea</label>
             <label><input type="radio" name="q9" value="2"> No idea</label>
@@ -335,16 +342,16 @@
         <p class="cat-meta">QA that can't scale with release velocity becomes the bottleneck.</p>
 
         <div class="question">
-          <p class="q-text">Is QA capacity keeping pace with release velocity, or is QA the thing slowing releases down?</p>
-          <div class="answers">
+          <p class="q-text" id="q10-text">Is QA capacity keeping pace with release velocity, or is QA the thing slowing releases down?</p>
+          <div class="answers" role="radiogroup" aria-labelledby="q10-text">
             <label><input type="radio" name="q10" value="0" required> Keeping pace</label>
             <label><input type="radio" name="q10" value="1"> Occasionally strained</label>
             <label><input type="radio" name="q10" value="2"> The bottleneck</label>
           </div>
         </div>
         <div class="question">
-          <p class="q-text">If you needed another QA engineer next month, do you have a fast path &mdash; or would it take a standard hiring cycle?</p>
-          <div class="answers">
+          <p class="q-text" id="q11-text">If you needed another QA engineer next month, do you have a fast path &mdash; or would it take a standard hiring cycle?</p>
+          <div class="answers" role="radiogroup" aria-labelledby="q11-text">
             <label><input type="radio" name="q11" value="0" required> Fast path</label>
             <label><input type="radio" name="q11" value="1"> Could manage</label>
             <label><input type="radio" name="q11" value="2"> 6+ week hire</label>
@@ -357,16 +364,16 @@
         <p class="cat-meta">A judgment call isn't a go/no-go signal.</p>
 
         <div class="question">
-          <p class="q-text">Is there a clear, criteria-based go/no-go signal before each release, or is it mostly a judgment call?</p>
-          <div class="answers">
+          <p class="q-text" id="q12-text">Is there a clear, criteria-based go/no-go signal before each release, or is it mostly a judgment call?</p>
+          <div class="answers" role="radiogroup" aria-labelledby="q12-text">
             <label><input type="radio" name="q12" value="0" required> Clear criteria</label>
             <label><input type="radio" name="q12" value="1"> Somewhat defined</label>
             <label><input type="radio" name="q12" value="2"> Judgment call</label>
           </div>
         </div>
         <div class="question">
-          <p class="q-text">If this release breaks something in production, how quickly would you know and be able to roll back?</p>
-          <div class="answers">
+          <p class="q-text" id="q13-text">If this release breaks something in production, how quickly would you know and be able to roll back?</p>
+          <div class="answers" role="radiogroup" aria-labelledby="q13-text">
             <label><input type="radio" name="q13" value="0" required> Minutes</label>
             <label><input type="radio" name="q13" value="1"> Within hours</label>
             <label><input type="radio" name="q13" value="2"> Not sure</label>
@@ -416,6 +423,7 @@ document.querySelectorAll('a[href="#contact"], a[href$="index.html#contact"], a[
   var form = document.getElementById('rr-form');
   var result = document.getElementById('result');
   var progressFill = document.getElementById('progress-fill');
+  var progressTrack = document.querySelector('.progress-track');
   var TOTAL_QUESTIONS = 13;
   var MAX_SCORE = TOTAL_QUESTIONS * 2;
 
@@ -427,8 +435,13 @@ document.querySelectorAll('a[href="#contact"], a[href$="index.html#contact"], a[
     return answered;
   }
 
+  function setProgress(pct) {
+    progressFill.style.width = pct + '%';
+    progressTrack.setAttribute('aria-valuenow', pct);
+  }
+
   form.addEventListener('change', function () {
-    progressFill.style.width = Math.round((countAnswered() / TOTAL_QUESTIONS) * 100) + '%';
+    setProgress(Math.round((countAnswered() / TOTAL_QUESTIONS) * 100));
   });
 
   form.addEventListener('submit', function (e) {
@@ -462,7 +475,7 @@ document.querySelectorAll('a[href="#contact"], a[href$="index.html#contact"], a[
     }
 
     form.style.display = 'none';
-    progressFill.style.width = '100%';
+    setProgress(100);
     result.style.display = 'block';
     result.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
@@ -470,7 +483,7 @@ document.querySelectorAll('a[href="#contact"], a[href$="index.html#contact"], a[
   document.getElementById('retake-link').addEventListener('click', function (e) {
     e.preventDefault();
     form.reset();
-    progressFill.style.width = '0%';
+    setProgress(0);
     result.style.display = 'none';
     form.style.display = 'block';
     form.scrollIntoView({ behavior: 'smooth', block: 'start' });
